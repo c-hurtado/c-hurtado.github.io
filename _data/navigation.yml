@@ -1,7 +1,10 @@
 # Site navigation links
 
 - title: Projects
-  url: /projects
+  url: /gamedev
 
 - title: Art
-  url: /projects/
+  url: /art/
+
+- title: Art
+  url: /art/
