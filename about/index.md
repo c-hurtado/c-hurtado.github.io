@@ -28,6 +28,15 @@ In the vein of How do they work and UsesThis I'm sharing my tools and tricks of 
 * [FalconX](https://chrisandriessen.nl/web/FalconX.html) This app allows to put the taskbar icons in the middle for a cooler look.
 
 ## Mac OS X Software
+* [Oversight](https://objective-see.com/products/oversight.html) For people that care about being hacked, oversight monitors audio and video sessions and lets you know when the microphone or the camera got activated
+* [Swish](https://highlyopinionated.co/swish/) This cool tool allows you to manage your windows by using the touchpad.
+
+
+## IPhone Software
+
+
+## IPad Software
+
 
 ## Preview
 
