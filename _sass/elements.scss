@@ -11,6 +11,8 @@
 		box-shadow: 0 0 1px 0 rgba($color_shark,0.5);
 		color: $red;
 	}
+
+
 }
 .social-btn {
 	padding: 5px;
@@ -59,6 +61,18 @@
       }
     }
     &.btn-info {
+      background-color: $info;
+      color: $white;
+      border-color: $info;
+      &:visited {
+        color: $white;
+      }
+      &:hover {
+        background-color: $white;
+        color: $info;
+      }
+    }
+		&.zoombtn {
       background-color: $info;
       color: $white;
       border-color: $info;
