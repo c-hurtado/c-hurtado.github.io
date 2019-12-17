@@ -105,7 +105,8 @@ body {
 .wrapper {
 	width: 36rem;
 	max-width: 770px;
-	margin: 4rem auto;
+	//margin: 4rem auto;
+	@include center-block();
 	background-color: #fffafde0;
 	color: $color_tuatara;
 	padding: 2em;
