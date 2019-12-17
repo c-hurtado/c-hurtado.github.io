@@ -18,9 +18,12 @@
 	padding: 5px;
 	margin: 5px;
 	@extend %btnextend;
-
+	color: $black;
 
 	&:visited {
+		color: $black;
+	}
+	&:link {
 		color: $black;
 	}
 	&:hover {
@@ -82,15 +85,15 @@
       }
     }
 		&.zoombtn {
-      background-color: $info;
-      color: $white;
-      border-color: $info;
+      background-color: $white;
+      color: $black;
+      border-color: $color_shark;
       &:visited {
-        color: $white;
+        color: $red;
       }
       &:hover {
-        background-color: $white;
-        color: $info;
+        background-color: $dark-purple-tp;
+        color: $white;
       }
     }
 }
