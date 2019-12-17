@@ -90,9 +90,9 @@ figcaption {
 // links
 a {
   transition: color .4s;
-  color: $color_shark;
+  color: $link-color;
   &:link {
-  	color: $color_shark;
+  	color: $link-color;
   }
   &:visited {
   	color: $color_tuatara;
