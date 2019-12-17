@@ -85,18 +85,18 @@
       }
     }
 		&.zoombtn {
-      background-color: $white;
-      color: $black;
+      background-color: $dark-purple-tp;
+      color: $white;
       border-color: $color_shark;
 			&:link {
-				color: $black;
+				color: $white;
 			}
 			&:visited {
-        color: $black;
+        color: $white;
       }
       &:hover {
         background-color: $dark-purple-tp;
-        color: $white;
+        color: $link-color;
       }
     }
 }
