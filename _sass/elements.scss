@@ -19,16 +19,16 @@
 	margin: 5px;
 	@extend %btnextend;
 	color: $black;
-
+	background-color: $dark-purple-tp
 	&:visited {
-		color: $black;
+		color: $white;
 	}
 	&:link {
-		color: $black;
+		color: $white;
 	}
 	&:hover {
-		background-color: $white;
-		color: $red;
+		//background-color: $white;
+		color: $link-color;
 	}
 }
 .btn {
