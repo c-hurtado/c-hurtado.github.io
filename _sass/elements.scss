@@ -18,6 +18,15 @@
 	padding: 5px;
 	margin: 5px;
 	@extend %btnextend;
+
+
+	&:visited {
+		color: $black;
+	}
+	&:hover {
+		background-color: $white;
+		color: $red;
+	}
 }
 .btn {
 	padding: 10px 18px;
