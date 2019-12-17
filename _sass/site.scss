@@ -75,7 +75,7 @@ body {
 	padding-right: 30px;
 	padding-left: 30px;
 	@include center-block();
-	background-color: #fffafde0;
+	background-color: $dark-purple-tp;
 	color: $color_shark;
 	z-index: 1;
 	border-radius: 80px;
@@ -107,8 +107,8 @@ body {
 	max-width: 770px;
 	//margin: 4rem auto;
 	@include center-block();
-	background-color: #fffafde0;
-	color: $color_tuatara;
+	background-color: $dark-purple-tp;
+	color: $forward-color;
 	padding: 2em;
 	border-radius: 80px;
 	box-shadow: 0 0 10px 0 rgba($color_shark,0.3);
