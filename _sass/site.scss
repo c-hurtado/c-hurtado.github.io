@@ -70,7 +70,7 @@ body {
 	align-items: center;
 }
 .container {
-	width: 36rem;
+	width: 80%;
 	max-width: 770px;
 	padding-right: 30px;
 	padding-left: 30px;
@@ -104,10 +104,12 @@ body {
 	}
 }
 .wrapper {
-	width: 36rem;
+	width: 80%;
 	max-width: 770px;
 	//margin: 4rem auto;
 	@include center-block();
+    padding-right: 30px;
+	padding-left: 30px;
 	background-color: $dark-purple-tp;
 	color: $forward-color;
 	padding: 2em;
@@ -122,12 +124,13 @@ body {
 	}
 }
 #disqus_thread {
-	width: 75%;
-	max-width: 850px;
+	width: 80%;
+	max-width: 770px;
 	margin: -3rem auto 4rem;
 	background: $white;
 	color: $color_tuatara;
 	padding: 2em;
+    
 	border-radius: 3px;
 	box-shadow: 0 0 10px 0 rgba($color_shark,0.3);
 	@include transition(.5s);
