@@ -121,7 +121,7 @@ li pre {
     @include rounded(4px);
     margin: 0 2px;
     padding: 0 5px;
-    color: $black !important;
+    color: $color_shark !important;
 }
 li .highlight code,
 li .highlight pre {
@@ -142,6 +142,7 @@ table {
     @include font-rem(14);
     background-color: $color_gray;
     border: 1px solid $color_pink_swan;
+    color: $color_shark;
     @include rounded(3px);
 }
 
