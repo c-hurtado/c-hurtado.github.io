@@ -19,6 +19,7 @@
 	margin: 5px;
 	@extend %btnextend;
 	color: $black;
+    font-size:1rem;
 	background-color: $dark-purple-tp;
 	&:visited {
 		color: $white;
@@ -34,7 +35,7 @@
 .btn {
 	padding: 10px 18px;
 	@include font-rem(14);
-	margin: 4px auto;
+	margin: 1px auto;
 	@extend %btnextend;
 	&.btn-success {
       background-color: $success;
@@ -101,7 +102,7 @@
     }
 }
 .title .btn {
-    margin: 10px;
+    margin: 1px;
     @include font-rem(16);
     font-weight:300;
 }
