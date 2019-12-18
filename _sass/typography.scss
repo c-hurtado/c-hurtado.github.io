@@ -121,6 +121,7 @@ li pre {
     @include rounded(4px);
     margin: 0 2px;
     padding: 0 5px;
+    color: $black !important;
 }
 li .highlight code,
 li .highlight pre {
