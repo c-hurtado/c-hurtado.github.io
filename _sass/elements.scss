@@ -17,6 +17,7 @@
 .social-btn {
 	padding: 5px;
 	margin: 5px;
+    border-color: $color_shark;
 	@extend %btnextend;
 	color: $black;
     font-size:1rem;
