@@ -12,7 +12,7 @@ I started at Sanzaru Games (developers of Sly Cooper 4) as part as the very smal
 
 ### Asgard's Wrath
 
-<iframe width="560" height="315" src="//www.youtube.com/watch?v=d5a4nWtbVyY"  frameborder="0"> </iframe>
+<iframe width="560" height="315" src="//www.youtube.com/embed/d5a4nWtbVyY"  frameborder="0"> </iframe>
 
 This game has the following reviews:
 
