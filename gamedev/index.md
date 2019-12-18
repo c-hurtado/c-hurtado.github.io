@@ -18,13 +18,22 @@ This game has the following reviews:
 
 ### Marvel Powers United VR
 
+<iframe width="560" height="315" src="//www.youtube.com/embed/xAvzIff_PCg"  frameborder="0"> </iframe>
 ....
 
 ### VR Sports: Challenge
+
+<iframe width="560" height="315" src="//www.youtube.com/embed/YO_gz5l7ZB4"  frameborder="0"> </iframe>
 dsadsdsa
+
+
 
 ### VR Sports: Challenge Gear VR
 adasdsa
+
+### Dark Manor
+
+<iframe width="560" height="315" src="//www.youtube.com/embed/iySqG1f6PR0"  frameborder="0"> </iframe>
 
 ----
 
@@ -40,9 +49,12 @@ From November 2011 till May 2012, I worked on the game Uridium Wars. A social mu
 From June 2010 until November 2011, I worked as a Gameplay Engineer at Electronic Arts under the Play Label in the Sims Division.
 I worked in several expansions being the last one:  Sims 3: Pets Expansion Pack.
 Sims 3 Pets
-Before that, I participated in the development of:
-The Sims 3 Generations
-Sims 3 Pets
+<iframe width="560" height="315" src="//www.youtube.com/embed/oj1sxvBYw2Y"  frameborder="0"> </iframe>
+
+<iframe width="560" height="315" src="//www.youtube.com/embed/4hajq1nwsAM"  frameborder="0"> </iframe>
+
+
+<iframe width="560" height="315" src="//www.youtube.com/embed/CZcq9f72r2c"  frameborder="0"> </iframe>
 
 The Sims 3 Late Night
 Sims 3 Pets
