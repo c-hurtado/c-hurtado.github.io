@@ -8,7 +8,7 @@ comments: false
 
 <figure>
 	<a href="{{site.url}}/assets/img/baby91.jpg"><img src="{{site.url}}/assets/img/baby91.jpg"></a>
-</a>
+</figure>
 
 Oh hello!, I didn't see you there. I'm Carlos, nice to meet you.
 
