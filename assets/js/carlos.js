@@ -1,6 +1,13 @@
 console.log("CarlosScript activated");
-Cookies.set('score','0');
-var score = Cookies.get('score');
-Cookies.remove('score');
-Cookies.set('score', score+1111);
-console.log("CarlosScript activated"+score);
+var currentScore = Cookies.get('score');
+if(currentScore !== undefined)
+{
+  currentScore = currentScore + 100;
+  Cookies.remove('score');
+  Cookies.set('score', currentScore);
+  console.log("CarlosScript activated"+currentScore);
+
+}
+else {
+  Cookies.set('score','0');
+}
