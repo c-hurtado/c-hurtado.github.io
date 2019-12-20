@@ -39,7 +39,7 @@ function GetXP()
 
 function GetLevel()
 {
-  var currentXp = GetXP();
+  var currentXP = GetXP();
   var lastValue = 0;
   for (var key in globalXpLevel)
   {
