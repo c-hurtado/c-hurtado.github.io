@@ -83,3 +83,10 @@ function AddXPFromSource(xpSource, xpMap)
     }
   }
 }
+
+
+console.log("Current XP:"+GetXP()+" Current Level:"+GetLevel());
+AddXPFromSource("art");
+AddXPFromSource("gamedev");
+AddXPFromSource("invalid");
+console.log("After XP:"+GetXP()+" After Level:"+GetLevel());
