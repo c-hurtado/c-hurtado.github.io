@@ -239,11 +239,25 @@ kbd {
 }
 
 .xpProgress {
-
+	border-radius: 20px !important;
+	border-color: #582047;
+	border: 1px solid;
+	margin-top: 40px;
+	margin-botton:20px;
+	margin-left:auto;
+	margin-right:auto;
+	width: 60%
+	padding:6px;
+	 box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
 }
 
-.xpProgressContent
-{
-	color:#FFF!important;
-	background-color:#FFF!important
+.xpProgressContent{
+	height:18px;
+	border-radius: 20px !important;
+	color:#bd307a !important;
+	border-radius: 30px;
+	background-image:
+		linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+	transition: 0.4s linear;
+	transition-property: width, background-color;
 }
