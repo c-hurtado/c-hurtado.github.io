@@ -1,6 +1,6 @@
 
 var globalXpDict = {};
-globalXpDictglobalXpDict["art"] = 100;
+globalXpDict["art"] = 100;
 globalXpDict["gamedev"] = 100;
 globalXpDict["thoughts"] = 100;
 globalXpDict["contact"] = 100;
