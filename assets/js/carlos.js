@@ -40,17 +40,17 @@ function GetXP()
 function GetLevel()
 {
   var currentXP = GetXP();
-  var lastValue = 0;
+  var lastKey = 0;
   for (var key in globalXpLevel)
   {
     var value = globalXpLevel[key];
     if (value > currentXP)
     {
-      return lastValue;
+      return lastKey;
     }
-    lastValue = value;
+    lastKey = key;
   }
-  return lastValue;
+  return lastKey;
 }
 
 function GetXPToAdd(xpSource)
