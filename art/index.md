@@ -22,6 +22,8 @@ comments: true
 	<figcaption>Caption describing these three images.</figcaption>
 </figure>
 
+## Master Studies
+
 ## Figure Drawing
 
 ## Photography

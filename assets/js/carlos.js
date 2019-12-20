@@ -105,5 +105,7 @@ function AddXPFromSource(xpSource)
 }
 
 
-
 console.log("Current XP:"+GetXP()+" Current Level:"+GetLevel());
+var progressBar = document.querySelector("xpProgressContent");
+var progressBarContainer = document.querySelector("xpProgress");
+progressBar.style.width = (parseInt(GetXP())/1400)+'%';

@@ -15,15 +15,16 @@ layout: compress
     <header class="header" role="banner">
         <div class="wrapper animated fadeIn">
             <div class="content">
+              <div id="xpProgressGroup" class="xpProgress">
+                    <div class="xpProgressContent" style="width:20%"></div>
+              </div>
                 <div class="post-title {% if page.feature %} feature {% endif %}">
                     <a class="btn zoombtn" href="{{site.url}}" onClick="AddXPFromSource('home')">
                         <i class="fa fa-fw fa-backward"></i>
                     </a>
                     <h2>{{ page.title }}</h2>
                 </div>
-                <div id="xpProgressGroup" class="xpProgress">
-                      <div class="xpProgressContent" style="width:20%"></div>
-                </div>
+
                 {{ content }}
             </div>
         </div>
