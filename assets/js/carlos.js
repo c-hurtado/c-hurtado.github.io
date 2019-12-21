@@ -163,8 +163,8 @@ window.onload = function(e){
         AddXPAmount(GetPendingXP());
         ClearPendingXP();
         progressBar.style.width = (GetPercentageInLevel())+'%';
-        levelContainer.innerHTML="Level >"+GetLevel();
-        scoreWrapper.style.opacity = "100%";
+        levelContainer.innerHTML="Level :"+GetLevel();
+        scoreWrapper.style.opacity = "1";
         console.log("Current XP:"+GetXP()+" Current Level:"+GetLevel());
       //your code to be executed after 1 second
     }, 1000);
