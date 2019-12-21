@@ -157,9 +157,9 @@ window.onload = function(e){
   var levelContainer = document.getElementById("levelContainer");
   var scoreWrapper = document.getElementById("scoreWrapper");
   //progressBarContainer.style.display = "block";
-  scoreWrapper.style.opacity = "1";
   levelContainer.innerHTML="Level "+GetLevel();
   progressBar.style.width = (GetPercentageInLevel())+'%';
+  scoreWrapper.style.opacity = "1";
     setTimeout(function() {
         if(GetPendingXP() > 0)
         {
