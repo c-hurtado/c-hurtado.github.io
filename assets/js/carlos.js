@@ -158,16 +158,17 @@ window.onload = function(e){
   var scoreWrapper = document.getElementById("scoreWrapper");
   //progressBarContainer.style.display = "block";
   progressBarContainer.style.width="60%";
+  scoreWrapper.style.opacity = "1";
+  levelContainer.innerHTML="Level "+GetLevel();
   progressBar.style.width = (GetPercentageInLevel())+'%';
     setTimeout(function() {
         AddXPAmount(GetPendingXP());
         ClearPendingXP();
         progressBar.style.width = (GetPercentageInLevel())+'%';
-        levelContainer.innerHTML="Level :"+GetLevel();
+        levelContainer.innerHTML="Level "+GetLevel();
         scoreWrapper.style.opacity = "1";
-        console.log("Current XP:"+GetXP()+" Current Level:"+GetLevel());
       //your code to be executed after 1 second
-    }, 1000);
+    }, 1);
 
 
 }
