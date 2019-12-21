@@ -157,7 +157,6 @@ window.onload = function(e){
   var levelContainer = document.getElementById("levelContainer");
   var scoreWrapper = document.getElementById("scoreWrapper");
   //progressBarContainer.style.display = "block";
-  progressBarContainer.style.width="60%";
   scoreWrapper.style.opacity = "1";
   levelContainer.innerHTML="Level "+GetLevel();
   progressBar.style.width = (GetPercentageInLevel())+'%';
@@ -168,7 +167,7 @@ window.onload = function(e){
         levelContainer.innerHTML="Level "+GetLevel();
         scoreWrapper.style.opacity = "1";
       //your code to be executed after 1 second
-    }, 1);
+    }, 2);
 
 
 }
