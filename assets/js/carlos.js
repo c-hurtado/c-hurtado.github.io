@@ -177,7 +177,7 @@ window.onload = function(e){
           progressBar.style.width = (GetPercentageInLevel())+'%';
           levelContainer.innerHTML="Level X"+GetLevel();
         }
-    }, 2);
+    }, 2000);
 
 
 }
