@@ -128,11 +128,6 @@ function AddXPFromSource(xpSource)
     var level = GetLevel();
     AddPendingXP(GetXPToAdd(xpSource));
     Cookies.set(xpSource, 1);
-    var newLevel = GetLevel();
-    if(newLevel != level)
-    {
-      UpdateLevel(newLevel);
-    }
   }
 }
 
@@ -168,8 +163,9 @@ window.onload = function(e){
         AddXPAmount(GetPendingXP());
         ClearPendingXP();
         progressBar.style.width = (GetPercentageInLevel())+'%';
+        console.log("Current XP:"+GetXP()+" Current Level:"+GetLevel());
       //your code to be executed after 1 second
-    }, 2000);
+    }, 1000);
   }
 
 }
