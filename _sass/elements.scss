@@ -264,6 +264,7 @@ kbd {
 	transition: 0.4s linear;
 	width:0%;
 	transition-property: width, background-color;
+	opacity:inherit;
 }
 
 .scoreWrapper {
@@ -283,4 +284,5 @@ kbd {
 	padding-top:8px;
 	z-index:10;
 	text-align:center;
+	opacity:inherit;
 }
