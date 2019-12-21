@@ -154,14 +154,15 @@ console.log("Current XP:"+GetXP()+" Current Level:"+GetLevel());
 window.onload = function(e){
   var progressBar = document.getElementById("xpProgressContent");
   var progressBarContainer = document.getElementById("xpProgress");
+  var levelContainer = document.getElementByID("levelContainer");
   //progressBarContainer.style.display = "block";
   progressBarContainer.style.width="60%";
   progressBar.style.width = (GetPercentageInLevel())+'%';
-
     setTimeout(function() {
         AddXPAmount(GetPendingXP());
         ClearPendingXP();
         progressBar.style.width = (GetPercentageInLevel())+'%';
+        levelContainer.innerHTML="Level "+GetLevel();
         console.log("Current XP:"+GetXP()+" Current Level:"+GetLevel());
       //your code to be executed after 1 second
     }, 1000);
