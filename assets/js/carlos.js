@@ -157,7 +157,7 @@ window.onload = function(e){
   progressBarContainer.style.transition = "0.4s linear";
   //progressBarContainer.style.display = "block";
   progressBarContainer.style.width="60%";
-  progressBar.style.width = GetPercentageInLevel()*100)+'%';
+  progressBar.style.width = (GetPercentageInLevel()*100)+'%';
 
   if(GetPendingXP() > 0)
   {
