@@ -72,8 +72,7 @@ body {
 .container {
 	width: 80%;
 	max-width: 770px;
-	padding-right: 30px;
-	padding-left: 30px;
+	padding:2em;
 	@include center-block();
 	background-color: $dark-purple-tp;
 	//color: $color_shark;
