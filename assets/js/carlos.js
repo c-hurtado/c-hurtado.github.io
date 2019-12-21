@@ -155,6 +155,7 @@ window.onload = function(e){
   var progressBar = document.getElementById("xpProgressContent");
   var progressBarContainer = document.getElementById("xpProgress");
   var levelContainer = document.getElementById("levelContainer");
+  var levelContainer = document.getElementById("scoreWrapper");
   //progressBarContainer.style.display = "block";
   progressBarContainer.style.width="60%";
   progressBar.style.width = (GetPercentageInLevel())+'%';
@@ -163,6 +164,7 @@ window.onload = function(e){
         ClearPendingXP();
         progressBar.style.width = (GetPercentageInLevel())+'%';
         levelContainer.innerHTML="Level "+GetLevel();
+        scoreWrapper.style.opacity = "1";
         console.log("Current XP:"+GetXP()+" Current Level:"+GetLevel());
       //your code to be executed after 1 second
     }, 1000);
