@@ -154,7 +154,7 @@ console.log("Current XP:"+GetXP()+" Current Level:"+GetLevel());
 window.onload = function(e){
   var progressBar = document.getElementById("xpProgressContent");
   var progressBarContainer = document.getElementById("xpProgress");
-  var levelContainer = document.getElementByID("levelContainer");
+  var levelContainer = document.getElementById("levelContainer");
   //progressBarContainer.style.display = "block";
   progressBarContainer.style.width="60%";
   progressBar.style.width = (GetPercentageInLevel())+'%';
