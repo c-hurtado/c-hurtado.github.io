@@ -269,6 +269,8 @@ kbd {
 .scoreWrapper {
 	display:flex;
 	margin:40px;
+	opacity:0px;
+	transition: opacity 1s;
 }
 
 .levelContainer {
