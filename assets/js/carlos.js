@@ -46,6 +46,33 @@ function AddXPAmount(xpAmount)
   }
 }
 
+function AddPendingXP(xpAmount)
+{
+  var pendingXP = Cookies.get('pendingXP');
+  if(pendingXP !== undefined)
+  {
+    var numScore = parseInt(pendingXP);
+    numScore = numScore + xpAmount;
+    Cookies.remove('pendingXP');
+    Cookies.set('pendingXP', ''+ numScore);
+  }
+  else {
+    Cookies.set('pendingXP', xpAmount);
+  }
+}
+
+
+function GetPendingXP()
+{
+  var currentXP = Cookies.get('pendingXP');
+  if(currentXP !== undefined)
+  {
+    var numXP = parseInt(currentXP);
+    return numXP;
+  }
+  return 0;
+}
+
 function GetXP()
 {
   var currentXP = Cookies.get('xp');
@@ -94,7 +121,7 @@ function AddXPFromSource(xpSource)
   if(cookieInfo == undefined)
   {
     var level = GetLevel();
-    AddXPAmount(GetXPToAdd(xpSource));
+    AddPendingXP(GetXPToAdd(xpSource));
     Cookies.set(xpSource, 1);
     var newLevel = GetLevel();
     if(newLevel != level)
@@ -104,13 +131,37 @@ function AddXPFromSource(xpSource)
   }
 }
 
+function GetPercentageInLevel()
+{
+  var startingLevel = GetLevel();
+  var nextLevel = startingLevel+1;
+  var percentage = (GetXP()-globalXpLevel[startingLevel])/(globalXpLevel[nextLevel]-globalXpLevel[startingLevel]);
+  return percentage;
+}
+
+function GetXPPercentageBefore()
+{
+
+}
+
+function GetXPPercentageAfter()
+{
+
+}
+
 
 console.log("Current XP:"+GetXP()+" Current Level:"+GetLevel());
 window.onload = function(e){
   var progressBar = document.getElementById("xpProgressContent");
   var progressBarContainer = document.getElementById("xpProgress");
+  progressBarContainer.style.transition = "0.4s linear";
   //progressBarContainer.style.display = "block";
   progressBarContainer.style.width="60%";
-  progressBar.style.width = ((parseInt(GetXP())/1400)*100)+'%';
+  progressBar.style.width = GetPercentageInLevel()*100)+'%';
+
+  if(GetPendingXP() > 0)
+  {
+
+  }
 
 }
