@@ -15,12 +15,11 @@ layout: compress
     <header class="header flex" role="banner">
         <div class="container animated fadeIn">
             <div class="row">
+
+                    {% include score.html %}
                     <a href="{{ site.url }}"  onClick="AddXPFromSource('home')">
                         <img src="{{ site.logo }}" class="img-circle zoombtn animated fadeIn">
                     </a>
-                    <div id="xpProgress" class="xpProgress">
-                          <div id="xpProgressContent" class="xpProgressContent"></div>
-                    </div>
                     <h3 class="title">
                         <a class="zoombtn" href="{{ site.url }}">
                         	<p style="font-size:1.6rem;font-weight:300">carloshurtado.com</p>

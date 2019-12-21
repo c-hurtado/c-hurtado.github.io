@@ -15,9 +15,7 @@ layout: compress
     <header class="header" role="banner">
         <div class="wrapper animated fadeIn">
             <div class="content">
-              <div id="xpProgress" class="xpProgress">
-                    <div id="xpProgressContent" class="xpProgressContent"></div>
-              </div>
+            {% include score.html %}
                 <div class="post-title {% if page.feature %} feature {% endif %}">
                     <a class="btn zoombtn" href="{{site.url}}" onClick="AddXPFromSource('home')">
                         <i class="fa fa-fw fa-backward"></i>
