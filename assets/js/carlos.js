@@ -24,11 +24,11 @@ globalXpDict["thoughts_post"] = 100;
 
 var globalXpLevel = {};
 globalXpLevel[0] = 0;
-globalXpLevel[1] = 200;
-globalXpLevel[2] = 400;
-globalXpLevel[3] = 700;
-globalXpLevel[4] = 1000;
-globalXpLevel[5] = 1400;
+globalXpLevel[1] = 240;
+globalXpLevel[2] = 480;
+globalXpLevel[3] = 760;
+globalXpLevel[4] = 1250;
+globalXpLevel[5] = 1480;
 
 
 function AddXPAmount(xpAmount)
