@@ -161,12 +161,13 @@ window.onload = function(e){
   levelContainer.innerHTML="Level "+GetLevel();
   progressBar.style.width = (GetPercentageInLevel())+'%';
     setTimeout(function() {
-        AddXPAmount(GetPendingXP());
-        ClearPendingXP();
-        progressBar.style.width = (GetPercentageInLevel())+'%';
-        levelContainer.innerHTML="Level "+GetLevel();
-        scoreWrapper.style.opacity = "1";
-      //your code to be executed after 1 second
+        if(GetPendingXP() > 0)
+        {
+          AddXPAmount(GetPendingXP());
+          ClearPendingXP();
+          progressBar.style.width = (GetPercentageInLevel())+'%';
+          levelContainer.innerHTML="Level X"+GetLevel();
+        }
     }, 2);
 
 
