@@ -108,8 +108,7 @@ body {
 	max-width: 770px;
 	//margin: 4rem auto;
 	@include center-block();
-    padding-right: 30px;
-	padding-left: 30px;
+	padding:2em;
 	background-color: $dark-purple-tp;
 	color: $forward-color;
 	padding: 2em;
@@ -131,7 +130,7 @@ body {
 	background-color: $dark-purple-tp;
 	color: $forward-color;
 	padding: 2em;
-    
+
 	border-radius: 80px;
 	box-shadow: 0 0 10px 0 rgba($color_shark,0.3);
 	@include transition(.5s);
