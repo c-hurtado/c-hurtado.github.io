@@ -110,6 +110,7 @@ window.onload = function(e){
   var progressBar = document.getElementById("xpProgressContent");
   var progressBarContainer = document.getElementById("xpProgress");
   progressBarContainer.style.transition = "0.4s linear";
+  progressBarContainer.style.transition-property = "height, display";
   progressBarContainer.style.display = "block"
 
   progressBar.style.width = ((parseInt(GetXP())/1400)*100)+'%';
