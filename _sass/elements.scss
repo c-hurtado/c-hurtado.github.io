@@ -242,8 +242,6 @@ kbd {
 	border-radius: 20px !important;
 	border-color: #582047;
 	border: 1px;
-	margin-top: 40px;
-	margin-botton:20px;
 	margin-left:auto;
 	margin-right:auto;
 	width: 0%;
@@ -257,11 +255,24 @@ kbd {
 
 .xpProgressContent{
 	height:12px;
-	border-radius: 20px !important;
 	color:#bd307a !important;
 	border-radius: 30px;
 	background-image: linear-gradient(to bottom, rgb(255, 34, 178), rgb(88, 30, 70));
 	transition: 0.4s linear;
 	width:0%;
 	transition-property: width, background-color;
+}
+
+.scoreWrapper {
+	display:flex;
+	margin:40px;
+}
+
+.levelContainer {
+	height:40px;
+	color:#bd307a !important;
+	border-radius: 30px;
+	background-image: linear-gradient(to bottom, rgb(255, 34, 178), rgb(88, 30, 70));
+	transition: 0.4s linear;
+	color:#FFFFFF
 }
