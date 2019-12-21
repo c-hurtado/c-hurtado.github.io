@@ -149,6 +149,15 @@ function GetXPPercentageAfter()
 
 }
 
+function DebugClear()
+{
+  Cookies.remove('xp');
+  Cookies.remove('pendingXP');
+  for (var key in globalXpDict)
+  {
+    Cookies.remove(key);
+  }
+}
 
 console.log("Current XP:"+GetXP()+" Current Level:"+GetLevel());
 window.onload = function(e){
