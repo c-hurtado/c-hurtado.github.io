@@ -242,7 +242,7 @@ kbd {
 	border-radius: 20px !important;
 	border-color: #582047;
 	border: 1px;
-	margin-left:auto;
+	margin-left:-10px;
 	margin-right:auto;
 	width: 0%;
 	padding:5px;
@@ -253,6 +253,7 @@ kbd {
 	//display:none;
 	transition: 0.6s linear;
 	transition-property: width;
+	z-index:0;
 }
 
 .xpProgressContent{
@@ -276,6 +277,8 @@ kbd {
 	background-image: linear-gradient(to bottom, rgb(255, 34, 178), rgb(88, 30, 70));
 	transition: 0.4s linear;
 	color:#FFFFFF;
-	width:40px;
+	width:80px;
 	padding-top:8px;
+	z-index:10;
+	text-align:center;
 }
