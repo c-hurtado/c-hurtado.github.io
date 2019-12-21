@@ -133,10 +133,10 @@ function AddXPFromSource(xpSource)
 
 function GetPercentageInLevel()
 {
-  var startingLevel = GetLevel();
+  var startingLevel = parseInt(GetLevel());
   var nextLevel = startingLevel+1;
-  var percentage = (GetXP()-globalXpLevel[startingLevel])/(globalXpLevel[nextLevel]-globalXpLevel[startingLevel]);
-  return percentage;
+  var percentage = ( parseInt(GetXP())- parseInt(globalXpLevel[startingLevel]))/( parseInt(globalXpLevel[nextLevel])- parseInt(globalXpLevel[startingLevel]));
+  return percentage*100;
 }
 
 function GetXPPercentageBefore()
@@ -157,7 +157,7 @@ window.onload = function(e){
   progressBarContainer.style.transition = "0.4s linear";
   //progressBarContainer.style.display = "block";
   progressBarContainer.style.width="60%";
-  progressBar.style.width = (GetPercentageInLevel()*100)+'%';
+  progressBar.style.width = (GetPercentageInLevel())+'%';
 
   if(GetPendingXP() > 0)
   {
