@@ -13,9 +13,9 @@ layout: compress
     {% include nav.html %}
     <!-- Header -->
     <header class="header" role="banner">
-        <div class="wrapper animated fadeIn">
+        <div class="wrapper">
+          {% include score.html %}
             <div class="content">
-            {% include score.html %}
                 <div class="post-title {% if page.feature %} feature {% endif %}">
                     <a class="btn zoombtn" href="{{site.url}}" onClick="AddXPFromSource('home')">
                         <i class="fa fa-fw fa-backward"></i>
