@@ -64,6 +64,11 @@ function AddPendingXP(xpAmount)
 
 function GetPendingXP()
 {
+    Cookies.remove('pendingXP');
+}
+
+function ClearPendingXP()
+{
   var currentXP = Cookies.get('pendingXP');
   if(currentXP !== undefined)
   {
@@ -154,14 +159,17 @@ console.log("Current XP:"+GetXP()+" Current Level:"+GetLevel());
 window.onload = function(e){
   var progressBar = document.getElementById("xpProgressContent");
   var progressBarContainer = document.getElementById("xpProgress");
-  progressBarContainer.style.transition = "0.4s linear";
   //progressBarContainer.style.display = "block";
   progressBarContainer.style.width="60%";
   progressBar.style.width = (GetPercentageInLevel())+'%';
-
   if(GetPendingXP() > 0)
   {
-
+    setTimeout(function() {
+        AddXPAmount(GetPendingXP());
+        ClearPendingXP();
+        progressBar.style.width = (GetPercentageInLevel())+'%';
+      //your code to be executed after 1 second
+    }, 2000);
   }
 
 }
