@@ -283,11 +283,12 @@ kbd {
 	background-image: linear-gradient(to bottom, rgb(255, 34, 178), rgb(88, 30, 70));
 	color:#FFFFFF;
 	width:80px;
-	padding-top:8px;
+	padding-top:0px;
 	z-index:10;
 	text-align:center;
+	vertical-align: center;
 	//opacity:inherit;
-	font-size: 1em;
+	font-size: 0.9em;
 }
 
 .xpCount
