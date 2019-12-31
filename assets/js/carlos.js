@@ -169,7 +169,7 @@ window.onload = function(e){
   //progressBarContainer.style.display = "block";
   levelContainer.innerHTML="Level "+GetLevel();
   progressBar.style.width = (GetPercentageInLevel())+'%';
-  scoreWrapper.style.display= "block";
+  scoreWrapper.style.display= "flex";
   scoreWrapper.style.opacity = "1";
   loadingHolder.style.opacity = "0";
     setTimeout(function() {
