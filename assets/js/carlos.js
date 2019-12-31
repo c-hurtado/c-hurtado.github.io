@@ -185,6 +185,7 @@ window.onload = function(e){
   scoreWrapper.style.display= "flex";
   scoreWrapper.style.opacity = "1";
   loadingHolder.style.opacity = "0";
+  xpCount.innerHTML = GetXPPercentage();
 
 
     setTimeout(function() {
