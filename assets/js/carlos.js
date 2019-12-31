@@ -171,7 +171,7 @@ window.onload = function(e){
   progressBar.style.width = (GetPercentageInLevel())+'%';
   scoreWrapper.style.display= "block";
   scoreWrapper.style.opacity = "1";
-  loadingHolder.style.display="none";
+  loadingHolder.style.opacity = "0";
     setTimeout(function() {
         if(GetPendingXP() > 0)
         {
