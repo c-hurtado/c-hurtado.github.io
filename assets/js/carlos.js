@@ -1,31 +1,31 @@
 
 var globalXpDict = {};
-globalXpDict["art"] = 100;
-globalXpDict["gamedev"] = 100;
-globalXpDict["thoughts"] = 100;
-globalXpDict["contact"] = 100;
-globalXpDict["about"] = 100;
-globalXpDict["leaderboards"] = 100;
-globalXpDict["menu"] = 100;
-globalXpDict["home"] = 100;
-globalXpDict["social_email"] = 100;
-globalXpDict["social_twitter"] = 100;
-globalXpDict["social_linkedIn"] = 100;
-globalXpDict["social_instagram"] = 100;
-globalXpDict["social_gitHub"] = 100;
-globalXpDict["about_tool"] = 100;
-globalXpDict["art_open_portrait"] = 100;
-globalXpDict["art_open_photography"] = 100;
-globalXpDict["art_open_figureDrawing"] = 100;
-globalXpDict["art_open_figureDrawing"] = 100;
-globalXpDict["art_open_3Drender"] = 100;
-globalXpDict["contact_resume"] = 100;
-globalXpDict["thoughts_post"] = 100;
+globalXpDict["art"]                   = 100;
+globalXpDict["gamedev"]               = 100;
+globalXpDict["thoughts"]              = 100;
+globalXpDict["contact"]               = 100;
+globalXpDict["about"]                 = 100;
+globalXpDict["leaderboards"]          = 100;
+globalXpDict["menu"]                  = 100;
+globalXpDict["home"]                  = 100;
+globalXpDict["social_email"]          = 100;
+globalXpDict["social_twitter"]        = 100;
+globalXpDict["social_linkedIn"]       = 100;
+globalXpDict["social_instagram"]      = 100;
+globalXpDict["social_gitHub"]         = 100;
+globalXpDict["about_tool"]            = 100;
+globalXpDict["art_open_portrait"]     = 100;
+globalXpDict["art_open_photography"]  = 100;
+globalXpDict["art_open_figureDrawing"]= 100;
+globalXpDict["art_open_figureDrawing"]= 100;
+globalXpDict["art_open_3Drender"]     = 100;
+globalXpDict["contact_resume"]        = 100;
+globalXpDict["thoughts_post"]         = 100;
 
 var globalXpLevel = {};
 globalXpLevel[0] = 0;
 globalXpLevel[1] = 240;
-globalXpLevel[2] = 480;
+globalXpLevel[2] = 510;
 globalXpLevel[3] = 760;
 globalXpLevel[4] = 1250;
 globalXpLevel[5] = 1480;
@@ -188,6 +188,14 @@ window.onload = function(e){
   loadingHolder.style.opacity = "0";
   xpCount.innerHTML = GetXPPercentage()+ " <i class='fa fa-key'></i>";
 
+  var savedPendingXP = GetPendingXP();
+    setTimeout(function() {
+        if(savedPendingXP > 0)
+        {
+
+        }
+    }
+    ,1000);
 
     setTimeout(function() {
         if(GetPendingXP() > 0)
@@ -217,7 +225,7 @@ window.onload = function(e){
                     {
                       $('#xpProgressContent').css('transition','0.4s linear');
                       progressBar.style.width = (GetPercentageInLevel())+'%';
-                      xpCount.innerHTML = GetXPPercentage();
+                      xpCount.innerHTML = GetXPPercentage() +" <i class='fa fa-key'></i>";
                       $('#xpProgressContent').css('background-image', "linear-gradient(to bottom, #ff22b2, #581e46)");
                     },1000);
 

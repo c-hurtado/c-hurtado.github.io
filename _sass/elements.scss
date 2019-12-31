@@ -315,3 +315,17 @@ kbd {
 	display:inline-flex;
 	padding-top:10px;
 }
+
+.pendingXP {
+	height:30px;
+	border-radius: 30px;
+	background-image: linear-gradient(to bottom, rgb(255, 34, 178), rgb(88, 30, 70));
+	color:#FFFFFF;
+	width:60%;
+	padding-top:6px;
+	z-index:10;
+	text-align:center;
+	vertical-align: center;
+	//opacity:inherit;
+	font-size: 0.9em;
+}
