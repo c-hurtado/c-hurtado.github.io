@@ -165,10 +165,13 @@ window.onload = function(e){
   var progressBarContainer = document.getElementById("xpProgress");
   var levelContainer = document.getElementById("levelContainer");
   var scoreWrapper = document.getElementById("scoreWrapper");
+  var loadingHolder = document.getElementById("loadingHolder");
   //progressBarContainer.style.display = "block";
   levelContainer.innerHTML="Level "+GetLevel();
   progressBar.style.width = (GetPercentageInLevel())+'%';
+  scoreWrapper.style.display= "inherit";
   scoreWrapper.style.opacity = "1";
+  loadingHolder.style.display="none";
     setTimeout(function() {
         if(GetPendingXP() > 0)
         {
