@@ -201,7 +201,7 @@ window.onload = function(e){
               ClearPendingXP();
               if(GetLevel()==prevLevel)
               {
-                  $('#xpProgressContent').css('transition',('0.4s linear');
+                  $('#xpProgressContent').css('transition','0.4s linear');
                 progressBar.style.width = (GetPercentageInLevel())+'%';
                 levelContainer.innerHTML="Level "+GetLevel();
                 xpCount.innerHTML = GetXPPercentage();
@@ -213,7 +213,7 @@ window.onload = function(e){
                 setTimeout(function() {
                     $('#xpProgressContent').css('transition','0.1s');
                     progressBar.style.width = 0;
-                    $('#xpProgressContent').css('transition',('0.4s linear');
+                    $('#xpProgressContent').css('transition','0.4s linear');
                     progressBar.style.width = (GetPercentageInLevel())+'%';
                     xpCount.innerHTML = GetXPPercentage();
                     $('#xpProgressContent').css('background-image', "linear-gradient(to bottom, #ff22b2, #581e46)");
