@@ -78,6 +78,7 @@ function GetPendingXP()
   return 0;
 }
 
+
 function GetXP()
 {
   var currentXP = Cookies.get('xp');
@@ -139,6 +140,16 @@ function GetPercentageInLevel()
   return percentage*100;
 }
 
+function GetXPPercentage()
+{
+  var startingLevel = parseInt(GetLevel());
+  var nextLevel = startingLevel+1;
+  var currentXP = parseInt(GetXP())- parseInt(globalXpLevel[startingLevel]);
+  var endXP = parseInt(globalXpLevel[nextLevel])- parseInt(globalXpLevel[startingLevel]);
+  return currentXP + " / " + endXP;
+}
+
+
 function GetXPPercentageBefore()
 {
 
@@ -166,12 +177,16 @@ window.onload = function(e){
   var levelContainer = document.getElementById("levelContainer");
   var scoreWrapper = document.getElementById("scoreWrapper");
   var loadingHolder = document.getElementById("loadingHolder");
+  var xpCount = document.getElementById("xpCount");
+
   //progressBarContainer.style.display = "block";
   levelContainer.innerHTML="Level "+GetLevel();
   progressBar.style.width = (GetPercentageInLevel())+'%';
   scoreWrapper.style.display= "flex";
   scoreWrapper.style.opacity = "1";
   loadingHolder.style.opacity = "0";
+
+
     setTimeout(function() {
         if(GetPendingXP() > 0)
         {
@@ -179,6 +194,7 @@ window.onload = function(e){
           ClearPendingXP();
           progressBar.style.width = (GetPercentageInLevel())+'%';
           levelContainer.innerHTML="Level X"+GetLevel();
+          xpCount.innerHTML = GetXPPercentage();
         }
     }, 2000);
 
