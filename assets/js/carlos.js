@@ -181,6 +181,7 @@ window.onload = function(e){
 
   //progressBarContainer.style.display = "block";
   levelContainer.innerHTML="Level "+GetLevel();
+  $('#xpProgressContent').css('transition','0.1s');
   progressBar.style.width = (GetPercentageInLevel())+'%';
   scoreWrapper.style.display= "flex";
   scoreWrapper.style.opacity = "1";
@@ -195,11 +196,30 @@ window.onload = function(e){
           $('#xpProgressContent').css('background-image', "linear-gradient(to bottom, #ffbb22, #581e46)");
 
             setTimeout(function() {
+              var prevLevel = GetLevel();
               AddXPAmount(GetPendingXP());
               ClearPendingXP();
-              progressBar.style.width = (GetPercentageInLevel())+'%';
-              levelContainer.innerHTML="Level X"+GetLevel();
-              xpCount.innerHTML = GetXPPercentage();
+              if(GetLevel()==prevLevel)
+              {
+                  $('#xpProgressContent').css('transition',('0.4s linear');
+                progressBar.style.width = (GetPercentageInLevel())+'%';
+                levelContainer.innerHTML="Level "+GetLevel();
+                xpCount.innerHTML = GetXPPercentage();
+                $('#xpProgressContent').css('background-image', "linear-gradient(to bottom, #ff22b2, #581e46)");
+              }
+              else {
+                progressBar.style.width = '100'%';
+                levelContainer.innerHTML="Level "+GetLevel();
+                setTimeout(function() {
+                    $('#xpProgressContent').css('transition','0.1s');
+                    progressBar.style.width = 0;
+                    $('#xpProgressContent').css('transition',('0.4s linear');
+                    progressBar.style.width = (GetPercentageInLevel())+'%';
+                    xpCount.innerHTML = GetXPPercentage();
+
+                }, 1000);
+              }
+
             }, 1000);
         }
     }, 1000);
