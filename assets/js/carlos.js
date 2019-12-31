@@ -192,7 +192,7 @@ window.onload = function(e){
         if(GetPendingXP() > 0)
         {
           progressBar.css('background-image', "linear-gradient(to bottom, #ffc522, #581e46)");
-          #('xpProgressContent').css('background-image', "linear-gradient(to bottom, #ffbb22, #581e46)");
+          $('#xpProgressContent').css('background-image', "linear-gradient(to bottom, #ffbb22, #581e46)");
 
             setTimeout(function() {
               AddXPAmount(GetPendingXP());
