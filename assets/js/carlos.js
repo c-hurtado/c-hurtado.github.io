@@ -186,7 +186,7 @@ window.onload = function(e){
   scoreWrapper.style.display= "flex";
   scoreWrapper.style.opacity = "1";
   loadingHolder.style.opacity = "0";
-  xpCount.innerHTML = GetXPPercentage()+ " <i class='fa fa-check'></i><i class='fa fa-ok circle'></i><i class='fa fa-key'></i><i class='fa fa-unlock'></i><i class='fa fa-tasks'></i><i class='fa fa-bolt'></i><i class='fa fa-exclamation'></i><i class='fa fa-level up'></i><i class='fa fa- 561'></i>";
+  xpCount.innerHTML = GetXPPercentage()+ " <i class='fa fa-check'></i><i class='fa fa-ok-circle'></i><i class='fa fa-key'></i><i class='fa fa-unlock'></i><i class='fa fa-tasks'></i><i class='fa fa-bolt'></i><i class='fa fa-exclamation'></i><i class='fa fa-level-up'></i><i class='fa fa-561'></i>";
 
 
     setTimeout(function() {
