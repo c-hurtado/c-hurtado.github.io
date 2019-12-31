@@ -221,14 +221,15 @@ kbd {
 // go up button
 .goup-container {
     border-radius: 3px !important;
-    border-color: rgba($color_mercury,0.5) rgba($color_bon_jour,0.5) $color_mischka !important;
-    border: 1px solid;
+    //border-color: rgba($color_mercury,0.5) rgba($color_bon_jour,0.5) $color_mischka !important;
+    border: 0px solid;
+		border-radius:5px;
 	@media #{$small} {
 		display: none !important;
 	}
 }
 .goup-arrow {
-    border-color: transparent transparent $color_tuatara !important;
+    border-color: transparent transparent $white !important;
 }
 
 // reading time
