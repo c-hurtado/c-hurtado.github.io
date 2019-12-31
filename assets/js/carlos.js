@@ -211,12 +211,16 @@ window.onload = function(e){
                 progressBar.style.width = '100%';
                 levelContainer.innerHTML="Level "+GetLevel();
                 setTimeout(function() {
-                    $('#xpProgressContent').css('transition','0.1s');
-                    progressBar.style.width = 0;
-                    $('#xpProgressContent').css('transition','0.4s linear');
-                    progressBar.style.width = (GetPercentageInLevel())+'%';
-                    xpCount.innerHTML = GetXPPercentage();
-                    $('#xpProgressContent').css('background-image', "linear-gradient(to bottom, #ff22b2, #581e46)");
+                    $('#xpProgressContent').css('transition','0s');
+                    progressBar.style.width = '0%';
+                    setTimeout(function())
+                    {
+                      $('#xpProgressContent').css('transition','0.4s linear');
+                      progressBar.style.width = (GetPercentageInLevel())+'%';
+                      xpCount.innerHTML = GetXPPercentage();
+                      $('#xpProgressContent').css('background-image', "linear-gradient(to bottom, #ff22b2, #581e46)");
+                    },1000);
+
 
 
                 }, 1000);
