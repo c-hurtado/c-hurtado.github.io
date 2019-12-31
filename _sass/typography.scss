@@ -48,12 +48,12 @@ h3.title a {
 		padding: 10px 18px;
 		margin: 0 10px;
 		text-decoration: none;
-		background: $white;
-		color: $color_shark;
+		background: #00000052;
+		color: #d2d2d2;
 		a {
 			@include font-rem(20);
 			text-decoration: none;
-			color: $color_shark;
+			color: #dc219c;
 			font-weight: bolder;
             &:hover {
                 color: $red;
@@ -116,12 +116,12 @@ li code,
 p pre,
 li pre {
     @include font(14);
-    background-color: $color_gray;
-    border: 1px solid $color_mischka;
+    background-color: $black;
+    border: 1px solid #23072d;
     @include rounded(4px);
     margin: 0 2px;
     padding: 0 5px;
-    color: $color_shark !important;
+    color: #ff6666 !important;
 }
 li .highlight code,
 li .highlight pre {
