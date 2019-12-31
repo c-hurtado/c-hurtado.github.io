@@ -191,7 +191,7 @@ window.onload = function(e){
     setTimeout(function() {
         if(GetPendingXP() > 0)
         {
-          progressBar.style.backgroundImage="linear-gradient(to bottom, rgb(255, 255, 178), rgb(255, 255, 70));";
+          progressBar.css('backgroundImage', "linear-gradient(to bottom, rgb(255, 255, 178), rgb(255, 255, 70))");
 
             setTimeout(function() {
               AddXPAmount(GetPendingXP());
