@@ -50,6 +50,7 @@ h3.title a {
 		text-decoration: none;
 		background: #00000052;
 		color: #d2d2d2;
+		border-radius:30px;
 		a {
 			@include font-rem(20);
 			text-decoration: none;
