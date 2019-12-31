@@ -27,8 +27,8 @@ body {
 	background-position: center center;
 	background-attachment: fixed;
 	@media #{$small} {
-	    background-image: none !important;
-		background: $bodycolor;
+	    //background-image: none !important;
+		//background: $bodycolor;
 	}
 }
 
