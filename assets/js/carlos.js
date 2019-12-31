@@ -213,7 +213,7 @@ window.onload = function(e){
                 setTimeout(function() {
                     $('#xpProgressContent').css('transition','0s');
                     progressBar.style.width = '0%';
-                    setTimeout(function())
+                    setTimeout(function()
                     {
                       $('#xpProgressContent').css('transition','0.4s linear');
                       progressBar.style.width = (GetPercentageInLevel())+'%';
