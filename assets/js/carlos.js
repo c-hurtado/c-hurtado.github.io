@@ -216,6 +216,8 @@ window.onload = function(e){
                     $('#xpProgressContent').css('transition',('0.4s linear');
                     progressBar.style.width = (GetPercentageInLevel())+'%';
                     xpCount.innerHTML = GetXPPercentage();
+                    $('#xpProgressContent').css('background-image', "linear-gradient(to bottom, #ff22b2, #581e46)");
+
 
                 }, 1000);
               }
