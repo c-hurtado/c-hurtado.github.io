@@ -208,7 +208,7 @@ window.onload = function(e){
                 $('#xpProgressContent').css('background-image', "linear-gradient(to bottom, #ff22b2, #581e46)");
               }
               else {
-                progressBar.style.width = '100'%';
+                progressBar.style.width = '100%';
                 levelContainer.innerHTML="Level "+GetLevel();
                 setTimeout(function() {
                     $('#xpProgressContent').css('transition','0.1s');
