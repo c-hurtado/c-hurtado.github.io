@@ -204,7 +204,7 @@ window.onload = function(e){
                   $('#xpProgressContent').css('transition','0.4s linear');
                 progressBar.style.width = (GetPercentageInLevel())+'%';
                 levelContainer.innerHTML= GetLevel()+" <i class='fa fa-star'></i>";
-                xpCount.innerHTML = GetXPPercentage();
+                xpCount.innerHTML = GetXPPercentage() + " <i class='fa fa-play_circle'></i><i class='fa fa-check'></i><i class='fa fa-ok_circle'></i><i class='fa fa-key'></i><i class='fa fa-unlock'></i><i class='fa fa-tasks'></i><i class='fa fa-bolt'></i><i class='fa fa-exclamation'></i><i class='fa fa-level_up'></i><i class='fa fa-_561'></i><i class='fa fa-unlock'></i><i class='fa fa-unlock'></i><i class='fa fa-unlock'></i><i class='fa fa-unlock'></i><i class='fa fa-unlock'></i><i class='fa fa-unlock'></i>";
                 $('#xpProgressContent').css('background-image', "linear-gradient(to bottom, #ff22b2, #581e46)");
               }
               else {
