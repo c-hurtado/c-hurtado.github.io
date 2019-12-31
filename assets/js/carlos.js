@@ -180,7 +180,7 @@ window.onload = function(e){
   var xpCount = document.getElementById("xpCount");
 
   //progressBarContainer.style.display = "block";
-  levelContainer.innerHTML="Level "+GetLevel();
+  levelContainer.innerHTML="Level "+GetLevel()+"<i class='fa fa-google-plus-square'></i>";
   $('#xpProgressContent').css('transition','0.1s');
   progressBar.style.width = (GetPercentageInLevel())+'%';
   scoreWrapper.style.display= "flex";
@@ -203,7 +203,7 @@ window.onload = function(e){
               {
                   $('#xpProgressContent').css('transition','0.4s linear');
                 progressBar.style.width = (GetPercentageInLevel())+'%';
-                levelContainer.innerHTML="Level "+GetLevel();
+                levelContainer.innerHTML="Level "+GetLevel()+"<i class='fa fa-google-plus-square'></i>";
                 xpCount.innerHTML = GetXPPercentage();
                 $('#xpProgressContent').css('background-image', "linear-gradient(to bottom, #ff22b2, #581e46)");
               }
