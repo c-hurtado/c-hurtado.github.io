@@ -96,7 +96,7 @@ body {
 		margin-top:0px;
 	    box-shadow: none;
 			border-radius: 0px;
-		pading: 2em 0;
+		padding: 2em 0;
 	}
 	@media #{$medium} {
 		width: 80%;
@@ -112,7 +112,8 @@ body {
 	    margin-bottom: 5px;
 	}
 	@media #{$small} {
-		padding: 0 1em;
+	//	padding: 0 1em;
+
 	}
 }
 .wrapper {
@@ -129,10 +130,10 @@ body {
 	box-shadow: 0 0 10px 0 rgba($color_shark,0.3);
 	@include transition(.5s);
 	@media #{$small} {
-		width: 90%;
+		width: 100%;
 		border-radius: 0px;
 		margin-top: 0px;
-		padding: 2em 0;
+		padding: 2em 2em;
 	    box-shadow: none;
 	}
 }
