@@ -260,9 +260,9 @@ kbd {
 	color:#bd307a !important;
 	border-radius: 30px;
 	background-image: linear-gradient(to bottom, rgb(255, 34, 178), rgb(88, 30, 70));
-//transition: 0.4s linear;
+  transition: 0.4s linear;
 	width:0%;
-	//transition-property: width, background-color;
+	transition-property: width, background-image;
 	opacity:inherit;
 	margin-top:5px;
 	margin-left:5px;

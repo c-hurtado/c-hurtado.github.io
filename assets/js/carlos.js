@@ -191,13 +191,17 @@ window.onload = function(e){
     setTimeout(function() {
         if(GetPendingXP() > 0)
         {
-          AddXPAmount(GetPendingXP());
-          ClearPendingXP();
-          progressBar.style.width = (GetPercentageInLevel())+'%';
-          levelContainer.innerHTML="Level X"+GetLevel();
-          xpCount.innerHTML = GetXPPercentage();
+          progressBar.style.background-image="linear-gradient(to bottom, rgb(255, 255, 178), rgb(255, 255, 70));"
+
+            setTimeout(function() {
+              AddXPAmount(GetPendingXP());
+              ClearPendingXP();
+              progressBar.style.width = (GetPercentageInLevel())+'%';
+              levelContainer.innerHTML="Level X"+GetLevel();
+              xpCount.innerHTML = GetXPPercentage();
+            }, 1000);
         }
-    }, 2000);
+    }, 1000);
 
 
 }
