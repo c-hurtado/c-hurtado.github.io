@@ -21,10 +21,11 @@ globalXpDict["art_open_figureDrawing"]= 100;
 globalXpDict["art_open_3Drender"]     = 100;
 globalXpDict["contact_resume"]        = 100;
 globalXpDict["thoughts_post"]         = 100;
+globalXpDict["gamedev"]               = 50;
 
 var globalXpLevel = {};
 globalXpLevel[0] = 0;
-globalXpLevel[1] = 240;
+globalXpLevel[1] = 200;
 globalXpLevel[2] = 510;
 globalXpLevel[3] = 760;
 globalXpLevel[4] = 1250;
@@ -132,6 +133,18 @@ function AddXPFromSource(xpSource)
   }
 }
 
+function AddXPFromSourceNow(xpSource)
+{
+  var cookieInfo = Cookies.get(xpSource);
+  if(cookieInfo == undefined)
+  {
+    var level = GetLevel();
+    AddPendingXP(GetXPToAdd(xpSource));
+    Cookies.set(xpSource, 1);
+  }
+  refreshContent();
+}
+
 function GetPercentageInLevel()
 {
   var startingLevel = parseInt(GetLevel());
@@ -170,8 +183,8 @@ function DebugClear()
   }
 }
 
-console.log("Current XP:"+GetXP()+" Current Level:"+GetLevel());
-window.onload = function(e){
+function refreshContent()
+{
   var progressBar = document.getElementById("xpProgressContent");
   var progressBarContainer = document.getElementById("xpProgress");
   var levelContainer = document.getElementById("levelContainer");
@@ -179,64 +192,72 @@ window.onload = function(e){
   var loadingHolder = document.getElementById("loadingHolder");
   var xpCount = document.getElementById("xpCount");
 
+    $('#xpProgressContent').css('transition','0.1s');
+    progressBar.style.width = (GetPercentageInLevel())+'%';
+    scoreWrapper.style.display= "flex";
+    scoreWrapper.style.opacity = "1";
+    loadingHolder.style.opacity = "0";
+    xpCount.innerHTML = GetXPPercentage()+ " <i class='fa fa-key'></i>";
+
+    var savedPendingXP = GetPendingXP();
+      setTimeout(function() {
+          if(savedPendingXP > 0)
+          {
+
+          }
+      }
+      ,1000);
+
+      setTimeout(function() {
+          if(GetPendingXP() > 0)
+          {
+            //progressBar.css('background-image', "linear-gradient(to bottom, #ffc522, #581e46)");
+            $('#xpProgressContent').css('background-image', "linear-gradient(to bottom, #ffbb22, #581e46)");
+
+              setTimeout(function() {
+                var prevLevel = GetLevel();
+                AddXPAmount(GetPendingXP());
+                ClearPendingXP();
+                if(GetLevel()==prevLevel)
+                {
+                    $('#xpProgressContent').css('transition','0.4s linear');
+                  progressBar.style.width = (GetPercentageInLevel())+'%';
+                  levelContainer.innerHTML= GetLevel()+" <i class='fa fa-star'></i>";
+                  xpCount.innerHTML = GetXPPercentage();
+                  $('#xpProgressContent').css('background-image', "linear-gradient(to bottom, #ff22b2, #581e46)");
+                }
+                else {
+                  progressBar.style.width = '100%';
+                  levelContainer.innerHTML="Level "+GetLevel();
+                  setTimeout(function() {
+                      $('#xpProgressContent').css('transition','0s');
+                      progressBar.style.width = '0%';
+                      setTimeout(function()
+                      {
+                        $('#xpProgressContent').css('transition','0.4s linear');
+                        progressBar.style.width = (GetPercentageInLevel())+'%';
+                        xpCount.innerHTML = GetXPPercentage() +" <i class='fa fa-key'></i>";
+                        $('#xpProgressContent').css('background-image', "linear-gradient(to bottom, #ff22b2, #581e46)");
+                      },1000);
+
+
+
+                  }, 1000);
+                }
+
+              }, 1000);
+          }
+      }, 1000);
+}
+
+
+console.log("Current XP:"+GetXP()+" Current Level:"+GetLevel());
+window.onload = function(e){
+  var levelContainer = document.getElementById("levelContainer");
   //progressBarContainer.style.display = "block";
   levelContainer.innerHTML=GetLevel()+" <i class='fa fa-star'></i>";
-  $('#xpProgressContent').css('transition','0.1s');
-  progressBar.style.width = (GetPercentageInLevel())+'%';
-  scoreWrapper.style.display= "flex";
-  scoreWrapper.style.opacity = "1";
-  loadingHolder.style.opacity = "0";
-  xpCount.innerHTML = GetXPPercentage()+ " <i class='fa fa-key'></i>";
+  refreshContent();
 
-  var savedPendingXP = GetPendingXP();
-    setTimeout(function() {
-        if(savedPendingXP > 0)
-        {
-
-        }
-    }
-    ,1000);
-
-    setTimeout(function() {
-        if(GetPendingXP() > 0)
-        {
-          //progressBar.css('background-image', "linear-gradient(to bottom, #ffc522, #581e46)");
-          $('#xpProgressContent').css('background-image', "linear-gradient(to bottom, #ffbb22, #581e46)");
-
-            setTimeout(function() {
-              var prevLevel = GetLevel();
-              AddXPAmount(GetPendingXP());
-              ClearPendingXP();
-              if(GetLevel()==prevLevel)
-              {
-                  $('#xpProgressContent').css('transition','0.4s linear');
-                progressBar.style.width = (GetPercentageInLevel())+'%';
-                levelContainer.innerHTML= GetLevel()+" <i class='fa fa-star'></i>";
-                xpCount.innerHTML = GetXPPercentage();
-                $('#xpProgressContent').css('background-image', "linear-gradient(to bottom, #ff22b2, #581e46)");
-              }
-              else {
-                progressBar.style.width = '100%';
-                levelContainer.innerHTML="Level "+GetLevel();
-                setTimeout(function() {
-                    $('#xpProgressContent').css('transition','0s');
-                    progressBar.style.width = '0%';
-                    setTimeout(function()
-                    {
-                      $('#xpProgressContent').css('transition','0.4s linear');
-                      progressBar.style.width = (GetPercentageInLevel())+'%';
-                      xpCount.innerHTML = GetXPPercentage() +" <i class='fa fa-key'></i>";
-                      $('#xpProgressContent').css('background-image', "linear-gradient(to bottom, #ff22b2, #581e46)");
-                    },1000);
-
-
-
-                }, 1000);
-              }
-
-            }, 1000);
-        }
-    }, 1000);
 
 
 }
