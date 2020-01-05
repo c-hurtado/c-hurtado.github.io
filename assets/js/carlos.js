@@ -21,7 +21,7 @@ globalXpDict["art_open_figureDrawing"]= 100;
 globalXpDict["art_open_3Drender"]     = 100;
 globalXpDict["contact_resume"]        = 100;
 globalXpDict["thoughts_post"]         = 100;
-globalXpDict["gamedev"]               = 50;
+globalXpDict["demo"]               = 50;
 
 var globalXpLevel = {};
 globalXpLevel[0] = 0;
