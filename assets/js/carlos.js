@@ -283,7 +283,7 @@ function refreshContent()
                 {
                     $('#xpProgressContent').css('transition','0.4s linear');
                   progressBar.style.width = (GetPercentageInLevel())+'%';
-                  typeWriter('levelContainer', GetLevel()+" <i class='fa fa-star'></i>",50, 0)
+                  typeWriter('levelContainer', GetLevel()+" <i class='fa fa-star'></i>",50, 0);
 
                   /*jQuery(function($) {
                     $('.timer').countTo({
@@ -296,8 +296,8 @@ function refreshContent()
                         }
                     });
                 });*/
+                  typeWriter('xpCount', GetXPPercentage()  +" <i class='fa fa-key'></i>",50, 0);
 
-                  xpCount.innerHTML = GetXPPercentage()  +" <i class='fa fa-key'></i>";
                   $('#xpProgressContent').css('background-image', "linear-gradient(to bottom, #ff22b2, #581e46)");
                 }
                 else {
@@ -310,7 +310,7 @@ function refreshContent()
                       {
                         $('#xpProgressContent').css('transition','0.4s linear');
                         progressBar.style.width = (GetPercentageInLevel())+'%';
-                        xpCount.innerHTML = GetXPPercentage() +" <i class='fa fa-key'></i>";
+                        typeWriter('xpCount', GetXPPercentage()  +" <i class='fa fa-key'></i>",50, 0);
                         $('#xpProgressContent').css('background-image', "linear-gradient(to bottom, #ff22b2, #581e46)");
                       },1000);
 
