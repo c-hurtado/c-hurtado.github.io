@@ -329,6 +329,7 @@ console.log("Current XP:"+GetXP()+" Current Level:"+GetLevel());
 window.onload = function(e){
   var levelContainer = document.getElementById("levelContainer");
   //progressBarContainer.style.display = "block";
+  typeWriter('levelContainer', =GetLevel()+" <i class='fa fa-star'></i>",50, 0);
   levelContainer.innerHTML=GetLevel()+" <i class='fa fa-star'></i>";
   refreshContent();
 
