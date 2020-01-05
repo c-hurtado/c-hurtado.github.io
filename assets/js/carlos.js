@@ -289,7 +289,7 @@ function refreshContent()
                     });
                 });*/
 
-                  xpCount.innerHTML = GetXPPercentage();
+                  xpCount.innerHTML = GetXPPercentage()  +" <i class='fa fa-key'></i>";
                   $('#xpProgressContent').css('background-image', "linear-gradient(to bottom, #ff22b2, #581e46)");
                 }
                 else {
