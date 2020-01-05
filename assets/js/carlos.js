@@ -31,6 +31,13 @@ globalXpLevel[3] = 760;
 globalXpLevel[4] = 1250;
 globalXpLevel[5] = 1480;
 
+function typeWriter(id,txt, speed, i) {
+  if (i < txt.length) {
+    document.getElementById(id).innerHTML += txt.charAt(i);
+
+    setTimeout(typeWriter, speed, id, txt, speed, i+1);
+  }
+}
 
 function AddXPAmount(xpAmount)
 {
@@ -276,7 +283,8 @@ function refreshContent()
                 {
                     $('#xpProgressContent').css('transition','0.4s linear');
                   progressBar.style.width = (GetPercentageInLevel())+'%';
-                  levelContainer.innerHTML= GetLevel()+" <i class='fa fa-star'></i>";
+                  typeWriter('levelContainer', GetLevel()+" <i class='fa fa-star'></i>",50, 0)
+
                   /*jQuery(function($) {
                     $('.timer').countTo({
                         from: 50,
@@ -294,7 +302,7 @@ function refreshContent()
                 }
                 else {
                   progressBar.style.width = '100%';
-                  levelContainer.innerHTML="Level "+GetLevel();
+                  typeWriter('levelContainer', GetLevel()+" <i class='fa fa-star'></i>",50, 0)
                   setTimeout(function() {
                       $('#xpProgressContent').css('transition','0s');
                       progressBar.style.width = '0%';
