@@ -463,7 +463,7 @@ kbd {
   width: 2px;
   height: 2px;
   top:100%;
-  border-radius: @gridLine;
+  border-radius: 2px;
   box-shadow: 0 0 3px #fff;
   -webkit-backface-visibility: hidden;
   &:nth-child(1) {
