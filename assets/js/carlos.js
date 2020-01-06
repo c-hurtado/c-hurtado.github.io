@@ -54,7 +54,7 @@ function AddXPAmount(xpAmount)
   }
 }
 
-function AddPendingXP(xpAmount)
+function AddPendingXP(xpAmount, xpReason)
 {
   var pendingXP = Cookies.get('pendingXP');
   if(pendingXP !== undefined)
@@ -63,9 +63,12 @@ function AddPendingXP(xpAmount)
     numScore = numScore + xpAmount;
     Cookies.remove('pendingXP');
     Cookies.set('pendingXP', ''+ numScore);
+    Cookies.remove('pendingReason');
+    Cookies.set('pendingReason', xpReason);
   }
   else {
     Cookies.set('pendingXP', xpAmount);
+    Cookies.set('pendingReason', xpReason);
   }
 }
 
@@ -136,7 +139,7 @@ function AddXPFromSource(xpSource)
   if(cookieInfo == undefined)
   {
     var level = GetLevel();
-    AddPendingXP(GetXPToAdd(xpSource));
+    AddPendingXP(GetXPToAdd(xpSource),xpSource);
     Cookies.set(xpSource, 1);
   }
 }
@@ -147,7 +150,7 @@ function AddXPFromSourceNow(xpSource)
   if(cookieInfo == undefined)
   {
     var level = GetLevel();
-    AddPendingXP(GetXPToAdd(xpSource));
+    AddPendingXP(GetXPToAdd(xpSource),xpSource);
     Cookies.set(xpSource, 1);
   }
   refreshContent();
