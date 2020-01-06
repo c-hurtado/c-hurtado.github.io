@@ -81,7 +81,7 @@ function GetPendingXP()
   if(currentXP !== undefined)
   {
     var numXP = parseInt(currentXP);
-    return numXP;
+    return {numXP, Cookies.get('pendingReason'};
   }
   return 0;
 }
@@ -252,7 +252,7 @@ function refreshContent()
   var scoreWrapper = document.getElementById("scoreWrapper");
   var loadingHolder = document.getElementById("loadingHolder");
   var xpCount = document.getElementById("xpCount");
-
+  var pendingXPHolder = document.getElementById("pendingXP");
     $('#xpProgressContent').css('transition','0.1s');
     progressBar.style.width = (GetPercentageInLevel())+'%';
     scoreWrapper.style.display= "flex";
@@ -261,23 +261,23 @@ function refreshContent()
     xpCount.innerHTML = GetXPPercentage()+ " <i class='fa fa-key'></i>";
 
     var savedPendingXP = GetPendingXP();
-      setTimeout(function() {
-          if(savedPendingXP > 0)
-          {
-
-          }
+      if(savedPendingXP[0] > 0)
+      {
+          typeWriter("pendingXP","Blablabla "+savedPendingXP[0],50,0);
       }
-      ,1000);
+      else {
+        pendingXPHolder.innerHTML = "";
+      }
 
       setTimeout(function() {
-          if(GetPendingXP() > 0)
+          if(savedPendingXP[0] > 0)
           {
             //progressBar.css('background-image', "linear-gradient(to bottom, #ffc522, #581e46)");
             $('#xpProgressContent').css('background-image', "linear-gradient(to bottom, #ffbb22, #581e46)");
 
               setTimeout(function() {
                 var prevLevel = GetLevel();
-                AddXPAmount(GetPendingXP());
+                AddXPAmount(savedPendingXP[0]);
                 ClearPendingXP();
                 if(GetLevel()==prevLevel)
                 {
