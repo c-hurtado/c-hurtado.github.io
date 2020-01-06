@@ -264,9 +264,13 @@ function refreshContent()
     var savedPendingXP = GetPendingXP();
       if(savedPendingXP[0] > 0)
       {
-          typeWriter("pendingXP","Blablabla "+savedPendingXP[0],50,0);
+          pendingXPHolder.style="display:block";
+          pendingXPHolder.innerHTML = "";
+          pendingXPHolder.style.opacity = "1";
+          typeWriter("pendingXP","Visited "+savedPendingXP[1]+ ": +"+savedPendingXP[0],50,0);
       }
       else {
+        pendingXPHolder.style="display:none";
         pendingXPHolder.innerHTML = "";
       }
 
