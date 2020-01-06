@@ -267,7 +267,7 @@ function refreshContent()
     var savedPendingXP = GetPendingXP();
       if(savedPendingXP[0] > 0)
       {
-          pendingXPHolder.style="display:block";
+          pendingXPHolder.style="display:inline-table";
           pendingXPHolder.innerHTML = "";
           pendingXPHolder.style.opacity = "1";
           typeWriter("pendingXP","Visited "+savedPendingXP[1]+ ": +"+savedPendingXP[0],50,0);
