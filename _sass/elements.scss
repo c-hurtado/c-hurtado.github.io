@@ -338,8 +338,6 @@ kbd {
 
 
 
-@gridLine: 5px;
-
 .grid-wrapper {
   position:absolute;
   width:100%;
@@ -371,7 +369,7 @@ kbd {
   top:0;
   left:0;
   bottom:0;
-  width:@gridLine;
+  width:2px;
   background: linear-gradient(top, rgba(255,255,255,0), rgba(87, 193, 232, 0.35));
   &:nth-child(1) {
     left:10%;
@@ -410,7 +408,7 @@ kbd {
   top:0;
   left:0;
   right:0;
-  height:@gridLine;
+  height:2px;
   z-index:2;
 
   &:nth-child(1) {
@@ -462,8 +460,8 @@ kbd {
 .dot {
   position:absolute;
   background:#57C1E8;
-  width: @gridLine;
-  height: @gridLine;
+  width: 2px;
+  height: 2px;
   top:100%;
   border-radius: @gridLine;
   box-shadow: 0 0 3px #fff;
