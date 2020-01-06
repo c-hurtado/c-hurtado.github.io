@@ -80,8 +80,9 @@ function GetPendingXP()
   var currentXP = Cookies.get('pendingXP');
   if(currentXP !== undefined)
   {
+    var currentReason = Cookies.get('pendingReason');
     var numXP = parseInt(currentXP);
-    return {numXP, Cookies.get('pendingReason')};
+    return {numXP, currentReason};
   }
   return {0,""};
 }
