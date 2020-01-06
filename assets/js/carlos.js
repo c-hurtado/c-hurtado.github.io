@@ -283,7 +283,7 @@ function refreshContent()
                 {
                     $('#xpProgressContent').css('transition','0.4s linear');
                   progressBar.style.width = (GetPercentageInLevel())+'%';
-                  typeWriter('levelContainer', GetLevel()+" <i class='fa fa-star'></i>",50, 0)
+                  levelContainer.innerHTML = GetLevel()+" <i class='fa fa-star'></i>";
 
                   /*jQuery(function($) {
                     $('.timer').countTo({
@@ -302,7 +302,7 @@ function refreshContent()
                 }
                 else {
                   progressBar.style.width = '100%';
-                  typeWriter('levelContainer', GetLevel()+" <i class='fa fa-star'></i>",50, 0)
+                  levelContainer.innerHTML = GetLevel()+" <i class='fa fa-star'></i>";
                   setTimeout(function() {
                       $('#xpProgressContent').css('transition','0s');
                       progressBar.style.width = '0%';
