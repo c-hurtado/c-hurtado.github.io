@@ -15,6 +15,7 @@ body {
 	perspective:1000px;
 	@extend %extend1;
 	font-family: $font1;
+	display:initial !important;
 	@include font-rem($doc-font-size);
 	color: $color_tuatara;
 
@@ -81,7 +82,7 @@ body {
 	align-items: center;
 }
 .container {
-//	transform: rotateY(5deg);
+//	transform: rotateX(5deg);
 	width: 80%;
 	max-width: 770px;
 	padding:1em;
