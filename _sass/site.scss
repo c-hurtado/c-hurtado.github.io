@@ -84,8 +84,9 @@ body {
 //	transform: rotateY(5deg);
 	width: 80%;
 	max-width: 770px;
-	padding:2em;
+	padding:1em;
 	margin-top:20px;
+	margin-bottom:20px;
 	@include center-block();
 	background-color: $dark-purple-tp;
 	//color: $color_shark;
@@ -121,12 +122,13 @@ body {
 .wrapper {
 	//transform: rotateY(5deg);
 	margin-top:20px;
+	margin-bottom:20px;
 	width: 80%;
 	max-width: 770px;
 	//margin: 4rem auto;
 	text-align:center;
 	@include center-block();
-	padding:2em;
+	padding:1em;
 	background-color: $dark-purple-tp;
 	color: $forward-color;
 	padding: 2em;
