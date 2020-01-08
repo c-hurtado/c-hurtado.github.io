@@ -4,5 +4,3 @@
 
 layout: home
 ---
-Testing this notice thing
-{: .notice}
