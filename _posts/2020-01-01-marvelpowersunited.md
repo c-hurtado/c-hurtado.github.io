@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Asgard's Wrath"
+title:  "Marvel Powers United VR"
 date:   2020-01-01
 excerpt: "<b>Asgard's Wrath</b> is a VR video game developed at Sanzaru Games"
 project: true
@@ -12,8 +12,7 @@ tag:
 comments: false
 ---
 
-### Asgard's Wrath
+### Marvel Powers United VR
 
-<iframe width="560" height="315" src="//www.youtube.com/embed/d5a4nWtbVyY"  frameborder="0"> </iframe>
-
-This game has the following reviews:
+<iframe width="560" height="315" src="//www.youtube.com/embed/xAvzIff_PCg"  frameborder="0"> </iframe>
+....
