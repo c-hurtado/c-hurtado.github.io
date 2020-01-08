@@ -262,14 +262,14 @@ function refreshContent()
 {
   if(Cookies.get('demo') == undefined)
   {
-    if(document.getElementById("gamenotice")!== undefined)
+    if(document.getElementById("gamenotice")!= null)
     {
       document.getElementById("gamenotice").innerHTML = "<p class=\"notice\">If you navigate this website you can collect <i class=\"fa fa-key\"></i>! With enough of them, unlock <i class=\"fa fa-star\"></i> and get access to secret content. For example click <a href=\"#\" onClick=\"AddXPFromSourceNow('demo')\">here</a> to get 50 <i class=\"fa fa-key\"></i> Enjoy!</p>";
 
     }
   }
   else {
-      if(document.getElementById("gamenotice")!== undefined){
+      if(document.getElementById("gamenotice")!= null){
         document.getElementById("gamenotice").innerHTML = "";
       }
   }
