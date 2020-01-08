@@ -16,13 +16,11 @@ layout: compress
     <!-- Header -->
     <header class="header flex" role="banner">
         <div class="container">
+          {% include score.html %}
             <div class="row">
-
-                    {% include score.html %}
                     <!--a href="{{ site.url }}"  onClick="AddXPFromSource('home')">
                         <img src="{{ site.logo }}" class="img-circle zoombtn animated fadeIn">
                     </a-->
-
                     <h3 class="title">
                            <a class="btn zoombtn chromatic" href="{{ site.url }}/about" onClick="AddXPFromSource('about')">
                            <i class="fa fa-fw fa-info"></i> About Me
@@ -51,7 +49,7 @@ layout: compress
                           <p style="font-size:1rem;font-weight:300">In <a href="{{ site.url }}/thoughts"  onClick="AddXPFromSource('thoughts')">Thoughts</a> page you will find some musings about different interests topics, like productivity, software, tools, drawing, movies, music, games, etc... I have a lot of thoughts about a lot of stuff and I want to write more.
                           </p>
                     <div id="gamenotice">
-                    
+
                     </div>
                     {% include social-links.html %}
 
