@@ -308,9 +308,11 @@ function refreshContent()
                 if(GetLevel()==prevLevel)
                 {
                     $('#xpProgressContent').css('transition','0.4s linear');
-                  progressBar.style.width = (GetPercentageInLevel())+'%';
-                  levelContainer.innerHTML = GetLevel()+" <i class='fa fa-star'></i>";
-
+                  progressBar.style.width = (GetPercentageInLevel())+'%';\
+                  if(levelContainer != null)
+                  {
+                    levelContainer.innerHTML = GetLevel()+" <i class='fa fa-star'></i>";
+                  }
                   /*jQuery(function($) {
                     $('.timer').countTo({
                         from: 50,
