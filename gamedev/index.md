@@ -23,7 +23,6 @@ This game has the following reviews:
 
 ### VR Sports: Challenge
 
-<iframe width="560" height="315" src="//www.youtube.com/embed/YO_gz5l7ZB4"  frameborder="0"> </iframe>
 dsadsdsa
 
 

@@ -8,7 +8,14 @@ developer: "Sanzaru Games"
 feature: http://i.imgur.com/Ds6S7lJ.png
 tag:
 - Sanzaru
-- Asgard's Wrath
+- Sanzaru Games
+- Game Development
+- Oculus
+- VR
+- Sanzaru Games
+- Marvel Powers United VR
+- Marvel
+- MPU
 comments: false
 ---
 
