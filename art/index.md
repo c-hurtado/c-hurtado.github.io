@@ -24,7 +24,7 @@ comments: true
 
 <figure class="third">
 <a href="{{site.url}}/assets/img/gallery/Photo Jul 28, 12 01 29.png"><img src="{{site.url}}/assets/img/gallery/Photo Jul 28, 12 01 29.png"></a>
-<a href="{{site.url}}/assets/img/gallery/attempt.png"><img src="{{site.url}}/assets/img/gallery/attempt.png"></a
+<a href="{{site.url}}/assets/img/gallery/attempt.png"><img src="{{site.url}}/assets/img/gallery/attempt.png"></a>
 <a href="{{site.url}}/assets/img/gallery/Photo Sep 12, 23 40 00.png"><img src="{{site.url}}/assets/img/gallery/Photo Sep 12, 23 40 00.png"></a>
 </figure>
 
