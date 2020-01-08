@@ -417,53 +417,53 @@ kbd {
 	&:nth-child(1) {
     top:10%;
     opacity:0.2;
-		animation: moveLine1 12s infinite;
+		animation: moveLine1 24s linear infinite;
   }
   &:nth-child(2) {
     top:20%;
     opacity:0.3;
-		animation: moveLine2 12s infinite;
+		animation: moveLine2 24s linear infinite;
   }
   &:nth-child(3) {
     top:30%;
     opacity:0.4;
-		animation: moveLine3 12s infinite;
+		animation: moveLine3 24s linear infinite;
   }
   &:nth-child(4) {
     top:40%;
     opacity:0.5;
-		animation: moveLine4 12s infinite;
+		animation: moveLine4 24s linear infinite;
   }
   &:nth-child(5) {
     top:50%;
     opacity:0.6;
-		animation: moveLine5 12s infinite;
+		animation: moveLine5 24s linear infinite;
   }
   &:nth-child(6) {
     top:60%;
     opacity:0.7;
-		animation: moveLine6 12s infinite;
+		animation: moveLine6 24s linear infinite;
   }
   &:nth-child(7) {
     top:70%;
     opacity:0.8;
-		animation: moveLine7 12s infinite;
+		animation: moveLine7 24s linear infinite;
   }
   &:nth-child(8) {
     top:80%;
     opacity:0.9;
-		animation: moveLine8 12s infinite;
+		animation: moveLine8 24s linear infinite;
   }
   &:nth-child(9) {
     top:90%;
     opacity:0.95;
-		animation:  moveLine9 12s infinite;
+		animation:  moveLine9 24s linear infinite;
   }
   &:nth-child(10) {
     top:100%;
     margin-top:-1px;
     opacity:1;
-		animation:  moveLine10 12s infinite;
+		animation:  moveLine10 24s linear infinite;
   }
   &:nth-child(11) {
     opacity:0.05;
@@ -545,7 +545,7 @@ kbd {
 @keyframes moveLine5 {
   0%   { top: 50%; opacity:0.6; }
   50% { top: 100%; opacity:1; }
-	51% { top: 100%; opacity:0; }
+	51% { top: 0%; opacity:0; }
 	100% { top: 50%; opacity:0.6; }
 }
 
