@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Asgard's Wrath"
-date:   2020-01-01
+date:   2020-01-02
 excerpt: "<b>Asgard's Wrath</b> is a VR video game developed at Sanzaru Games"
 project: true
 developer: "Sanzaru Games"

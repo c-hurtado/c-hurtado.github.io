@@ -2,7 +2,7 @@
 layout: post
 title:  "Marvel Powers United VR"
 date:   2020-01-01
-excerpt: "<b>Asgard's Wrath</b> is a VR video game developed at Sanzaru Games"
+excerpt: "<b>Marvel Powers United</b> is a VR video game developed at Sanzaru Games"
 project: true
 developer: "Sanzaru Games"
 feature: http://i.imgur.com/Ds6S7lJ.png
