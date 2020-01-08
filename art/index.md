@@ -29,20 +29,20 @@ comments: true
 </figure>
 
 <figure class="third">
-<a href="{{site.url}}/assets/img/gallery/Photo Sep 12, 23 40 18.png"><img src="{{site.url}}/assets/img/gallery/Photo Sep 12, 23 40 189.png"></a>
+<a href="{{site.url}}/assets/img/gallery/Photo Sep 12, 23 40 18.png"><img src="{{site.url}}/assets/img/gallery/Photo Sep 12, 23 40 18.png"></a>
 <a href="{{site.url}}/assets/img/gallery/shuri.jpg"><img src="{{site.url}}/assets/img/gallery/shuri.jpg"></a>
 <a href="{{site.url}}/assets/img/gallery/solar.jpg"><img src="{{site.url}}/assets/img/gallery/solar.jpg"></a>
-</figure>Photo Sep 12, 23 40 18
+</figure>
 
 <figure>
 <a href="{{site.url}}/assets/img/gallery/Photo Jun 23, 14 30 02Photo Jun 23, 14 30 02.png"><img src="{{site.url}}/assets/img/gallery/Photo Jun 23, 14 30 02.png"></a>
 </figure>
 ## Master Studies
 
-<figure class="third">
+<figure class="half">
 <a href="{{site.url}}/assets/img/gallery/Photo Jun 15, 10 41 19.jpg"><img src="{{site.url}}/assets/img/gallery/Photo Jun 15, 10 41 19.jpg"></a>
 <a href="{{site.url}}/assets/img/gallery/Photo May 03, 11 20 31 PM.png"><img src="{{site.url}}/assets/img/gallery/Photo May 03, 11 20 31 PM.png"></a>
-<a href="{{site.url}}/assets/img/gallery/Photo May 05, 11 32 31 PM.png"><img src="{{site.url}}/assets/img/gallery/Photo May 05, 11 32 31 PM.png"></a>
+
 </figure>
 <figure class="third">
 <a href="{{site.url}}/assets/img/gallery/Photo May 11, 5 12 52 PM.jpg"><img src="{{site.url}}/assets/img/gallery/Photo May 11, 5 12 52 PM.jpg"></a>
@@ -52,7 +52,7 @@ comments: true
 <figure class="third">
 <a href="{{site.url}}/assets/img/gallery/Photo May 18, 15 59 47.jpg"><img src="{{site.url}}/assets/img/gallery/Photo May 18, 15 59 47.jpg"></a>
 <a href="{{site.url}}/assets/img/gallery/Photo May 21, 20 31 39.jpg"><img src="{{site.url}}/assets/img/gallery/Photo May 21, 20 31 39.jpg"></a>
-<a href="{{site.url}}/assets/img/gallery/Photo May 12, 22 37 36.png"><img src="{{site.url}}/assets/img/gallery/Photo May 12, 22 37 36.png"></a>
+<a href="{{site.url}}/assets/img/gallery/Photo May 05, 11 32 31 PM.png"><img src="{{site.url}}/assets/img/gallery/Photo May 05, 11 32 31 PM.png"></a>
 </figure>
 
 ## Figure Drawing
