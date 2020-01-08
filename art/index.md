@@ -24,7 +24,7 @@ comments: true
 
 <figure class="third">
 <a href="{{site.url}}/assets/img/gallery/Photo Jul 28, 12 01 29.png"><img src="{{site.url}}/assets/img/gallery/Photo Jul 28, 12 01 29.png"></a>
-<a href="{{site.url}}/assets/img/gallery/Photo Apr 10, 9 24 56 AM.jpg"><img src="{{site.url}}/assets/img/gallery/Photo Apr 10, 9 24 56 AM.jpg"></a>
+<a href="{{site.url}}/assets/img/gallery/attempt.png"><img src="{{site.url}}/assets/img/gallery/attempt.png"></a
 <a href="{{site.url}}/assets/img/gallery/Photo Sep 12, 23 40 00.png"><img src="{{site.url}}/assets/img/gallery/Photo Sep 12, 23 40 00.png"></a>
 </figure>
 
@@ -56,9 +56,9 @@ comments: true
 </figure>
 
 ## Figure Drawing
-<figure class="third">
+<figure class="half">
 	<a href="{{site.url}}/assets/img/gallery/ARCADIA1.jpg"><img src="{{site.url}}/assets/img/gallery/ARCADIA1.jpg"></a>
-	<a href="{{site.url}}/assets/img/gallery/attempt.png"><img src="{{site.url}}/assets/img/gallery/attempt.png"></a>
+>
 		<a href="{{site.url}}/assets/img/gallery/Photo Dec 04, 13 48 50.png"><img src="{{site.url}}/assets/img/gallery/Photo Dec 04, 13 48 50.png"></a>
 </figure>
 

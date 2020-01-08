@@ -164,20 +164,20 @@ img {
 }
 figure {
   margin: 0;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
   @include clearfix();
   img {
     margin-bottom: 10px;
-    @include rounded(4px);
+    @include rounded(10px);
   }
   &.half {
     @media only screen and (min-width: 62.5em) {
       img {
-        width: calc(50% - 4px);
+        width: calc(50% - 12px);
         float: left;
-        margin-left: 1px;
-        margin-right: 1px;
+        margin-left: 6px;
+        margin-right: 6px;
       }
       figcaption {
         clear: left;
@@ -187,10 +187,10 @@ figure {
   &.third {
     @media only screen and (min-width: 62.5em) {
       img {
-        width: calc(33.3% - 6px);
+        width: calc(33.3% - 12px);
         float: left;
-        margin-left: 1px;
-        margin-right: 1px;
+        margin-left: 6px;
+        margin-right: 6px;
       }
       figcaption {
         clear: left;
