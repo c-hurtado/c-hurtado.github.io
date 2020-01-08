@@ -417,7 +417,7 @@ kbd {
 	&:nth-child(1) {
     top:10%;
     opacity:0.2;
-		animation: moveDot 8s infinite;
+		animation: moveLine1 8s infinite;
   }
   &:nth-child(2) {
     top:20%;
@@ -482,7 +482,7 @@ kbd {
   -webkit-backface-visibility: hidden;
   &:nth-child(1) {
     left:10%;
-    animation: moveDot 5s infinite;
+    animation: moveLine1 5s infinite;
   }
   &:nth-child(2) {
     left:20%;
@@ -513,6 +513,13 @@ kbd {
 @keyframes moveDot {
   0%   { top: 100%; opacity:1; }
   100% { top: 0%; opacity:0; }
+}
+
+@keyframes moveLine1 {
+  0%   { top: 10%; opacity:0.2; }
+  90% { top: 100%; opacity:1; }
+	91% { top: 100%; opacity:0; }
+	100% { top: 10%; opacity:0.2; }
 }
 
 
