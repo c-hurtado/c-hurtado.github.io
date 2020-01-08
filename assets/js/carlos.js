@@ -1,27 +1,27 @@
 
 var globalXpDict = {};
-globalXpDict["art"]                   = 100;
-globalXpDict["gamedev"]               = 100;
-globalXpDict["thoughts"]              = 100;
-globalXpDict["contact"]               = 100;
-globalXpDict["about"]                 = 100;
-globalXpDict["leaderboards"]          = 100;
-globalXpDict["menu"]                  = 100;
-globalXpDict["home"]                  = 100;
-globalXpDict["social_email"]          = 100;
-globalXpDict["social_twitter"]        = 100;
-globalXpDict["social_linkedIn"]       = 100;
-globalXpDict["social_instagram"]      = 100;
-globalXpDict["social_gitHub"]         = 100;
-globalXpDict["about_tool"]            = 100;
-globalXpDict["art_open_portrait"]     = 100;
-globalXpDict["art_open_photography"]  = 100;
-globalXpDict["art_open_figureDrawing"]= 100;
-globalXpDict["art_open_figureDrawing"]= 100;
-globalXpDict["art_open_3Drender"]     = 100;
-globalXpDict["contact_resume"]        = 100;
-globalXpDict["thoughts_post"]         = 100;
-globalXpDict["demo"]               = 50;
+globalXpDict["art"]                   = [100, "Art"];
+globalXpDict["gamedev"]               = [100, "Art"];
+globalXpDict["thoughts"]              = [100, "Art"];
+globalXpDict["contact"]               = [100, "Art"];
+globalXpDict["about"]                 = [100, "Art"];
+globalXpDict["leaderboards"]          = [100, "Art"];
+globalXpDict["menu"]                  = [100, "Art"];
+globalXpDict["home"]                  = [100, "Art"];
+globalXpDict["social_email"]          = [100, "Art"];
+globalXpDict["social_twitter"]        = [100, "Art"];
+globalXpDict["social_linkedIn"]       = [100, "Art"];
+globalXpDict["social_instagram"]      = [100, "Art"];
+globalXpDict["social_gitHub"]         = [100, "Art"];
+globalXpDict["about_tool"]            = [100, "Art"];
+globalXpDict["art_open_portrait"]     = [100, "Art"];
+globalXpDict["art_open_photography"]  = [100, "Art"];
+globalXpDict["art_open_figureDrawing"]= [100, "Art"];
+globalXpDict["art_open_figureDrawing"]= [100, "Art"];
+globalXpDict["art_open_3Drender"]     = [100, "Art"];
+globalXpDict["contact_resume"]        = [100, "Art"];
+globalXpDict["thoughts_post"]         = [100, "Art"];
+globalXpDict["demo"]               = [50, "You clicked on the demo"];
 
 var globalXpLevel = {};
 globalXpLevel[0] = 0;
@@ -123,10 +123,20 @@ function GetXPToAdd(xpSource)
     var xpAmount = globalXpDict[xpSource];
     if(xpAmount !== undefined)
     {
-      return xpAmount;
+      return xpAmount[0];
     }
     return 0;
 }
+function GetReasonToAdd(xpSource)
+{
+    var xpAmount = globalXpDict[xpSource];
+    if(xpAmount !== undefined)
+    {
+      return xpAmount[1];
+    }
+    return xpSource;
+}
+
 
 function UpdateLevel(newLevel)
 {
@@ -139,7 +149,7 @@ function AddXPFromSource(xpSource)
   if(cookieInfo == undefined)
   {
     var level = GetLevel();
-    AddPendingXP(GetXPToAdd(xpSource),xpSource);
+    AddPendingXP(GetXPToAdd(xpSource),GetReasonToAdd(xpSource));
     Cookies.set(xpSource, 1);
   }
 }
