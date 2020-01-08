@@ -7,7 +7,7 @@ comments: true
 ## Portraits
 <figure class="third">
 	<a href="{{site.url}}/assets/img/gallery/80spng.png"><img src="{{site.url}}/assets/img/gallery/80spng.png"></a>
-	<a href="{{site.url}}/assets/img/gallery/ARCADIA1.jpg"><img src="{{site.url}/assets/img/gallery/ARCADIA1.jpg"></a>
+	<a href="{{site.url}}/assets/img/gallery/ARCADIA1.jpg"><img src="{{site.url}}/assets/img/gallery/ARCADIA1.jpg"></a>
 	<a href="{{site.url}}/assets/img/gallery/attempt.png"><img src="{{site.url}}/assets/img/gallery/attempt.png"></a>
 </figure>
 <figure class="third">
