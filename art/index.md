@@ -25,16 +25,36 @@ comments: true
 <figure class="third">
 <a href="{{site.url}}/assets/img/gallery/Photo Jul 28, 12 01 29.png"><img src="{{site.url}}/assets/img/gallery/Photo Jul 28, 12 01 29.png"></a>
 <a href="{{site.url}}/assets/img/gallery/Photo Apr 10, 9 24 56 AM.jpg"><img src="{{site.url}}/assets/img/gallery/Photo Apr 10, 9 24 56 AM.jpg"></a>
-<a href="{{site.url}}/assets/img/gallery/Photo Jun 23, 14 30 02Photo Jun 23, 14 30 02.png"><img src="{{site.url}}/assets/img/gallery/Photo Jun 23, 14 30 02.png"></a>
+<a href="{{site.url}}/assets/img/gallery/Photo Sep 12, 23 40 00.png"><img src="{{site.url}}/assets/img/gallery/Photo Sep 12, 23 40 00.png"></a>
 </figure>
 
+<figure class="third">
+<a href="{{site.url}}/assets/img/gallery/Photo Sep 12, 23 40 18.png"><img src="{{site.url}}/assets/img/gallery/Photo Sep 12, 23 40 189.png"></a>
+<a href="{{site.url}}/assets/img/gallery/shuri.jpg"><img src="{{site.url}}/assets/img/gallery/shuri.jpg"></a>
+<a href="{{site.url}}/assets/img/gallery/solar.jpg"><img src="{{site.url}}/assets/img/gallery/solar.jpg"></a>
+</figure>Photo Sep 12, 23 40 18
+
+<figure>
+<a href="{{site.url}}/assets/img/gallery/Photo Jun 23, 14 30 02Photo Jun 23, 14 30 02.png"><img src="{{site.url}}/assets/img/gallery/Photo Jun 23, 14 30 02.png"></a>
+</figure>
 ## Master Studies
 
 <figure class="third">
-<a href="{{site.url}}/assets/img/gallery/Photo Jun 15, 10 41 19.jpg"><img src="{{site.url}}/assets/img/gallery/Photo Jun 15, 10 41 19.jpgPhoto Jun 23, 14 30 02Photo Jun 23, 14 30 02"></a>
-<a href="{{site.url}}/assets/img/gallery/Photo Apr 10, 9 24 56 AM.jpg"><img src="{{site.url}}/assets/img/gallery/Photo Apr 10, 9 24 56 AM.jpg"></a>
-<a href="{{site.url}}/assets/img/gallery/colors.png"><img src="{{site.url}}/assets/img/gallery/colors.png"></a>
+<a href="{{site.url}}/assets/img/gallery/Photo Jun 15, 10 41 19.jpg"><img src="{{site.url}}/assets/img/gallery/Photo Jun 15, 10 41 19.jpg"></a>
+<a href="{{site.url}}/assets/img/gallery/Photo May 03, 11 20 31 PM.png"><img src="{{site.url}}/assets/img/gallery/Photo May 03, 11 20 31 PM.png"></a>
+<a href="{{site.url}}/assets/img/gallery/Photo May 05, 11 32 31 PM.png"><img src="{{site.url}}/assets/img/gallery/Photo May 05, 11 32 31 PM.png"></a>
 </figure>
+<figure class="third">
+<a href="{{site.url}}/assets/img/gallery/Photo May 11, 5 12 52 PM.jpg"><img src="{{site.url}}/assets/img/gallery/Photo May 11, 5 12 52 PM.jpg"></a>
+<a href="{{site.url}}/assets/img/gallery/Photo May 12, 01 06 48.png"><img src="{{site.url}}/assets/img/gallery/Photo May 12, 01 06 48.png"></a>
+<a href="{{site.url}}/assets/img/gallery/Photo May 12, 22 37 36.png"><img src="{{site.url}}/assets/img/gallery/Photo May 12, 22 37 36.png"></a>
+</figure>
+<figure class="third">
+<a href="{{site.url}}/assets/img/gallery/Photo May 18, 15 59 47.jpg"><img src="{{site.url}}/assets/img/gallery/Photo May 18, 15 59 47.jpg"></a>
+<a href="{{site.url}}/assets/img/gallery/Photo May 21, 20 31 39.jpg"><img src="{{site.url}}/assets/img/gallery/Photo May 21, 20 31 39.jpg"></a>
+<a href="{{site.url}}/assets/img/gallery/Photo May 12, 22 37 36.png"><img src="{{site.url}}/assets/img/gallery/Photo May 12, 22 37 36.png"></a>
+</figure>
+
 ## Figure Drawing
 <figure class="third">
 	<a href="{{site.url}}/assets/img/gallery/ARCADIA1.jpg"><img src="{{site.url}}/assets/img/gallery/ARCADIA1.jpg"></a>
