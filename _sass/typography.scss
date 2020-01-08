@@ -141,10 +141,10 @@ table {
     padding: .5em 1em;
     text-indent: 0;
     @include font-rem(14);
-    background-color: $color_gray;
-    border: 1px solid $color_pink_swan;
-    color: $color_shark;
-    @include rounded(3px);
+    background-color: hsla(222, 66%, 10%, 0.8);
+    border: 1px solid #bbbbbb1f;
+    color: #f9c2f4;
+    @include rounded(15px);
 }
 
 // description title
