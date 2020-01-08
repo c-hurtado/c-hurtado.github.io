@@ -4,9 +4,5 @@
 
 layout: home
 ---
-Hello!!!
-This is the content.
-
-### The Beginning
-
-hello
+Testing this notice thing
+{: .notice}
