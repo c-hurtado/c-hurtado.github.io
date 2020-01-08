@@ -156,13 +156,7 @@ function AddXPFromSource(xpSource)
 
 function AddXPFromSourceNow(xpSource)
 {
-  var cookieInfo = Cookies.get(xpSource);
-  if(cookieInfo == undefined)
-  {
-    var level = GetLevel();
-    AddPendingXP(GetXPToAdd(xpSource),xpSource);
-    Cookies.set(xpSource, 1);
-  }
+  AddXPFromSource(xpSource);
   refreshContent();
 }
 
