@@ -481,7 +481,7 @@ kbd {
   -webkit-backface-visibility: hidden;
   &:nth-child(1) {
     left:10%;
-    animation: moveLine1 5s infinite;
+    animation: moveDot 5s infinite;
   }
   &:nth-child(2) {
     left:20%;
