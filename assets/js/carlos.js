@@ -1,13 +1,13 @@
 
 var globalXpDict = {};
-globalXpDict["art"]                   = [100, "Art"];
-globalXpDict["gamedev"]               = [100, "Art"];
-globalXpDict["thoughts"]              = [100, "Art"];
-globalXpDict["contact"]               = [100, "Art"];
-globalXpDict["about"]                 = [100, "Art"];
-globalXpDict["leaderboards"]          = [100, "Art"];
-globalXpDict["menu"]                  = [100, "Art"];
-globalXpDict["home"]                  = [100, "Art"];
+globalXpDict["art"]                   = [100, "You visited the Art page for the first time!"];
+globalXpDict["gamedev"]               = [100, "You visited the Game Development page for the first time!"];
+globalXpDict["thoughts"]              = [100, "You checked out my blog for the forst time"];
+globalXpDict["contact"]               = [100, "You went to the contact page for the first time"];
+globalXpDict["about"]                 = [100, "You visited the About Me page for the first time."];
+globalXpDict["leaderboards"]          = [100, "You visited the Leaderboard page for the first time"];
+globalXpDict["menu"]                  = [100, "You opened the Menu for the first time"];
+globalXpDict["home"]                  = [100, "You went back to the main page for the first time"];
 globalXpDict["social_email"]          = [100, "Art"];
 globalXpDict["social_twitter"]        = [100, "Art"];
 globalXpDict["social_linkedIn"]       = [100, "Art"];
@@ -21,7 +21,7 @@ globalXpDict["art_open_figureDrawing"]= [100, "Art"];
 globalXpDict["art_open_3Drender"]     = [100, "Art"];
 globalXpDict["contact_resume"]        = [100, "Art"];
 globalXpDict["thoughts_post"]         = [100, "Art"];
-globalXpDict["demo"]               = [50, "You clicked on the demo"];
+globalXpDict["demo"]                  = [50, "You clicked on the demo"];
 
 var globalXpLevel = {};
 globalXpLevel[0] = 0;
@@ -288,7 +288,7 @@ function refreshContent()
           pendingXPHolder.style="display:inline-table";
           pendingXPHolder.innerHTML = "";
           pendingXPHolder.style.opacity = "1";
-          typeWriter("pendingXP","Visited "+savedPendingXP[1]+ ": +"+savedPendingXP[0],50,0);
+          typeWriter("pendingXP",savedPendingXP[1]+ ": +"+savedPendingXP[0],50,0);
       }
       else {
         pendingXPHolder.style="display:none";
