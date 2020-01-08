@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: project
 title: Game Development
 excerpt: "Game Development Projects"
 comments: false
