@@ -11,11 +11,6 @@ tag:
 - Sanzaru Games
 - Game Development
 - Oculus
-- VR
-- Sanzaru Games
-- Asgard's Wrath
-- AsgardWrath
-- AsgardsWrath
 comments: false
 ---
 

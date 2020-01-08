@@ -8,14 +8,9 @@ developer: "Sanzaru Games"
 feature: http://i.imgur.com/Ds6S7lJ.png
 tag:
 - Sanzaru
-- Sanzaru Games
-- Game Development
+- SanzaruGames
+- GameDevelopment
 - Oculus
-- VR
-- Sanzaru Games
-- Marvel Powers United VR
-- Marvel
-- MPU
 comments: false
 ---
 
