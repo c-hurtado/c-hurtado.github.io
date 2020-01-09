@@ -11,27 +11,27 @@ comments: false
 >
 <table>
 <tr>
-<td>
+<td align="left">
   <label>
     Your email:
   </label>
   </td>
-  <td>
+  <td align="right">
   <input type="text" name="_replyto">
   </td>
   </tr>
 <tr>
-<td>
+<td align="left">
  <label>
     Your message:
-
   </label>
 </td>
-<td>
+  <td align="right">
 <textarea name="message"></textarea>
 </td>
 </tr>
 <tr>
-<td columns="2">  <button class="btn btn-info" type="submit">Send</button></td>
+<td colspan="2"> <button class="btn btn-info" type="submit">Send</button></td>
 </tr>
+</table>
 </form>
