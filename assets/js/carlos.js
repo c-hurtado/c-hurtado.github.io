@@ -24,9 +24,9 @@ globalXpDict["thoughts_post"]         = [100, "Art"];
 globalXpDict["demo"]                  = [50, "You clicked on the demo"];
 
 globalUnlockData = {}
-globalUnlockData["secret1"]=[2,"<i class=\"fa fa-lock\"></i><br/>Requires 2 <i class=\"fa fa-star\"></i>", "<i class=\"fa fa-unlock\"></i> Unlocked!<br/><br/><img src='https://c-hurtado.github.io/assets/img/baby91.jpg'>"];
-globalUnlockData["secret_home"]=[1,"<i class=\"fa fa-lock\"></i><br/>Requires 1 <i class=\"fa fa-star\"></i>", "<i class=\"fa fa-unlock\"></i> Unlocked!<br/><br/>I also love Escape Rooms and playing Just Dance 2020"];
-
+globalUnlockData["secret_about_1"]=[2,"<i class=\"fa fa-lock\"></i><br/>Requires 2 <i class=\"fa fa-star\"></i>", "<i class=\"fa fa-unlock\"></i> Unlocked!<br/><br/><img src='https://c-hurtado.github.io/assets/img/baby91.jpg'>"];
+globalUnlockData["secret_home"]=[1,"<i class=\"fa fa-lock\"></i><br/>Requires 1 <i class=\"fa fa-star\"></i>", "<i class=\"fa fa-unlock\"></i> Unlocked!<br/><br/>I also love Escape Rooms and korean variety shows"];
+globalUnlockData["secret_about_2"]=[3,"<i class=\"fa fa-lock\"></i><br/>Requires 3 <i class=\"fa fa-star\"></i>", "<i class=\"fa fa-unlock\"></i> Unlocked!<br/><br/><img src='https://c-hurtado.github.io/assets/img/baby91.jpg'>"];
 
 var globalXpLevel = {};
 globalXpLevel[0] = 0;
