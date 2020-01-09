@@ -267,7 +267,7 @@ function refreshUnlockedContent()
       }
       else {
           div.innerHTML = globalUnlockData[key][1];
-        }
+
       }
     }
   }
@@ -304,6 +304,7 @@ function refreshContent()
     scoreWrapper.style.opacity = "1";
     loadingHolder.style.opacity = "0";
     xpCount.innerHTML = GetXPPercentage()+ " <i class='fa fa-key'></i>";
+    refreshUnlockedContent();
 
     var savedPendingXP = GetPendingXP();
       if(savedPendingXP[0] > 0)
@@ -354,6 +355,7 @@ function refreshContent()
                 else {
                   progressBar.style.width = '100%';
                   levelContainer.innerHTML = GetLevel()+" <i class='fa fa-star'></i>";
+                  refreshUnlockedContent();
                   setTimeout(function() {
                       $('#xpProgressContent').css('transition','0s');
                       progressBar.style.width = '0%';
