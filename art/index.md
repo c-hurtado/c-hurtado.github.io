@@ -2,7 +2,7 @@
 layout: page
 title: Art
 excerpt: "My art"
-comments: true
+comments: false
 ---
 ## Portraits
 <figure class="third">
