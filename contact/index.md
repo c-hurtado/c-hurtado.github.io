@@ -17,7 +17,7 @@ comments: false
   </label>
   </td>
   <td align="right">
-  <input type="text" name="_replyto">
+  <input type="text" name="_replyto" style="width: 100%;">
   </td>
   </tr>
 <tr>
@@ -27,7 +27,8 @@ comments: false
   </label>
 </td>
   <td align="right">
-<textarea name="message"></textarea>
+<textarea name="message"     style="width: 100%;"
+></textarea>
 </td>
 </tr>
 <tr>
