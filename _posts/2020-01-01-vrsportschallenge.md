@@ -5,7 +5,7 @@ date:   2019-12-12
 excerpt: "<b>VR Sports Challenge</b> is a VR video game developed at Sanzaru Games"
 project: true
 developer: "Sanzaru Games"
-feature: http://i.imgur.com/Ds6S7lJ.png
+feature: /assets/img/projects/vr-sports-challenge.jpg
 tag:
 - Sanzaru
 - SanzaruGames

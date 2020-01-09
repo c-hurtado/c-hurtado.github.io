@@ -5,7 +5,7 @@ date:   2020-01-01
 excerpt: "<b>Marvel Powers United</b> is a VR video game developed at Sanzaru Games"
 project: true
 developer: "Sanzaru Games"
-feature: http://i.imgur.com/Ds6S7lJ.png
+feature: /assets/img/projects/marvelpowersunited.jpg
 tag:
 - Sanzaru
 - Sanzaru Games
