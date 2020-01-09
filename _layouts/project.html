@@ -31,7 +31,7 @@ layout: compress
                         {% if post.project %}
                     <ul>
                         <li class="wow fadeInLeft" data-wow-duration="1.5s">
-                            <a class="zoombtn" href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>  {% if post.company %}{{ post.company }} {% endif %}
+                            <a class="zoombtn" href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>  {% if post.company %} - {{ post.company }} {% endif %}
                             <p>{{ post.excerpt }}</p>
                               {% if post.feature %}
                                 <img src="{{ post.feature }}"/>
