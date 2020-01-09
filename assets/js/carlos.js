@@ -25,7 +25,7 @@ globalXpDict["demo"]                  = [50, "You clicked on the demo"];
 
 globalUnlockData = {}
 globalUnlockData["secret1"]=[2,"<i class=\"fa fa-lock\"></i><br/>Requires 2 <i class=\"fa fa-star\"></i>", "<i class=\"fa fa-unlock\"> Unlocked!</i><br/><br/><img src='https://c-hurtado.github.io/assets/img/baby91.jpg'>"];
-globalUnlockData["secret_home"]=[1,"<i class=\"fa fa-lock\"></i><br/>Requires 1 <i class=\"fa fa-star\"></i>", "<i class=\"fa fa-unlock\"> Unlocked!</i><br/><br/>I also love Escape Rooms and playing Just Dance 2020'>"];
+globalUnlockData["secret_home"]=[1,"<i class=\"fa fa-lock\"></i><br/>Requires 1 <i class=\"fa fa-star\"></i>", "<i class=\"fa fa-unlock\"> Unlocked!</i><br/><br/>I also love Escape Rooms and playing Just Dance 2020"];
 
 
 var globalXpLevel = {};
