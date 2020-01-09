@@ -2,7 +2,6 @@
 layout: post
 title:  "Tools I Use"
 date:   2020-01-01
-excerpt: "This is a summary of tools I use"
 
 comments: false
 ---
