@@ -24,7 +24,7 @@ globalXpDict["thoughts_post"]         = [100, "Art"];
 globalXpDict["demo"]                  = [50, "You clicked on the demo"];
 
 globalUnlockData = {}
-globalUnlockData["secret1"]=[1,"You need to have 1 <i class=\"fa fa-star\"> to see this content", "Content Unlocked!<br/><img src='https://c-hurtado.github.io/assets/img/baby91.jpg'>"];
+globalUnlockData["secret1"]=[1,"You need to have 1 <i class=\"fa fa-star\"></i> to see this content", "Content Unlocked!<br/><img src='https://c-hurtado.github.io/assets/img/baby91.jpg'>"];
 
 
 var globalXpLevel = {};
