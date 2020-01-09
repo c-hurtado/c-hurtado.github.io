@@ -6,7 +6,7 @@ date:   2020-01-01
 comments: false
 ---
 
-In the vein of How do they work and UsesThis I'm sharing my tools and tricks of the trade.
+In the vein of How do they work and UsesThis I'm sharing my tools and tricks of the trade. From web tools, to iPad Tools and more. I customize, jailbreak, and try a lot of things.
 
 ## Web tools
 * [Notion](https://www.notion.so/), a great site to generate projects and organize ideas. Mixes concepts of [Pinterest](https://www.pinterest.com) with [Trello](https://www.trello.com), and allows you to sort the same data in multiple ways.
