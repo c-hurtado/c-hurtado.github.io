@@ -5,7 +5,7 @@ date:   2020-01-02
 excerpt: "<b>Asgard's Wrath</b> is a VR video game developed at Sanzaru Games"
 project: true
 developer: "Sanzaru Games"
-feature: http://i.imgur.com/Ds6S7lJ.png
+feature: /assets/img/projects/asgards-wrath.jpg
 tag:
 - Sanzaru
 - Sanzaru Games
