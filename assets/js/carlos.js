@@ -8,11 +8,11 @@ globalXpDict["about"]                 = [100, "You visited the About Me page for
 globalXpDict["leaderboards"]          = [100, "You visited the Leaderboard page for the first time"];
 globalXpDict["menu"]                  = [100, "You opened the Menu for the first time"];
 globalXpDict["home"]                  = [100, "You went back to the main page for the first time"];
-globalXpDict["social_email"]          = [100, "Art"];
-globalXpDict["social_twitter"]        = [100, "Art"];
-globalXpDict["social_linkedIn"]       = [100, "Art"];
-globalXpDict["social_instagram"]      = [100, "Art"];
-globalXpDict["social_gitHub"]         = [100, "Art"];
+globalXpDict["social_email"]          = [100, "You attempted to email me!"];
+globalXpDict["social_twitter"]        = [100, "You opened my twitter page"];
+globalXpDict["social_linkedIn"]       = [100, "You visited my linked in"];
+globalXpDict["social_instagram"]      = [100, "You visited my instagram"];
+globalXpDict["social_gitHub"]         = [100, "You visited my GitHub"];
 globalXpDict["about_tool"]            = [100, "Art"];
 globalXpDict["art_open_portrait"]     = [100, "Art"];
 globalXpDict["art_open_photography"]  = [100, "Art"];
@@ -22,6 +22,10 @@ globalXpDict["art_open_3Drender"]     = [100, "Art"];
 globalXpDict["contact_resume"]        = [100, "Art"];
 globalXpDict["thoughts_post"]         = [100, "Art"];
 globalXpDict["demo"]                  = [50, "You clicked on the demo"];
+
+globalUnlockData = {}
+globalUnlockData["secret1"]=[2,"You need to have 2 stars to see this content", "You've unlocked this content"];
+
 
 var globalXpLevel = {};
 globalXpLevel[0] = 0;
@@ -249,6 +253,25 @@ function CountUp()
         onComplete: null,  // callback method for when the element finishes updating
     };
 })(jQuery);
+
+function refreshUnlockedContent()
+{
+  for (var key in globalUnlockData)
+  {
+    var div = document.getElementById(key);
+    if (div!= null)
+    {
+      if(GetLevel()>= globalUnlockData[key][0])
+      {
+          div.innerHTML = globalUnlockData[key][2];
+      }
+      else {
+          div.innerHTML = globalUnlockData[key][1];
+        }
+      }
+    }
+  }
+}
 
 
 //changes the score data.
