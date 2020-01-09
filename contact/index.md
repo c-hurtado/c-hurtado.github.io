@@ -21,5 +21,5 @@ comments: false
 
   <!-- your other form fields go here -->
 
-  <button type="submit">Send</button>
+  <button class="btn btn-info" type="submit">Send</button>
 </form>
