@@ -4,8 +4,8 @@ title:  "Dark Manor"
 date:   2019-12-11
 
 project: true
-developer: "Sanzaru Games"
-feature: http://i.imgur.com/Ds6S7lJ.png
+developer: "<a href='http://www.sanzaru.com'>Sanzaru Games</a>"
+feature: /assets/img/projects/darkmanor.jpg
 tag:
 - Sanzaru
 - SanzaruGames
