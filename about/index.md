@@ -7,7 +7,7 @@ comments: false
 ---
 
 <figure>
-	<a href="{{site.url}}/assets/img/baby91.jpg"><img src="{{site.url}}/assets/img/baby91.jpg"></a>
+<div id="secret1"></div>
 </figure>
 
 Oh hello!, I didn't see you there. I'm Carlos, nice to meet you.
@@ -30,32 +30,6 @@ I've been working in the game industry for about 10 years and have had the fortu
 I love seeing what other people use for their life and ideas.
 
 -------
-
-In the vein of How do they work and UsesThis I'm sharing my tools and tricks of the trade.
-
-## Web tools
-* [Notion](https://www.notion.so/), a great site to generate projects and organize ideas. Mixes concepts of [Pinterest](https://www.pinterest.com) with [Trello](https://www.trello.com), and allows you to sort the same data in multiple ways.
-* [Feedly](https://feedly.com/), my RSS reader by default after Google Reader went extinct. I basically spend most of my time in this site.
-* [Dropbox](https://www.dropbox.com/), is my media sharing tool. I use it on my phone, ipad and PC to share the art I create on Procreate in the ipad.
-
-## Cross-Platform Software
-* [Adobe Photoshop](http://adobe.com). I used to use photoshop for digital art, but now I'm using it more for photo manipulation.
-* [Adobe Lightroom Classic](http://adobe.com). As I've traveled with my wife, I have been doing photography and collecting pictures. This software allows me to do two things:
-  * Color correction
-  * Book Creation: Using the Book service Blurb (integrated w)
-
-## Windows Software
-* [FalconX](https://chrisandriessen.nl/web/FalconX.html) This app allows to put the taskbar icons in the middle for a cooler look.
-
-## Mac OS X Software
-* [Oversight](https://objective-see.com/products/oversight.html) For people that care about being hacked, oversight monitors audio and video sessions and lets you know when the microphone or the camera got activated
-* [Swish](https://highlyopinionated.co/swish/) This cool tool allows you to manage your windows by using the touchpad.
-
-
-## IPhone Software
-
-
-## IPad Software
 
 
 ## Preview
