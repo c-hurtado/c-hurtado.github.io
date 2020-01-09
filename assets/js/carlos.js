@@ -323,7 +323,7 @@ function refreshContent()
           if(savedPendingXP[0] > 0)
           {
             //progressBar.css('background-image', "linear-gradient(to bottom, #ffc522, #581e46)");
-            $('#xpProgressContent').css('background-image', "linear-gradient(to bottom, #ffbb22, #581e46)");
+            $('#xpProgressContent').css('background-image', "linear-gradient(to right, #ff22b2, #ffb400)");
 
               setTimeout(function() {
                 var prevLevel = GetLevel();
@@ -350,7 +350,7 @@ function refreshContent()
                 });*/
 
                   xpCount.innerHTML = GetXPPercentage()  +" <i class='fa fa-key'></i>";
-                  $('#xpProgressContent').css('background-image', "linear-gradient(to bottom, #ff22b2, #581e46)");
+                  $('#xpProgressContent').css('background-image', "linear-gradient(to right, #ff22b2, #ffb400)");
                 }
                 else {
                   progressBar.style.width = '100%';
@@ -364,7 +364,7 @@ function refreshContent()
                         $('#xpProgressContent').css('transition','0.4s linear');
                         progressBar.style.width = (GetPercentageInLevel())+'%';
                         xpCount.innerHTML = GetXPPercentage() +" <i class='fa fa-key'></i>";
-                        $('#xpProgressContent').css('background-image', "linear-gradient(to bottom, #ff22b2, #581e46)");
+                        $('#xpProgressContent').css('background-image', "linear-gradient(to right, #ff22b2, #ffb400)");
                       },1000);
 
 
