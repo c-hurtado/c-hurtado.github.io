@@ -262,7 +262,7 @@ kbd {
 	height:12px;
 	color:#bd307a !important;
 	border-radius: 30px;
-	background-image: linear-gradient(to bottom, rgb(255, 34, 178), rgb(88, 30, 70));
+	background-image: linear-gradient(to right, #ff22b2, #7663e0);
   transition: 0.4s linear;
 	width:0%;
 	transition-property: width, background-image;
@@ -373,7 +373,7 @@ kbd {
   left:0;
   bottom:0;
   width:2px;
-  background: linear-gradient(top, rgba(255,255,255,0), rgba(87, 193, 232, 0.35));
+  background: linear-gradient(0deg, rgba(87,193,232,0.35), rgba(87,193,232,0));
   &:nth-child(1) {
     left:10%;
   }
@@ -425,7 +425,7 @@ kbd {
     opacity:0.3;
 		animation: moveLine10 20s linear infinite;
          animation-delay:-4s;
-      
+
   }
   &:nth-child(3) {
     top:30%;
