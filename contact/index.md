@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Game Development
-excerpt: "Game Development Projects"
+title: Contact Me
+excerpt: "Contact Me"
 comments: false
 ---
 <!-- modify this form HTML and place wherever you want your form -->
