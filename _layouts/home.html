@@ -55,7 +55,7 @@ layout: compress
                 
                 <h2>Last thoughts</h2>
                  <div class="post-list">
-                    {% for post in site.posts %}
+                    {% for post in site.posts  limit:1  %}
                         {% if post.project == null %}
                     <ul>
                         <li class="wow slideInUp" data-wow-duration="1.5s">
