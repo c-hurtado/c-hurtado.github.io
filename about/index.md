@@ -22,7 +22,7 @@ Since I was a small child in Santiago, Chile, I was influenced by technology, st
 While completing my studies of Engineering at Universidad de Chile, I tried to learn as much as possible of Design tools, and I expressed myself artistically in order to release some stress. Thankfully I managed to attract some viewers, and I managed to do some freelance work as a web designer. Right now, I’m focusing my energies on the creation of games and experiences, that make people react with emotions, and enjoy the fun, either by developing or designing those games. After doing a Master of Entertainment Technology student at the Entertainment Technology Center at Carnegie Mellon University. I learned how fun is making video games and experiences, and how amazing is working with talented people from different areas of expertise.
 
 ### Present
-<div id="secret_about_2" class="secret-right"></div>
+<div id="secret_about_2" class="secret-left"></div>
 After graduating from Grad School I moved to California and I have been working in several Game Development companies in the bay area, doing a bit of everything, from PC retail games to browser based or mobile games. I’m ready to have fun and create fun!
 
 I've been working in the game industry for about 10 years and have had the fortune of developing and shipping a lot of games (some with more success than others).
