@@ -629,57 +629,34 @@ kbd {
   animation: rotating 2s linear infinite;
 }
 
-.secret-right {
+%secretextend {
 	display: inline-block;
 	margin: 0 1px;
 	text-align: center;
 	padding: 10px;
 	font-size: 10px;
-	font-size: 1em;
-	font-weight: 300;
+	font-size: 0.8em;
 	color: #ffffff;
-	float: right;
 	margin-left: 30px;
 	margin-bottom: 10px;
 	vertical-align: middle;
 	background-color: #39001f24;
 	border: solid 1px #a1006a29;
 	border-radius: 6px;
+}
+
+.secret-right {
+	@extend %secretextend;
+	float: right;
 }
 
 .secret-left {
-	display: inline-block;
-	margin: 0 1px;
-	text-align: center;
-	padding: 10px;
-	font-size: 10px;
-	font-size: 1em;
-	font-weight: 300;
-	color: #ffffff;
-	float: left;
-	margin-left: 30px;
-	margin-bottom: 10px;
-	vertical-align: middle;
-	background-color: #39001f24;
-	border: solid 1px #a1006a29;
-	border-radius: 6px;
+	@extend %secretextend;
+	float: right;
 }
 
 .secret {
-	display: inline-block;
-	margin: 0 1px;
-	text-align: center;
-	padding: 10px;
-	font-size: 10px;
-	font-size: 1em;
-	font-weight: 300;
-	color: #ffffff;
-	margin-left: 30px;
-	margin-bottom: 10px;
-	vertical-align: middle;
-	background-color: #39001f24;
-	border: solid 1px #a1006a29;
-	border-radius: 6px;
+		@extend %secretextend;
 }
 
 form
