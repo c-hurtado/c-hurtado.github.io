@@ -6,9 +6,7 @@ date: 2016-03-21
 comments: false
 ---
 
-<figure>
-<div id="secret1"></div>
-</figure>
+<div id="secret1 class="secret"></div>
 
 Oh hello!, I didn't see you there. I'm Carlos, nice to meet you.
 
