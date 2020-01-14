@@ -3,10 +3,8 @@ layout: page
 title: Contact Me
 excerpt: "Contact Me"
 comments: false
+titleImg: contact.png
 ---
-
-<img src="{{site.url}}/assets/img/titles/contact.png"/>
-
 
 <!-- modify this form HTML and place wherever you want your form -->
 <form

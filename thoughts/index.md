@@ -3,5 +3,5 @@ layout: post-list
 title: Thoughts
 excerpt: "A List of Thoughts"
 comments: false
+titleImg: thoughts.png
 ---
-<img src="{{site.url}}/assets/img/titles/thoughts.png"/>

@@ -4,10 +4,8 @@ title: About Carlos
 tags: [about, Carlos, Hurtado, Game]
 date: 2016-03-21
 comments: false
+titleImg: aboutme.png
 ---
-
-<img src="{{site.url}}/assets/img/titles/aboutme.png"/>
-
 Oh hello!, I didn't see you there. I'm Carlos, nice to meet you.
 
 -------

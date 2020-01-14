@@ -3,11 +3,8 @@ layout: page
 title: Art
 excerpt: "My art"
 comments: false
+titleImg: art.png
 ---
-
-<img src="{{site.url}}/assets/img/titles/art.png"/>
-
-
 ## Portraits
 <figure class="third">
 	<a href="{{site.url}}/assets/img/gallery/hairattempt.jpg"><img src="{{site.url}}/assets/img/gallery/hairattempt.jpg"></a>

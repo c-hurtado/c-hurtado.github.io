@@ -3,9 +3,8 @@ layout: project
 title: Game Development
 excerpt: "Game Development Projects"
 comments: false
+titleImg: gamedev.png
 ---
-
-<img src="{{site.url}}/assets/img/titles/gamedev.png"/>
 I've been extremely lucky to have been able to ship several games during my 10+ years in the game industry. You can see some of them here:
 
 
