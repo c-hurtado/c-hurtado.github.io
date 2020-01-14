@@ -4,6 +4,10 @@ title: Art
 excerpt: "My art"
 comments: false
 ---
+
+<img src="{{site.url}}/assets/img/titles/art.png"/>
+
+
 ## Portraits
 <figure class="third">
 	<a href="{{site.url}}/assets/img/gallery/hairattempt.jpg"><img src="{{site.url}}/assets/img/gallery/hairattempt.jpg"></a>

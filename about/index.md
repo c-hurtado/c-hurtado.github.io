@@ -6,7 +6,7 @@ date: 2016-03-21
 comments: false
 ---
 
-
+<img src="{{site.url}}/assets/img/titles/aboutme.png"/>
 
 Oh hello!, I didn't see you there. I'm Carlos, nice to meet you.
 
