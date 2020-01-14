@@ -104,18 +104,22 @@
       color: $white;
       border-color: $color_shark;
 			text-shadow:none;
+			font-size: 1rem;
     &:link {
         color: $white;
 				text-shadow:none;
+				font-size: 1rem;
     }
     &:visited {
         color: $white;
 				text-shadow:none;
+				font-size: 1rem;
       }
       &:hover {
         background-color: $black;
         color: $link-color;
 				text-shadow:none;
+				font-size: 1rem;
       }
     }
 }
