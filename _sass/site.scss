@@ -101,6 +101,7 @@ body {
 	@media #{$small} {
 		width: 100%;
 		margin-top:0px;
+		margin-bottom:0px;
 	    box-shadow: none;
 			border-radius: 0px;
 		padding: 2em 0;
@@ -143,6 +144,7 @@ body {
 		width: 100%;
 		border-radius: 0px;
 		margin-top: 0px;
+		margin-bottom:0px;
 		padding: 2em 2em;
 	    box-shadow: none;
 	}
