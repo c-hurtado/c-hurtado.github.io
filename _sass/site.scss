@@ -29,7 +29,7 @@ body {
 	background-blend-mode: color-dodge, overlay, difference, difference, normal;
 
 	background-position: center center;
-	background-attachment: fixed scroll;
+	background-attachment: fixed, scroll;
 
 	@media #{$small} {
 	    //background-image: none !important;
