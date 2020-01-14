@@ -57,8 +57,11 @@ h3.title a {
 			color: $white;
 			font-weight: bolder;
             &:hover {
-                color: $red;
+                color: $white;
             }
+		}
+		.title a{
+				text-shadow:none;
 		}
 		p {
 			font-weight: lighter;
