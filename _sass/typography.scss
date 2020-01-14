@@ -104,8 +104,8 @@ a {
 			text-shadow: 0 0 1px #e60073, 0 0 2px #e60073, 0 0 3px #e60073, 0 0 4px #e60073, 0 0 5px #e60073, 0 0 6px #e60073, 0 0 7px #e60073;
   }
   &:hover {
-  	color: $link-color;
-		text-shadow: 0 0 2px #e60073, 0 0 3px #e60073, 0 0 4px #e60073, 0 0 5px #e60073, 0 0 6px #e60073, 0 0 7px #e60073, 0 0 8px #e60073;
+  	color: $white;
+		text-shadow: 0 0 2px #ff7300, 0 0 3px #ff7300, 0 0 4px #ff7300, 0 0 5px #ff7300, 0 0 6px #ff7300, 0 0 7px #ff7300, 0 0 8px #ff7300;
   }
   &:active {
   	transition: color .3s;
