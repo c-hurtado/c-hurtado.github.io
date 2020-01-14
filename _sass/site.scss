@@ -218,6 +218,7 @@ body {
         color: $color_tuatara;
         @include transition(.75s);
         margin: 2px 5px;
+        text-shadow:none;
 		span {
 			float: left;
 			padding: 2px 6px;
