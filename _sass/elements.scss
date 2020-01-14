@@ -714,7 +714,15 @@ button
 
 .zoombtn
 {
-	a {
+	& {
+		text-shadow:none;
+		font-size:1.3em;
+	}
+	&:visited {
+		text-shadow:none;
+		font-size:1.3em;
+	}
+	&:link {
 		text-shadow:none;
 		font-size:1.3em;
 	}
