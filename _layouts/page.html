@@ -20,10 +20,10 @@ layout: compress
                 <div class="post-title {% if page.feature %} feature {% endif %}">
                     <a class="btn zoombtn" href="{{site.url}}" onClick="AddXPFromSource('home')">
                         <i class="fa fa-home"></i>
-                         {% if page.titleImg %}
-                        <img src="{{site.url}}/assets/img/titles/{{page.titleImg}}"/>
-                        {% endif %}
                     </a>
+                    {% if page.titleImg %}
+                    <img src="{{site.url}}/assets/img/titles/{{page.titleImg}}"/>
+                        {% endif %}
                 </div>
                 {{ content }}
             </div>
