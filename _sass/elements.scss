@@ -442,12 +442,19 @@ kbd {
     opacity:0.2;
 		animation: moveLine10 20s linear infinite;
         animation-delay:-2s;
+
+				@media #{$small} {
+					animation: none !important;
+				}
   }
   &:nth-child(2) {
     top:20%;
     opacity:0.3;
 		animation: moveLine10 20s linear infinite;
          animation-delay:-4s;
+				 @media #{$small} {
+ 					animation: none !important;
+ 				}
 
   }
   &:nth-child(3) {
@@ -455,48 +462,72 @@ kbd {
     opacity:0.4;
 				animation: moveLine10 20s linear infinite;
          animation-delay:-6s;
+				 @media #{$small} {
+ 					animation: none !important;
+ 				}
   }
   &:nth-child(4) {
     top:40%;
     opacity:0.5;
 		animation: moveLine10 20s linear infinite;
         animation-delay:-8s;
+				@media #{$small} {
+					animation: none !important;
+				}
   }
   &:nth-child(5) {
     top:50%;
     opacity:0.6;
 		animation: moveLine10 20s linear infinite;
         animation-delay:-10s;
+				@media #{$small} {
+					animation: none !important;
+				}
   }
   &:nth-child(6) {
     top:60%;
     opacity:0.7;
 		animation: moveLine10 20s linear infinite;
         animation-delay:-12s;
+				@media #{$small} {
+					animation: none !important;
+				}
   }
   &:nth-child(7) {
     top:70%;
     opacity:0.8;
 		animation: moveLine10 20s linear infinite;
         animation-delay:-14s;
+				@media #{$small} {
+					animation: none !important;
+				}
   }
   &:nth-child(8) {
     top:80%;
     opacity:0.9;
 		animation: moveLine10 20s linear infinite;
         animation-delay:-16s;
+				@media #{$small} {
+					animation: none !important;
+				}
   }
   &:nth-child(9) {
     top:90%;
     opacity:0.95;
 		animation: moveLine10 20s linear infinite;
         animation-delay:-18s;
+				@media #{$small} {
+					animation: none !important;
+				}
   }
   &:nth-child(10) {
     top:100%;
     margin-top:-1px;
     opacity:1;
 		animation:  moveLine10 20s linear infinite;
+		@media #{$small} {
+			animation: none !important;
+		}
   }
   &:nth-child(11) {
     opacity:0.05;
@@ -515,30 +546,51 @@ kbd {
   &:nth-child(1) {
     left:10%;
     animation: moveDot 5s infinite;
+		@media #{$small} {
+			animation: none !important;
+		}
   }
   &:nth-child(2) {
     left:20%;
     animation: moveDot 20s infinite;
+		@media #{$small} {
+			animation: none !important;
+		}
   }
   &:nth-child(3) {
     left:30%;
     animation: moveDot 15s infinite;
+		@media #{$small} {
+			animation: none !important;
+		}
   }
   &:nth-child(4) {
     left:50%;
     animation: moveDot 30s infinite;
+		@media #{$small} {
+			animation: none !important;
+		}
   }
   &:nth-child(5) {
     left:60%;
     animation: moveDot 12s infinite;
+		@media #{$small} {
+			animation: none !important;
+		}
   }
   &:nth-child(6) {
     left:80%;
     animation: moveDot 6s infinite;
+		@media #{$small} {
+			animation: none !important;
+		}
   }
   &:nth-child(7) {
     left:90%;
     animation: moveDot 8s infinite;
+		@media #{$small} {
+			animation: none !important;
+		}
   }
 }
 
