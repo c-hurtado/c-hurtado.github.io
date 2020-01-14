@@ -63,6 +63,12 @@ h3.title a {
 		.title a{
 				text-shadow:none;
 		}
+		title a:visited{
+				text-shadow:none;
+		}
+		title a:link{
+				text-shadow:none;
+		}
 		p {
 			font-weight: lighter;
 			//@include font-rem(16);
