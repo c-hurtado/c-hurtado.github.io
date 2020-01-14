@@ -714,6 +714,9 @@ button
 
 .zoombtn
 {
-	text-shadow:none;
-	font-size:1.3em;
+	a {
+		text-shadow:none;
+		font-size:1.3em;
+	}
+
 }
