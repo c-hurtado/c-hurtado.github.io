@@ -10,6 +10,7 @@
 	&:hover {
 		box-shadow: 0 0 1px 0 rgba($color_shark,0.5);
 		color: $red;
+		text-shadow:none;
 	}
 
 
@@ -23,14 +24,18 @@
     font-size:1rem;
 	background-color: $dark-purple-tp;
 	&:visited {
+
 		color: $white;
+		text-shadow:none;
 	}
 	&:link {
 		color: $white;
+		text-shadow:none;
 	}
 	&:hover {
 		//background-color: $white;
 		color: $link-color;
+		text-shadow:none;
 	}
 }
 .btn {
@@ -44,10 +49,12 @@
       border-color: $success;
       &:visited {
         color: $white;
+				text-shadow:none;
       }
       &:hover {
         background-color: $white;
         color: $success;
+				text-shadow:none;
       }
     }
     &.btn-warning {
@@ -56,10 +63,12 @@
       border-color: $warning;
       &:visited {
         color: $white;
+				text-shadow:none;
       }
       &:hover {
         background-color: $white;
         color: $warning;
+				text-shadow:none;
       }
     }
     &.btn-danger {
@@ -68,10 +77,12 @@
       border-color: $danger;
       &:visited {
         color: $white;
+				text-shadow:none;
       }
       &:hover {
         background-color: $white;
         color: $danger;
+				text-shadow:none;
       }
     }
     &.btn-info {
@@ -80,10 +91,12 @@
       border-color: $info;
       &:visited {
         color: $white;
+				text-shadow:none;
       }
       &:hover {
         background-color: $white;
         color: $info;
+				text-shadow:none;
       }
     }
 	&.zoombtn {
