@@ -92,18 +92,24 @@ figcaption {
 a {
   transition: color .4s;
   color: $link-color;
+	text-decoration: none;
+	text-shadow: 0 0 1px #e60073, 0 0 2px #e60073, 0 0 3px #e60073, 0 0 4px #e60073, 0 0 5px #e60073, 0 0 6px #e60073, 0 0 7px #e60073;
+
   &:link {
   	color: $link-color;
+			text-shadow: 0 0 1px #e60073, 0 0 2px #e60073, 0 0 3px #e60073, 0 0 4px #e60073, 0 0 5px #e60073, 0 0 6px #e60073, 0 0 7px #e60073;
   }
   &:visited {
   	color: $link-color;
+			text-shadow: 0 0 1px #e60073, 0 0 2px #e60073, 0 0 3px #e60073, 0 0 4px #e60073, 0 0 5px #e60073, 0 0 6px #e60073, 0 0 7px #e60073;
   }
   &:hover {
-  	color: $red;
+  	color: $link-color;
+		text-shadow: 0 0 2px #e60073, 0 0 3px #e60073, 0 0 4px #e60073, 0 0 5px #e60073, 0 0 6px #e60073, 0 0 7px #e60073, 0 0 8px #e60073;
   }
   &:active {
   	transition: color .3s;
-  	color: $maroon;
+  	color: $link-color;
   }
 }
 
