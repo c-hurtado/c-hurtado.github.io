@@ -90,15 +90,19 @@
       background-color: $dark-purple-tp;
       color: $white;
       border-color: $color_shark;
+			text-shadow:none;
     &:link {
         color: $white;
+				text-shadow:none;
     }
     &:visited {
         color: $white;
+				text-shadow:none;
       }
       &:hover {
         background-color: $black;
         color: $link-color;
+				text-shadow:none;
       }
     }
 }
