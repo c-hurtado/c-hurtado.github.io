@@ -84,6 +84,8 @@ body {
 	-ms-flex-align: center;
 	align-items: center;
 }
+
+
 .container {
 //	transform: rotateX(5deg);
 	width: 80%;
@@ -110,6 +112,19 @@ body {
 		width: 80%;
 	}
 }
+
+
+@supports (-ms-ime-align:auto) {
+  .container {
+    background-color: #120820;
+  }
+	.btn.zoombtn
+	{
+		 background-color: #120820 !important;
+	}
+}
+
+
 .row {
 	margin-top: 15px;
 	margin-left: 15px;
