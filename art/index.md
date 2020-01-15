@@ -77,17 +77,23 @@ imgLoc: /assets/img/gallery/
 </figure>
 
 ## Commissions and Friends
-<figure class="third">
+<figure class="half">
 <a href="{{site.url}}{{page.imgLoc}}baby.png"><img src="{{site.url}}{{page.imgLoc}}baby.png"></a>
 <a href="{{site.url}}{{page.imgLoc}}mira.jpg"><img src="{{site.url}}{{page.imgLoc}}mira.jpg"></a>
-<a href="{{site.url}}{{page.imgLoc}}yusun.jpg"><img src="{{site.url}}{{page.imgLoc}}yusun.jpg"></a>
 </figure>
 
 <figure class="third">
-<a href="{{site.url}}{{page.imgLoc}}rene.jpg"><img src="{{site.url}}{{page.imgLoc}}rene.jpg"></a>
+<a href="{{site.url}}{{page.imgLoc}}yusun.jpg"><img src="{{site.url}}{{page.imgLoc}}yusun.jpg"></a>
+
 <a href="{{site.url}}{{page.imgLoc}}matt.jpg"><img src="{{site.url}}{{page.imgLoc}}matt.jpg"></a>
 <a href="{{site.url}}{{page.imgLoc}}ej.png"><img src="{{site.url}}{{page.imgLoc}}ej.png"></a>
 </figure>
+<figure class="half">
+
+<a href="{{site.url}}{{page.imgLoc}}Photo Sep 12, 23 41 03.png"><img src="{{site.url}}{{page.imgLoc}}Photo Sep 12, 23 41 03.png"></a>
+<a href="{{site.url}}{{page.imgLoc}}rene.jpg"><img src="{{site.url}}{{page.imgLoc}}rene.jpg"></a>
+</figure>
+
 ## Photography
 
 ## 3D Renders
