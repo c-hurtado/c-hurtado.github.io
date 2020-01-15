@@ -46,7 +46,7 @@ imgLoc: /assets/img/gallery/
 </figure>
 
 <figure>
-<a href="{{site.url}}{{page.imgLoc}}Photo Jun 23, 14 30 02Photo Jun 23, 14 30 02.png"><img src="{{site.url}}{{page.imgLoc}}gallery/Photo Jun 23, 14 30 02.png"></a>
+<a href="{{site.url}}{{page.imgLoc}}Photo Jun 23, 14 30 02.png"><img src="{{site.url}}{{page.imgLoc}}Photo Jun 23, 14 30 02.png"></a>
 </figure>
 ## Master Studies
 
