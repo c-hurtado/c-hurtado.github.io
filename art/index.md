@@ -66,7 +66,7 @@ imgLoc: /assets/img/gallery/
 <a href="{{site.url}}/assets/img/gallery/Photo Dec 04, 13 48 50.png"><img src="{{site.url}}/assets/img/gallery/Photo Dec 04, 13 48 50.png"></a>
 </figure>
 
-## Commissions
+## Commissions & Friends
 <figure>
 <a href="{{site.url}}/assets/img/gallery/baby.png"><img src="{{site.url}}/assets/img/gallery/baby.png"></a>
 </figure>
