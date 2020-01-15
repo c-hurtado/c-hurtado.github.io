@@ -70,14 +70,23 @@ imgLoc: /assets/img/gallery/
 </figure>
 
 ## Figure Drawing
-<figure class="half">
-<a href="{{site.url}}{{page.imgLoc}}/ARCADIA1.jpg"><img src="{{site.url}}{{page.imgLoc}}ARCADIA1.jpg"></a>
+<figure class="third">
+<a href="{{site.url}}{{page.imgLoc}}ARCADIA1.jpg"><img src="{{site.url}}{{page.imgLoc}}ARCADIA1.jpg"></a>
 <a href="{{site.url}}{{page.imgLoc}}Photo Dec 04, 13 48 50.png"><img src="{{site.url}}{{page.imgLoc}}Photo Dec 04, 13 48 50.png"></a>
+<a href="{{site.url}}{{page.imgLoc}}hair-1.jpg"><img src="{{site.url}}{{page.imgLoc}}hair-1.jpg"></a>
 </figure>
 
 ## Commissions and Friends
-<figure>
-<a href="{{site.url}}{{page.imgLoc}}/baby.png"><img src="{{site.url}}{{page.imgLoc}}baby.png"></a>
+<figure class="third">
+<a href="{{site.url}}{{page.imgLoc}}baby.png"><img src="{{site.url}}{{page.imgLoc}}baby.png"></a>
+<a href="{{site.url}}{{page.imgLoc}}mira.jpg"><img src="{{site.url}}{{page.imgLoc}}mira.jpg"></a>
+<a href="{{site.url}}{{page.imgLoc}}yusun.jpg"><img src="{{site.url}}{{page.imgLoc}}yusun.jpg"></a>
+</figure>
+
+<figure class="third">
+<a href="{{site.url}}{{page.imgLoc}}rene.jpg"><img src="{{site.url}}{{page.imgLoc}}rene.jpg"></a>
+<a href="{{site.url}}{{page.imgLoc}}matt.jpg"><img src="{{site.url}}{{page.imgLoc}}matt.jpg"></a>
+<a href="{{site.url}}{{page.imgLoc}}ej.png"><img src="{{site.url}}{{page.imgLoc}}ej.png"></a>
 </figure>
 ## Photography
 
