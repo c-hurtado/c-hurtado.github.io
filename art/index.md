@@ -4,11 +4,12 @@ title: Art
 excerpt: "My art"
 comments: false
 titleImg: art.png
+imgLoc: /assets/img/gallery/
 ---
 ## Portraits
 <figure class="third">
-	<a href="{{site.url}}/assets/img/gallery/hairattempt.jpg"><img src="{{site.url}}/assets/img/gallery/hairattempt.jpg"></a>
-	<a href="{{site.url}}/assets/img/gallery/Photo Apr 03, 23 29 19.jpg"><img src="{{site.url}}/assets/img/gallery/Photo Apr 03, 23 29 19.jpg"></a>
+	<a href="{{site.url}}{{page.imgLoc}}hairattempt.jpg"><img src="{{site.url}}{{page.imgLoc}}hairattempt.jpg"></a>
+	<a href="{{site.url}}{{page.imgLoc}}Photo Apr 03, 23 29 19.jpg"><img src="{{site.url}}{{page.imgLoc}}Photo Apr 03, 23 29 19.jpg"></a>
 	<a href="{{site.url}}/assets/img/gallery/Photo Apr 05, 7 52 16 PM.png"><img src="{{site.url}}/assets/img/gallery/Photo Apr 05, 7 52 16 PM.png"></a>
 </figure>
 <figure class="third">
