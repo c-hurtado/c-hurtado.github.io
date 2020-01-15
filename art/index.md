@@ -58,9 +58,8 @@ titleImg: art.png
 
 ## Figure Drawing
 <figure class="half">
-	<a href="{{site.url}}/assets/img/gallery/ARCADIA1.jpg"><img src="{{site.url}}/assets/img/gallery/ARCADIA1.jpg"></a>
->
-		<a href="{{site.url}}/assets/img/gallery/Photo Dec 04, 13 48 50.png"><img src="{{site.url}}/assets/img/gallery/Photo Dec 04, 13 48 50.png"></a>
+<a href="{{site.url}}/assets/img/gallery/ARCADIA1.jpg"><img src="{{site.url}}/assets/img/gallery/ARCADIA1.jpg"></a>
+<a href="{{site.url}}/assets/img/gallery/Photo Dec 04, 13 48 50.png"><img src="{{site.url}}/assets/img/gallery/Photo Dec 04, 13 48 50.png"></a>
 </figure>
 
 ## Commissions
