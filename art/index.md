@@ -16,6 +16,7 @@ imgLoc: /assets/img/gallery/
 
 
 ## Portraits
+I love drawing faces. These are some based on random people, famous actors, fun photography and things I like to draw.
 <figure class="third">
 	<a href="{{site.url}}{{page.imgLoc}}hairattempt.jpg"><img src="{{site.url}}{{page.imgLoc}}hairattempt.jpg"></a>
 	<a href="{{site.url}}{{page.imgLoc}}Photo Apr 03, 23 29 19.jpg"><img src="{{site.url}}{{page.imgLoc}}Photo Apr 03, 23 29 19.jpg"></a>
@@ -49,7 +50,7 @@ imgLoc: /assets/img/gallery/
 <a href="{{site.url}}{{page.imgLoc}}Photo Jun 23, 14 30 02.png"><img src="{{site.url}}{{page.imgLoc}}Photo Jun 23, 14 30 02.png"></a>
 </figure>
 ## Master Studies
-
+As a way to practice I decided to copy and practice by studying famous paintings.
 <figure>
     <a href="{{site.url}}{{page.imgLoc}}Photo Jun 15, 10 41 19.jpg"><img src="{{site.url}}{{page.imgLoc}}Photo Jun 15, 10 41 19.jpg"></a>
     </figure>
@@ -70,6 +71,7 @@ imgLoc: /assets/img/gallery/
 </figure>
 
 ## Figure Drawing
+To practice I go to figure drawing sessions. There I usually have 20 minutes to start and finish so a lot of these are rough but dynamic.
 <figure class="third">
 <a href="{{site.url}}{{page.imgLoc}}ARCADIA1.jpg"><img src="{{site.url}}{{page.imgLoc}}ARCADIA1.jpg"></a>
 <a href="{{site.url}}{{page.imgLoc}}Photo Dec 04, 13 48 50.png"><img src="{{site.url}}{{page.imgLoc}}Photo Dec 04, 13 48 50.png"></a>
@@ -77,6 +79,7 @@ imgLoc: /assets/img/gallery/
 </figure>
 
 ## Commissions and Friends
+Once in a while I get a commission for a friend, or I just decide to draw some of them.
 <figure class="half">
 <a href="{{site.url}}{{page.imgLoc}}baby.png"><img src="{{site.url}}{{page.imgLoc}}baby.png"></a>
 <a href="{{site.url}}{{page.imgLoc}}mira.jpg"><img src="{{site.url}}{{page.imgLoc}}mira.jpg"></a>
@@ -95,8 +98,10 @@ imgLoc: /assets/img/gallery/
 </figure>
 
 ## Photography
+In my trips I found some moments that I thought are worth capturing.
 
 ## 3D Renders
+I've been playing with 3D Studio Max, Maya and most recently Blender. Here are some fun experiments.
 <figure>
 	<a href="{{site.url}}{{page.imgLoc}}/80spng.png"><img src="{{site.url}}{{page.imgLoc}}80spng.png"></a>
 </figure>
