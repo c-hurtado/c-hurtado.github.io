@@ -42,7 +42,7 @@ imgLoc: /assets/img/gallery/
 ## Master Studies
 
 <figure>
-    <a href="{{site.url}}{{page.imgLoc}}Photo Jun 15, 10 41 19.jpg"><img src="}{{site.url}}{{page.imgLoc}}Photo Jun 15, 10 41 19.jpg"></a>
+    <a href="{{site.url}}{{page.imgLoc}}Photo Jun 15, 10 41 19.jpg"><img src="{{site.url}}{{page.imgLoc}}Photo Jun 15, 10 41 19.jpg"></a>
     </figure>
 <figure class="half">
 
