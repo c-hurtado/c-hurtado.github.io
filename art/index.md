@@ -41,14 +41,17 @@ imgLoc: /assets/img/gallery/
 </figure>
 ## Master Studies
 
+<figure>
+    <a href="{{site.url}}{{page.imgLoc}}Photo Jun 15, 10 41 19.jpg"><img src="}{{site.url}}{{page.imgLoc}}Photo Jun 15, 10 41 19.jpg"></a>
+    </figure>
 <figure class="half">
-<a href="{{site.url}}/assets/img/gallery/Photo Jun 15, 10 41 19.jpg"><img src="{{site.url}}/assets/img/gallery/Photo Jun 15, 10 41 19.jpg"></a>
-<a href="{{site.url}}/assets/img/gallery/Photo May 03, 11 20 31 PM.png"><img src="{{site.url}}/assets/img/gallery/Photo May 03, 11 20 31 PM.png"></a>
 
+<a href="{{site.url}}{{page.imgLoc}}Photo May 03, 11 20 31 PM.png"><img src="{{site.url}}{{page.imgLoc}}Photo May 03, 11 20 31 PM.png"></a>
+<a href="{{site.url}}{{page.imgLoc}}Photo May 12, 01 06 48.png"><img src="{{site.url}}{{page.imgLoc}}Photo May 12, 01 06 48.png"></a>
 </figure>
-<figure class="third">
+<figure class="half">
 <a href="{{site.url}}/assets/img/gallery/Photo May 11, 5 12 52 PM.jpg"><img src="{{site.url}}/assets/img/gallery/Photo May 11, 5 12 52 PM.jpg"></a>
-<a href="{{site.url}}/assets/img/gallery/Photo May 12, 01 06 48.png"><img src="{{site.url}}/assets/img/gallery/Photo May 12, 01 06 48.png"></a>
+
 <a href="{{site.url}}/assets/img/gallery/Photo May 12, 22 37 36.png"><img src="{{site.url}}/assets/img/gallery/Photo May 12, 22 37 36.png"></a>
 </figure>
 <figure class="third">
