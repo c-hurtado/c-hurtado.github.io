@@ -9,7 +9,7 @@ titleImg: aboutme.png
 Oh hello!, I didn't see you there. I'm *Carlos*, nice to meet you.
 
 -------
-TLDR; I'm **Carlos Hurtado**. I was born in [Chile](https://en.wikipedia.org/wiki/Chile) and now I'm in the Bay area, and I make [video games]({{site.url}}/gamedev) for a living!
+>  **TLDR**; I'm Carlos Hurtado. I was born in [Chile](https://en.wikipedia.org/wiki/Chile) and now I'm in the Bay area, and I make [video games]({{site.url}}/gamedev) for a living!
 
 -------
 ### The Beginning
