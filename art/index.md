@@ -7,12 +7,12 @@ titleImg: art.png
 imgLoc: /assets/img/gallery/
 ---
 # Table of Contents
-1. [Portraits](#Portraits)
-2. [Master Studies](#MasterStudies)
+1. [Portraits](#portraits)
+2. [Master Studies](#master-studies)
 3. [Figure Drawing](#figure-drawing)
-4. [Commission & Friends](#commission)
+4. [Commission & Friends](#commissions-and-friends)
 5. [Photography](#photography)
-6. [3D Renders](#3drenders)
+6. [3D Renders](#3d-renders)
 
 
 ## Portraits
@@ -75,7 +75,7 @@ imgLoc: /assets/img/gallery/
 <a href="{{site.url}}/assets/img/gallery/Photo Dec 04, 13 48 50.png"><img src="{{site.url}}/assets/img/gallery/Photo Dec 04, 13 48 50.png"></a>
 </figure>
 
-## Commissions & Friends
+## Commissions and Friends
 <figure>
 <a href="{{site.url}}/assets/img/gallery/baby.png"><img src="{{site.url}}/assets/img/gallery/baby.png"></a>
 </figure>
