@@ -6,6 +6,15 @@ comments: false
 titleImg: art.png
 imgLoc: /assets/img/gallery/
 ---
+# Table of Contents
+1. [Portraits](#Portraits)
+2. [Master Studies](#MasterStudies)
+3. [Figure Drawing](#figure-drawing)
+4. [Commission & Friends](#commission)
+5. [Photography](#photography)
+6. [3D Renders](#3drenders)
+
+
 ## Portraits
 <figure class="third">
 	<a href="{{site.url}}{{page.imgLoc}}hairattempt.jpg"><img src="{{site.url}}{{page.imgLoc}}hairattempt.jpg"></a>
