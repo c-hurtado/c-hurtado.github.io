@@ -27,8 +27,12 @@ sass:
 collections:
   gameDevProjects:
     output:         true
+
+teaser: "/assets/img/logo3.png"
+logo: "/assets/img/logo3.png"
+og_image: "/assets/img/logo3.png"
 # Comments
-disqus_shortname:   taylantatli
+disqus_shortname:   churtado
 
 # Social
 # if you don't have any of social below, comment the line.
