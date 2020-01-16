@@ -49,6 +49,21 @@ I love drawing faces. These are some based on random people, famous actors, fun 
 <figure>
 <a href="{{site.url}}{{page.imgLoc}}Photo Jun 23, 14 30 02.png"><img src="{{site.url}}{{page.imgLoc}}Photo Jun 23, 14 30 02.png"></a>
 </figure>
+<figure class="third">
+<a href="{{site.url}}{{page.imgLoc}}amy.png"><img src="{{site.url}}{{page.imgLoc}}amy.png"></a>
+<a href="{{site.url}}{{page.imgLoc}}12307538_10153268100233907_6064951705480197043_o.jpg"><img src="{{site.url}}{{page.imgLoc}}12307538_10153268100233907_6064951705480197043_o.jpg"></a>
+<a href="{{site.url}}{{page.imgLoc}}B0B6C052-24C3-48E2-9034-68C7B71F680E.png"><img src="{{site.url}}{{page.imgLoc}}B0B6C052-24C3-48E2-9034-68C7B71F680E.png"></a>
+</figure>
+
+<figure class="third">
+<a href="{{site.url}}{{page.imgLoc}}colored2.jpg"><img src="{{site.url}}{{page.imgLoc}}colored2.jpg"></a>
+<a href="{{site.url}}{{page.imgLoc}}face2.jpg"><img src="{{site.url}}{{page.imgLoc}}face2.jpg"></a>
+<a href="{{site.url}}{{page.imgLoc}}hair.png"><img src="{{site.url}}{{page.imgLoc}}hair.png"></a>
+</figure>
+<figure>
+<a href="{{site.url}}{{page.imgLoc}}starlord.jpg"><img src="{{site.url}}{{page.imgLoc}}starlord.jpg"></a>
+</figure>
+
 ## Master Studies
 As a way to practice I decided to copy and practice by studying famous paintings.
 <figure>
@@ -70,20 +85,7 @@ As a way to practice I decided to copy and practice by studying famous paintings
 <a href="{{site.url}}{{page.imgLoc}}Photo May 05, 11 32 31 PM.png"><img src="{{site.url}}{{page.imgLoc}}Photo May 05, 11 32 31 PM.png"></a>
 </figure>
 
-<figure class="third">
-<a href="{{site.url}}{{page.imgLoc}}amy.png"><img src="{{site.url}}{{page.imgLoc}}amy.png"></a>
-<a href="{{site.url}}{{page.imgLoc}}12307538_10153268100233907_6064951705480197043_o.jpg"><img src="{{site.url}}{{page.imgLoc}}12307538_10153268100233907_6064951705480197043_o.jpg"></a>
-<a href="{{site.url}}{{page.imgLoc}}B0B6C052-24C3-48E2-9034-68C7B71F680E.png"><img src="{{site.url}}{{page.imgLoc}}B0B6C052-24C3-48E2-9034-68C7B71F680E.png"></a>
-</figure>
 
-<figure class="third">
-<a href="{{site.url}}{{page.imgLoc}}colored2.jpg"><img src="{{site.url}}{{page.imgLoc}}colored2.jpg"></a>
-<a href="{{site.url}}{{page.imgLoc}}face2.jpg"><img src="{{site.url}}{{page.imgLoc}}face2.jpg"></a>
-<a href="{{site.url}}{{page.imgLoc}}hair.png"><img src="{{site.url}}{{page.imgLoc}}hair.png"></a>
-</figure>
-<figure>
-<a href="{{site.url}}{{page.imgLoc}}starlord.jpg"><img src="{{site.url}}{{page.imgLoc}}starlord.jpg"></a>
-</figure>
 
 ## Figure Drawing
 To practice I go to figure drawing sessions. There I usually have 20 minutes to start and finish so a lot of these are rough but dynamic.
@@ -93,15 +95,14 @@ To practice I go to figure drawing sessions. There I usually have 20 minutes to 
 <a href="{{site.url}}{{page.imgLoc}}hair-1.jpg"><img src="{{site.url}}{{page.imgLoc}}hair-1.jpg"></a>
 </figure>
 
-<figure class="third">
-<a href="{{site.url}}{{page.imgLoc}}02CC3B8F-B81A-4E87-A7D7-69BC5D50E523.jpeg"><img src="{{site.url}}{{page.imgLoc}}02CC3B8F-B81A-4E87-A7D7-69BC5D50E523.jpeg"></a>
+<figure class="half">
+<a href="{{site.url}}{{page.imgLoc}}CD0C5BBC-0DFF-40FD-896F-42F04A7EE094.jpeg"><img src="{{site.url}}{{page.imgLoc}}CD0C5BBC-0DFF-40FD-896F-42F04A7EE094.jpeg"></a>
 <a href="{{site.url}}{{page.imgLoc}}7EA04636-04ED-42FC-8DEC-363AA1499641.jpeg"><img src="{{site.url}}{{page.imgLoc}}7EA04636-04ED-42FC-8DEC-363AA1499641.jpeg"></a>
-<a href="{{site.url}}{{page.imgLoc}}9E6CA950-AB6D-4E1C-82BA-F6E70D966A65.jpeg"><img src="{{site.url}}{{page.imgLoc}}9E6CA950-AB6D-4E1C-82BA-F6E70D966A65.jpeg"></a>
 </figure>
 
 <figure class="third">
+<a href="{{site.url}}{{page.imgLoc}}02CC3B8F-B81A-4E87-A7D7-69BC5D50E523.jpeg"><img src="{{site.url}}{{page.imgLoc}}02CC3B8F-B81A-4E87-A7D7-69BC5D50E523.jpeg"></a>
 <a href="{{site.url}}{{page.imgLoc}}9318A76A-8477-4DC2-BBAE-400FF2931F7E.jpeg"><img src="{{site.url}}{{page.imgLoc}}9318A76A-8477-4DC2-BBAE-400FF2931F7E.jpeg"></a>
-<a href="{{site.url}}{{page.imgLoc}}CD0C5BBC-0DFF-40FD-896F-42F04A7EE094.jpeg"><img src="{{site.url}}{{page.imgLoc}}CD0C5BBC-0DFF-40FD-896F-42F04A7EE094.jpeg"></a>
 <a href="{{site.url}}{{page.imgLoc}}9E6CA950-AB6D-4E1C-82BA-F6E70D966A65.jpeg"><img src="{{site.url}}{{page.imgLoc}}9E6CA950-AB6D-4E1C-82BA-F6E70D966A65.jpeg"></a>
 </figure>
 
@@ -113,7 +114,7 @@ To practice I go to figure drawing sessions. There I usually have 20 minutes to 
 
 <figure class="third">
 <a href="{{site.url}}{{page.imgLoc}}5EBED729-A641-4F7E-B90C-CE9B950B80AA.png"><img src="{{site.url}}{{page.imgLoc}}5EBED729-A641-4F7E-B90C-CE9B950B80AA.png"></a>
-<a href="{{site.url}}{{page.imgLoc}}7B8A217F-3686-4488-BCE8-7EBB98385010.png"><img src="{{site.url}}{{page.imgLoc}}7B8A217F-3686-4488-BCE8-7EBB98385010.png"></a>
+<a href="{{site.url}}{{page.imgLoc}}7B8A217F-3686-4488-BCE8-7EBB98385010.jpeg"><img src="{{site.url}}{{page.imgLoc}}7B8A217F-3686-4488-BCE8-7EBB98385010.jpeg"></a>
 <a href="{{site.url}}{{page.imgLoc}}8D17B5D5-7E92-4292-8322-8EC61AFA06D8.png"><img src="{{site.url}}{{page.imgLoc}}8D17B5D5-7E92-4292-8322-8EC61AFA06D8.png"></a>
 </figure>
 
@@ -121,7 +122,7 @@ To practice I go to figure drawing sessions. There I usually have 20 minutes to 
 <figure class="third">
 <a href="{{site.url}}{{page.imgLoc}}23E25C3F-69AA-4524-97D3-B0AB4755FEA7.png"><img src="{{site.url}}{{page.imgLoc}}23E25C3F-69AA-4524-97D3-B0AB4755FEA7.png"></a>
 <a href="{{site.url}}{{page.imgLoc}}069E1B6F-30AC-4770-B4FF-C9579B01CE38.png"><img src="{{site.url}}{{page.imgLoc}}069E1B6F-30AC-4770-B4FF-C9579B01CE38.png"></a>
-<a href="{{site.url}}{{page.imgLoc}}723E299A-AD11-4BCC-85EF-14C6C4DDC874.png"><img src="{{site.url}}{{page.imgLoc}}723E299A-AD11-4BCC-85EF-14C6C4DDC874.png"></a>
+<a href="{{site.url}}{{page.imgLoc}}723E299A-AD11-4BCC-85EF-14C6C4DDC874.jpeg"><img src="{{site.url}}{{page.imgLoc}}723E299A-AD11-4BCC-85EF-14C6C4DDC874.jpeg"></a>
 </figure>
 
 <figure class="third">
@@ -137,13 +138,15 @@ To practice I go to figure drawing sessions. There I usually have 20 minutes to 
 </figure>
 
 <figure class="third">
-<a href="{{site.url}}{{page.imgLoc}}BE87DA46-0E1B-4F73-A7E6-5D373B34514A.png"><img src="{{site.url}}{{page.imgLoc}}BE87DA46-0E1B-4F73-A7E6-5D373B34514A.png"></a>
 <a href="{{site.url}}{{page.imgLoc}}C0BA823F-4934-4969-A50B-4973A73B0539.png"><img src="{{site.url}}{{page.imgLoc}}C0BA823F-4934-4969-A50B-4973A73B0539.png"></a>
-<a href="{{site.url}}{{page.imgLoc}}C0CB37ED-C55F-44C1-9AF4-394DAFFDD8B2"><img src="{{site.url}}{{page.imgLoc}}C0CB37ED-C55F-44C1-9AF4-394DAFFDD8B2"></a>
+<a href="{{site.url}}{{page.imgLoc}}C0CB37ED-C55F-44C1-9AF4-394DAFFDD8B2.jpeg"><img src="{{site.url}}{{page.imgLoc}}C0CB37ED-C55F-44C1-9AF4-394DAFFDD8B2.jpeg"></a>
+<a href="{{site.url}}{{page.imgLoc}}F8C8E6AB-FFF8-4CC8-8B08-EB899052C574.jpeg"><img src="{{site.url}}{{page.imgLoc}}F8C8E6AB-FFF8-4CC8-8B08-EB899052C574.jpeg"></a>
+
 </figure>
 <figure class="half">
 <a href="{{site.url}}{{page.imgLoc}}CD04586D-6877-48A9-A930-EC64653FBDA5.jpeg"><img src="{{site.url}}{{page.imgLoc}}CD04586D-6877-48A9-A930-EC64653FBDA5.jpeg"></a>
-<a href="{{site.url}}{{page.imgLoc}}F8C8E6AB-FFF8-4CC8-8B08-EB899052C574.jpeg"><img src="{{site.url}}{{page.imgLoc}}F8C8E6AB-FFF8-4CC8-8B08-EB899052C574.jpeg"></a>
+<a href="{{site.url}}{{page.imgLoc}}BE87DA46-0E1B-4F73-A7E6-5D373B34514A.png"><img src="{{site.url}}{{page.imgLoc}}BE87DA46-0E1B-4F73-A7E6-5D373B34514A.png"></a>
+
 </figure>
 
 ## Commissions and Friends
