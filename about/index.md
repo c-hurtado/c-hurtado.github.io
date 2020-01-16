@@ -15,7 +15,6 @@ Oh hello!, I didn't see you there. I'm *Carlos*, nice to meet you.
 I'm currently a Lead Engineer at [Sanzaru Games](http://www.sanzarugames.com). We just finished [Asgard's Wrath](https://www.carloshurtado.com/asgardwrath/), which was nominated to several awards.
 
 ### Hobbies
-I have many interests. I will post about some but there are things I want to share more directly here.
 <div id="secret_about_hobbies" class="secretwide"></div>
 
 ### Personal Life
@@ -23,3 +22,6 @@ I have many interests. I will post about some but there are things I want to sha
 
 ### About The Site
 <div id="secret_about_site" class="secretwide"></div>
+
+### Interesting Facts about Me
+<div id="secret_about_facts" class="secretwide"></div>
