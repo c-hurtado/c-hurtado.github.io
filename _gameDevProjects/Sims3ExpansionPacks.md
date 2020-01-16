@@ -1,16 +1,14 @@
 ---
 layout: post
-title:  "Dark Manor"
-date:   2017-1-1
+title:  "Sims 3 Expansion Packs"
+date:   2013-1-1
 
 project: true
-developer: "Sanzaru Games"
+developer: "Electronic Arts"
 feature: /assets/img/projects/darkmanor.jpg
 tag:
-- Sanzaru
-- SanzaruGames
+- ElectronicArts
 - GameDevelopment
-- Oculus
 comments: false
 ---
 

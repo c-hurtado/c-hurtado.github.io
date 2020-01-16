@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Marvel Powers United VR"
-date:   2020-01-01
+date:   2018-5-5
 excerpt: "<b>Marvel Powers United</b> is a VR video game developed at Sanzaru Games"
 project: true
 developer: "Sanzaru Games"
