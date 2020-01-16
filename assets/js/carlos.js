@@ -29,7 +29,7 @@ globalUnlockData["secret_home"]=[1,"<i class=\"fa fa-lock\"></i><br/>Requires 1 
 globalUnlockData["secret_about_2"]=[3,"<i class=\"fa fa-lock\"></i><br/>Requires 3 <i class=\"fa fa-star\"></i>", "<i class=\"fa fa-unlock\"></i> Unlocked!<br/><br/><img src='https://c-hurtado.github.io/assets/img/baby91.jpg'>"];
 globalUnlockData["secret_about_hobbies"]=[2,"<i class=\"fa fa-lock\"></i><br/>Requires 2 <i class=\"fa fa-star\"></i>", "<i class=\"fa fa-unlock\"></i> Unlocked!<br/><br/><img src='https://www.carloshurtado.com/backstory'>Go to Backstory</a>"];
 globalUnlockData["secret_about_personal"]=[3,"<i class=\"fa fa-lock\"></i><br/>Requires 3 <i class=\"fa fa-star\"></i>", "<i class=\"fa fa-unlock\"></i> Unlocked!<br/><br/><a href='https://www.carloshurtado.com/backstory'>Go to Backstory</a>"];
-
+globalUnlockData["secret_about_site"]=[4,"<i class=\"fa fa-lock\"></i><br/>Requires 4 <i class=\"fa fa-star\"></i>", "<i class=\"fa fa-unlock\"></i> Unlocked!<br/><br/><a href='https://www.carloshurtado.com/backstory'>Go to Backstory</a>"];
 
 var globalXpLevel = {};
 globalXpLevel[0] = 0;

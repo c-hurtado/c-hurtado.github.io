@@ -18,3 +18,6 @@ I'm currently a Lead Engineer at Sanzaru Games. We just finished Asgard's Wrath,
 
 ### Personal Life
 <div id="secret_about_personal" class="secret"></div>
+
+### About this Site
+<div id="secret_about_site" class="secret"></div>
