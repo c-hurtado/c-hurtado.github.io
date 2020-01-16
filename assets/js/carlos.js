@@ -24,7 +24,7 @@ globalXpDict["thoughts_post"]         = [100, "Art"];
 globalXpDict["demo"]                  = [50, "You clicked on the demo"];
 
 globalUnlockData = {}
-globalUnlockData["secret_about_1"]=[3,"<i class=\"fa fa-lock\"></i><br/>Requires 3 <i class=\"fa fa-star\"></i>", "<i class=\"fa fa-unlock\"></i> Unlocked!<br/><br/><img src='https://c-hurtado.github.io/assets/img/baby91.jpg'>"];
+globalUnlockData["secret_about_1"]=[3,"<i class=\"fa fa-lock\"></i><br/>Requires 2 <i class=\"fa fa-star\"></i>", "<i class=\"fa fa-unlock\"></i> Unlocked!<br/><br/><img src='https://c-hurtado.github.io/assets/img/baby91.jpg'>"];
 globalUnlockData["secret_home"]=[1,"<i class=\"fa fa-lock\"></i><br/>Requires 1 <i class=\"fa fa-star\"></i>", "<i class=\"fa fa-unlock\"></i> Unlocked!<br/><br/>I also love <a href='https://palace-games.com/'>Escape Rooms</a> and <a href='https://www.youtube.com/watch?v=SNnwOl1vq2o'>Korean variety shows</a>"];
 globalUnlockData["secret_about_2"]=[3,"<i class=\"fa fa-lock\"></i><br/>Requires 3 <i class=\"fa fa-star\"></i>", "<i class=\"fa fa-unlock\"></i> Unlocked!<br/><br/><img src='https://c-hurtado.github.io/assets/img/baby91.jpg'>"];
 globalUnlockData["secret_about_hobbies"]=[2,"<i class=\"fa fa-lock\"></i><br/>Requires 2 <i class=\"fa fa-star\"></i>", "<i class=\"fa fa-unlock\"></i> Unlocked!<br/><br/><a href='https://www.carloshurtado.com/backstory'>Go to Backstory</a>"];
@@ -285,7 +285,7 @@ function refreshContent()
   {
     if(document.getElementById("gamenotice")!= null)
     {
-      document.getElementById("gamenotice").innerHTML = "<p class=\"notice\">If you navigate this website you can collect <i class=\"fa fa-key\" color=\"#FFFFFF\"></i>! With enough of them, unlock <i class=\"fa fa-star\" color=\"#FFFFFF\"></i> and get access to secret content. For example click <a href=\"#\" onClick=\"AddXPFromSourceNow('demo')\">here</a> to get 50 <i class=\"fa fa-key\" color=\"#FFFFFF\"></i> Enjoy!</p>";
+      document.getElementById("gamenotice").innerHTML = "<p class=\"notice\">If you navigate this website you can collect <i class=\"fa fa-key\"></i>! With enough of them, unlock <i class=\"fa fa-star\"></i> and get access to secret content. For example click <a href=\"#\" onClick=\"AddXPFromSourceNow('demo')\">here</a> to get 50 <i class=\"fa fa-key\"></i> Enjoy!</p>";
 
     }
   }
