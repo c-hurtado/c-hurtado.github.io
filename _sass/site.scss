@@ -99,6 +99,7 @@ body {
 	z-index: 1;
 	border-radius: 80px;
 	box-shadow: 0 0 10px 0 rgba($color_shark,0.3);
+	text-align:center;
 	@include transition(.5s);
 	@media #{$small} {
 		width: 100%;

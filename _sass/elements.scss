@@ -712,8 +712,7 @@ kbd {
 	font-size: 10px;
 	font-size: 0.8em;
 	color: #ffffff;
-	margin-left: 30px;
-	margin-bottom: 10px;
+
 	vertical-align: middle;
 	background-color: #39001f24;
 	border: solid 1px #a1006a29;
@@ -722,12 +721,16 @@ kbd {
 
 .secret-right {
 	@extend %secretextend;
+	margin-left: 30px;
+	margin-bottom: 10px;
 	float: right;
 }
 
 .secret-left {
 	@extend %secretextend;
-	float: right;
+	margin-right: 30px;
+	margin-bottom: 10px;
+	float: left;
 }
 
 .secret {
