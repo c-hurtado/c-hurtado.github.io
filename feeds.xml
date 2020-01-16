@@ -24,7 +24,6 @@ layout: none
 <name/>
 </author>
 <summary type="html">
-{{post.excerpt | xml_escape}}
 </summary>
 </entry>
 <% endif %>
