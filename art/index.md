@@ -60,6 +60,14 @@ I love drawing faces. These are some based on random people, famous actors, fun 
 <a href="{{site.url}}{{page.imgLoc}}face2.jpg"><img src="{{site.url}}{{page.imgLoc}}face2.jpg"></a>
 <a href="{{site.url}}{{page.imgLoc}}hair.png"><img src="{{site.url}}{{page.imgLoc}}hair.png"></a>
 </figure>
+
+<figure class="third">
+<a href="{{site.url}}{{page.imgLoc}}soyul.jpeg"><img src="{{site.url}}{{page.imgLoc}}soyul.jpeg"></a>
+<a href="{{site.url}}{{page.imgLoc}}tumblr_nx7gg7YCp81tsh4b6o1_1280.jpg"><img src="{{site.url}}{{page.imgLoc}}tumblr_nx7gg7YCp81tsh4b6o1_1280.jpg"></a>
+<a href="{{site.url}}{{page.imgLoc}}tumblr_nx7gj6FfGB1tsh4b6o1_1280.jpg"><img src="{{site.url}}{{page.imgLoc}}tumblr_nx7gj6FfGB1tsh4b6o1_1280.jpg"></a>
+</figure>
+
+
 <figure>
 <a href="{{site.url}}{{page.imgLoc}}starlord.jpg"><img src="{{site.url}}{{page.imgLoc}}starlord.jpg"></a>
 </figure>
