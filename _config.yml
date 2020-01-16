@@ -24,7 +24,9 @@ mathjax:            true
 sass:
   sass_dir:         _sass
   style:            compressed
-
+collections:
+  gameDevProjects:
+    output:         true
 # Comments
 disqus_shortname:   taylantatli
 

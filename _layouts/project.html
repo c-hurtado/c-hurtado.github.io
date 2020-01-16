@@ -28,7 +28,7 @@ layout: compress
                 </div>
                 <p align="center">I've been extremely lucky to have been able to ship several games during my 10+ years in the game industry.<br/>You can see some of them here</p>
                 <div class="post-list">
-                  {% assign sorted = (site.posts | sort: 'date') | reverse %}
+                  {% assign sorted = (site.gameDevProjects | sort: 'date') | reverse %}
                     {% for post in sorted %}
                         {% if post.project %}
                     <ul>
