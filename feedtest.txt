@@ -7,7 +7,7 @@ layout: none
 <link href="{{site.url}}" rel="alternate" type="text/html"/>
 <updated>2020-01-16T05:43:40+00:00</updated>
 <id>{{site.url}}/feeds.xml</id>
-<title type="html">{{site.name}}</title>
+<title type="html">{{site.title}}</title>
 <subtitle>{{site.description}}</subtitle>
 {% for post in site.posts %}
     {% if post.project == null %}
@@ -29,24 +29,3 @@ layout: none
 <% endif %>
 {% endfor %}
 </feed>
-
-<!-- ?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>{{ site.name | xml_escape }}</title>
-    <description>{{ site.description | xml_escape }}</description>
-    <link>{{ site.url }}</link>
-    <atom:link href="{{ site.url }}/feeds.xml" rel="self" type="application/rss+xml" />
-    {% for post in site.posts %}
-        {% if post.project == null %}
-      <item>
-        <title>{{ post.title | xml_escape }}</title>
-        <description>{{ post.content | xml_escape }}</description>
-        <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
-        <link>{{ site.url }}/{{ post.url }}</link>
-        <guid isPermaLink="true">{{ site.url }}/{{ post.url }}</guid>
-      </item>
-      <% endif %>
-    {% endfor %}
-  </channel>
-</rss -->
