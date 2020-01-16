@@ -16,11 +16,11 @@ I'm currently a Lead Engineer at Sanzaru Games. We just finished Asgard's Wrath,
 
 ### Hobbies
 I have many interests. I will post about some but there are things I want to share more directly here.
-<div id="secret_about_hobbies" class="secret"></div>
+<div id="secret_about_hobbies" class="secretwide"></div>
 
 
 ### Personal Life
-<div id="secret_about_personal" class="secret"></div>
+<div id="secret_about_personal" class="secretwide"></div>
 
 ### About this Site
-<div id="secret_about_site" class="secret"></div>
+<div id="secret_about_site" class="secretwide"></div>

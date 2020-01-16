@@ -737,6 +737,12 @@ kbd {
 		@extend %secretextend;
 }
 
+.secretwide {
+		@extend %secretextend;
+		width:100%;
+
+}
+
 form
 {
 	text-align: center;
