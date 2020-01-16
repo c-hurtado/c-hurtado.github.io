@@ -285,7 +285,7 @@ function refreshContent()
   {
     if(document.getElementById("gamenotice")!= null)
     {
-      document.getElementById("gamenotice").innerHTML = "<p class=\"notice\">If you navigate this website you can collect <i class=\"fa fa-key\"></i>! With enough of them, unlock <i class=\"fa fa-star\"></i> and get access to secret content. For example click <a href=\"#\" onClick=\"AddXPFromSourceNow('demo')\">here</a> to get 50 <i class=\"fa fa-key\"></i> Enjoy!</p>";
+      document.getElementById("gamenotice").innerHTML = "<p class=\"notice\">If you navigate this website you can collect <i class=\"fa fa-key\" color=\"#FFFFFF\"></i>! With enough of them, unlock <i class=\"fa fa-star\" color=\"#FFFFFF\"></i> and get access to secret content. For example click <a href=\"#\" onClick=\"AddXPFromSourceNow('demo')\">here</a> to get 50 <i class=\"fa fa-key\" color=\"#FFFFFF\"></i> Enjoy!</p>";
 
     }
   }
