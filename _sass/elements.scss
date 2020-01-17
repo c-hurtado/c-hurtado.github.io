@@ -138,21 +138,16 @@
 hr {
 	border: 0;
 	height: 1px;
-	opacity: .8;
+	opacity: .65;
     margin: 1em 0;
-	background-image: -webkit-linear-gradient(left, $color_gallery, $color_stack, $color_gallery);
-	background-image: -moz-linear-gradient(left, $color_gallery, $color_stack, $color_gallery);
-	background-image: -ms-linear-gradient(left, $color_gallery, $color_stack, $color_gallery);
-	background-image: -o-linear-gradient(left, $color_gallery, $color_stack, $color_gallery);
+	background-image: -webkit-linear-gradient(left, #ff02da, #0fe3ff, #ff00f1);
+	background-image: -moz-linear-gradient(left, #ff02da, #0fe3ff, #ff00f1);
+	background-image: -ms-linear-gradient(left, #ff02da, #0fe3ff, #ff00f1);
+	background-image: -o-linear-gradient(left, #ff02da, #0fe3ff, #ff00f1);
 	&.hr-line {
 		border: 0;
 		height: 1px;
-		opacity: .15;
 		margin: 1em 0;
-		background-image: -webkit-linear-gradient(left, $color_gallery, $color_stack, $color_gallery);
-		background-image: -moz-linear-gradient(left, $color_gallery, $color_stack, $color_gallery);
-		background-image: -ms-linear-gradient(left, $color_gallery, $color_stack, $color_gallery);
-		background-image: -o-linear-gradient(left, $color_gallery, $color_stack, $color_gallery);
 	}
 }
 
