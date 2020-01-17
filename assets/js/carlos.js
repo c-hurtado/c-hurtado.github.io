@@ -398,8 +398,8 @@ window.onload = function(e){
   //progressBarContainer.style.display = "block";
   levelContainer.innerHTML=GetLevel()+" <i class='fa fa-key starColor'></i>";
   refreshContent();
-  var counter = 0.0;
-  var direction = 1;
+  var counter = 100.0;
+  var direction = -1;
   
 setInterval(function(){
     counter = counter+direction*0.01;
