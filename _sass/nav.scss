@@ -10,7 +10,6 @@
 	-webkit-perspective-origin: 50% 200%;
 	-moz-perspective-origin: 50% 200%;
 	perspective-origin: 50% 200%;
-	box-shadow: 0 0 30px 0 rgba(145, 201, 255, 0.57);
 
 	@media #{$notsmall} {
 		position: fixed;
@@ -22,7 +21,6 @@
 		top: 0;
 		left: 0;
 		background: linear-gradient(180deg, #df6b7e, #f1c300);
-		background: $comp-color;
 		border: none;
 		width: 48px;
 		height: 45px;
@@ -33,6 +31,7 @@
 		outline: none;
 		@include border-radius(0,3px,0,0);
 		opacity: 1;
+		box-shadow: 0 0 30px 0 rgba(145, 201, 255, 0.57);
 		@media #{$notsmall} {
 			@include border-radius(10px,10px,10px,10px);
 		}
