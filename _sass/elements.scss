@@ -865,7 +865,7 @@ button
 
 .stars {
   background:transparent url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
-  z-index:-3;
+  z-index:0;
 }
 
 .twinkling{
@@ -881,7 +881,7 @@ button
 
 .clouds{
     background:transparent url(http://www.script-tutorials.com/demos/360/images/clouds3.png) repeat top center;
-    z-index:0
+    z-index:0;
 
   -moz-animation:move-clouds-back 500s linear infinite;
   -ms-animation:move-clouds-back 500s linear infinite;
