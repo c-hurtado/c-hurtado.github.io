@@ -43,7 +43,7 @@ function typeWriter(id,txt, speed, i, attachString) {
   if (i < txt.length) {
     document.getElementById(id).innerHTML += txt.charAt(i);
 
-    setTimeout(typeWriter, speed, id, txt, speed, i+1);
+    setTimeout(typeWriter, speed, id, txt, speed, i+1, attachString);
   }
   else {
     if(attachString!="")
@@ -322,7 +322,7 @@ function refreshContent()
           pendingXPHolder.style="display:inline-table";
           pendingXPHolder.innerHTML = "";
           pendingXPHolder.style.opacity = "1";
-          typeWriter("pendingXP",savedPendingXP[1]+ ": +"+savedPendingXP[0],100,0," <i class='fa fa-key keyColor'></i>");
+          typeWriter("pendingXP",savedPendingXP[1]+ ": +"+savedPendingXP[0],20,0," <i class='fa fa-key keyColor'></i>");
       }
       else {
         pendingXPHolder.style="display:none";
