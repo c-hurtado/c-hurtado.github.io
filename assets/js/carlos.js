@@ -39,11 +39,17 @@ globalXpLevel[3] = 760;
 globalXpLevel[4] = 1250;
 globalXpLevel[5] = 1480;
 
-function typeWriter(id,txt, speed, i) {
+function typeWriter(id,txt, speed, i, attachString) {
   if (i < txt.length) {
     document.getElementById(id).innerHTML += txt.charAt(i);
 
     setTimeout(typeWriter, speed, id, txt, speed, i+1);
+  }
+  else {
+    if(attachString!="")
+    {
+      document.getElementById(id).innerHTML += attachString;
+    }
   }
 }
 
@@ -316,7 +322,7 @@ function refreshContent()
           pendingXPHolder.style="display:inline-table";
           pendingXPHolder.innerHTML = "";
           pendingXPHolder.style.opacity = "1";
-          typeWriter("pendingXP",savedPendingXP[1]+ ": +"+savedPendingXP[0],50,0);
+          typeWriter("pendingXP",savedPendingXP[1]+ ": +"+savedPendingXP[0],100,0," <i class='fa fa-key keyColor'></i>");
       }
       else {
         pendingXPHolder.style="display:none";
