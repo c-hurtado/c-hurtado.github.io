@@ -398,13 +398,22 @@ window.onload = function(e){
   //progressBarContainer.style.display = "block";
   levelContainer.innerHTML=GetLevel()+" <i class='fa fa-key starColor'></i>";
   refreshContent();
-  var counter = 0;
+  var counter = -1;
+  var direction = 1;
+  
 setInterval(function(){
-  counter+=1;
+    counter = counter+direction*1;
     //console.log("Counter:"+counter);
-    counter=counter%100;
+    if(counter == 100)
+    {
+        direction = -1;
+    }
+    if(counter == 0)
+    {
+        direction = 1;
+    }
      document.body.style.backgroundImage = "linear-gradient(180deg, #fff 0%, #0c0c0ceb 100%),linear-gradient(231.28deg, #e100ff 0%, #000 "+counter+"%),linear-gradient(180deg, #5200FF 0%, #1A0050 "+counter+"%),linear-gradient(341.1deg, red 7.52%, #1700A4 77.98%),radial-gradient(49.82% 80.51% at 49.82% 50%, #5A0069 0%, #FF3D00 100%),radial-gradient(50% 72.12% at 50% 50%, #EB00FF 0%, #105 100%)";
-    }, 100);
+    }, 10);
    
     
 
