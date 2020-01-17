@@ -360,10 +360,9 @@ All this is done for any sub-level being entered.
 	}
 }
 // Menu Color
-.dl-menuwrapper button:hover,
 .dl-menuwrapper button.dl-active,
 .dl-menuwrapper ul {
-	background: linear-gradient(180deg, #f371f3, #ffe575);
+	background: #090414eb;
 }
 // Fix for IE
 .dl-menu li {
