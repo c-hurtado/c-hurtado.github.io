@@ -14,6 +14,7 @@ imgLoc: /assets/img/gallery/
 5. [Photography](#photography)
 6. [3D Renders](#3d-renders)
 
+-----------
 
 ## Portraits
 I love drawing faces. These are some based on random people, famous actors, fun photography and things I like to draw.
