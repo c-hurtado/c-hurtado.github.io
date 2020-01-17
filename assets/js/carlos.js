@@ -322,7 +322,7 @@ function refreshContent()
           pendingXPHolder.style="display:inline-table";
           pendingXPHolder.innerHTML = "";
           pendingXPHolder.style.opacity = "1";
-          typeWriter("pendingXP",savedPendingXP[1]+ ": +"+savedPendingXP[0],20,0," <i class='fa fa-key'></i>");
+          typeWriter("pendingXP",savedPendingXP[1]+ ": +"+savedPendingXP[0],30,0,"  <i class='fa fa-key'></i>");
       }
       else {
         pendingXPHolder.style="display:none";
