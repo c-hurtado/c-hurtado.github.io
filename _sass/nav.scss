@@ -10,6 +10,8 @@
 	-webkit-perspective-origin: 50% 200%;
 	-moz-perspective-origin: 50% 200%;
 	perspective-origin: 50% 200%;
+	box-shadow: 0 0 30px 0 rgba(145, 201, 255, 0.57);
+
 	@media #{$notsmall} {
 		position: fixed;
 		max-width: 175px;
@@ -19,6 +21,7 @@
 	button {
 		top: 0;
 		left: 0;
+		background: linear-gradient(180deg, #df6b7e, #f1c300);
 		background: $comp-color;
 		border: none;
 		width: 48px;
@@ -29,7 +32,7 @@
 		cursor: pointer;
 		outline: none;
 		@include border-radius(0,3px,0,0);
-		opacity: 0.6;
+		opacity: 1;
 		@media #{$notsmall} {
 			@include border-radius(3px,3px,3px,3px);
 		}
@@ -37,7 +40,8 @@
 	button:hover,
 	button.dl-active,
 	ul {
-		background: #aaa;
+		background: linear-gradient(180deg, #f371f3, #ffe575);
+
 	}
 	button:after {
 		content: '';
@@ -47,8 +51,8 @@
 		background: $white;
 		top: 10px;
 		left: 16%;
-		box-shadow: 
-			0 10px 0 $white, 
+		box-shadow:
+			0 10px 0 $white,
 			0 20px 0 $white;
 	}
 	button.dl-active {
@@ -166,10 +170,10 @@
 		display: none;
 	}
 }
-/* 
+/*
 When a submenu is openend, we will hide all li siblings.
 For that we give a class to the parent menu called "dl-subview".
-We also hide the submenu link. 
+We also hide the submenu link.
 The opened submenu will get the class "dl-subviewopen".
 All this is done for any sub-level being entered.
 */
@@ -360,7 +364,7 @@ All this is done for any sub-level being entered.
 .dl-menuwrapper button:hover,
 .dl-menuwrapper button.dl-active,
 .dl-menuwrapper ul {
-	background: $comp-color;
+	background: #090414eb;
 }
 // Fix for IE
 .dl-menu li {
