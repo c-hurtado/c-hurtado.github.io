@@ -307,7 +307,7 @@ kbd {
 .levelContainer {
 	height:30px;
 	border-radius: 30px;
-	background-image: linear-gradient(to bottom, rgb(255, 34, 178), rgb(88, 30, 70));
+  background-image: linear-gradient(to bottom, #ff22b2, #4f3ad3);
 	color:#FFFFFF;
 	width:80px;
 	padding-top:6px;
@@ -316,6 +316,7 @@ kbd {
 	vertical-align: center;
 	//opacity:inherit;
 	font-size: 0.9em;
+	box-shadow: 0 0 10px 0 rgba(255,25,201,0.57);
 }
 
 .xpCount
