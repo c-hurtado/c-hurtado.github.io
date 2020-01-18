@@ -286,7 +286,7 @@ function refreshUnlockedContent()
 function messWithBG()
 {
     //$(.css('background-image', "linear-gradient(to right, #ff22b2, #ffb400)");
-   
+
 }
 //changes the score data.
 function refreshContent()
@@ -400,11 +400,11 @@ window.onload = function(e){
   refreshContent();
   var counter = 100.0;
   var direction = -1;
-  
+
 setInterval(function(){
     counter = counter+direction*0.01;
     //console.log("Counter:"+counter);
-    if(counter == 100.0)
+    if(counter > 100.0)
     {
         direction = -1;
     }
@@ -415,7 +415,7 @@ setInterval(function(){
     }
      document.body.style.backgroundImage = "linear-gradient(180deg, #fff 0%, #0c0c0ceb 100%),linear-gradient(231.28deg, #e100ff 0%, #000 "+counter+"%),linear-gradient(180deg, #5200FF 0%, #1A0050 "+counter+"%),linear-gradient(341.1deg, red 7.52%, #1700A4 77.98%),radial-gradient(49.82% 80.51% at 49.82% 50%, #5A0069 0%, #FF3D00 100%),radial-gradient(50% 72.12% at 50% 50%, #EB00FF 0%, #105 100%)";
     }, 6);
-   
-    
+
+
 
 }
