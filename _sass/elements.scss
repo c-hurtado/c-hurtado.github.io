@@ -892,3 +892,23 @@ button
   -webkit-animation:move-clouds-back 500s linear infinite;
   animation:move-clouds-back 500s linear infinite;
 }
+
+.logoHolder
+{
+	display:block;
+	float:left;
+	width:300px;
+	height:300px;
+	left:0px;
+	top:0px;
+	background:transparent url(https://www.carloshurtado.com/assets/img/circle2.png) center center;
+}
+
+.rightContainer
+{
+	display:block;
+	float:left;
+	right:0px;
+	top:0px;
+	text-align: center;
+}
