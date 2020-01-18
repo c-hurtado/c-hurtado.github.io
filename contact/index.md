@@ -7,10 +7,7 @@ titleImg: contact.png
 ---
 
 <!-- modify this form HTML and place wherever you want your form -->
-<form
-  action="https://formspree.io/xdoendyz"
-  method="POST"
->
+<form action="https://formspree.io/xdoendyz" method="POST">
 <table>
 <tr>
 <td align="left">
@@ -21,7 +18,7 @@ titleImg: contact.png
   <td align="right">
   <input type="text" name="_replyto" style="width: 100%;">
   </td>
-  </tr>
+</tr>
 <tr>
 <td align="left">
  <label>
@@ -29,14 +26,13 @@ titleImg: contact.png
   </label>
 </td>
   <td align="right">
-<textarea name="message"     style="width: 100%;"
-></textarea>
+<textarea name="message"  style="width: 100%;"></textarea>
 </td>
 </tr>
 <tr>
-<td colspan="2"> <button class="btn btn-info" type="submit">Send</button></td>
+<td colspan="2">
+<button class="btn btn-info" type="submit">Send</button></td>
 </tr>
 </table>
 </form>
 You can also find me in many other sites.
-{% include social-links.html %}

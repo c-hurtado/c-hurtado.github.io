@@ -1,0 +1,39 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"><!--<![endif]-->
+<head>
+    {% include head.html %}
+</head>
+<body>
+   {% include grid.html %}
+    {% include nav.html %}
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="container">
+          {% include score.html %}
+            <div class="content">
+                <div class="post-title {% if page.feature %} feature {% endif %}">
+                    <a class="btn zoombtn" href="{{site.url}}" onClick="AddXPFromSource('home')">
+                        <i class="fa fa-home"></i>
+                    </a>
+                    {% if page.titleImg %}
+                    <img src="{{site.url}}/assets/img/titles/{{page.titleImg}}"/>
+                        {% endif %}
+                </div>
+                {{ content }}
+                {% include social-links.html %}
+            </div>
+        </div>
+    </header>
+    {% include scripts.html %}
+    {% if site.mathjax == true %}
+    <!-- MathJax -->
+    <script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    {% endif %}
+</body>
+</html>
