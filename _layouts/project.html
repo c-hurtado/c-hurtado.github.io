@@ -30,7 +30,6 @@ layout: compress
                 <div class="post-list">
                   {% assign sorted = (site.gameDevProjects | sort: 'date') | reverse %}
                     {% for post in sorted %}
-                        {% if post.project %}
                     <ul>
                         <li class="wow fadeInLeft" data-wow-duration="1.5s">
                             <a class="zoombtn" href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>  {% if post.developer %} - {{ post.developer }} {% endif %}
@@ -43,7 +42,6 @@ layout: compress
                             <a href="{{ site.url }}{{ post.url }}" class="btn zoombtn">Read More</a>
                         </li>
                     </ul>
-                      {% endif %}
                     {% endfor %}
                 </div>
             </div>
