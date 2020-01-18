@@ -38,3 +38,5 @@ titleImg: contact.png
 </tr>
 </table>
 </form>
+You can also find me in many other sites.
+{% include social-links.html %}
