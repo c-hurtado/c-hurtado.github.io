@@ -26,10 +26,8 @@ layout: compress
                    <img src="{{site.url}}/assets/img/titles/{{page.titleImg}}"/>
                    {% endif %}
                 </div>
-                <p align="center">I've been extremely lucky to have been able to ship several games during my 10+ years in the game industry.<br/>You can see some of them here</p>
                 <div class="post-list">
-                  {% assign sorted = (site.demoposts | sort: 'date') | reverse %}
-                    {% for post in sorted %}
+                    {% for post in site.demoposts %}
                         {% if post.project %}
                     <ul>
                         <li class="wow fadeInLeft" data-wow-duration="1.5s">
