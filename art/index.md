@@ -130,13 +130,14 @@ To practice I go to figure drawing sessions. There I usually have 20 minutes to 
 <figure class="third">
 <a href="{{site.url}}{{page.imgLoc}}5EBED729-A641-4F7E-B90C-CE9B950B80AA.png"><img src="{{site.url}}{{page.imgLoc}}5EBED729-A641-4F7E-B90C-CE9B950B80AA.png"></a>
 <a href="{{site.url}}{{page.imgLoc}}7B8A217F-3686-4488-BCE8-7EBB98385010.jpeg"><img src="{{site.url}}{{page.imgLoc}}7B8A217F-3686-4488-BCE8-7EBB98385010.jpeg"></a>
-<a href="{{site.url}}{{page.imgLoc}}8D17B5D5-7E92-4292-8322-8EC61AFA06D8.png"><img src="{{site.url}}{{page.imgLoc}}8D17B5D5-7E92-4292-8322-8EC61AFA06D8.png"></a>
+<a href="{{site.url}}{{page.imgLoc}}069E1B6F-30AC-4770-B4FF-C9579B01CE38.png"><img src="{{site.url}}{{page.imgLoc}}069E1B6F-30AC-4770-B4FF-C9579B01CE38.png"></a>
 </figure>
 
 
 <figure class="third">
 <a href="{{site.url}}{{page.imgLoc}}23E25C3F-69AA-4524-97D3-B0AB4755FEA7.png"><img src="{{site.url}}{{page.imgLoc}}23E25C3F-69AA-4524-97D3-B0AB4755FEA7.png"></a>
-<a href="{{site.url}}{{page.imgLoc}}069E1B6F-30AC-4770-B4FF-C9579B01CE38.png"><img src="{{site.url}}{{page.imgLoc}}069E1B6F-30AC-4770-B4FF-C9579B01CE38.png"></a>
+<a href="{{site.url}}{{page.imgLoc}}8D17B5D5-7E92-4292-8322-8EC61AFA06D8.png"><img src="{{site.url}}{{page.imgLoc}}8D17B5D5-7E92-4292-8322-8EC61AFA06D8.png"></a>
+
 <a href="{{site.url}}{{page.imgLoc}}723E299A-AD11-4BCC-85EF-14C6C4DDC874.jpeg"><img src="{{site.url}}{{page.imgLoc}}723E299A-AD11-4BCC-85EF-14C6C4DDC874.jpeg"></a>
 </figure>
 
