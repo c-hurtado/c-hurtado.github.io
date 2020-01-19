@@ -14,17 +14,19 @@ globalXpDict["social_linkedIn"]       = [100, "Pressed LINKEDIN button: "];
 globalXpDict["social_instagram"]      = [100, "Pressed INSTAGRAM button: "];
 globalXpDict["social_gitHub"]         = [100, "Pressed GITHUB button: "];
 globalXpDict["social_rss"]            = [100, "Pressed RSS button: "];
-globalXpDict["art_open_portrait"]     = [100, "Art"];
+globalXpDict["social_rss"]            = [100, "Pressed LOGO: "];
+globalXpDict["synthwave"]             = [100, "Opened SYNTHWAVE MUSIC: "];
 globalXpDict["art_open_photography"]  = [100, "Art"];
 globalXpDict["art_open_figureDrawing"]= [100, "Art"];
 globalXpDict["art_open_figureDrawing"]= [100, "Art"];
 globalXpDict["art_open_3Drender"]     = [100, "Art"];
 globalXpDict["contact_resume"]        = [100, "Art"];
 globalXpDict["thoughts_post"]         = [100, "Art"];
-globalXpDict["demo"]                  = [50, "You clicked on the demo"];
+globalXpDict["dots"]                  = [100, "Clicked on DOT: "];
+globalXpDict["demo"]                  = [50, "Used DEMO link: "];
 
 globalUnlockData = {}
-globalUnlockData["secret_home"]=[1,"<i class=\"fa fa-lock lockColor\"></i><br/>Requires 1 <i class=\"fa fa-key starColor\"></i>", "<i class=\"fa fa-unlock lockColor\"></i> Unlocked!<br/>A good way to enjoy this site is by listening to some <a target=\"blank\" href=\"https://www.youtube.com/watch?v=AGCluKbW1AY\">Synthwave Music</a>."];
+globalUnlockData["secret_home"]=[1,"<i class=\"fa fa-lock lockColor\"></i><br/>Requires 1 <i class=\"fa fa-key starColor\"></i>", "<i class=\"fa fa-unlock lockColor\"></i> Unlocked!<br/><br/>A good way to enjoy this site is by listening to some <a target=\"blank\" onClick=\"AddXPFromSourceNow('synthwave')\" href=\"https://www.youtube.com/watch?v=AGCluKbW1AY\">Synthwave Music</a>."];
 
 
 
