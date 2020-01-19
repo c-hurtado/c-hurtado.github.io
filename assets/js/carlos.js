@@ -13,7 +13,7 @@ globalXpDict["social_twitter"]        = [100, "You opened my twitter page"];
 globalXpDict["social_linkedIn"]       = [100, "You visited my linked in"];
 globalXpDict["social_instagram"]      = [100, "You visited my instagram"];
 globalXpDict["social_gitHub"]         = [100, "You visited my GitHub"];
-globalXpDict["about_tool"]            = [100, "Art"];
+globalXpDict["social_rss"]            = [100, "You visited my RSS Feed"];
 globalXpDict["art_open_portrait"]     = [100, "Art"];
 globalXpDict["art_open_photography"]  = [100, "Art"];
 globalXpDict["art_open_figureDrawing"]= [100, "Art"];
@@ -24,8 +24,11 @@ globalXpDict["thoughts_post"]         = [100, "Art"];
 globalXpDict["demo"]                  = [50, "You clicked on the demo"];
 
 globalUnlockData = {}
+globalUnlockData["secret_home"]=[1,"<i class=\"fa fa-lock lockColor\"></i><br/>Requires 1 <i class=\"fa fa-key starColor\"></i>", "<i class=\"fa fa-unlock lockColor\"></i> Unlocked!<br/>A good way to enjoy this site is by listening to some <a target=\"blank\" href=\"https://www.youtube.com/watch?v=AGCluKbW1AY\">Synthwave Music</a>."];
+
+
+
 globalUnlockData["secret_about_1"]=[3,"<i class=\"fa fa-lock lockColor\"></i><br/>Requires 2 <i class=\"fa fa-key starColor\"></i>", "<i class=\"fa fa-unlock lockColor\"></i> Unlocked!<br/><br/><img src='https://c-hurtado.github.io/assets/img/baby91.jpg'>"];
-globalUnlockData["secret_home"]=[1,"<i class=\"fa fa-lock lockColor\"></i><br/>Requires 1 <i class=\"fa fa-key starColor\"></i>", "<i class=\"fa fa-unlock lockColor\"></i> Unlocked!<br/><br/>I also love <a href='https://palace-games.com/'>Escape Rooms</a> and <a href='https://www.youtube.com/watch?v=SNnwOl1vq2o'>Korean variety shows</a>"];
 globalUnlockData["secret_about_2"]=[3,"<i class=\"fa fa-lock lockColor\"></i><br/>Requires 3 <i class=\"fa fa-key starColor\"></i>", "<i class=\"fa fa-unlock lockColor\"></i> Unlocked!<br/><br/><img src='https://c-hurtado.github.io/assets/img/baby91.jpg'>"];
 globalUnlockData["secret_about_hobbies"]=[2,
   "<div class=\"secretwide\"><i class=\"fa fa-lock lockColor\"></i><br/>Requires 2 <i class=\"fa fa-key starColor\"></i></div>",
