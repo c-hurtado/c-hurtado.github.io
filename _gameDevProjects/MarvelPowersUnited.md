@@ -18,3 +18,5 @@ comments: false
 
 <iframe width="560" height="315" src="//www.youtube.com/embed/xAvzIff_PCg"  frameborder="0"> </iframe>
 ....
+
+I co-led this project with the Director of Technology. Marvel Powers United is a 4 player networked co-op Arena VR game. You can choose friends and participate in a fight against AI enemies.

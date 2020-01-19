@@ -12,6 +12,5 @@ tag:
 comments: false
 ---
 
-I started at Sanzaru (developers of Sly Cooper 4) as part as the very small mobile group. Just in a team of 2 engineers we developed a Casual Hidden Object game for the publisher Big Fish Games.
-
-The project was a cross-platform PC and IOS game. We worked with a custom engine from Sanzaru. I also worked on developing customer service websites to allow for tracking and modifications to tuning while the game was live.
+At [Electronic Arts](http://www.ea.com) I was a gameplay engineer for the Maxis Studios. As a first job out of grad-school I worked and published 3 expansion packs and multiple stuff packs. Each expansion pack was on a 6 month development cycle.
+I worked on Sims 3: Late Night, Sims 3: Generations and Sims 3: Pets.
