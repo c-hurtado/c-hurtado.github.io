@@ -33,7 +33,7 @@ You can read more about the specific projects I worked on in the [Game Developme
 <div id="secret_about_hobbies"></div>
 
 ### Personal Life
-<div id="secret_about_personal" class="secretwide"></div>
+<div id="secret_about_personal"></div>
 
 ### About The Site
 <div id="secret_about_site" class="secretwide"></div>
