@@ -62,11 +62,11 @@ layout: compress
                     </div>
                     <hr class="hr-line">
                 <img src="{{site.url}}/assets/img/titles/latestthoughts.png"/>
-                 <div class="post-list wow bounceIn" data-wow-duration="2s">
+                 <div class="post-list wow fadeIn animated" data-wow-duration="2s">
                     {% for post in site.posts %}
                         {% if post.project == null %}
                     <ul>
-                        <li class="wow slideInUp" data-wow-duration="1.5s">
+                        <li class="wow fadeIn animated" data-wow-duration="1.5s">
                             <a class="zoombtn" href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
                             <p>{{ post.excerpt }}</p>
                             <a href="{{ site.url }}{{ post.url }}" class="btn zoombtn">Read More</a>
