@@ -27,7 +27,9 @@ globalUnlockData = {}
 globalUnlockData["secret_about_1"]=[3,"<i class=\"fa fa-lock lockColor\"></i><br/>Requires 2 <i class=\"fa fa-key starColor\"></i>", "<i class=\"fa fa-unlock lockColor\"></i> Unlocked!<br/><br/><img src='https://c-hurtado.github.io/assets/img/baby91.jpg'>"];
 globalUnlockData["secret_home"]=[1,"<i class=\"fa fa-lock lockColor\"></i><br/>Requires 1 <i class=\"fa fa-key starColor\"></i>", "<i class=\"fa fa-unlock lockColor\"></i> Unlocked!<br/><br/>I also love <a href='https://palace-games.com/'>Escape Rooms</a> and <a href='https://www.youtube.com/watch?v=SNnwOl1vq2o'>Korean variety shows</a>"];
 globalUnlockData["secret_about_2"]=[3,"<i class=\"fa fa-lock lockColor\"></i><br/>Requires 3 <i class=\"fa fa-key starColor\"></i>", "<i class=\"fa fa-unlock lockColor\"></i> Unlocked!<br/><br/><img src='https://c-hurtado.github.io/assets/img/baby91.jpg'>"];
-globalUnlockData["secret_about_hobbies"]=[2,"<i class=\"fa fa-lock lockColor\"></i><br/>Requires 2 <i class=\"fa fa-key starColor\"></i>", "<i class=\"fa fa-unlock lockColor\"></i> Unlocked!<br/><br/><a href='https://www.carloshurtado.com/backstory'>Go to Backstory</a>"];
+globalUnlockData["secret_about_hobbies"]=[2,
+  "<div class=\"secretwide\"><i class=\"fa fa-lock lockColor\"></i><br/>Requires 2 <i class=\"fa fa-key starColor\"></i></div>",
+  "<i class=\"fa fa-unlock lockColor\"></i> Unlocked!<br/><br/><ul><li>Website Development: </li><li>Escape Rooms</li><li>Korean Variety Shows</li><li>Japanese New Year shows</li><li>Baron Fig</li></ul>"];
 globalUnlockData["secret_about_personal"]=[3,"<i class=\"fa fa-lock lockColor\"></i><br/>Requires 3 <i class=\"fa fa-key starColor\"></i>", "<i class=\"fa fa-unlock lockColorc\"></i> Unlocked!<br/><br/><a href='https://www.carloshurtado.com/backstory'>Go to Backstory</a>"];
 globalUnlockData["secret_about_site"]=[4,"<i class=\"fa fa-lock lockColor\"></i><br/>Requires 4 <i class=\"fa fa-key starColor\"></i>", "<i class=\"fa fa-unlock lockColor\"></i> Unlocked!<br/><br/><a href='https://www.carloshurtado.com/backstory'>Go to Backstory</a>"];
 
