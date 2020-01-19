@@ -30,7 +30,7 @@ I've been fortunate to have developed and released about 9 titles both for PC, M
 You can read more about the specific projects I worked on in the [Game Development]({{site.url}}/gamedev) page.
 
 ### Hobbies
-<div id="secret_about_hobbies" class="secretwide"></div>
+<div id="secret_about_hobbies"></div>
 
 ### Personal Life
 <div id="secret_about_personal" class="secretwide"></div>
