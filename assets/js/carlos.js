@@ -38,7 +38,7 @@ globalUnlockData["secret_about_hobbies"]=[2,
   "<div class=\"secretwide\"><i class=\"fa fa-unlock lockColor\"></i> Unlocked!</div><ul><li>Website Development: </li><li>Escape Rooms</li><li>Korean Variety Shows</li><li>Japanese New Year shows</li><li>Baron Fig</li></ul>"];
 globalUnlockData["secret_about_personal"]=[3,
   "<div class=\"secretwide\"><i class=\"fa fa-lock lockColor\"></i><br/>Requires 3 <i class=\"fa fa-key starColor\"></i></div>",
-  "<div class=\"secretwide\"><i class=\"fa fa-unlock lockColorc\"></i> Unlocked!/div>You can read a more cheesy recap of my life here: <a href='https://www.carloshurtado.com/backstory'>Backstory</a>"];
+  "<div class=\"secretwide\"><i class=\"fa fa-unlock lockColorc\"></i> Unlocked!</div>You can read a more cheesy recap of my life here: <a href='https://www.carloshurtado.com/backstory'>Backstory</a>"];
 globalUnlockData["secret_about_site"]=[4,
   "<div class=\"secretwide\"><i class=\"fa fa-lock lockColor\"></i><br/>Requires 4 <i class=\"fa fa-key starColor\"></i></div>",
   "<div class=\"secretwide\"><i class=\"fa fa-unlock lockColor\"></i> Unlocked!</div>You worked hard and unlocked this section. This site was made with javascript and CSS. I started it with the Moon Theme for Jekyll. I am using Github pages to host it, meaning it's a static website. Therefore Cookies were the easiest way to keep information"];

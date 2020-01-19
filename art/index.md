@@ -11,6 +11,7 @@ I'm a totally amateur artist, but I really enjoy working on some portraits when 
 For drawing i've used [Photoshop](http://www.adobe.com) and [Clip Studio Paint](http://wwww.clipstudio.net) in my old [Surface Pro 2](https://www.amazon.com/Microsoft-Surface-Haswell-Processor-Titanium/dp/B00QQTDLG4), and now I'm mostly using [Procreate 5](https://procreate.art/) on an [12.9-inch iPad Pro](https://www.apple.com/ipad-pro/) with Apple Pencil 2.
 
 For photography, I have a [Fuji X-T20](https://www.fujifilm.com/products/digital_cameras/x/fujifilm_x_t20/) and I use [Lightroom Classic](http://www.adobe.com) to edit.
+
 -----------
 
 # Table of Contents
@@ -20,8 +21,6 @@ For photography, I have a [Fuji X-T20](https://www.fujifilm.com/products/digital
 4. [Commission & Friends](#commissions-and-friends)
 5. [Photography](#photography)
 6. [3D Renders](#3d-renders)
-
-
 
 -----------
 

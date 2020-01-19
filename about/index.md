@@ -36,7 +36,7 @@ You can read more about the specific projects I worked on in the [Game Developme
 <div id="secret_about_personal"></div>
 
 ### About The Site
-<div id="secret_about_site" class="secretwide"></div>
+<div id="secret_about_site" ></div>
 
 ### Interesting Facts about Me
 <div id="secret_about_facts" class="secretwide"></div>
