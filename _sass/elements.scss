@@ -535,6 +535,7 @@ kbd {
 
 .dot {
   position:absolute;
+	cursor:hand;
   background:#57C1E8;
   width: 2px;
   height: 2px;
@@ -900,6 +901,8 @@ button
 	top:0;
 	left:0;
 	flex-wrap:wrap;
+	margin-top:50px;
+	margin-bottom:50px;
 	justify-content:space-between;
 }
 
