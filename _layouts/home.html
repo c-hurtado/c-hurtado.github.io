@@ -62,7 +62,7 @@ layout: compress
                     </div>
                     <hr class="hr-line">
                 <img src="{{site.url}}/assets/img/titles/latestthoughts.png"/>
-                 <div class="post-list">
+                 <div class="post-list wow bounceIn" data-wow-duration="2s">
                     {% for post in site.posts %}
                         {% if post.project == null %}
                     <ul>
@@ -83,5 +83,7 @@ layout: compress
         </div>
     </header>
     {% include scripts.html %}
+    <script src="{{ site.url }}/assets/js/wow.min.js"></script>
+    <script type="text/javascript">(new WOW).init();</script>
 </body>
 </html>
