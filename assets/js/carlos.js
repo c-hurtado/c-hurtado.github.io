@@ -22,7 +22,7 @@ globalXpDict["art_open_figureDrawing"]= [100, "Art"];
 globalXpDict["art_open_3Drender"]     = [100, "Art"];
 globalXpDict["contact_resume"]        = [100, "Art"];
 globalXpDict["thoughts_post"]         = [100, "Art"];
-globalXpDict["dots"]                  = [100, "Clicked on DOT: "];
+globalXpDict["dot"]                  = [100, "Clicked on DOT: "];
 globalXpDict["demo"]                  = [50, "Used DEMO link: "];
 
 globalUnlockData = {}
