@@ -905,11 +905,10 @@ button
 
 .logoContainer
 {
-	background-image:transparent url(https://www.carloshurtado.com/assets/img/mepunk.png) center center;
+	background-image:transparent url(https://www.carloshurtado.com/assets/img/mepunk.png);
 	display:block;
 	background-size:contain;
 	background-repeat:no-repeat;
-
 	float:left;
 	width:200px;
 	height:250px;
@@ -921,6 +920,6 @@ button
 	display:block;
 	float:right;
 	min-width:400px;
-	height:400px
+	height:400px;
 	text-align:left;
 }
