@@ -905,13 +905,14 @@ button
 
 .logoContainer
 {
-	background-image:transparent url(https://www.carloshurtado.com/assets/img/mepunk.png);
+	background:transparent url(https://www.carloshurtado.com/assets/img/mepunk.png);
 	display:block;
 	background-size:contain;
 	background-repeat:no-repeat;
 	float:left;
-	width:200px;
+	width:300px;
 	height:250px;
+	background-position:center center;
 
 }
 
@@ -922,4 +923,6 @@ button
 	min-width:400px;
 	height:400px;
 	text-align:left;
+	max-width:600px
+	width:400px
 }
