@@ -896,24 +896,31 @@ button
 .tableContainer
 {
 	width:100%;
-	display:block;
+	display:flex;
 	top:0;
 	left:0;
+	flex-wrap:wrap;
+	justify-content:space-between;
 }
 
 .logoContainer
 {
-	background-image:transparent url(https://www.carloshurtado.com/assets/img/mepunk.png);
+	background-image:transparent url(https://www.carloshurtado.com/assets/img/mepunk.png) center center;
 	display:block;
+	background-size:contain;
+	background-repeat:no-repeat;
+
 	float:left;
-	max-width:300px;
-	min-width: 100px;
+	width:200px;
+	height:250px;
 
 }
 
 .textHolder
 {
 	display:block;
-	float:left;
+	float:right;
 	min-width:400px;
+	height:400px
+	text-align:left;
 }
