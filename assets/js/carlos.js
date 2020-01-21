@@ -25,7 +25,7 @@ globalXpDict["thoughts_post"]         = [100, "Art"];
 globalXpDict["dot"]                  = [100, "Clicked on DOT: "];
 globalXpDict["demo"]                  = [50, "Used DEMO link: "];
 globalXpDict["face"]                  = [50, "Clicked on MY FACE: "];
-
+globalXpDict["resume"]                  = [150, "Downloaded my resume: "];
 globalUnlockData = {}
 globalUnlockData["secret_home"]=[1,"<i class=\"fa fa-lock lockColor\"></i><br/>Requires 1 <i class=\"fa fa-key starColor\"></i>", "<i class=\"fa fa-unlock lockColor\"></i> Unlocked!<br/><br/>A good way to enjoy this site is by listening to some <a target=\"blank\" onClick=\"AddXPFromSourceNow('synthwave')\" href=\"https://www.youtube.com/watch?v=AGCluKbW1AY\">Synthwave Music</a>."];
 
