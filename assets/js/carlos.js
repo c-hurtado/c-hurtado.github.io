@@ -27,12 +27,9 @@ globalXpDict["demo"]                  = [50, "Used DEMO link: "];
 globalXpDict["face"]                  = [50, "Clicked on MY FACE: "];
 globalXpDict["resume"]                  = [150, "Downloaded my resume: "];
 globalUnlockData = {}
-globalUnlockData["secret_home"]=[1,"<i class=\"fa fa-lock lockColor\"></i><br/>Requires 1 <i class=\"fa fa-key starColor\"></i>", "<i class=\"fa fa-unlock lockColor\"></i> Unlocked!<br/><br/>A good way to enjoy this site is by listening to some <a target=\"blank\" onClick=\"AddXPFromSourceNow('synthwave')\" href=\"https://www.youtube.com/watch?v=AGCluKbW1AY\">Synthwave Music</a>."];
-
-
-
-globalUnlockData["secret_about_1"]=[3,"<i class=\"fa fa-lock lockColor\"></i><br/>Requires 2 <i class=\"fa fa-key starColor\"></i>", "<i class=\"fa fa-unlock lockColor\"></i> Unlocked!<br/><br/><img src='https://c-hurtado.github.io/assets/img/baby91.jpg'>"];
-globalUnlockData["secret_about_2"]=[3,"<i class=\"fa fa-lock lockColor\"></i><br/>Requires 3 <i class=\"fa fa-key starColor\"></i>", "<i class=\"fa fa-unlock lockColor\"></i> Unlocked!<br/><br/><img src='https://c-hurtado.github.io/assets/img/baby91.jpg'>"];
+globalUnlockData["secret_home"]=[1,"<i class=\"fa fa-lock lockColor\"></i><br/>Requires 1 <i class=\"fa fa-key starColor\"></i>", "<i class=\"fa fa-unlock lockColor\"></i> Unlocked!<hr>A good way to enjoy this site is by listening to some <a target=\"blank\" onClick=\"AddXPFromSourceNow('synthwave')\" href=\"https://www.youtube.com/watch?v=AGCluKbW1AY\"><i class=\"fa fa-music\"></i> Synthwave Music</a>."];
+globalUnlockData["secret_about_1"]=[3,"<i class=\"fa fa-lock lockColor\"></i><br/>Requires 2 <i class=\"fa fa-key starColor\"></i>", "<i class=\"fa fa-unlock lockColor\"></i> Unlocked!<hr><img src='https://c-hurtado.github.io/assets/img/baby91.jpg'>"];
+globalUnlockData["secret_about_2"]=[3,"<i class=\"fa fa-lock lockColor\"></i><br/>Requires 3 <i class=\"fa fa-key starColor\"></i>", "<i class=\"fa fa-unlock lockColor\"></i> Unlocked!<hr><img src='https://c-hurtado.github.io/assets/img/baby91.jpg'>"];
 globalUnlockData["secret_about_hobbies"]=[2,
   "<div class=\"secretwide\"><i class=\"fa fa-lock lockColor\"></i><br/>Requires 2 <i class=\"fa fa-key starColor\"></i></div>",
   "<div class=\"secretwide\"><i class=\"fa fa-unlock lockColor\"></i> Unlocked!</div><ul><li>Website Development: </li><li>Escape Rooms</li><li>Korean Variety Shows</li><li>Japanese New Year shows</li><li>Baron Fig</li></ul>"];
@@ -338,7 +335,7 @@ function refreshContent()
           pendingXPHolder.style="display:inline-table";
           pendingXPHolder.innerHTML = "";
           pendingXPHolder.style.opacity = "1";
-          typeWriter("pendingXP",savedPendingXP[1]+ ": +"+savedPendingXP[0],30,0,"  <i class='fa fa-star'></i>");
+          typeWriter("pendingXP",savedPendingXP[1]+ "+ "+savedPendingXP[0],30,0,"  <i class='fa fa-star'></i>");
       }
       else {
         pendingXPHolder.style="display:none";
