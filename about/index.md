@@ -7,7 +7,7 @@ comments: false
 titleImg: aboutme.png
 ---
 <div class="tableContainer">
-<div class="textHolder" markdown=1>
+<div class="textHolder" markdown="1">
 
 Oh hello!, I didn't see you there. I'm *Carlos*, nice to meet you.
 
