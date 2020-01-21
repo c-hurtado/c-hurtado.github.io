@@ -29,6 +29,7 @@ layout: compress
                 <p align="center">I've been extremely lucky to have been able to ship several games during my 10+ years in the game industry.<br/>You can download my resume here: <a href="https://www.carloshurtado.com/assets/ResumeCarlosHurtado2020.pdf" target="_blank">Resume</a><br/></p>
                   {% assign sorted = (site.gameDevProjects | sort: 'date') | reverse %}
                     {% for post in sorted %}
+                    <div class="post-list">
                     <ul>
                         <li class="wow fadeIn animated" data-wow-duration="1.5s">
                             <a class="zoombtn" href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>  {% if post.developer %} - {{ post.developer }} {% endif %}
