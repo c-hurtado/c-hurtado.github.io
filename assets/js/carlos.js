@@ -8,12 +8,12 @@ globalXpDict["about"]                 = [100, "Visited ABOUT ME: "];
 //globalXpDict["leaderboards"]          = [100, "You visited the Leaderboard page for the first time"];
 globalXpDict["menu"]                  = [100, "Used MENU: "];
 globalXpDict["home"]                  = [100, "Pressed HOME button: "];
-globalXpDict["social_email"]          = [100, "Pressed EMAIL button: "];
-globalXpDict["social_twitter"]        = [100, "Pressed TWITTER button: "];
-globalXpDict["social_linkedIn"]       = [100, "Pressed LINKEDIN button: "];
-globalXpDict["social_instagram"]      = [100, "Pressed INSTAGRAM button: "];
-globalXpDict["social_gitHub"]         = [100, "Pressed GITHUB button: "];
-globalXpDict["social_rss"]            = [100, "Pressed RSS button: "];
+globalXpDict["social_email"]          = [50, "Pressed EMAIL button: "];
+globalXpDict["social_twitter"]        = [50, "Pressed TWITTER button: "];
+globalXpDict["social_linkedIn"]       = [50, "Pressed LINKEDIN button: "];
+globalXpDict["social_instagram"]      = [50, "Pressed INSTAGRAM button: "];
+globalXpDict["social_gitHub"]         = [50, "Pressed GITHUB button: "];
+globalXpDict["social_rss"]            = [50, "Pressed RSS button: "];
 globalXpDict["logo"]                  = [100, "Pressed LOGO: "];
 globalXpDict["synthwave"]             = [100, "Opened SYNTHWAVE MUSIC: "];
 //globalXpDict["art_open_figureDrawing"]= [100, "Art"];
@@ -27,7 +27,7 @@ globalXpDict["face"]                  = [100, "Clicked on MY FACE: "];
 globalXpDict["resume"]                  = [150, "Downloaded my resume: "];
 
 globalUnlockData = {}
-globalUnlockData["secret_home"]=[1,"<i class=\"fa fa-lock lockColor\"></i><br/>Requires 1 <i class=\"fa fa-key starColor\"></i>", "<i class=\"fa fa-unlock lockColor\"></i> Unlocked!<hr>A good way to enjoy this site is by listening to some <a target=\"blank\" onClick=\"AddXPFromSourceNow('synthwave')\" href=\"https://www.youtube.com/watch?v=AGCluKbW1AY\"><i class=\"fa fa-music\"></i> Synthwave Music</a>."];
+globalUnlockData["secret_home"]=[1,"<i class=\"fa fa-lock lockColor\"></i><br/>Requires 1 <i class=\"fa fa-key starColor\"></i>", "<i class=\"fa fa-unlock lockColor\"></i> Unlocked!<hr>A good way to enjoy this site is by listening to some <a target=\"blank\" onClick=\"AddXPFromSourceNow('synthwave')\" href=\"https://www.youtube.com/watch?v=AGCluKbW1AY\">Synthwave Music <i class=\"fa fa-music\"></i> </a>."];
 globalUnlockData["secret_about_1"]=[3,"<i class=\"fa fa-lock lockColor\"></i><br/>Requires 2 <i class=\"fa fa-key starColor\"></i>", "<i class=\"fa fa-unlock lockColor\"></i> Unlocked!<hr><img src='https://c-hurtado.github.io/assets/img/baby91.jpg'>"];
 globalUnlockData["secret_about_2"]=[3,"<i class=\"fa fa-lock lockColor\"></i><br/>Requires 3 <i class=\"fa fa-key starColor\"></i>", "<i class=\"fa fa-unlock lockColor\"></i> Unlocked!<hr><img src='https://c-hurtado.github.io/assets/img/baby91.jpg'>"];
 globalUnlockData["secret_about_hobbies"]=[2,
