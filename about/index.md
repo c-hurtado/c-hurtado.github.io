@@ -21,6 +21,8 @@ If you want some music to go along with the site, I found this playlist to inspi
 
 On that note, professionally I'm currently a Lead Engineer at [Sanzaru Games](http://www.sanzarugames.com).
 We released [Asgard's Wrath](https://www.carloshurtado.com/asgardwrath/), which was nominated to Several Awards.
+
+You can get my resume here: [Resume Carlos Hurtado]({{site.url}}/assets/ResumeCarlosHurtado2020.pdf){:target="_blank"}
 -------
 
 ### Professional Life

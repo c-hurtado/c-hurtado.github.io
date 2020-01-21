@@ -35,4 +35,6 @@ titleImg: contact.png
 </tr>
 </table>
 </form>
+<br/>
+You can download my resume here: <a href="https://www.carloshurtado.com/assets/ResumeCarlosHurtado2020.pdf" target="_blank">Resume Carlos Hurtado</a><br/>
 You can also find me in many other sites.
