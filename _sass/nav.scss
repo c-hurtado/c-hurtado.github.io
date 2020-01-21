@@ -20,10 +20,12 @@
 	button {
 		top: 0;
 		left: 0;
-		background: linear-gradient(180deg, #121c2c80, #290f297a);
+		background: url('https://www.carloshurtado.com/favicon.png');
+        background-size:contain;
+        background-repeat:no-repeat;
 		border: none;
-		width: 48px;
-		height: 45px;
+		width: 64px;
+		height: 64px;
 		text-indent: -900em;
 		overflow: hidden;
 		position: relative;
@@ -42,18 +44,18 @@
 		background: linear-gradient(180deg, #5779af80, #e481e47a);
 
 	}
-	button:after {
-		content: '';
-		position: absolute;
-		width: 68%;
-		height: 5px;
-		background: $white;
-		top: 10px;
-		left: 16%;
-		box-shadow:
-			0 10px 0 $white,
-			0 20px 0 $white;
-	}
+//	button:after {
+//		content: '';
+//		position: absolute;
+//		width: 68%;
+//		height: 5px;
+//		background: $white;
+//		top: 10px;
+//		left: 16%;
+//		box-shadow:
+//			0 10px 0 $white,
+//			0 20px 0 $white;
+//	}
 	button.dl-active {
 		display: none;
 	}
