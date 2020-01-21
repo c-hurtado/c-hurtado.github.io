@@ -7,7 +7,7 @@ comments: false
 titleImg: aboutme.png
 ---
 <div class="tableContainer">
-<div class="textHolder" markdown="1">
+<div class="textHolder" markdown="1" style="float:left">
 
 Oh hello!, I didn't see you there. I'm *Carlos*, nice to meet you.
 
@@ -26,7 +26,7 @@ On that note, professionally I'm currently a Lead Engineer at [Sanzaru Games](ht
 We released [Asgard's Wrath](https://www.carloshurtado.com/asgardwrath/), which was nominated to Several Awards.
 
 </div>
-<div class="logoCntainer">
+<div class="pictureContainer">
 </div>
 </div>
 You can get my resume here: [Resume Carlos Hurtado](https://www.carloshurtado.com/assets/ResumeCarlosHurtado2020.pdf){:target="_blank"}{:onClick="AddXPFromSourceNow('resume')"}

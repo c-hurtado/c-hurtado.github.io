@@ -327,7 +327,7 @@ kbd {
 	border-radius:10px;
 	padding-top:3px;
 	padding-bottom:3px;
-	border: 1px #46556952 solid; 
+	border: 1px #46556952 solid;
 }
 
 .loadingWrapper {
@@ -920,6 +920,19 @@ button
 	background-size:contain;
 	background-repeat:no-repeat;
 	float:left;
+	width:300px;
+	height:250px;
+	background-position:center center;
+
+}
+
+.pictureContainer
+{
+	background:transparent url(https://www.carloshurtado.com/assets/img/carn.png);
+	display:block;
+	background-size:contain;
+	background-repeat:no-repeat;
+	float:right;
 	width:300px;
 	height:250px;
 	background-position:center center;
