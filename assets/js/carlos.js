@@ -5,7 +5,7 @@ globalXpDict["gamedev"]               = [100, "Yisited GAME DEVELOPMENT: "];
 globalXpDict["thoughts"]              = [100, "Visited THOUGHTS: "];
 globalXpDict["contact"]               = [100, "Visited CONTACT ME: "];
 globalXpDict["about"]                 = [100, "Visited ABOUT ME: "];
-globalXpDict["leaderboards"]          = [100, "You visited the Leaderboard page for the first time"];
+//globalXpDict["leaderboards"]          = [100, "You visited the Leaderboard page for the first time"];
 globalXpDict["menu"]                  = [100, "Used MENU: "];
 globalXpDict["home"]                  = [100, "Pressed HOME button: "];
 globalXpDict["social_email"]          = [100, "Pressed EMAIL button: "];
@@ -14,18 +14,18 @@ globalXpDict["social_linkedIn"]       = [100, "Pressed LINKEDIN button: "];
 globalXpDict["social_instagram"]      = [100, "Pressed INSTAGRAM button: "];
 globalXpDict["social_gitHub"]         = [100, "Pressed GITHUB button: "];
 globalXpDict["social_rss"]            = [100, "Pressed RSS button: "];
-globalXpDict["logo"]                   = [100, "Pressed LOGO: "];
+globalXpDict["logo"]                  = [100, "Pressed LOGO: "];
 globalXpDict["synthwave"]             = [100, "Opened SYNTHWAVE MUSIC: "];
-globalXpDict["art_open_photography"]  = [100, "Art"];
-globalXpDict["art_open_figureDrawing"]= [100, "Art"];
-globalXpDict["art_open_figureDrawing"]= [100, "Art"];
-globalXpDict["art_open_3Drender"]     = [100, "Art"];
+//globalXpDict["art_open_figureDrawing"]= [100, "Art"];
+//globalXpDict["art_open_figureDrawing"]= [100, "Art"];
+//globalXpDict["art_open_3Drender"]     = [100, "Art"];
 globalXpDict["contact_resume"]        = [100, "Art"];
 globalXpDict["thoughts_post"]         = [100, "Art"];
-globalXpDict["dot"]                  = [100, "Clicked on DOT: "];
+//globalXpDict["dot"]                  =  [100, "Clicked on DOT: "];
 globalXpDict["demo"]                  = [50, "Used DEMO link: "];
-globalXpDict["face"]                  = [50, "Clicked on MY FACE: "];
+globalXpDict["face"]                  = [100, "Clicked on MY FACE: "];
 globalXpDict["resume"]                  = [150, "Downloaded my resume: "];
+
 globalUnlockData = {}
 globalUnlockData["secret_home"]=[1,"<i class=\"fa fa-lock lockColor\"></i><br/>Requires 1 <i class=\"fa fa-key starColor\"></i>", "<i class=\"fa fa-unlock lockColor\"></i> Unlocked!<hr>A good way to enjoy this site is by listening to some <a target=\"blank\" onClick=\"AddXPFromSourceNow('synthwave')\" href=\"https://www.youtube.com/watch?v=AGCluKbW1AY\"><i class=\"fa fa-music\"></i> Synthwave Music</a>."];
 globalUnlockData["secret_about_1"]=[3,"<i class=\"fa fa-lock lockColor\"></i><br/>Requires 2 <i class=\"fa fa-key starColor\"></i>", "<i class=\"fa fa-unlock lockColor\"></i> Unlocked!<hr><img src='https://c-hurtado.github.io/assets/img/baby91.jpg'>"];
@@ -43,10 +43,10 @@ globalUnlockData["secret_about_site"]=[4,
 var globalXpLevel = {};
 globalXpLevel[0] = 0;
 globalXpLevel[1] = 200;
-globalXpLevel[2] = 510;
-globalXpLevel[3] = 760;
-globalXpLevel[4] = 1250;
-globalXpLevel[5] = 1480;
+globalXpLevel[2] = 400;
+globalXpLevel[3] = 700;
+globalXpLevel[4] = 1100;
+globalXpLevel[5] = 1400;
 
 function typeWriter(id,txt, speed, i, attachString) {
   if (i < txt.length) {
