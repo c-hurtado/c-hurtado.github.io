@@ -86,16 +86,15 @@
       }
     }
     &.btn-info {
-      background-color: $info;
+      background-color: #36275de6;
       color: $white;
-      border-color: $info;
+      border-color: #593679;
+			width:200px;
       &:visited {
-        color: $white;
 				text-shadow:none;
       }
       &:hover {
-        background-color: $white;
-        color: $info;
+        background-color: #586dbbe6;
 				text-shadow:none;
       }
     }
