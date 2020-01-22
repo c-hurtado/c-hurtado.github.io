@@ -325,6 +325,7 @@ function refreshContent()
   var loadingHolder = document.getElementById("loadingHolder");
   var xpCount = document.getElementById("xpCount");
   var pendingXPHolder = document.getElementById("pendingXP");
+  var newKeyHolder = document.getElementById("newKey");
     $('#xpProgressContent').css('transition','0.1s');
     progressBar.style.width = (GetPercentageInLevel())+'%';
     scoreWrapper.style.display= "flex";
@@ -388,6 +389,10 @@ function refreshContent()
                       progressBar.style.width = '0%';
                       setTimeout(function()
                       {
+                        newKeyHolder.style="display:inline-table";
+                        newKeyHolder.style.opacity = "1";
+
+
                         $('#xpProgressContent').css('transition','0.4s linear');
                         progressBar.style.width = (GetPercentageInLevel()*0.98)+'%';
                         xpCount.innerHTML = GetXPPercentage() +" <i class='fa fa-star keyColor'></i>";
