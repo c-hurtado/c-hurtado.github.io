@@ -6,7 +6,7 @@ date: 2016-03-21
 comments: false
 titleImg: aboutme.png
 ---
-<div class="notice">
+<div class="notice" markdown="1">
 Oh hello!, I didn't see you there. I'm *Carlos*, nice to meet you.
 </div>
 <div class="tableContainer">
