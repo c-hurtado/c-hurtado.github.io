@@ -363,6 +363,29 @@ kbd {
 	font-weight:200;
 }
 
+.newKey {
+	height:30px;
+	border-radius: 30px;
+	background-image: linear-gradient(to bottom, #ff00c8, #fc0963)
+	color:#FFFFFF;
+	width: auto;
+	padding-top:6px;
+	padding-left:12px;
+	padding-right:12px;
+	z-index:10;
+	text-align:center;
+	vertical-align: center;
+	//opacity:inherit;
+	font-size: 0.9em;
+	display:none;
+	margin-top:10px;
+	margin-bottom:10px;
+	transition: 0.6s linear;
+	transition-property: opacity;
+	box-shadow:0 0 10px 0 rgba(255, 137, 25, 0.57);
+	font-weight:200;
+}
+
 
 
 .grid-wrapper {
