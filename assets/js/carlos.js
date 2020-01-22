@@ -304,7 +304,7 @@ function refreshContent()
   {
     if(document.getElementById("gamenotice")!= null)
     {
-      document.getElementById("gamenotice").innerHTML = "<p class=\"notice\">If you navigate this website you can collect <i class=\"fa fa-star  keyColor\"></i> !<br/>With enough of them, unlock <i class=\"fa fa-key starColor\"></i> and get access to secret content. For example click <a href=\"#\" onClick=\"AddXPFromSourceNow('demo')\">here</a> to get 50 <i class=\"fa fa-star keyColor\"></i> Enjoy!</p>";
+      document.getElementById("gamenotice").innerHTML = "<p class=\"notice\">Dig around this site and collect <i class=\"fa fa-star  keyColor\"></i> !<br/>Get enough to trade for <i class=\"fa fa-key starColor\"></i> and unlock secret content.</br>Click <a href=\"#\" onClick=\"AddXPFromSourceNow('demo')\">here</a> to get 50 <i class=\"fa fa-star keyColor\"></i> to get you started. Enjoy!</p>";
 
     }
   }
