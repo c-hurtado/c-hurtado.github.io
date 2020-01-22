@@ -6,10 +6,11 @@ date: 2016-03-21
 comments: false
 titleImg: aboutme.png
 ---
+<div class="notice">
+Oh hello!, I didn't see you there. I'm *Carlos*, nice to meet you.
+</div>
 <div class="tableContainer">
 <div class="textHolder" markdown="1" style="float:left;width:450px;">
-
-Oh hello!, I didn't see you there. I'm *Carlos*, nice to meet you.
 
 Let's start by saying that this page is about me, this site and my interests.
 
@@ -29,8 +30,9 @@ We released [Asgard's Wrath](https://www.carloshurtado.com/asgardwrath/), which 
 <div class="pictureContainer">
 </div>
 </div>
+<div class="notice">
 You can get my resume here: [Resume Carlos Hurtado](https://www.carloshurtado.com/assets/ResumeCarlosHurtado2020.pdf){:target="_blank"}{:onClick="AddXPFromSourceNow('resume')"}
-
+</div>
 
 -------
 
