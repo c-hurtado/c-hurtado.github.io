@@ -17,11 +17,11 @@ I'm always consuming content, media, and articles and there is much I want to sh
 Also, this site is a game / puzzle. You have to navigate it to unlock its contents... Don't worry, the most important stuff is unlocked, but you can get some of the fun/funny parts with the unlocks.
 
 
-I put a lot of work into this website as a fun side project, and i've been enjoying the Synthwave style of it.
+I put a lot of work into this website as a fun side project, and i've been enjoying the **Synthwave** style of it.
 If you want some music to go along with the site, I found this playlist to inspire me.
 
 
-On that note, professionally I'm currently a Lead Engineer at [Sanzaru Games](http://www.sanzarugames.com).
+On that note, professionally I'm currently a **Lead Engineer** at [Sanzaru Games](http://www.sanzarugames.com).
 We released [Asgard's Wrath](https://www.carloshurtado.com/asgardwrath/), which was nominated to several Awards.
 
 </div>
@@ -36,7 +36,7 @@ You can get my resume here: [Resume Carlos Hurtado](https://www.carloshurtado.co
 
 ### Professional Life
 
-I've been working in the game industry for about 10 years. I have a [Master of Entertainment Technology](https://etc.cmu.edu) degree from [Carnegie Mellon University](http://www.cmu.edu) , and an engineering and a bachelor degree in CS from [Universidad de Chile](http://www.uchile.cl). Since graduating from my master I've worked at Electronic Arts, Bigpoint and most recently [Sanzaru Games](http://www.sanzaru.com).
+I've been working in the game industry for about 10 years. I have a [Master of Entertainment Technology](https://etc.cmu.edu) degree from [Carnegie Mellon University](http://www.cmu.edu) , and an engineering and a bachelor degree in CS from [Universidad de Chile](http://www.uchile.cl). Since graduating from my master I've worked at [Electronic Arts](http://www.ea.com), [Bigpoint](http://www.bigpoint.com) and most recently [Sanzaru Games](http://www.sanzaru.com).
 I've been fortunate to have developed and released about 9 titles both for PC, Mobile platforms and Virtual Reality.
 
 You can read more about the specific projects I worked on in the [Game Development]({{site.url}}/gamedev) page.

@@ -314,6 +314,10 @@ function refreshContent()
       }
   }
 
+  if(!navigator.cookieEnabled)
+  {
+    return;
+  }
   var progressBar = document.getElementById("xpProgressContent");
   var progressBarContainer = document.getElementById("xpProgress");
   var levelContainer = document.getElementById("levelContainer");
