@@ -6,7 +6,9 @@ comments: false
 titleImg: art.png
 imgLoc: /assets/img/gallery/
 ---
+<div class="notice" markdown="1">
 I'm a totally amateur artist, but I really enjoy working on some portraits when I have some free time.
+</div>
 
 For drawing i've used [Photoshop](http://www.adobe.com) and [Clip Studio Paint](http://wwww.clipstudio.net) in my old [Surface Pro 2](https://www.amazon.com/Microsoft-Surface-Haswell-Processor-Titanium/dp/B00QQTDLG4), and now I'm mostly using [Procreate 5](https://procreate.art/) on an [12.9-inch iPad Pro](https://www.apple.com/ipad-pro/) with Apple Pencil 2.
 
