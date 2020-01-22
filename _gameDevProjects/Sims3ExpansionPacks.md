@@ -5,7 +5,7 @@ date:   2013-1-1
 
 project: true
 developer: "Electronic Arts"
-feature: /assets/img/projects/darkmanor.jpg
+feature: /assets/img/projects/sims.png
 tag:
 - ElectronicArts
 - GameDevelopment

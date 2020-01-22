@@ -5,7 +5,7 @@ date:   2017-1-1
 
 project: true
 developer: "Bigpoint"
-feature: /assets/img/projects/darkmanor.jpg
+feature: /assets/img/projects/uridiumwars.png
 tag:
 - Bigpoint
 - GameDevelopment
