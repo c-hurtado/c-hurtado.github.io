@@ -1,9 +1,8 @@
 ---
 layout: post
 title:  "Uridium Wars"
-date:   2017-1-1
+date:   2015-11-11
 
-project: true
 developer: "Bigpoint"
 feature: /assets/img/projects/uridiumwars.png
 tag:

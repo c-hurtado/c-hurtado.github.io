@@ -1,9 +1,8 @@
 ---
 layout: post
 title:  "Dark Manor"
-date:   2017-1-1
+date:   2016-11-11
 
-project: true
 developer: "Sanzaru Games"
 feature: /assets/img/projects/darkmanor.jpg
 tag:

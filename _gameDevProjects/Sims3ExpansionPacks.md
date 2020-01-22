@@ -1,9 +1,8 @@
 ---
 layout: post
 title:  "Sims 3 Expansion Packs"
-date:   2013-1-1
+date:   2014-11-11
 
-project: true
 developer: "Electronic Arts"
 feature: /assets/img/projects/sims.png
 tag:
