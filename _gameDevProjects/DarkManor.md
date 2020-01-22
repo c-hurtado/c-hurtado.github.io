@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: projectpost
 title:  "Dark Manor"
 date:   2016-11-11
 

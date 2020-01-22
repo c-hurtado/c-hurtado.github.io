@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: projectpost
 title:  "VR Sports Challenge"
 date:   2017-11-11
 excerpt: "<b>VR Sports Challenge</b> is a VR video game developed at Sanzaru Games"
