@@ -30,7 +30,7 @@ We released [Asgard's Wrath](https://www.carloshurtado.com/asgardwrath/), which 
 <div class="pictureContainer">
 </div>
 </div>
-<div class="notice">
+<div class="notice" markdown="1">
 You can get my resume here: [Resume Carlos Hurtado](https://www.carloshurtado.com/assets/ResumeCarlosHurtado2020.pdf){:target="_blank"}{:onClick="AddXPFromSourceNow('resume')"}
 </div>
 
