@@ -8,7 +8,7 @@ logo:               'assets/img/logo3.png'
 #background:         'assets/img/tempBG.jpg'
 tiled_bg:           false   # Set this true if you want to tile your background image, otherwise it will be covered
 locale:             en_US
-url:                'https://www.carloshurtado.com'
+url:                "https://www.carloshurtado.com"
 
 # Jekyll
 permalink:          /:title/
@@ -35,6 +35,12 @@ logo: "/assets/img/logo3.png"
 og_image: "/assets/img/logo3.png"
 # Comments
 disqus_shortname:   churtado
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/img/logo3.png
 
 # Social
 # if you don't have any of social below, comment the line.
