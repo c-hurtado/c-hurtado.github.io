@@ -30,7 +30,13 @@ layout: compress
                     <ul>
                         <li class="wow slideInUp" data-wow-duration="1.5s">
                             <a class="zoombtn" href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
+                             {% if post.feature %}
+                                <a href="{{ site.url }}{{ post.url }}">
+                                <img src="{{ post.feature }}"/>
+                                </a>
+                            {% endif %}
                             <p>{{ post.excerpt }}</p>
+                            
                             <a href="{{ site.url }}{{ post.url }}" class="btn zoombtn">Read More</a>
                         </li>
                     </ul>
