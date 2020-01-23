@@ -62,5 +62,5 @@ I don't have links to these tweaks, but you can get them in Cydia.
 * **Snowboard** The tweak that allows to change your icons or fonts.
 
 <figure>
-	<a href="https://www.carloshurtado.com/assets/img/iphone.jpeg"><img src= href="https://www.carloshurtado.com/assets/img/iphone.jpeg"></a>
+	<a href="https://www.carloshurtado.com/assets/img/iphone.jpeg"><img src="https://www.carloshurtado.com/assets/img/iphone.jpeg"></a>
 </figure>
