@@ -10,25 +10,35 @@ In the vein of [How I Work](https://lifehacker.com/c/how-i-work) and [UsesThis](
 These apps here are my hidden gems...
 
 ## Web tools
+These are things you can log in to from any computer. Some of them have apps I use to reach out to them easier, but the service itself is mostly used on the web.
+
 * [Notion](https://www.notion.so/), a great site to generate projects and organize ideas. Mixes concepts of [Pinterest](https://www.pinterest.com) with [Trello](https://www.trello.com), and allows you to sort the same data in multiple ways.
 * [Feedly](https://feedly.com/), my RSS reader by default after Google Reader went extinct. I basically spend most of my time in this site.
 * [Dropbox](https://www.dropbox.com/), is my media sharing tool. I use it on my phone, ipad and PC to share the art I create on Procreate in the ipad.
 
 ## Cross-Platform Software
+I use this both on my Mac and PC.
+
 * [Adobe Photoshop](http://adobe.com). I used to use photoshop for digital art, but now I'm using it more for photo manipulation.
 * [Adobe Lightroom Classic](http://adobe.com). As I've traveled with my wife, I have been doing photography and collecting pictures. This software allows me to do two things:
   * Color correction
   * Book Creation: Using the Book service Blurb (integrated w)
 
 ## Windows Software
+This one is for customizing the look and feel of Windows.
+
 * [FalconX](https://chrisandriessen.nl/web/FalconX.html) This app allows to put the taskbar icons in the middle for a cooler look.
 
 ## Mac OS X Software
+These ones are for customizing the look and feel of Mac OS X.
+
 * [Oversight](https://objective-see.com/products/oversight.html) For people that care about being hacked, oversight monitors audio and video sessions and lets you know when the microphone or the camera got activated
 * [Swish](https://highlyopinionated.co/swish/) This cool tool allows you to manage your windows by using the touchpad.
 
 
 ## IOS Software
+I use these app both on my Iphone and Ipad.
+
 * [Things 3](https://culturedcode.com/things/) I use this as my main Todo app. I have both the iphone and Ipad version and they are synced.
 * [Fantastical](https://flexibits.com/fantastical) This is my calendar app of choice. Use it mostly on my Iphone. It has great text understanding so that it creates the event with the most information possible.
 * [Pandora](https://www.pandora.com/) Music app of choice. I have a subscription I share with my wife. I don't have time to pick songs but I have my good thumbnail station
@@ -39,6 +49,8 @@ These apps here are my hidden gems...
 * [Procreate 5](https://apps.apple.com/us/app/procreate/id425073498) My art tool of choice on my iPad PRO. The best out there (and I've tried a bunch).
 
 ## Jailbreak Tweaks
+I don't have links to these tweaks, but you can get them in Cydia. 
+
 * **Accent** Gives IOS accent colors in the different menus
 * **Aporeo** Whenever I plug my phone to a power source, it sends me to low battery mode so it charges faster.
 * **Canvas** Allows me to change the background on my CarPlay in my car.
