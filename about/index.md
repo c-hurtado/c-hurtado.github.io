@@ -46,3 +46,5 @@ You can read more about the specific projects I worked on in the [Game Developme
 
 ### Personal Life
 <div id="secret_about_personal"></div>
+
+There will be more content (and more secret unlockable things coming soon...)
