@@ -42,7 +42,12 @@ Jeff does recaps every episode but there are a few resources to catch up:
 
 If you have to start somewhere, I would recommend starting from the beginning, but I can say that episode 6 jump starts the bigger story.
 
+I have made 2 pieces of fan art for this show, just because I enjoy it so much.
+
 <figure>
 	<a href="https://www.carloshurtado.com/assets/img/gallery/DungeeonRunCombined.png"><img src="https://www.carloshurtado.com/assets/img/gallery/DungeeonRunCombined.png"></a>
 </figure>
 
+<figure>
+	<a href="https://www.carloshurtado.com/assets/img/gallery/DungeonRunBoss.jpg"><img src="https://www.carloshurtado.com/assets/img/gallery/DungeonRunBoss.jpg"></a>
+</figure>
