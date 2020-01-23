@@ -2,6 +2,7 @@
 layout: post
 title:  "It all started with a simple Dungeon Run"
 date:   2020-01-22
+excerpt: "Dungeon Run is one of my favorite shows on the internet... here is my review"
 feature: https://www.carloshurtado.com/assets/img/gallery/DungeonRunBoss.jpg
 comments: false
 ---
