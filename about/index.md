@@ -46,9 +46,3 @@ You can read more about the specific projects I worked on in the [Game Developme
 
 ### Personal Life
 <div id="secret_about_personal"></div>
-
-### About The Site
-<div id="secret_about_site" ></div>
-
-### Interesting Facts about Me
-<div id="secret_about_facts"></div>
