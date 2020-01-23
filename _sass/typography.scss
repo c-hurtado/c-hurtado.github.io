@@ -1,6 +1,7 @@
 // content area
 .content {
 	@include font-size(14);
+    font-weight:lighter;
 	padding: 0 2rem;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased !important;
