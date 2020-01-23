@@ -60,3 +60,7 @@ I don't have links to these tweaks, but you can get them in Cydia.
 * **MilkyWay2** Adds multitasking to IOS (windows!)
 * **Pastel** Adds icon-based or custom color to notifications
 * **Snowboard** The tweak that allows to change your icons or fonts.
+
+<figure>
+	<a href="https://www.carloshurtado.com/assets/img/iphone.jpeg"><img src= href="https://www.carloshurtado.com/assets/img/iphone.jpeg"></a>
+</figure>
