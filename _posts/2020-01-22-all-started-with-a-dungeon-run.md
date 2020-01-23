@@ -30,7 +30,7 @@ All Dungeons and Dragons games follow about the same model; A DM (short for *Dun
 In this case, the five players are all actors to some extent, so the ability to perform comes natural, and it shows. The 5 players are all able to go deep in their characters and every episode adds layers to their complexity and backstory.
 The most impresive part of this is the characters that Jeff creates. Some of them are also deep even if they are just supposed to appear once. Jeff's ability to create voices is jaw dropping.
 
-<div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/W0QmdZii9lGwTJDEdb" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/thedungeonrun-the-dungeon-run-lily-dumblestuck-katie-michels-W0QmdZii9lGwTJDEdb">via GIPHY</a></p>
+<iframe src="https://giphy.com/embed/W0QmdZii9lGwTJDEdb" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/thedungeonrun-the-dungeon-run-lily-dumblestuck-katie-michels-W0QmdZii9lGwTJDEdb">via GIPHY</a></p>
 
 The characters in the adventure are:
 
@@ -45,7 +45,7 @@ There are always battles, but also some moments of conversation. Usually when Je
 
 Part of the mystery includes an amulet that they have obtained early in the game that allows the viewers (called Watchers) to send the characters chaos magic. This basically means that using the Caffeine TV website, vieweres can spend real money to send cards and one-shot abilities to the players. This causes a lot of imbalances but somehow Jeff manages to keep them in control masterfully. It also adds a big amount of humor.
 
-<div style="width:100%;height:0;padding-bottom:73%;position:relative;"><iframe src="https://giphy.com/embed/XBRw5BwRMVLWdNjFp5" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/thedungeonrun-jessica-lynn-parsons-fahima-tadhg-XBRw5BwRMVLWdNjFp5">via GIPHY</a></p>
+<iframe src="https://giphy.com/embed/XBRw5BwRMVLWdNjFp5" width="480" height="349" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/thedungeonrun-jessica-lynn-parsons-fahima-tadhg-XBRw5BwRMVLWdNjFp5">via GIPHY</a></p>
 
 I don't want to say much of the story, but I can say it is entrhalling. Jeff created a world and an epic story, where you always wants to know what happens next. Some of the NPCs are so memorable that you want to know what happens to them even after their encounter is done. This is because Jeff gives them an incredible amount of life. And sometimes... life is pain.
 <div style="width:100%;height:0;padding-bottom:67%;position:relative;"><iframe src="https://giphy.com/embed/Kzbn0VV368FdQBVpH1" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/thedungeonrun-dungeon-master-the-run-jeff-cannata-Kzbn0VV368FdQBVpH1">via GIPHY</a></p>
@@ -63,7 +63,7 @@ Jeff does recaps every episode but there are a few resources to catch up:
 * [Wiki](https://thedungeonrun.fandom.com/wiki/The_Dungeon_Run_Wiki)
 
 If you have to start somewhere, I would recommend starting from the beginning, but I can say that episode 6 jump starts the bigger story. Something related to this tower:
-<div style="width:100%;height:0;padding-bottom:121%;position:relative;"><iframe src="https://giphy.com/embed/ZdTJyf17WZ5cMmk6oN" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/thedungeonrun-the-dungeon-run-ZdTJyf17WZ5cMmk6oN">via GIPHY</a></p>
+<iframe src="https://giphy.com/embed/ZdTJyf17WZ5cMmk6oN" width="397" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/thedungeonrun-the-dungeon-run-ZdTJyf17WZ5cMmk6oN">via GIPHY</a></p>
 
 I have made 2 pieces of fan art for this show, just because I enjoy it so much.
 
@@ -76,5 +76,4 @@ I have made 2 pieces of fan art for this show, just because I enjoy it so much.
 </figure>
 
 Jeff started ending the shows with a phrase that shows how caring he is. I love it every time he says it.
-
-<div style="width:100%;height:0;padding-bottom:67%;position:relative;"><iframe src="https://giphy.com/embed/Yknj8sXQMTTMQs5kOV" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/thedungeonrun-dungeon-master-the-run-jeff-cannata-Yknj8sXQMTTMQs5kOV">via GIPHY</a></p>
+<iframe src="https://giphy.com/embed/Yknj8sXQMTTMQs5kOV" width="480" height="320" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/thedungeonrun-dungeon-master-the-run-jeff-cannata-Yknj8sXQMTTMQs5kOV">via GIPHY</a></p>
