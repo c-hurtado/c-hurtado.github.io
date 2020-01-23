@@ -26,8 +26,7 @@ layout: compress
                    <img src="{{site.url}}/assets/img/titles/{{page.titleImg}}"/>
                    {% endif %}
                 </div>
-                <p align="center">I've been extremely lucky to have been able to ship several games during my 10+ years in the game industry.<br/>
-                  You can download my resume here: <a href="https://www.carloshurtado.com/assets/ResumeCarlosHurtado2020.pdf" target="_blank" onClick="AddXPFromSourceNow('resume')"">Resume</a><br/></p>
+                <p align="center">I've been extremely lucky to have been able to ship several games during my 10+ years in the game industry. You can see more details of the most important projects here, or you download my resume here: <a href="https://www.carloshurtado.com/assets/ResumeCarlosHurtado2020.pdf" target="_blank" onClick="AddXPFromSourceNow('resume')"">Resume</a> for a more focused look. </p>
                   {% assign sorted = (site.gameDevProjects | sort: 'date') | reverse %}
                     {% for post in sorted %}
                     <div class="post-list">
