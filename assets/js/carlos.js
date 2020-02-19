@@ -1,7 +1,7 @@
 
 var globalXpDict = {};
 globalXpDict["art"]                   = [100, "Visited ART: "];
-globalXpDict["gamedev"]               = [100, "Yisited GAME DEVELOPMENT: "];
+globalXpDict["gamedev"]               = [100, "Visited GAME DEVELOPMENT: "];
 globalXpDict["thoughts"]              = [100, "Visited THOUGHTS: "];
 globalXpDict["contact"]               = [100, "Visited CONTACT ME: "];
 globalXpDict["about"]                 = [100, "Visited ABOUT ME: "];
