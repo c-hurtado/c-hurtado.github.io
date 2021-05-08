@@ -10,41 +10,15 @@ layout: compress
     {% include head.html %}
 </head>
 <body>
-   {% include grid.html %}
-    {% include nav.html %}
+
     <!-- Header -->
     <header class="header" role="banner">
         <div class="container">
-          {% include score.html %}
-
             <div class="content">
-                <div class="post-title">
-                    <a class="btn zoombtn" href="{{site.url}}">
-                        <i class="fa fa-home"></i>
-                    </a>
-                    {% if page.titleImg %}
-                   <img src="{{site.url}}/assets/img/titles/{{page.titleImg}}"/>
-                   {% endif %}
-                </div>
-                <div class="post-list">
-                    
+         
                     <iframe src="https://calendar.google.com/calendar/embed?src=qthh2p254hv3h7agh6auq52qg8%40group.calendar.google.com&ctz=America%2FLos_Angeles" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-                    
-                    {% for post in site.demoposts %}
-                    <ul>
-                        <li class="wow fadeInLeft" data-wow-duration="1.5s">
-                            <a class="zoombtn" href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>  {% if post.developer %} - {{ post.developer }} {% endif %}
-                            <p>{{ post.excerpt }}</p>
-                              {% if post.feature %}
-                                <a href="{{ site.url }}{{ post.url }}">
-                                <img src="{{ post.feature }}"/>
-                                </a>
-                            {% endif %}
-                            <a href="{{ site.url }}{{ post.url }}" class="btn zoombtn">Read More</a>
-                        </li>
-                    </ul>
-                    {% endfor %}
-                </div>
+                  
+               
             </div>
         </div>
     </header>
