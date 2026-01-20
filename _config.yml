@@ -31,7 +31,6 @@ collections:
     output:         true
 
 teaser: "/assets/img/logo3.png"
-logo: "/assets/img/logo3.png"
 og_image: "/assets/img/logo3.png"
 # Comments
 disqus_shortname:   churtado
