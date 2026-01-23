@@ -43,7 +43,7 @@ Asgard's Wrath 2 received a score of [10/10 from IGN](https://www.ign.com/articl
 ### Technical Contributions
 
 #### World Management & Optimization
-* Implemented an optimization system based on player location that optimizes Ticks and reduces draw calls. This allows to reduce tick costs to a minimum based on "rooms".
+* Implemented an optimization system based on player location that optimizes Ticks and reduces draw calls. This allows to reduce tick costs to a minimum based on "rooms". Added visualization and editor tooling.
 * Continued implementing optimized Octree based triggers to replace Unreal Overlaps.
 * Set up a Time Of Day management to deal with lighting scenarios.
 * Optimize several systems, including deferred checks and load-balancing.
@@ -57,3 +57,9 @@ Asgard's Wrath 2 received a score of [10/10 from IGN](https://www.ign.com/articl
 * Implemented a Waterworks puzzle, requiring the player to place different pieces to connect water.
 * Implemented an enemy spawner sequencer to allow for spawning waves, with different state-driven configurations for combat.
 * Supported a graph-based waypoint system to guide the player to the next location
+* Added Debug systems to change and view tuning variables in-game.
+* Worked on the Onramp gameplay and new user experience.
+
+#### Localization and Entitlements
+* Implmented localization scripts and automation
+* Implemented achievements and entitlements

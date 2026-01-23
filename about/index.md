@@ -28,9 +28,12 @@ You can get my resume here: [Resume Carlos Hurtado](https://www.carloshurtado.co
 </div>
 
 -------
-
+<div class="tableContainer">
+<div class="textHolder" markdown="1" style="float:left;width:450px;">
 ### Education
+
 
 I have a [Master of Entertainment Technology](https://etc.cmu.edu) degree from [Carnegie Mellon University](http://www.cmu.edu) , and an engineering and a bachelor degree in CS from [Universidad de Chile](http://www.uchile.cl). Since graduating from my master I've worked at [Electronic Arts](http://www.ea.com), [Bigpoint](http://www.bigpoint.com) and most recently [Sanzaru Games](http://www.sanzaru.com) which was acquired by Meta in 2020 and later shut down in 2026.
 
 You can read more about the specific projects I worked on in the [Game Development]({{site.url}}/gamedev) page.
+</div></div>
