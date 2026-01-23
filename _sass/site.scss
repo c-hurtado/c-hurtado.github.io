@@ -87,12 +87,14 @@ body {
 
 
 .container {
-//	transform: rotateX(5deg);
+	//transform: rotateX(25deg);
 	width: 80%;
 	max-width: 800px;
 	padding:2em;
 	margin-top:20px;
 	margin-bottom:20px;
+	margin-right:20px;
+	margin-left:20px;
 	@include center-block();
 	background-color: $dark-purple-tp;
 	//color: $color_shark;

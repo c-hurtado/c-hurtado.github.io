@@ -15,6 +15,6 @@ comments: false
 
 ### VR Sports Challenge
 
-<iframe width="560" height="315" src="//www.youtube.com/embed/YO_gz5l7ZB4"  frameborder="0"> </iframe>
+<iframe width="560" height="315" src="//www.youtube.com/embed/xAvzIff_PCg"  frameborder="0"> </iframe>
 
 VR Sports Challenge is a Sports based VR title. It contains Football, Baseball, Basketball and Hockey gameplays and it shipped with the Oculus Touch controllers when they were released. It was published by Oculus. I became lead at the end of the project.

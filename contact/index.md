@@ -37,5 +37,5 @@ titleImg: contact.png
 </form>
 <br/>
 <div class="notice">
-You can download my resume here: <a href="https://www.carloshurtado.com/assets/ResumeCarlosHurtado2020.pdf" target="_blank" onClick="AddXPFromSourceNow('resume')">Resume Carlos Hurtado</a></div>
+You can download my resume here: <a href="https://www.carloshurtado.com/assets/Carlos_Hurtado_Resume.pdf" target="_blank" onClick="AddXPFromSourceNow('resume')">Resume Carlos Hurtado</a></div>
 You can also find me in many other sites.

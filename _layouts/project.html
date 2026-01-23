@@ -15,8 +15,7 @@ layout: compress
     <!-- Header -->
     <header class="header" role="banner">
         <div class="container">
-          {% include score.html %}
-
+                      {% include score.html %}
             <div class="content">
                 <div class="post-title">
                     <a class="btn zoombtn" href="{{site.url}}">
@@ -26,7 +25,7 @@ layout: compress
                    <img src="{{site.url}}/assets/img/titles/{{page.titleImg}}"/>
                    {% endif %}
                 </div>
-                <p align="center">I've been extremely lucky to have been able to ship several games during my 10+ years in the game industry. You can see more details of the most important projects here, or you download my resume here: <a href="https://www.carloshurtado.com/assets/ResumeCarlosHurtado2020.pdf" target="_blank" onClick="AddXPFromSourceNow('resume')"">Resume</a> for a more focused look. </p>
+                <p align="center">I've been extremely lucky to have been able to ship several games during my 16+ years in the game industry. You can see more details of the most important projects here, or you download my resume here: <a href="https://www.carloshurtado.com/assets/Carlos_Hurtado_Resume.pdf" target="_blank" onClick="AddXPFromSourceNow('resume')"">Resume</a> for a more focused look. </p>
                   {% assign sorted = (site.gameDevProjects | sort: 'date') | reverse %}
                     {% for post in sorted %}
                     <div class="post-list">

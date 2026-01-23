@@ -10,7 +10,7 @@
 						<h4>{{ site.title }}</h4>
 						<p>{{ site.description }}</p>
 					</li>
-					<li><a href="{{ site.url }}/about/"><span class="btn btn-inverse">Learn More</span></a></li>
+					
 					{% if site.email %}<li>
                         <a href="mailto:{{ site.email }}" target="_blank" rel="noopener noreferrer" onClick="AddXPFromSource('social_email')"><i class="fa fa-fw fa-envelope-square"></i> Email</a>
                     </li>{% endif %}
@@ -85,8 +85,9 @@
                     </li>{% endif %}
 				</ul><!-- /.dl-submenu -->
 			</li>
-			<li><a href="{{ domain }}/gamedev/"><i class="fa fa-fw fa-gamepad"></i> Game Development</a></li>
-			<li><a href="{{ domain }}/art/"><i class="fa fa-fw fa-paint-brush"></i> Art</a></li>
+			<li><a href="{{ site.url }}/gamedev/"><i class="fa fa-fw fa-gamepad"></i> Game Development</a></li>
+            <li><a href="{{ site.url }}/about/"><span class="btn btn-inverse">Learn More</span></a></li>
+			<li><a href="{{ site.url }}/art/"><i class="fa fa-fw fa-paint-brush"></i> Art</a></li>
 
 			<li>
 				<a href="#"><i class="fa fa-fw fa-lightbulb-o"></i> Thoughts</a>
@@ -95,6 +96,6 @@
 					<li><a href="{{ site.url }}/tags/">All Tags</a></li>
 				</ul>
 			</li>
-				 <li><a href="{{ domain }}/contact/"><i class="fa fa-fw fa-envelope""></i> Contact</a></li>
+				 <li><a href="{{ domain }}/contact/"><i class="fa fa-fw fa-envelope"></i> Contact</a></li>
 		</ul><!-- /.dl-menu -->
 	</nav><!-- /.dl-menuwrapper -->

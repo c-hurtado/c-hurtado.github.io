@@ -16,65 +16,43 @@ layout: compress
     <!-- Header -->
     <header class="header flex" role="banner">
         <div class="container animated fadeIn">
-          {% include score.html %}
+                      {% include score.html %}
             <div class="row">
-
                     <!--a href="{{ site.url }}"  onClick="AddXPFromSource('home')">
                         <img src="{{ site.logo }}" class="img-circle zoombtn animated fadeIn">
                     </a-->
                     <h3 class="title">
-                           <a class="btn zoombtn chromatic" href="{{ site.url }}/about" onClick="AddXPFromSource('about')">
-                           <i class="fa fa-fw fa-info"></i> About Me
-                           </a>
                            <a class="btn zoombtn chromatic" href="{{ site.url }}/gamedev" onClick="AddXPFromSource('gamedev')">
                            <i class="fa fa-fw fa-gamepad"></i> Game Development
                            </a>
+                           <a class="btn zoombtn chromatic" href="{{ site.url }}/about" onClick="AddXPFromSource('about')">
+                           <i class="fa fa-fw fa-info"></i> About Me
+                           </a>
+
                            <a class="btn zoombtn chromatic" href="{{ site.url }}/art" onClick="AddXPFromSource('art')">
                           <i class="fa fa-fw fa-paint-brush"></i> Art
-                           </a>
-                           <a class="btn zoombtn chromatic" href="{{ site.url }}/thoughts" onClick="AddXPFromSource('thoughts')">
-                           <i class="fa fa-fw fa-lightbulb-o"></i> Thoughts
                            </a>
                            <a class="btn zoombtn chromatic" href="{{ site.url }}/contact" onClick="AddXPFromSource('contact')">
                            <i class="fa fa-fw fa-envelope"></i> Contact Me
                            </a>
                    </h3>
                     <hr class="hr-line">
-                    <p style="font-weight:100;font-size:0.9em">“Human Kind. Be Both"</p><span style="font-size:0.8em;">- Jeff Cannata</span>
-                    <div id="tableContainer" class="tableContainer">
                       <div class="logoContainer">
                         <div class="theface"  onClick="AddXPFromSourceNow('face')"></div>
                       </div>
                       <div class="textHolder">
                         <p style="font-size:1.3rem;font-weight:300">Hi, I'm <a href="{{ site.url }}/about" onClick="AddXPFromSource('about')" >Carlos Hurtado.</a></p>
-
-                        <p style="font-size:1rem;font-weight:300">Husband to Rebecca. <a href="{{ site.url }}/gamedev" onClick="AddXPFromSource('gamedev')">Lead Game Engineer</a>. <a href="{{ site.url }}/art" onClick="AddXPFromSource('art')">Artist</a>.<br/>Productivity Geek. Chilean. California resident.</p>
-                          <div id="secret_home" class="secretwide"></div>
-                        <p style="font-size:1rem;font-weight:300">Go check some  <a href="{{ site.url }}/gamedev" onClick="AddXPFromSource('gamedev')">projects</a> I'm proud of professionally, as well as take a look at my amateur <a href="{{ site.url }}/art" onClick="AddXPFromSource('art')">art.</a> If you want me to work on an art commission, reach out to me via the <a href="{{ site.url }}/contact" onClick="AddXPFromSource('contact')">contact form</a>!<br/> I love to do commissions.</p>
-                        <p style="font-size:1rem;font-weight:300">You can check what I <a href="{{ site.url }}/thoughts"  onClick="AddXPFromSource('thoughts')">think</a> about many different topics, like productivity, software, tools, drawing, movies, music, games, etc... I have a lot of thoughts about a lot of stuff and I want to write more.
-                        </p>
+                        <p style="font-size:1rem;font-weight:300">I am a <a href="{{ site.url }}/gamedev" onClick="AddXPFromSource('gamedev')">Technical Lead Manager</a> with over 15 years of experience delivering high-fidelity gaming experiences and leading engineering teams through the full lifecycle of award-winning titles. </p>
+                        <p style="font-size:1rem;font-weight:300">Most recently, I served as a technical leader at Sanzaru Games (Oculus Studios - Meta), where I contributed to the success of flagship projects like <a href="{{ site.url }}/gameDevProjects/AsgardsWrath2" onClick="AddXPFromSource('art')">Asgard’s Wrath 2</a>, which received a perfect <a href="https://www.ign.com/articles/asgards-wrath-2-review" onClick="AddXPFromSource('art')">10/10</a> from IGN</a></p>
+                        <p style="font-size:1rem;font-weight:300">My expertise lies in Unreal Engine 4 and 5, tooling, performance optimization, and architecting high-scale gameplay systems in C++. I specialize in balancing rigorous technical architecture with empathetic people management to align studio vision with technical execution</a></p>
+                        <p style="font-size:1rem;font-weight:300">I'm located in the San Francisco Bay Area and I'm currently looking for Director of Engineering or Technical Lead Roles. You can see my resume  <a href="{{ site.url }}/assets/Carlos_Hurtado_Resume.pdf" onClick="AddXPFromSource('art')">here</a></p>
+                        <p style="font-size:0.8rem;font-weight:300">Besides engineering and game development, I do Oil Paintings and Digital paintings that you can see in my <a href="{{ site.url }}/art" onClick="AddXPFromSource('art')">art section.</a></p>
                       </div>
                     </div>
 
                     <div id="gamenotice">
                     </div>
                     <hr class="hr-line">
-                <img src="{{site.url}}/assets/img/titles/latestthoughts.png"/>
-                 <div class="post-list wow fadeIn animated" data-wow-duration="2s">
-                    {% for post in site.posts %}
-                        {% if post.project == null %}
-                    <ul>
-                        <li class="wow fadeIn animated" data-wow-duration="1.5s">
-                            <a class="zoombtn" href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
-                            <p>{{ post.excerpt }}</p>
-                            <a href="{{ site.url }}{{ post.url }}" class="btn zoombtn">Read More</a>
-                        </li>
-                    </ul>
-                        {% break %}
-                        {% endif %}
-                    {% endfor %}
-                </div>
-
                     {% include social-links.html %}
 
             </div>
