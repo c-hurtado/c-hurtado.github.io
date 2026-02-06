@@ -5,7 +5,7 @@ excerpt: "Contact Me"
 comments: false
 titleImg: contact.png
 ---
-
+You can use this form to reach out to me, or email me at  <a href="mailto:carloshurtado@gmail.com" >carloshurtado@gmail.com</a>
 <!-- modify this form HTML and place wherever you want your form -->
 <form action="https://formspree.io/xdoendyz" method="POST">
 <table>
@@ -37,5 +37,8 @@ titleImg: contact.png
 </form>
 <br/>
 <div class="notice">
-You can download my resume here: <a href="https://www.carloshurtado.com/assets/Carlos_Hurtado_Resume.pdf" target="_blank" onClick="AddXPFromSourceNow('resume')">Resume Carlos Hurtado</a></div>
-You can also find me in many other sites.
+               <div class="title">
+                       <a href="{{ site.url }}/assets/Carlos_Hurtado_Resume.pdf" class="btn zoombtn" onClick="AddXPFromSource('art')">
+                        <i class="fa fa-fw fa-file-pdf-o"></i>  Download Resume
+                        </a>
+                        </div></div>

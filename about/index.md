@@ -24,12 +24,14 @@ I live in San Mateo, in the San Francisco Bay Area with my wife and kid.
 </div>
 </div>
 <div class="notice" markdown="1" align="center">
-You can get my resume here: [Resume Carlos Hurtado](https://www.carloshurtado.com/assets/Carlos_Hurtado_Resume.pdf){:target="_blank"}{:onClick="AddXPFromSourceNow('resume')"}
+<a href="{{ site.url }}/assets/Carlos_Hurtado_Resume.pdf" class="btn zoombtn" onClick="AddXPFromSource('art')">
+<i class="fa fa-fw fa-file-pdf-o"></i>  Download Resume
+</a>
 </div>
 
 -------
 <div class="tableContainer">
-<div class="textHolder" markdown="1" style="float:left;width:450px;">
+<div class="textHolder" markdown="1">
 ### Education
 
 

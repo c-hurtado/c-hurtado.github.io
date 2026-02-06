@@ -25,10 +25,18 @@ layout: compress
                    <img src="{{site.url}}/assets/img/titles/{{page.titleImg}}"/>
                    {% endif %}
                 </div>
-                <p align="center">I've been extremely lucky to have been able to ship several games during my 16+ years in the game industry. You can see more details of the most important projects here, or you download my resume here: <a href="https://www.carloshurtado.com/assets/Carlos_Hurtado_Resume.pdf" target="_blank" onClick="AddXPFromSourceNow('resume')"">Resume</a> for a more focused look. </p>
-                  {% assign sorted = (site.gameDevProjects | sort: 'date') | reverse %}
+                <p align="center">I've been extremely lucky to have been able to ship several games during my 16+ years in the game industry. You can see more details of the most important projects here, or you download my resume </p>
+               <div class="title">
+                        <hr class="hr-line">
+                       <a href="{{ site.url }}/assets/Carlos_Hurtado_Resume.pdf" class="btn zoombtn" onClick="AddXPFromSource('art')">
+                        <i class="fa fa-fw fa-file-pdf-o"></i>  Download Resume
+                        </a>
+                         <hr class="hr-line">
+                        </div>
+                <div class="post-list">
+                {% assign sorted = (site.gameDevProjects | sort: 'date') | reverse %}
                     {% for post in sorted %}
-                    <div class="post-list">
+                    
                     <ul>
                         <li class="wow fadeIn animated" data-wow-duration="1.5s">
                             <a class="zoombtn" href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>  {% if post.developer %} - {{ post.developer }} {% endif %}
@@ -38,7 +46,10 @@ layout: compress
                                 <img src="{{ post.feature }}"/>
                                 </a>
                             {% endif %}
-                            <a href="{{ site.url }}{{ post.url }}" class="btn zoombtn">Read More</a>
+                            <br/>
+                            <div class="textHolder"> 
+                            <a href="{{ site.url }}{{ post.url }}" class="btn zoombtn"> <i class="fa fa-fw fa-eye"></i>  Read More</a>
+                            </div>
                         </li>
                     </ul>
                     {% endfor %}
