@@ -12,7 +12,6 @@
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 
-
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -41,6 +40,22 @@
     background-attachment: fixed;
   }
 
+  /* Scanline overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.08) 2px,
+      rgba(0,0,0,0.08) 4px
+    );
+    pointer-events: none;
+    z-index: 1000;
+  }
+
   h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
 
   a { color: var(--pink); text-decoration: none; }
@@ -56,6 +71,74 @@
 <script type="text/babel">
 const { useState, useEffect, useRef } = React;
 
+// ─── PERSPECTIVE GRID ─────────────────────────────────────────────────────────
+function PerspectiveGrid() {
+  const VP = { x: 500, y: 0 };
+  const W = 1000, H = 420;
+
+  const vLines = Array.from({ length: 41 }, (_, i) => {
+    const t = i / 40;
+    const bottomX = -600 + t * 2200;
+    const edgeDist = Math.abs(t - 0.5) * 2;
+    const opacity = Math.max(0, 0.6 - edgeDist * 0.55);
+    return { x1: VP.x, y1: VP.y, x2: bottomX, y2: H, opacity };
+  });
+
+  const hLines = [0.03, 0.07, 0.13, 0.21, 0.32, 0.46, 0.63, 0.83, 1.0].map((t, i) => {
+    const y = t * H;
+    const progress = y / H;
+    const leftX  = VP.x + ((-600  - VP.x) * progress);
+    const rightX = VP.x + ((1600  - VP.x) * progress);
+    const opacity = 0.12 + i * 0.065;
+    return { y, leftX, rightX, opacity };
+  });
+
+  return (
+    <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, height: '42%', overflow: 'hidden', pointerEvents: 'none', zIndex: 1 }}>
+      <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" style={{ width: '100%', height: '100%' }}>
+        <defs>
+          <linearGradient id="vLineGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#ff2d78" stopOpacity="0" />
+            <stop offset="30%" stopColor="#ff2d78" stopOpacity="1" />
+            <stop offset="100%" stopColor="#cc22ff" stopOpacity="0.5" />
+          </linearGradient>
+        </defs>
+
+        {/* Vertical converging lines */}
+        {vLines.map((l, i) => (
+          <line key={`v${i}`}
+            x1={l.x1} y1={l.y1} x2={l.x2} y2={l.y2}
+            stroke="#ff2d78" strokeWidth={0.9} opacity={l.opacity} />
+        ))}
+
+        {/* Horizontal foreshortened lines with proportional edge fade */}
+        {hLines.map((l, i) => {
+          const progress = l.y / H;
+          const fadeFrac = 0.45 - progress * 0.38;
+          const gradId = `hg${i}`;
+          return (
+            <React.Fragment key={`h${i}`}>
+              <defs>
+                <linearGradient id={gradId} gradientUnits="userSpaceOnUse"
+                  x1={l.leftX} y1={l.y} x2={l.rightX} y2={l.y}>
+                  <stop offset="0%" stopColor="#dd44ff" stopOpacity="0" />
+                  <stop offset={`${Math.round(fadeFrac * 100)}%`} stopColor="#dd44ff" stopOpacity={l.opacity} />
+                  <stop offset={`${Math.round((1 - fadeFrac) * 100)}%`} stopColor="#dd44ff" stopOpacity={l.opacity} />
+                  <stop offset="100%" stopColor="#dd44ff" stopOpacity="0" />
+                </linearGradient>
+              </defs>
+              <line
+                x1={l.leftX} y1={l.y} x2={l.rightX} y2={l.y}
+                stroke={`url(#${gradId})`}
+                strokeWidth={i < 2 ? 0.7 : 1.2}
+              />
+            </React.Fragment>
+          );
+        })}
+      </svg>
+    </div>
+  );
+}
 
 // ─── NAV ──────────────────────────────────────────────────────────────────────
 function Nav({ activeSection, setActiveSection, accentColor }) {
@@ -118,6 +201,54 @@ function Nav({ activeSection, setActiveSection, accentColor }) {
   );
 }
 
+// ─── AVATAR ───────────────────────────────────────────────────────────────────
+function AvatarCircle({ size = 160, accentColor }) {
+  const accent = accentColor === 'cyan' ? 'var(--cyan)' : accentColor === 'orange' ? 'var(--orange)' : 'var(--pink)';
+  return (
+    <div style={{
+      width: size, height: size, borderRadius: '50%',
+      border: `2px solid ${accent}`,
+      boxShadow: `0 0 24px ${accent}60, 0 0 60px oklch(55% 0.25 295 / 0.3)`,
+      flexShrink: 0,
+      overflow: 'hidden',
+      background: 'oklch(8% 0.04 290)',
+    }}>
+      <img
+        src="assets/img/mepunk.png"
+        alt="Carlos Hurtado"
+        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+      />
+    </div>
+  );
+}
+
+// ─── SECTION CARD WRAPPER ───────────────────────────────────────────────────
+function SectionCard({ children, accentColor, style: extraStyle }) {
+  const accent = accentColor === 'cyan' ? 'var(--cyan)' : accentColor === 'orange' ? 'var(--orange)' : 'var(--pink)';
+  const accent2 = accentColor === 'orange' ? 'var(--purple)' : 'var(--orange)';
+  return (
+    <div style={{
+      background: 'var(--card-bg)',
+      backdropFilter: 'blur(24px)',
+      border: '1px solid var(--border)',
+      borderRadius: 12,
+      padding: '52px 60px',
+      position: 'relative',
+      boxShadow: '0 0 60px oklch(55% 0.25 295 / 0.12), inset 0 1px 0 oklch(100% 0 0 / 0.05)',
+      ...extraStyle,
+    }}>
+      {/* Top-left corner */}
+      <div style={{ position: 'absolute', top: -1, left: -1, pointerEvents: 'none' }}>
+        <div style={{ width: 32, height: 32, borderTop: `2px solid ${accent}`, borderLeft: `2px solid ${accent}`, borderRadius: '10px 0 0 0' }} />
+      </div>
+      {/* Bottom-right corner */}
+      <div style={{ position: 'absolute', bottom: -1, right: -1, pointerEvents: 'none' }}>
+        <div style={{ width: 32, height: 32, borderBottom: `2px solid ${accent2}`, borderRight: `2px solid ${accent2}`, borderRadius: '0 0 10px 0' }} />
+      </div>
+      {children}
+    </div>
+  );
+}
 
 // ─── NEON BADGE ───────────────────────────────────────────────────────────────
 function NeonBadge({ children, color = 'var(--pink)' }) {
@@ -313,7 +444,6 @@ function HomeSection({ layout, accentColor }) {
   );
 }
 
-
 // ─── SOCIAL LINKS ─────────────────────────────────────────────────────────────
 function SocialLinks({ accent, style: extraStyle }) {
   const links = [
@@ -344,7 +474,6 @@ function SocialLinks({ accent, style: extraStyle }) {
     </div>
   );
 }
-
 
 // ─── GAME DEV PROJECT CARD ────────────────────────────────────────────────────
 function ProjectCard({ title, studio, desc, img: imgSrc, href, badge, accentColor, index }) {
@@ -886,9 +1015,5 @@ root.render(<App />);
   }, 16);
 })();
 </script>
-
-    {% include scripts.html %}
-    <script src="{{ site.url }}/assets/js/wow.min.js"></script>
-    <script type="text/javascript">(new WOW).init();</script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 ---
 layout: demo
 title: Demo
-excerpt: "Contact Me"
+excerpt: "Test"
 comments: false
 titleImg: contact.png
 ---
