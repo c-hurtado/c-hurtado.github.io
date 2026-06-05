@@ -1,0 +1,4 @@
+
+- name: Deploy preview
+
+  uses: shlinkio/deploy-preview-action@v1.0.1
