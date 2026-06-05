@@ -184,6 +184,7 @@ function Nav({ activeSection, setActiveSection, accentColor }) {
 
   const navItems = [
     { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About' },
     { id: 'gamedev', label: 'Game Dev' },
     { id: 'resume', label: 'Resume' },
     { id: 'contact', label: 'Contact' },
@@ -234,6 +235,54 @@ function Nav({ activeSection, setActiveSection, accentColor }) {
   );
 }
 
+// ─── AVATAR ───────────────────────────────────────────────────────────────────
+function AvatarCircle({ size = 160, accentColor }) {
+  const accent = accentColor === 'cyan' ? 'var(--cyan)' : accentColor === 'orange' ? 'var(--orange)' : 'var(--pink)';
+  return (
+    <div style={{
+      width: size, height: size, borderRadius: '50%',
+      border: `2px solid ${accent}`,
+      boxShadow: `0 0 24px ${accent}60, 0 0 60px oklch(55% 0.25 295 / 0.3)`,
+      flexShrink: 0,
+      overflow: 'hidden',
+      background: 'oklch(8% 0.04 290)',
+    }}>
+      <img
+        src="assets/img/mepunk.png"
+        alt="Carlos Hurtado"
+        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+      />
+    </div>
+  );
+}
+
+// ─── SECTION CARD WRAPPER ───────────────────────────────────────────────────
+function SectionCard({ children, accentColor, style: extraStyle }) {
+  const accent = accentColor === 'cyan' ? 'var(--cyan)' : accentColor === 'orange' ? 'var(--orange)' : 'var(--pink)';
+  const accent2 = accentColor === 'orange' ? 'var(--purple)' : 'var(--orange)';
+  return (
+    <div style={{
+      background: 'var(--card-bg)',
+      backdropFilter: 'blur(24px)',
+      border: '1px solid var(--border)',
+      borderRadius: 12,
+      padding: '52px 60px',
+      position: 'relative',
+      boxShadow: '0 0 60px oklch(55% 0.25 295 / 0.12), inset 0 1px 0 oklch(100% 0 0 / 0.05)',
+      ...extraStyle,
+    }}>
+      {/* Top-left corner */}
+      <div style={{ position: 'absolute', top: -1, left: -1, pointerEvents: 'none' }}>
+        <div style={{ width: 32, height: 32, borderTop: `2px solid ${accent}`, borderLeft: `2px solid ${accent}`, borderRadius: '10px 0 0 0' }} />
+      </div>
+      {/* Bottom-right corner */}
+      <div style={{ position: 'absolute', bottom: -1, right: -1, pointerEvents: 'none' }}>
+        <div style={{ width: 32, height: 32, borderBottom: `2px solid ${accent2}`, borderRight: `2px solid ${accent2}`, borderRadius: '0 0 10px 0' }} />
+      </div>
+      {children}
+    </div>
+  );
+}
 
 // ─── NEON BADGE ───────────────────────────────────────────────────────────────
 function NeonBadge({ children, color = 'var(--pink)' }) {
@@ -429,7 +478,6 @@ function HomeSection({ layout, accentColor }) {
   );
 }
 
-
 // ─── SOCIAL LINKS ─────────────────────────────────────────────────────────────
 function SocialLinks({ accent, style: extraStyle }) {
   const links = [
@@ -460,7 +508,6 @@ function SocialLinks({ accent, style: extraStyle }) {
     </div>
   );
 }
-
 
 // ─── GAME DEV PROJECT CARD ────────────────────────────────────────────────────
 function ProjectCard({ title, studio, desc, img: imgSrc, href, badge, accentColor, index }) {
@@ -518,6 +565,74 @@ function ProjectCard({ title, studio, desc, img: imgSrc, href, badge, accentColo
 }
 
 // ─── GAME DEV SECTION ─────────────────────────────────────────────────────────
+// ─── ABOUT SECTION ────────────────────────────────────────────────────────────
+function AboutSection({ accentColor }) {
+  const accent = accentColor === 'cyan' ? 'var(--cyan)' : accentColor === 'orange' ? 'var(--orange)' : 'var(--pink)';
+  const accent2 = accentColor === 'orange' ? 'var(--purple)' : 'var(--orange)';
+
+  return (
+    <section id="about" data-screen-label="02 About" style={{ padding: '100px 8% 80px', maxWidth: 1100, margin: '0 auto' }}>
+      <SectionCard accentColor={accentColor}>
+        <div style={{ marginBottom: 40 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12 }}>
+            <div style={{ width: 3, height: 36, background: `linear-gradient(to bottom, ${accent}, ${accent2})`, borderRadius: 2, boxShadow: `0 0 12px ${accent}80` }} />
+            <h2 style={{ fontFamily: 'Space Grotesk', fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, letterSpacing: '-0.02em' }}>About Me</h2>
+          </div>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: 48, alignItems: 'start' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+            <p style={{ fontSize: 16, lineHeight: 1.8, color: 'var(--text-dim)' }}>
+              Oh, hello! I'm <span style={{ color: 'var(--text)', fontWeight: 600 }}>Carlos</span> — nice to meet you. I was born in <span style={{ color: 'var(--text)' }}>Chile</span> and moved to the United States to pursue a career in entertainment technology. I'm now a citizen, and I've been in the industry since <span style={{ color: 'var(--text)' }}>2008</span>.
+            </p>
+            <p style={{ fontSize: 16, lineHeight: 1.8, color: 'var(--text-dim)' }}>
+              I'm passionate about making video games — and more recently about leadership: mentoring and managing engineers, supporting their careers, and accelerating the craft of building games so that time goes into the fun and the quality.
+            </p>
+            <p style={{ fontSize: 16, lineHeight: 1.8, color: 'var(--text-dim)' }}>
+              Most recently I was a <span style={{ color: 'var(--text)' }}>Technical Lead Manager</span> at <a href="http://www.sanzarugames.com" target="_blank" style={{ color: accent }}>Sanzaru Games</a> (a Meta studio), where I shipped several award-winning VR titles including <a href="https://www.carloshurtado.com/gameDevProjects/AsgardsWrath/" target="_blank" style={{ color: accent }}>Asgard's Wrath</a> and <a href="https://www.carloshurtado.com/gameDevProjects/AsgardsWrath2/" target="_blank" style={{ color: accent }}>Asgard's Wrath 2</a> for the Oculus Rift and Quest 2/3.
+            </p>
+            <p style={{ fontSize: 16, lineHeight: 1.8, color: 'var(--text-dim)' }}>
+              I live in <span style={{ color: 'var(--text)' }}>San Mateo</span>, in the San Francisco Bay Area, with my wife and kid.
+            </p>
+          </div>
+
+          <div style={{
+            background: 'oklch(9% 0.04 290 / 0.5)',
+            border: `1px solid ${accent}30`,
+            borderRadius: 10,
+            padding: '28px 30px',
+          }}>
+            <h3 style={{ fontFamily: 'Space Grotesk', fontSize: 12, fontWeight: 600, color: accent, marginBottom: 20, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Education</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+              <div>
+                <div style={{ fontFamily: 'Space Grotesk', fontWeight: 600, fontSize: 15, marginBottom: 4 }}>Master of Entertainment Technology</div>
+                <a href="http://www.cmu.edu" target="_blank" style={{ fontSize: 13, color: accent2 }}>Carnegie Mellon University</a>
+              </div>
+              <div>
+                <div style={{ fontFamily: 'Space Grotesk', fontWeight: 600, fontSize: 15, marginBottom: 4 }}>B.S. Computer Science & Engineering</div>
+                <a href="http://www.uchile.cl" target="_blank" style={{ fontSize: 13, color: accent2 }}>Universidad de Chile</a>
+              </div>
+            </div>
+            <div style={{ height: 1, background: `linear-gradient(90deg, ${accent}40, transparent)`, margin: '24px 0' }} />
+            <div style={{ fontSize: 13, color: 'var(--text-dim)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 12, fontWeight: 500 }}>Previously at</div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+              {['Electronic Arts', 'Bigpoint', 'Sanzaru Games', 'Meta'].map(co => (
+                <span key={co} style={{
+                  padding: '6px 12px', borderRadius: 4,
+                  border: '1px solid oklch(55% 0.25 295 / 0.3)',
+                  background: 'oklch(12% 0.05 290 / 0.5)',
+                  fontSize: 12, color: 'var(--text)', fontFamily: 'Space Grotesk',
+                }}>{co}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </SectionCard>
+    </section>
+  );
+}
+
+// ─── GAME DEV SECTION ────────────────────────────────────────────────────────
 function GameDevSection({ accentColor }) {
   const accent = accentColor === 'cyan' ? 'var(--cyan)' : accentColor === 'orange' ? 'var(--orange)' : 'var(--pink)';
   const accent2 = accentColor === 'orange' ? 'var(--purple)' : 'var(--orange)';
@@ -916,7 +1031,7 @@ function HorizonLine() {
 function useActiveSection() {
   const [active, setActive] = useState('home');
   useEffect(() => {
-    const sections = ['home', 'gamedev', 'resume', 'contact'];
+    const sections = ['home', 'about', 'gamedev', 'resume', 'contact'];
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) setActive(entry.target.id);
@@ -950,6 +1065,7 @@ function App() {
       <div style={{ position: 'relative', zIndex: 2 }}>
         <Nav activeSection={activeSection} setActiveSection={setActiveSection} accentColor={tweaks.accentColor} />
         <HomeSection layout={tweaks.layout} accentColor={tweaks.accentColor} />
+        <AboutSection accentColor={tweaks.accentColor} />
         <GameDevSection accentColor={tweaks.accentColor} />
         <ResumeSection accentColor={tweaks.accentColor} />
         <ContactSection accentColor={tweaks.accentColor} />
