@@ -651,7 +651,7 @@ function ResumeSection({ accentColor }) {
     </section>
   );
 }
-{% endraw %}
+
 // ─── ART SECTION ─────────────────────────────────────────────────────────────
 function ArtSection({ accentColor }) {
   const accent = accentColor === 'cyan' ? 'var(--cyan)' : accentColor === 'orange' ? 'var(--orange)' : 'var(--pink)';
@@ -1002,7 +1002,7 @@ root.render(<App />);
   }, 16);
 })();
 </script>
-
+<% endraw %>
     {% include scripts.html %}
     <script src="{{ site.url }}/assets/js/wow.min.js"></script>
     <script type="text/javascript">(new WOW).init();</script>
