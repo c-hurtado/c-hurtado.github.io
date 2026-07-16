@@ -363,7 +363,7 @@ function refreshContent()
                   progressBar.style.width = (GetPercentageInLevel()*0.98)+'%';
                   if(levelContainer != null)
                   {
-                    levelContainer.innerHTML = GetLevel()+" <i class='fa fa-key starColor'></i>";
+                    //levelContainer.innerHTML = GetLevel()+" <i class='fa fa-key starColor'></i>";
                   }
                   /*jQuery(function($) {
                     $('.timer').countTo({
@@ -377,12 +377,12 @@ function refreshContent()
                     });
                 });*/
 
-                  xpCount.innerHTML = GetXPPercentage()  +" <i class='fa fa-star keyColor'></i>";
+                  //xpCount.innerHTML = GetXPPercentage()  +" <i class='fa fa-star keyColor'></i>";
                   $('#xpProgressContent').css('background-image',"linear-gradient(to right, #ff22b2, #7663e0)");
                 }
                 else {
                   progressBar.style.width = '98%';
-                  levelContainer.innerHTML = GetLevel()+" <i class='fa fa-key starColor'></i>";
+                 // levelContainer.innerHTML = GetLevel()+" <i class='fa fa-key starColor'></i>";
                   refreshUnlockedContent();
                   setTimeout(function() {
                       $('#xpProgressContent').css('transition','0s');
@@ -395,7 +395,7 @@ function refreshContent()
 
                         $('#xpProgressContent').css('transition','0.4s linear');
                         progressBar.style.width = (GetPercentageInLevel()*0.98)+'%';
-                        xpCount.innerHTML = GetXPPercentage() +" <i class='fa fa-star keyColor'></i>";
+                        //xpCount.innerHTML = GetXPPercentage() +" <i class='fa fa-star keyColor'></i>";
                         $('#xpProgressContent').css('background-image', "linear-gradient(to right, #ff22b2, #ffb400)");
                       },1000);
 
@@ -414,7 +414,7 @@ console.log("Current XP:"+GetXP()+" Current Level:"+GetLevel());
 window.onload = function(e){
   var levelContainer = document.getElementById("levelContainer");
   //progressBarContainer.style.display = "block";
-  levelContainer.innerHTML=GetLevel()+" <i class='fa fa-key starColor'></i>";
+  //levelContainer.innerHTML=GetLevel()+" <i class='fa fa-key starColor'></i>";
   refreshContent();
   var counter = 100.0;
   var direction = -1;

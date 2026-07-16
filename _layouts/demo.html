@@ -1095,32 +1095,6 @@ root.render(<App />);
 
 <div id="root"></div>
 
-<!-- Animated background: cycles between blue and purple -->
-<script>
-(function() {
-  var t = 0;
-  setInterval(function() {
-    t += 0.003;
-    // Slow sine 0..1
-    var s = (Math.sin(t) + 1) / 2;
-    // Hue stays in blue-purple range: 220 (blue) <-> 290 (purple)
-    var h1 = 220 + s * 70;   // 220 (blue) -> 290 (purple)
-    var h2 = 240 + s * 50;   // 240 (indigo) -> 290 (purple)
-    var h3 = 210 + s * 80;   // 210 (blue) -> 290 (purple)
-
-    var col1 = "hsl(" + h1 + ", 75%, 16%)";
-    var col2 = "hsl(" + h2 + ", 65%, 8%)";
-    var col3 = "hsl(" + h3 + ", 60%, 12%)";
-    var col4 = "hsl(" + h2 + ", 55%, 5%)";
-
-    document.body.style.backgroundImage =
-      "radial-gradient(ellipse at 25% 35%, " + col1 + " 0%, transparent 60%)," +
-      "radial-gradient(ellipse at 75% 25%, " + col3 + " 0%, transparent 55%)," +
-      "radial-gradient(ellipse at 50% 75%, " + col2 + " 0%, transparent 65%)," +
-      "linear-gradient(180deg, " + col4 + " 0%, #03010a 100%)";
-  }, 16);
-})();
-</script>
 {% endraw %}
     {% include scripts.html %}
     <script src="{{ site.url }}/assets/js/wow.min.js"></script>
