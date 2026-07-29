@@ -300,6 +300,7 @@ function messWithBG()
 //changes the score data.
 function refreshContent()
 {
+   return;
   if(Cookies.get('demo') == undefined)
   {
     if(document.getElementById("gamenotice")!= null)
