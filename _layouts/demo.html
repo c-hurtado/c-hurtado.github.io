@@ -175,6 +175,7 @@ render_with_liquid: false
     <style type="text/css">body {background-image:url({{ background }}); {% unless site.tiled_bg %} background-repeat: no-repeat; background-size: cover; {% endunless %}</style>
     {% endif %}
 
+    <script type="text/babel" src="/assets/tweaks-panel.jsx"></script>
 </head>
 <body>
  {% raw %}
@@ -1063,7 +1064,38 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "accentColor": "pink"
 }/*EDITMODE-END*/;
 
+function App() {
+  const { tweaks: rawTweaks, setTweak } = useTweaks(TWEAK_DEFAULTS);
+  const tweaks = rawTweaks || TWEAK_DEFAULTS;
+  const [activeSection, setActiveSection] = useActiveSection();
 
+  return (
+    <>
+      {/* Fixed background layers */}
+      <HorizonLine />
+      <div style={{ position: 'relative', zIndex: 2 }}>
+        <Nav activeSection={activeSection} setActiveSection={setActiveSection} accentColor={tweaks.accentColor} />
+        <HomeSection layout={tweaks.layout} accentColor={tweaks.accentColor} />
+        <AboutSection accentColor={tweaks.accentColor} />
+        <GameDevSection accentColor={tweaks.accentColor} />
+        <ResumeSection accentColor={tweaks.accentColor} />
+        <ContactSection accentColor={tweaks.accentColor} />
+        <Footer accentColor={tweaks.accentColor} />
+      </div>
+
+      <TweaksPanel>
+        <TweakSection title="Layout">
+          <TweakRadio id="layout" label="Hero Style" value={tweaks.layout} onChange={v => setTweak('layout', v)}
+            options={[{ value: 'card', label: 'Card' }, { value: 'fullbleed', label: 'Full Bleed' }]} />
+        </TweakSection>
+        <TweakSection title="Colors">
+          <TweakRadio id="accentColor" label="Accent" value={tweaks.accentColor} onChange={v => setTweak('accentColor', v)}
+            options={[{ value: 'pink', label: 'Pink' }, { value: 'cyan', label: 'Cyan' }, { value: 'orange', label: 'Orange' }]} />
+        </TweakSection>
+      </TweaksPanel>
+    </>
+  );
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
