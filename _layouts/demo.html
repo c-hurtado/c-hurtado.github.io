@@ -151,6 +151,11 @@ render_with_liquid: false
     min-height: 100vh;
     overflow-x: hidden;
     background-attachment: fixed;
+
+        background-image: linear-gradient(180deg, #fff 0%, #0c0c0ceb 100%), linear-gradient(231.28deg, #e100ff 0%, #000 100%), linear-gradient(180deg, #5200FF 0%, #1A0050 100%), linear-gradient(341.1deg, red 7.52%, #1700A4 77.98%), radial-gradient(49.82% 80.51% at 49.82% 50%, #5A0069 0%, #FF3D00 100%), radial-gradient(50% 72.12% at 50% 50%, #EB00FF 0%, #105 100%);
+    background-blend-mode: multiply, color-dodge, overlay, difference, difference, normal;
+    background-position: center center;
+
   }
 
   h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
@@ -169,12 +174,6 @@ render_with_liquid: false
     <link rel="shortcut icon" type="image/png" href="{{ site.url }}/favicon.png" />
     <link rel="shortcut icon" href="{{ site.url }}/favicon.ico" />
     <!-- Background Image -->
-    {% if site.background %}
-    {% capture background %}{{ site.background }}{% endcapture %}
-    {% unless background contains 'http://' or background contains 'https://' %}{% capture background %}{{ site.url }}/{{ background }}{% endcapture %}{% endunless %}
-    <style type="text/css">body {background-image:url({{ background }}); {% unless site.tiled_bg %} background-repeat: no-repeat; background-size: cover; {% endunless %}</style>
-    {% endif %}
-
     <script type="text/babel" src="/assets/tweaks-panel.jsx"></script>
 </head>
 <body>
@@ -218,7 +217,7 @@ function Nav({ activeSection, setActiveSection, accentColor }) {
     }}>
       {/* Logo */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        <img src="assets/img/logo3.png" alt="Carlos Hurtado" style={{ height: 36, width: 'auto' }} />
+        <img src="/assets/img/logo3.png" alt="Carlos Hurtado" style={{ height: 36, width: 'auto' }} />
       </div>
 
       {/* Nav links */}
