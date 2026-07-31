@@ -217,7 +217,7 @@ function Nav({ activeSection, setActiveSection, accentColor }) {
     }}>
       {/* Logo */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        <img src="{{ site.url }}/assets/img/logo3.png" alt="Carlos Hurtado" style={{ height: 36, width: 'auto' }} />
+        <img src="assets/img/logo3.png" alt="Carlos Hurtado" style={{ height: 36, width: 'auto' }} />
       </div>
 
       {/* Nav links */}
@@ -260,7 +260,7 @@ function AvatarCircle({ size = 160, accentColor }) {
       background: 'oklch(8% 0.04 290)',
     }}>
       <img
-        src="{{ site.url }}/assets/img/mepunk.png"
+        src="/assets/img/mepunk.png"
         alt="Carlos Hurtado"
         style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
       />
@@ -650,14 +650,14 @@ function GameDevSection({ accentColor }) {
   const accent2 = accentColor === 'orange' ? 'var(--purple)' : 'var(--orange)';
 
   const projects = [
-    { title: 'Unannounced Big IP VR Project', studio: 'Sanzaru Games · Meta', badge: 'In Dev', desc: 'Currently in development — a major VR title for a well-known IP. Technical leadership across full production lifecycle.', href: 'https://www.carloshurtado.com/gameDevProjects/Unannounced/', img: '{{ site.url }}/assets/img/projects/Meta-Quest-3-Dark.jpg' },
-    { title: "Asgard's Wrath 2", studio: 'Sanzaru Games · Meta', badge: '10/10 IGN', desc: 'Award-winning VR RPG. Contributed as Technical Lead to flagship systems, performance, and architecture.', href: 'https://www.carloshurtado.com/gameDevProjects/AsgardsWrath2/', img: '{{ site.url }}/assets/img/projects/asgards-wrath-2.png' },
-    { title: "Asgard's Wrath", studio: 'Sanzaru Games', desc: 'VR action-RPG — predecessor to the award-winning sequel. Systems engineering and technical leadership.', href: 'https://www.carloshurtado.com/gameDevProjects/AsgardsWrath/', img: '{{ site.url }}/assets/img/projects/asgards-wrath.jpg' },
-    { title: 'Marvel Powers United VR', studio: 'Sanzaru Games', desc: 'Co-op VR brawler featuring Marvel superheroes. Multi-player systems, gameplay engineering.', href: 'https://www.carloshurtado.com/gameDevProjects/MarvelPowersUnited/', img: '{{ site.url }}/assets/img/projects/marvelpowersunited.jpg' },
-    { title: 'VR Sports Challenge', studio: 'Sanzaru Games', desc: 'Multi-sport VR experience. Core gameplay and physics systems engineering.', href: 'https://www.carloshurtado.com/gameDevProjects/VrSportsChallenge/', img: '{{ site.url }}/assets/img/projects/vr-sports-challenge.jpg' },
-    { title: 'Dark Manor', studio: 'Sanzaru Games · Big Fish Games', desc: 'Casual hidden-object mobile game. Built with a 2-person engineering team from the ground up.', href: 'https://www.carloshurtado.com/gameDevProjects/DarkManor/', img: '{{ site.url }}/assets/img/projects/darkmanor.jpg' },
-    { title: 'Uridium Wars', studio: 'Bigpoint', desc: 'Space-faring MMO built in Flash + PHP for Facebook. Took on a large-scale real-time MMO codebase.', href: 'https://www.carloshurtado.com/gameDevProjects/UridiumWars/', img: '{{ site.url }}/assets/img/projects/uridiumwars.png' },
-    { title: 'Sims 3 Expansion Packs', studio: 'Electronic Arts · Maxis', desc: 'Shipped 3 expansion packs (Late Night, Generations, Pets) and multiple stuff packs on 6-month cycles.', href: 'https://www.carloshurtado.com/gameDevProjects/Sims3ExpansionPacks/', img: '{{ site.url }}/assets/img/projects/sims.png' },
+    { title: 'Unannounced Big IP VR Project', studio: 'Sanzaru Games · Meta', badge: 'In Dev', desc: 'Currently in development — a major VR title for a well-known IP. Technical leadership across full production lifecycle.', href: 'https://www.carloshurtado.com/gameDevProjects/Unannounced/', img: '/assets/img/projects/Meta-Quest-3-Dark.jpg' },
+    { title: "Asgard's Wrath 2", studio: 'Sanzaru Games · Meta', badge: '10/10 IGN', desc: 'Award-winning VR RPG. Contributed as Technical Lead to flagship systems, performance, and architecture.', href: 'https://www.carloshurtado.com/gameDevProjects/AsgardsWrath2/', img: '/assets/img/projects/asgards-wrath-2.png' },
+    { title: "Asgard's Wrath", studio: 'Sanzaru Games', desc: 'VR action-RPG — predecessor to the award-winning sequel. Systems engineering and technical leadership.', href: 'https://www.carloshurtado.com/gameDevProjects/AsgardsWrath/', img: '/assets/img/projects/asgards-wrath.jpg' },
+    { title: 'Marvel Powers United VR', studio: 'Sanzaru Games', desc: 'Co-op VR brawler featuring Marvel superheroes. Multi-player systems, gameplay engineering.', href: 'https://www.carloshurtado.com/gameDevProjects/MarvelPowersUnited/', img: '/assets/img/projects/marvelpowersunited.jpg' },
+    { title: 'VR Sports Challenge', studio: 'Sanzaru Games', desc: 'Multi-sport VR experience. Core gameplay and physics systems engineering.', href: 'https://www.carloshurtado.com/gameDevProjects/VrSportsChallenge/', img: '/assets/img/projects/vr-sports-challenge.jpg' },
+    { title: 'Dark Manor', studio: 'Sanzaru Games · Big Fish Games', desc: 'Casual hidden-object mobile game. Built with a 2-person engineering team from the ground up.', href: 'https://www.carloshurtado.com/gameDevProjects/DarkManor/', img: '/assets/img/projects/darkmanor.jpg' },
+    { title: 'Uridium Wars', studio: 'Bigpoint', desc: 'Space-faring MMO built in Flash + PHP for Facebook. Took on a large-scale real-time MMO codebase.', href: 'https://www.carloshurtado.com/gameDevProjects/UridiumWars/', img: '/assets/img/projects/uridiumwars.png' },
+    { title: 'Sims 3 Expansion Packs', studio: 'Electronic Arts · Maxis', desc: 'Shipped 3 expansion packs (Late Night, Generations, Pets) and multiple stuff packs on 6-month cycles.', href: 'https://www.carloshurtado.com/gameDevProjects/Sims3ExpansionPacks/', img: '/assets/img/projects/sims.png' },
   ];
 
   return (
