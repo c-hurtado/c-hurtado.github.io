@@ -180,7 +180,7 @@ render_with_liquid: false
     {% unless feature contains 'http://' or feature contains 'https://' %}{% capture feature %}{{ site.url }}/{{ feature }}{% endcapture %}{% endunless %}
     <style type="text/css">.feature {background-image:url({{ feature }});}</style>
     {% endif %}
-    
+
 </head>
 <body>
 
@@ -663,7 +663,7 @@ function GameDevSection({ accentColor }) {
     { title: "Asgard's Wrath 2", studio: 'Sanzaru Games · Meta', badge: '10/10 IGN', desc: 'Award-winning VR RPG. Contributed as Technical Lead to flagship systems, performance, and architecture.', href: 'https://www.carloshurtado.com/gameDevProjects/AsgardsWrath2/', img: '{{ site.url }}/assets/img/projects/asgards-wrath-2.png' },
     { title: "Asgard's Wrath", studio: 'Sanzaru Games', desc: 'VR action-RPG — predecessor to the award-winning sequel. Systems engineering and technical leadership.', href: 'https://www.carloshurtado.com/gameDevProjects/AsgardsWrath/', img: '{{ site.url }}/assets/img/projects/asgards-wrath.jpg' },
     { title: 'Marvel Powers United VR', studio: 'Sanzaru Games', desc: 'Co-op VR brawler featuring Marvel superheroes. Multi-player systems, gameplay engineering.', href: 'https://www.carloshurtado.com/gameDevProjects/MarvelPowersUnited/', img: '{{ site.url }}/assets/img/projects/marvelpowersunited.jpg' },
-    { title: 'VR Sports Challenge', studio: 'Sanzaru Games', desc: 'Multi-sport VR experience. Core gameplay and physics systems engineering.', href: 'https://www.carloshurtado.com/gameDevProjects/VrSportsChallenge/', img: 'assets/img/projects/vr-sports-challenge.jpg' },
+    { title: 'VR Sports Challenge', studio: 'Sanzaru Games', desc: 'Multi-sport VR experience. Core gameplay and physics systems engineering.', href: 'https://www.carloshurtado.com/gameDevProjects/VrSportsChallenge/', img: '{{ site.url }}/assets/img/projects/vr-sports-challenge.jpg' },
     { title: 'Dark Manor', studio: 'Sanzaru Games · Big Fish Games', desc: 'Casual hidden-object mobile game. Built with a 2-person engineering team from the ground up.', href: 'https://www.carloshurtado.com/gameDevProjects/DarkManor/', img: '{{ site.url }}/assets/img/projects/darkmanor.jpg' },
     { title: 'Uridium Wars', studio: 'Bigpoint', desc: 'Space-faring MMO built in Flash + PHP for Facebook. Took on a large-scale real-time MMO codebase.', href: 'https://www.carloshurtado.com/gameDevProjects/UridiumWars/', img: '{{ site.url }}/assets/img/projects/uridiumwars.png' },
     { title: 'Sims 3 Expansion Packs', studio: 'Electronic Arts · Maxis', desc: 'Shipped 3 expansion packs (Late Night, Generations, Pets) and multiple stuff packs on 6-month cycles.', href: 'https://www.carloshurtado.com/gameDevProjects/Sims3ExpansionPacks/', img: '{{ site.url }}/assets/img/projects/sims.png' },
@@ -1029,7 +1029,7 @@ function Footer({ accentColor }) {
       display: 'flex', justifyContent: 'space-between', alignItems: 'center',
       fontSize: 13, color: 'var(--text-dim)',
     }}>
-      <img src="assets/img/logo3.png" alt="Carlos Hurtado" style={{ height: 28, width: 'auto' }} />
+      <img src="{{ site.url }}/assets/img/logo3.png" alt="Carlos Hurtado" style={{ height: 28, width: 'auto' }} />
       <span>SF Bay Area · Game Industry · 15+ Years</span>
     </footer>
   );
