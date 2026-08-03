@@ -164,6 +164,49 @@ render_with_liquid: false
   a:hover { color: var(--orange); }
 
   ::selection { background: var(--pink); color: #fff; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 16px !important; }
+    nav img { height: 28px !important; }
+    .nav-links { gap: 2px !important; overflow-x: auto; max-width: 58vw; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a { padding: 6px 10px !important; font-size: 12px !important; white-space: nowrap; }
+
+    #home, #about, #gamedev, #resume, #art, #contact {
+      padding-left: 5% !important;
+      padding-right: 5% !important;
+      padding-top: 88px !important;
+    }
+
+    .section-card { padding: 28px 20px !important; }
+
+    .hb-row { flex-direction: column !important; gap: 40px !important; }
+    .hb-row > div:first-child { width: 100%; }
+
+    .home-card-header { flex-direction: column !important; text-align: center; gap: 16px !important; }
+    .home-card-header > div:last-child { width: 100%; }
+
+    .about-grid, .resume-grid, .contact-grid {
+      grid-template-columns: 1fr !important;
+      gap: 28px !important;
+    }
+
+    .gamedev-grid {
+      grid-template-columns: 1fr !important;
+    }
+
+    footer {
+      flex-direction: column !important;
+      gap: 10px !important;
+      text-align: center !important;
+      padding: 24px 6% !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .section-card { padding: 22px 16px !important; }
+    .nav-links a { padding: 6px 8px !important; font-size: 11px !important; }
+  }
 </style>
 
   <!-- Favicons -->
@@ -221,7 +264,7 @@ function Nav({ activeSection, setActiveSection, accentColor }) {
       </div>
 
       {/* Nav links */}
-      <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+      <div className="nav-links" style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
         {navItems.map(item => (
           <a key={item.id} href={`#${item.id}`}
             onClick={() => setActiveSection(item.id)}
@@ -273,7 +316,7 @@ function SectionCard({ children, accentColor, style: extraStyle }) {
   const accent = accentColor === 'cyan' ? 'var(--cyan)' : accentColor === 'orange' ? 'var(--orange)' : 'var(--pink)';
   const accent2 = accentColor === 'orange' ? 'var(--purple)' : 'var(--orange)';
   return (
-    <div style={{
+    <div className="section-card" style={{
       background: 'var(--card-bg)',
       backdropFilter: 'blur(24px)',
       border: '1px solid var(--border)',
@@ -335,7 +378,7 @@ function HomeSection({ layout, accentColor }) {
         padding: '120px 10% 80px',
         position: 'relative',
       }}>
-        <div style={{ display: 'flex', gap: 80, alignItems: 'center', width: '100%', maxWidth: 1100 }}>
+        <div className="hb-row" style={{ display: 'flex', gap: 80, alignItems: 'center', width: '100%', maxWidth: 1100 }}>
           <div style={{ flex: 1 }}>
             <div style={{ marginBottom: 16, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
               <NeonBadge color={accent}>Technical Lead Manager</NeonBadge>
@@ -431,7 +474,7 @@ function HomeSection({ layout, accentColor }) {
         </div>
 
         {/* Avatar + greeting */}
-        <div style={{ display: 'flex', alignItems: 'flex-start', gap: 28, marginBottom: 32 }}>
+        <div className="home-card-header" style={{ display: 'flex', alignItems: 'flex-start', gap: 28, marginBottom: 32 }}>
           <AvatarCircle size={100} accentColor={accentColor} />
           <div>
             <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 10 }}>
@@ -592,7 +635,7 @@ function AboutSection({ accentColor }) {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: 48, alignItems: 'start' }}>
+        <div className="about-grid" style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: 48, alignItems: 'start' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             <p style={{ fontSize: 16, lineHeight: 1.8, color: 'var(--text-dim)' }}>
               Oh, hello! I'm <span style={{ color: 'var(--text)', fontWeight: 600 }}>Carlos</span> — nice to meet you. I was born in <span style={{ color: 'var(--text)' }}>Chile</span> and moved to the United States to pursue a career in entertainment technology. I'm now a citizen, and I've been in the industry since <span style={{ color: 'var(--text)' }}>2008</span>.
@@ -672,7 +715,7 @@ function GameDevSection({ accentColor }) {
           16+ years shipping games across VR, mobile, and PC. From EA to Meta-backed studios.
         </p>
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 20 }}>
+      <div className="gamedev-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 20 }}>
         {projects.map((p, i) => (
           <ProjectCard key={p.title} {...p} accentColor={accentColor} index={i} />
         ))}
@@ -711,7 +754,7 @@ function ResumeSection({ accentColor }) {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48 }}>
+      <div className="resume-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48 }}>
         {/* Timeline */}
         <div>
           <h3 style={{ fontFamily: 'Space Grotesk', fontSize: 18, fontWeight: 600, color: accent, marginBottom: 28, letterSpacing: '0.04em', textTransform: 'uppercase', fontSize: 12 }}>Career Timeline</h3>
@@ -912,7 +955,7 @@ function ContactSection({ accentColor }) {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 48, alignItems: 'start' }}>
+      <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 48, alignItems: 'start' }}>
         {/* Left */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           {[
