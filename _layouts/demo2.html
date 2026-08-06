@@ -18,9 +18,9 @@ render_with_liquid: false
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script defer src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
+<script defer src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
+<script defer src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 
 
 <style>
@@ -143,6 +143,132 @@ render_with_liquid: false
   animation:move-clouds-back 500s linear infinite;
 }
 
+/* Retro synthwave grid horizon (mirrors _sass/elements.scss, inlined here
+   because this layout ships its own standalone <style> block). */
+.grid-wrapper {
+  position: fixed;
+  width: 100%;
+  height: 500px;
+  left: 0;
+  bottom: 0px;
+  perspective: 200px;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.grid {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, #00000000 50%, #1a0018 70%);
+  transform: rotateX(60deg);
+  -webkit-transform: rotateX(60deg);
+  -o-transform: rotateX(60deg);
+}
+
+.line {
+  position: absolute;
+  background: rgba(87, 193, 232, 0.35);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.vertical .line {
+  top: 0; left: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(0deg, rgba(87,193,232,0.4) 0%, rgba(204,34,255,0.35) 55%, rgba(255,45,120,0) 100%);
+}
+.vertical .line:nth-child(1) { left: 10%; }
+.vertical .line:nth-child(2) { left: 20%; }
+.vertical .line:nth-child(3) { left: 30%; }
+.vertical .line:nth-child(4) { left: 40%; }
+.vertical .line:nth-child(5) { left: 50%; }
+.vertical .line:nth-child(6) { left: 60%; }
+.vertical .line:nth-child(7) { left: 70%; }
+.vertical .line:nth-child(8) { left: 80%; }
+.vertical .line:nth-child(9) { left: 90%; }
+.vertical .line:nth-child(10) { left: 100%; margin-left: -1px; }
+
+.horizontal .line { top: 0; left: 0; right: 0; height: 2px; z-index: 2; }
+.horizontal .line:nth-child(1)  { top: 10%;  opacity: 0.2;  background: rgba(255,45,120,0.6);  animation: moveLine10 20s linear infinite; animation-delay: -2s; }
+.horizontal .line:nth-child(2)  { top: 20%;  opacity: 0.3;  background: rgba(236,62,133,0.6);  animation: moveLine10 20s linear infinite; animation-delay: -4s; }
+.horizontal .line:nth-child(3)  { top: 30%;  opacity: 0.4;  background: rgba(218,78,145,0.6);  animation: moveLine10 20s linear infinite; animation-delay: -6s; }
+.horizontal .line:nth-child(4)  { top: 40%;  opacity: 0.5;  background: rgba(199,94,157,0.6);  animation: moveLine10 20s linear infinite; animation-delay: -8s; }
+.horizontal .line:nth-child(5)  { top: 50%;  opacity: 0.6;  background: rgba(180,111,170,0.6); animation: moveLine10 20s linear infinite; animation-delay: -10s; }
+.horizontal .line:nth-child(6)  { top: 60%;  opacity: 0.7;  background: rgba(162,127,182,0.6); animation: moveLine10 20s linear infinite; animation-delay: -12s; }
+.horizontal .line:nth-child(7)  { top: 70%;  opacity: 0.8;  background: rgba(143,144,195,0.6); animation: moveLine10 20s linear infinite; animation-delay: -14s; }
+.horizontal .line:nth-child(8)  { top: 80%;  opacity: 0.9;  background: rgba(124,160,207,0.6); animation: moveLine10 20s linear infinite; animation-delay: -16s; }
+.horizontal .line:nth-child(9)  { top: 90%;  opacity: 0.95; background: rgba(106,177,220,0.6); animation: moveLine10 20s linear infinite; animation-delay: -18s; }
+.horizontal .line:nth-child(10) { top: 100%; margin-top: -1px; opacity: 1; background: rgba(87,193,232,0.6); animation: moveLine10 20s linear infinite; }
+.horizontal .line:nth-child(11) { opacity: 0.05; }
+
+.dot {
+  position: absolute;
+  cursor: pointer;
+  background: #57C1E8;
+  width: 3px;
+  height: 3px;
+  top: 100%;
+  border-radius: 2px;
+  box-shadow: 0 0 3px #fff;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  pointer-events: auto;
+}
+.dot:nth-child(1) { left: 10%; animation: moveDot 5s infinite; }
+.dot:nth-child(2) { left: 20%; animation: moveDot 20s infinite; }
+.dot:nth-child(3) { left: 30%; animation: moveDot 15s infinite; }
+.dot:nth-child(4) { left: 50%; animation: moveDot 30s infinite; }
+.dot:nth-child(5) { left: 60%; animation: moveDot 12s infinite; }
+.dot:nth-child(6) { left: 80%; animation: moveDot 6s infinite; }
+.dot:nth-child(7) { left: 90%; animation: moveDot 8s infinite; }
+
+@keyframes moveDot {
+  0%   { top: 100%; opacity: 1; }
+  100% { top: 0%; opacity: 0; }
+}
+
+@keyframes moveLine10 {
+  0%   { top: 0%; opacity: 0; }
+  100% { top: 100%; opacity: 1; }
+}
+
+@media (max-width: 480px) {
+  .horizontal .line, .dot { animation: none !important; }
+}
+
+/* ── SUN EXPERIMENT — delete this whole block to remove it ────────────── */
+body::before, body::after {
+  content: '';
+  position: fixed;
+  left: 50%;
+  bottom: 318px;
+  transform: translate(-50%, 50%);
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle 140px at center,
+    #fff5b0 0px,
+    #ffcc66 35px,
+    #ff9933 63px,
+    #ff2d78 93px,
+    rgba(255,45,120,0.12) 96px,
+    rgba(255,153,51,0.06) 152px,
+    transparent 280px);
+  z-index: 0;
+  pointer-events: none;
+}
+body::before {
+  clip-path: inset(0 0 50% 0); /* top half — sun */
+}
+body::after {
+  clip-path: inset(50% 0 0 0); /* bottom half — faint reflection */
+  opacity: 0.05;
+  filter: blur(4px);
+}
+/* ── END SUN EXPERIMENT ─────────────────────────────────────────────────── */
+
   html { scroll-behavior: smooth; }
 
   body {
@@ -152,8 +278,8 @@ render_with_liquid: false
     overflow-x: hidden;
     background-attachment: fixed;
 
-        background-image: linear-gradient(180deg, #fff 0%, #0c0c0ceb 100%), linear-gradient(231.28deg, #e100ff 0%, #000 100%), linear-gradient(180deg, #5200FF 0%, #1A0050 100%), linear-gradient(341.1deg, red 7.52%, #1700A4 77.98%), radial-gradient(49.82% 80.51% at 49.82% 50%, #5A0069 0%, #FF3D00 100%), radial-gradient(50% 72.12% at 50% 50%, #EB00FF 0%, #105 100%);
-    background-blend-mode: multiply, color-dodge, overlay, difference, difference, normal;
+        background-image: linear-gradient(rgba(5,0,12,0.55), rgba(5,0,12,0.55)), linear-gradient(180deg, #fff 0%, #0c0c0ceb 100%), linear-gradient(231.28deg, #e100ff 0%, #000 100%), linear-gradient(180deg, #5200FF 0%, #1A0050 100%), linear-gradient(341.1deg, red 7.52%, #1700A4 77.98%), radial-gradient(49.82% 80.51% at 49.82% 50%, #5A0069 0%, #FF3D00 100%), radial-gradient(50% 72.12% at 50% 50%, #EB00FF 0%, #105 100%);
+    background-blend-mode: normal, multiply, color-dodge, overlay, difference, difference, normal;
     background-position: center center;
 
   }
@@ -229,6 +355,49 @@ render_with_liquid: false
   .goup-arrow {
     border-color: transparent transparent oklch(65% 0.02 280) transparent !important;
   }
+
+  @keyframes art-thumb-shimmer {
+    0% { transform: translateX(-120%); }
+    100% { transform: translateX(220%); }
+  }
+  .art-thumb-skeleton {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background: oklch(20% 0.06 290);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .art-thumb-skeleton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 60%;
+    background: linear-gradient(90deg, transparent, oklch(45% 0.10 290), transparent);
+    animation: art-thumb-shimmer 1.4s ease-in-out infinite;
+    will-change: transform;
+  }
+  @keyframes art-spin {
+    to { transform: rotate(360deg); }
+  }
+  .art-lightbox-spinner {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 3px solid oklch(100% 0 0 / 0.15);
+    border-top-color: var(--accent-spin, #fff);
+    animation: art-spin 0.8s linear infinite;
+  }
+  .art-thumb-spinner {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    border: 2px solid oklch(100% 0 0 / 0.2);
+    border-top-color: oklch(85% 0.15 340);
+    animation: art-spin 0.7s linear infinite;
+    flex-shrink: 0;
+  }
 </style>
 
   <!-- Favicons -->
@@ -298,14 +467,14 @@ function Nav({ activeSection, setActiveSection, accentColor }) {
               fontSize: 14,
               fontWeight: 500,
               letterSpacing: '0.04em',
-              color: activeSection === item.id ? accent : 'var(--text-dim)',
+              color: activeSection === item.id ? accent : 'oklch(85% 0.02 280)',
               background: activeSection === item.id ? `oklch(55% 0.25 295 / 0.15)` : 'transparent',
               border: activeSection === item.id ? `1px solid ${accent}40` : '1px solid transparent',
               transition: 'all 0.25s ease',
               cursor: 'pointer',
             }}
             onMouseEnter={e => { if (activeSection !== item.id) { e.target.style.color = 'var(--text)'; }}}
-            onMouseLeave={e => { if (activeSection !== item.id) { e.target.style.color = 'var(--text-dim)'; }}}
+            onMouseLeave={e => { if (activeSection !== item.id) { e.target.style.color = 'oklch(85% 0.02 280)'; }}}
           >{item.label}</a>
         ))}
       </div>
@@ -590,6 +759,7 @@ function SocialLinks({ accent, style: extraStyle }) {
 // ─── GAME DEV PROJECT CARD ────────────────────────────────────────────────────
 function ProjectCard({ title, studio, desc, img: imgSrc, badge, accentColor, index, onOpen }) {
   const [hovered, setHovered] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const accent = accentColor === 'cyan' ? 'var(--cyan)' : accentColor === 'orange' ? 'var(--orange)' : 'var(--pink)';
   const accent2 = accentColor === 'orange' ? 'var(--purple)' : 'var(--orange)';
 
@@ -617,10 +787,11 @@ function ProjectCard({ title, studio, desc, img: imgSrc, badge, accentColor, ind
         borderBottom: `1px solid oklch(55% 0.25 295 / 0.15)`,
         position: 'relative', overflow: 'hidden',
       }}>
+        {imgSrc && !loaded && <div className="art-thumb-skeleton"><div className="art-thumb-spinner" /></div>}
         {imgSrc && (
-          <img src={imgSrc} alt={title} style={{
+          <img src={imgSrc} alt={title} loading="lazy" decoding="async" onLoad={() => setLoaded(true)} style={{
             width: '100%', height: '100%', objectFit: 'cover',
-            display: 'block', opacity: hovered ? 1 : 0.85,
+            display: 'block', opacity: loaded ? (hovered ? 1 : 0.85) : 0,
             transition: 'opacity 0.3s ease',
           }} />
         )}
@@ -665,6 +836,7 @@ function ModalList({ items }) {
 function ProjectModal({ project, onClose, accentColor }) {
   const accent = accentColor === 'cyan' ? 'var(--cyan)' : accentColor === 'orange' ? 'var(--orange)' : 'var(--pink)';
   const accent2 = accentColor === 'orange' ? 'var(--purple)' : 'var(--orange)';
+  const [heroLoaded, setHeroLoaded] = useState(false);
 
   useEffect(() => {
     const handler = e => { if (e.key === 'Escape') onClose(); };
@@ -704,7 +876,11 @@ function ProjectModal({ project, onClose, accentColor }) {
 
         {project.img && (
           <div style={{ height: 220, borderRadius: '12px 12px 0 0', overflow: 'hidden', position: 'relative' }}>
-            <img src={project.img} alt={project.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            {!heroLoaded && <div className="art-thumb-skeleton"><div className="art-thumb-spinner" /></div>}
+            <img src={project.img} alt={project.title} decoding="async" onLoad={() => setHeroLoaded(true)} style={{
+              width: '100%', height: '100%', objectFit: 'cover',
+              opacity: heroLoaded ? 1 : 0, transition: 'opacity 0.3s ease',
+            }} />
             <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, transparent 40%, oklch(8% 0.04 290 / 0.98) 100%)` }} />
           </div>
         )}
@@ -874,7 +1050,7 @@ function GameDevSection({ accentColor }) {
             <a href="https://www.metacritic.com/game/asgards-wrath-2/" target="_blank" style={{ color: accent, fontWeight: 600 }}>Metacritic</a>{' '}
             score of 86.
           </ModalP>
-          <img src="/assets/img/projects/masterpiece.PNG" alt="IGN 10/10 score" style={{ width: '100%', borderRadius: 8, marginBottom: 20, border: `1px solid ${accent}30` }} />
+          <img src="/assets/img/projects/masterpiece.PNG" alt="IGN 10/10 score" loading="lazy" decoding="async" style={{ width: '100%', borderRadius: 8, marginBottom: 20, border: `1px solid ${accent}30` }} />
           <ModalH4 accent={accent}>Leadership</ModalH4>
           <ModalList items={[
             'Managed 5 engineers and collaborated with cross functional partners to align on schedule, direction and quality.',
@@ -1137,39 +1313,116 @@ function ResumeSection({ accentColor }) {
 // ─── ART SECTION ─────────────────────────────────────────────────────────────
 const ART_CATEGORIES_RAW = [
   {
-    key: 'oil', label: 'Oil Paintings',
+    key: 'oil', label: 'Oil',
     images: [
-      // No photographed physical paintings in the gallery folder yet —
-      // this row stays hidden until some are added.
+      '/assets/img/gallery/Oil/IMG_1302.jpg',
+      '/assets/img/gallery/Oil/IMG_1304.jpg',
+      '/assets/img/gallery/Oil/IMG_1306.jpg',
+      '/assets/img/gallery/Oil/IMG_1308.jpg',
+      '/assets/img/gallery/Oil/IMG_1312.jpg',
+      '/assets/img/gallery/Oil/IMG_1313.jpg',
     ],
   },
   {
     key: 'digital', label: 'Digital Portraits',
     images: [
-      '/assets/img/gallery/853B6AA4-01AA-412D-9D94-40EE1C5175BE.jpeg',
-      '/assets/img/gallery/9E6CA950-AB6D-4E1C-82BA-F6E70D966A65.jpeg',
-      '/assets/img/gallery/B1C94B19-7B6E-477B-9C14-BB2DEFA9908D.jpeg',
-      '/assets/img/gallery/CD04586D-6877-48A9-A930-EC64653FBDA5.jpeg',
-      '/assets/img/gallery/723E299A-AD11-4BCC-85EF-14C6C4DDC874.jpeg',
-      '/assets/img/gallery/CpTC1CfUEAAm27p.jpg',
+      '/assets/img/gallery/DigitalPortraits/2019-07-10 001 458.JPG',
+      '/assets/img/gallery/DigitalPortraits/2019-07-10 001 459.JPG',
+      '/assets/img/gallery/DigitalPortraits/2019-07-10 001 466.JPG',
+      '/assets/img/gallery/DigitalPortraits/2019-07-10 001 510.JPG',
+      '/assets/img/gallery/DigitalPortraits/80spop.jpg',
+      '/assets/img/gallery/DigitalPortraits/B092C8ED-2133-4CCB-BBB7-B62650A4E166.JPG',
+      '/assets/img/gallery/DigitalPortraits/C74264F1-FD41-4F51-8C37-7EA1DBFF3055.JPG',
+      '/assets/img/gallery/DigitalPortraits/IMG_0282.JPG',
+      '/assets/img/gallery/DigitalPortraits/IMG_0304.JPG',
+      '/assets/img/gallery/DigitalPortraits/IMG_0458.JPG',
+      '/assets/img/gallery/DigitalPortraits/IMG_0608.JPG',
+      '/assets/img/gallery/DigitalPortraits/IMG_0676.jpeg',
+      '/assets/img/gallery/DigitalPortraits/IMG_0791.JPG',
+      '/assets/img/gallery/DigitalPortraits/IMG_0797.JPG',
+      '/assets/img/gallery/DigitalPortraits/IMG_0811.JPG',
+      '/assets/img/gallery/DigitalPortraits/IMG_0831.JPG',
+      '/assets/img/gallery/DigitalPortraits/IMG_0839.JPG',
+      '/assets/img/gallery/DigitalPortraits/IMG_0857.JPG',
+      '/assets/img/gallery/DigitalPortraits/IMG_0859.jpeg',
+      '/assets/img/gallery/DigitalPortraits/IMG_0942.JPG',
+      '/assets/img/gallery/DigitalPortraits/IMG_0959.JPG',
+      '/assets/img/gallery/DigitalPortraits/IMG_1015.JPG',
+      '/assets/img/gallery/DigitalPortraits/IMG_1103.JPG',
+      '/assets/img/gallery/DigitalPortraits/IMG_1140.JPG',
+      '/assets/img/gallery/DigitalPortraits/IMG_1174.JPG',
+      '/assets/img/gallery/DigitalPortraits/IMG_1916.JPG',
+      '/assets/img/gallery/DigitalPortraits/IMG_1920.JPG',
+      '/assets/img/gallery/DigitalPortraits/IMG_1921.JPG',
+      '/assets/img/gallery/DigitalPortraits/IMG_1922.JPG',
+      '/assets/img/gallery/DigitalPortraits/IMG_1923.JPG',
+      '/assets/img/gallery/DigitalPortraits/IMG_1924.JPG',
+      '/assets/img/gallery/DigitalPortraits/IMG_1925.JPG',
+      '/assets/img/gallery/DigitalPortraits/IMG_1934.JPG',
+      '/assets/img/gallery/DigitalPortraits/Photo Jun 23, 14 30 02.png',
+      '/assets/img/gallery/DigitalPortraits/Photo May 18, 15 59 47.jpg',
+      '/assets/img/gallery/DigitalPortraits/Photo Sep 07, 07 23 14 (1).jpg',
+      '/assets/img/gallery/DigitalPortraits/Photo Sep 12, 23 40 00.png',
+      '/assets/img/gallery/DigitalPortraits/bw.jpg',
+      '/assets/img/gallery/DigitalPortraits/tumblr_nx7gg7YCp81tsh4b6o1_1280.jpg',
     ],
   },
   {
-    key: 'other', label: 'Other',
+    key: 'studies', label: 'Studies',
     images: [
-      '/assets/img/gallery/ARCADIA1.jpg',
-      '/assets/img/gallery/80spng.png',
-      '/assets/img/gallery/DungeonRunBoss.jpg',
-      '/assets/img/gallery/11578258-D07B-41FC-8C3B-5DCCAD1F8417.jpeg',
-      '/assets/img/gallery/7B8A217F-3686-4488-BCE8-7EBB98385010.jpeg',
-      '/assets/img/gallery/9318A76A-8477-4DC2-BBAE-400FF2931F7E.jpeg',
-      '/assets/img/gallery/C0CB37ED-C55F-44C1-9AF4-394DAFFDD8B2.jpeg',
-      '/assets/img/gallery/F8C8E6AB-FFF8-4CC8-8B08-EB899052C574.jpeg',
-      '/assets/img/gallery/5EBED729-A641-4F7E-B90C-CE9B950B80AA.png',
-      '/assets/img/gallery/BE87DA46-0E1B-4F73-A7E6-5D373B34514A.png',
-      '/assets/img/gallery/CE667955-6CB9-403F-BE37-394FB7936738.png',
-      '/assets/img/gallery/12307538_10153268100233907_6064951705480197043_o.jpg',
-      '/assets/img/gallery/7240E567-C58E-4457-A1AB-68EB752569CF.jpeg',
+      '/assets/img/gallery/Studies/2019-07-10 001 8140.PNG',
+      '/assets/img/gallery/Studies/2019-07-10 001 8141.JPG',
+      '/assets/img/gallery/Studies/2019-07-10 001 8142.PNG',
+      '/assets/img/gallery/Studies/2019-07-10 001 8143.JPG',
+      '/assets/img/gallery/Studies/IMG_0072.PNG',
+      '/assets/img/gallery/Studies/IMG_0614.JPG',
+      '/assets/img/gallery/Studies/IMG_0618.jpeg',
+      '/assets/img/gallery/Studies/IMG_0662.jpeg',
+      '/assets/img/gallery/Studies/Photo Jun 15, 10 41 19.jpg',
+      '/assets/img/gallery/Studies/Photo May 18, 15 59 47.jpg',
+      '/assets/img/gallery/Studies/Photo May 21, 20 31 39.jpg',
+    ],
+  },
+  {
+    key: 'commissions', label: 'Commissions and Friends',
+    images: [
+      '/assets/img/gallery/CommissionsAndFriends/2019-07-10 001 465.JPG',
+      '/assets/img/gallery/CommissionsAndFriends/2019-07-10 001 614.JPG',
+      '/assets/img/gallery/CommissionsAndFriends/2019-07-10 001 625.JPG',
+      '/assets/img/gallery/CommissionsAndFriends/Photo Sep 12, 23 41 03.png',
+      '/assets/img/gallery/CommissionsAndFriends/ej.png',
+      '/assets/img/gallery/CommissionsAndFriends/keigov3.jpg',
+      '/assets/img/gallery/CommissionsAndFriends/maddy.jpg',
+      '/assets/img/gallery/CommissionsAndFriends/matt.jpg',
+      '/assets/img/gallery/CommissionsAndFriends/rene.jpg',
+      '/assets/img/gallery/CommissionsAndFriends/tumblr_nx7gf6jDdw1tsh4b6o1_1280.jpg',
+      '/assets/img/gallery/CommissionsAndFriends/yusun.jpg',
+    ],
+  },
+  {
+    key: 'fanart', label: 'Fan Art and Characters',
+    images: [
+      '/assets/img/gallery/FanArtAndCharacters/12307538_10153268100233907_6064951705480197043_o.jpg',
+      '/assets/img/gallery/FanArtAndCharacters/IMG_0379.JPG',
+      '/assets/img/gallery/FanArtAndCharacters/IMG_0407.JPG',
+      '/assets/img/gallery/FanArtAndCharacters/IMG_0449.JPG',
+      '/assets/img/gallery/FanArtAndCharacters/IMG_0454.JPG',
+      '/assets/img/gallery/FanArtAndCharacters/IMG_0456.JPG',
+      '/assets/img/gallery/FanArtAndCharacters/IMG_0539.PNG',
+      '/assets/img/gallery/FanArtAndCharacters/IMG_0544.JPG',
+      '/assets/img/gallery/FanArtAndCharacters/IMG_0734.JPG',
+      '/assets/img/gallery/FanArtAndCharacters/IMG_1037.JPG',
+      '/assets/img/gallery/FanArtAndCharacters/IMG_1047.JPG',
+      '/assets/img/gallery/FanArtAndCharacters/IMG_1054.JPG',
+      '/assets/img/gallery/FanArtAndCharacters/IMG_1066.JPG',
+      '/assets/img/gallery/FanArtAndCharacters/IMG_1079.JPG',
+      '/assets/img/gallery/FanArtAndCharacters/IMG_1086.JPG',
+      '/assets/img/gallery/FanArtAndCharacters/Photo Apr 10, 9 24 56 AM.jpg',
+      '/assets/img/gallery/FanArtAndCharacters/aziz.jpg',
+      '/assets/img/gallery/FanArtAndCharacters/solar.jpg',
+      '/assets/img/gallery/FanArtAndCharacters/soyul.jpeg',
+      '/assets/img/gallery/FanArtAndCharacters/starlord.jpg',
+      '/assets/img/gallery/FanArtAndCharacters/tumblr_nx7gj6FfGB1tsh4b6o1_1280.jpg',
     ],
   },
 ];
@@ -1178,6 +1431,7 @@ function ArtSection({ accentColor }) {
   const accent = accentColor === 'cyan' ? 'var(--cyan)' : accentColor === 'orange' ? 'var(--orange)' : 'var(--pink)';
   const accent2 = accentColor === 'orange' ? 'var(--purple)' : 'var(--orange)';
   const [lightbox, setLightbox] = useState(null); // { cat: number, i: number }
+  const [lightboxLoaded, setLightboxLoaded] = useState(null); // src of the last fully-loaded lightbox image
 
   useEffect(() => {
     const handler = e => { if (e.key === 'Escape') setLightbox(null); };
@@ -1231,9 +1485,13 @@ function ArtSection({ accentColor }) {
             color: accent, width: 48, height: 48, borderRadius: 6, cursor: 'pointer',
             fontSize: 22, display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}>‹</button>
-          <img src={activeImages[lightbox.i]} onClick={e => e.stopPropagation()} style={{
+          {lightboxLoaded !== activeImages[lightbox.i] && (
+            <div className="art-lightbox-spinner" style={{ '--accent-spin': accent }} onClick={e => e.stopPropagation()} />
+          )}
+          <img src={activeImages[lightbox.i]} onClick={e => e.stopPropagation()} onLoad={() => setLightboxLoaded(activeImages[lightbox.i])} style={{
             maxWidth: '88vw', maxHeight: '88vh', objectFit: 'contain', borderRadius: 6,
-            boxShadow: `0 0 40px ${accent}40`
+            boxShadow: `0 0 40px ${accent}40`,
+            display: lightboxLoaded === activeImages[lightbox.i] ? 'block' : 'none',
           }} />
           <button onClick={e => { e.stopPropagation(); setLightbox(l => ({ cat: l.cat, i: (l.i + 1) % activeImages.length })); }} style={{
             position: 'absolute', right: 24, top: '50%', transform: 'translateY(-50%)',
@@ -1260,6 +1518,7 @@ function ArtSection({ accentColor }) {
 
 function ArtThumb({ src, onClick, accent }) {
   const [hovered, setHovered] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   return (
     <div onClick={onClick} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{
       aspectRatio: '1', overflow: 'hidden', borderRadius: 6, cursor: 'pointer',
@@ -1267,9 +1526,12 @@ function ArtThumb({ src, onClick, accent }) {
       transition: 'all 0.2s ease',
       transform: hovered ? 'scale(1.03)' : 'scale(1)',
       boxShadow: hovered ? `0 4px 24px ${accent}40` : 'none',
+      background: 'linear-gradient(160deg, var(--bg2) 0%, var(--bg) 100%)',
+      position: 'relative',
     }}>
-      <img src={src} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block',
-        transition: 'opacity 0.2s', opacity: hovered ? 1 : 0.85 }} />
+      {!loaded && <div className="art-thumb-skeleton"><div className="art-thumb-spinner" /></div>}
+      <img src={src} loading="lazy" decoding="async" onLoad={() => setLoaded(true)} style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block',
+        transition: 'opacity 0.3s', opacity: loaded ? (hovered ? 1 : 0.85) : 0 }} />
     </div>
   );
 }
@@ -1280,6 +1542,13 @@ function ContactSection({ accentColor }) {
   const accent2 = accentColor === 'orange' ? 'var(--purple)' : 'var(--orange)';
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get('sent') === '1') {
+      setSent(true);
+    }
+  }, []);
 
   return (
     <section id="contact" data-screen-label="04 Contact" style={{ padding: '100px 8% 140px', maxWidth: 1100, margin: '0 auto' }}>
@@ -1336,15 +1605,18 @@ function ContactSection({ accentColor }) {
               <div style={{ color: 'var(--text-dim)', fontSize: 14 }}>Thanks for reaching out — I'll get back to you soon.</div>
             </div>
           ) : (
-            <form onSubmit={e => { e.preventDefault(); setSent(true); }} style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+            <form action="https://formspree.io/xdoendyz" method="POST" onSubmit={() => setSending(true)} style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+              <input type="hidden" name="_next" value="https://www.carloshurtado.com/demo2/?sent=1#contact" />
               {[
-                { id: 'name', label: 'Name', type: 'text', placeholder: 'Your name' },
-                { id: 'email', label: 'Email', type: 'email', placeholder: 'your@email.com' },
+                { id: 'name', name: 'name', label: 'Name', type: 'text', placeholder: 'Your name' },
+                { id: 'email', name: '_replyto', label: 'Email', type: 'email', placeholder: 'your@email.com' },
               ].map(field => (
                 <div key={field.id}>
                   <label style={{ display: 'block', fontSize: 12, color: 'var(--text-dim)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 8, fontWeight: 500 }}>{field.label}</label>
                   <input
                     type={field.type}
+                    name={field.name}
+                    required
                     placeholder={field.placeholder}
                     value={form[field.id]}
                     onChange={e => setForm(f => ({ ...f, [field.id]: e.target.value }))}
@@ -1362,6 +1634,8 @@ function ContactSection({ accentColor }) {
               <div>
                 <label style={{ display: 'block', fontSize: 12, color: 'var(--text-dim)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 8, fontWeight: 500 }}>Message</label>
                 <textarea
+                  name="message"
+                  required
                   placeholder="Tell me about the role or project..."
                   rows={4}
                   value={form.message}
@@ -1376,18 +1650,19 @@ function ContactSection({ accentColor }) {
                   onBlur={e => e.target.style.borderColor = 'oklch(55% 0.25 295 / 0.2)'}
                 />
               </div>
-              <button type="submit" style={{
+              <button type="submit" disabled={sending} style={{
                 padding: '12px 28px', borderRadius: 5,
                 background: `linear-gradient(135deg, ${accent}, ${accent2})`,
                 color: '#fff', fontWeight: 600, fontSize: 15,
                 fontFamily: 'Space Grotesk', letterSpacing: '0.04em',
-                border: 'none', cursor: 'pointer',
+                border: 'none', cursor: sending ? 'default' : 'pointer',
+                opacity: sending ? 0.7 : 1,
                 boxShadow: `0 4px 20px ${accent}40`,
                 transition: 'all 0.2s ease',
               }}
-              onMouseEnter={e => e.target.style.transform = 'translateY(-2px)'}
+              onMouseEnter={e => { if (!sending) e.target.style.transform = 'translateY(-2px)'; }}
               onMouseLeave={e => e.target.style.transform = 'translateY(0)'}
-              >Send Message</button>
+              >{sending ? 'Sending…' : 'Send Message'}</button>
             </form>
           )}
         </div>
@@ -1417,7 +1692,7 @@ function Footer({ accentColor }) {
 function HorizonLine() {
   return (
     <div style={{
-      position: 'fixed', bottom: '42%', left: 0, right: 0,
+      position: 'fixed', bottom: '318px', left: 0, right: 0,
       height: 2, zIndex: 2, pointerEvents: 'none',
       background: 'linear-gradient(90deg, transparent 0%, #cc22ff 15%, #ff2d78 35%, #ff9933 50%, #ff2d78 65%, #cc22ff 85%, transparent 100%)',
       filter: 'blur(0.5px)',
