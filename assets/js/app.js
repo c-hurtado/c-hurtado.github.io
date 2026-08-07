@@ -2694,6 +2694,8 @@ function useParallaxScroll() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const gridWrapper = document.querySelector('.grid-wrapper');
     const horizonLine = document.querySelector('.horizon-line');
+    const mountainLayer = document.querySelector('.mountain-layer');
+    const mountainReflection = document.querySelector('.mountain-reflection');
     const stars = document.querySelector('.stars');
     const clouds = document.querySelector('.clouds');
     let ticking = false;
@@ -2707,6 +2709,8 @@ function useParallaxScroll() {
 
         if (gridWrapper) gridWrapper.style.transform = `translateY(${gridDrift}px)`;
         if (horizonLine) horizonLine.style.transform = `translateY(${gridDrift}px)`;
+        if (mountainLayer) mountainLayer.style.transform = `translateY(${gridDrift}px)`;
+        if (mountainReflection) mountainReflection.style.transform = `translateY(${gridDrift}px) scaleY(-1)`;
         document.body.style.setProperty('--sun-drift', `${gridDrift}px`);
         if (stars) stars.style.transform = `translateY(${starDrift}px)`;
         if (clouds) clouds.style.transform = `translateY(${starDrift * 1.2}px)`;
