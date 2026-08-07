@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s *)",
+      "PowerShell(Get-Command *)",
+      "Bash(magick identify *)",
+      "Bash(rclone listremotes)",
+      "PowerShell(Get-ChildItem *)",
+      "PowerShell(winget search *)",
+      "PowerShell(winget list *)",
+      "PowerShell(Test-Path *)"
+    ]
+  }
+}

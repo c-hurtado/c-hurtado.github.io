@@ -27,8 +27,6 @@ sass:
 collections:
   gameDevProjects:
     output:         true
-  demoposts:
-    output:         true
 
 teaser: "/assets/img/logo3.png"
 og_image: "/assets/img/logo3.png"

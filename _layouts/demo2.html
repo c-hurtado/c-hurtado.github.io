@@ -13,7 +13,8 @@ render_with_liquid: false
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Carlos Hurtado</title>
+<title>Carlos Hurtado — Technical Lead Manager &amp; Game Developer</title>
+{% seo title=false %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -30,7 +31,7 @@ render_with_liquid: false
     --bg: #08010f;
     --bg2: #0f0520;
     --pink: oklch(62% 0.28 340);
-    --orange: oklch(68% 0.22 38);
+    --orange: oklch(68% 0.22 25);
     --purple: oklch(55% 0.25 295);
     --cyan: oklch(72% 0.18 200);
     --text: oklch(92% 0.015 280);
@@ -39,6 +40,14 @@ render_with_liquid: false
     --border: oklch(55% 0.25 295 / 0.35);
     --glow-pink: oklch(62% 0.28 340 / 0.5);
     --glow-orange: oklch(68% 0.22 38 / 0.4);
+    /* --purple at common alpha values — was previously re-typed as raw
+       oklch(55% 0.25 295 / X) dozens of times throughout the page. */
+    --purple-a12: oklch(55% 0.25 295 / 0.12);
+    --purple-a15: oklch(55% 0.25 295 / 0.15);
+    --purple-a2: oklch(55% 0.25 295 / 0.2);
+    --purple-a25: oklch(55% 0.25 295 / 0.25);
+    --purple-a3: oklch(55% 0.25 295 / 0.3);
+    --purple-a5: oklch(55% 0.25 295 / 0.5);
   }
 
 
@@ -245,7 +254,6 @@ body::before, body::after {
   position: fixed;
   left: 50%;
   bottom: 318px;
-  transform: translate(-50%, 50%);
   width: 650px;
   height: 650px;
   background: radial-gradient(circle 140px at center,
@@ -258,6 +266,7 @@ body::before, body::after {
     transparent 280px);
   z-index: 0;
   pointer-events: none;
+  animation: sun-pulse 5s ease-in-out infinite;
 }
 body::before {
   clip-path: inset(0 0 50% 0); /* top half — sun */
@@ -267,7 +276,53 @@ body::after {
   opacity: 0.05;
   filter: blur(4px);
 }
+@keyframes sun-pulse {
+  0%, 100% { transform: translate(-50%, calc(50% + var(--sun-drift, 0px))) scale(1); }
+  50% { transform: translate(-50%, calc(50% + var(--sun-drift, 0px))) scale(1.025); }
+}
+@media (prefers-reduced-motion: reduce) {
+  body::before, body::after { animation: none; transform: translate(-50%, 50%); }
+}
 /* ── END SUN EXPERIMENT ─────────────────────────────────────────────────── */
+
+/* Static (non-React) so it paints immediately with the rest of the
+   background, instead of waiting on Babel/React to mount. */
+.horizon-line {
+  position: fixed;
+  bottom: 318px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent 0%, #cc22ff 15%, #ff2d78 35%, #ff9933 50%, #ff2d78 65%, #cc22ff 85%, transparent 100%);
+  filter: blur(0.5px);
+  box-shadow: 0 0 10px #ff2d78, 0 0 25px #e100ff, 0 0 50px #aa00ff30;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
+/* Keyboard focus — visible on tab navigation, silent on mouse/touch clicks. */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 3px;
+  border-radius: 4px;
+  box-shadow: 0 0 0 4px oklch(62% 0.28 340 / 0.25);
+}
 
   html { scroll-behavior: smooth; }
 
@@ -294,9 +349,23 @@ body::after {
   @media (max-width: 768px) {
     nav { padding: 0 16px !important; }
     nav img { height: 28px !important; }
-    .nav-links { gap: 2px !important; overflow-x: auto; max-width: 58vw; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-    .nav-links::-webkit-scrollbar { display: none; }
-    .nav-links a { padding: 6px 10px !important; font-size: 12px !important; white-space: nowrap; }
+    .nav-hamburger { display: flex !important; }
+    .nav-links {
+      position: fixed !important; top: 64px !important; left: 0 !important; right: 0 !important;
+      flex-direction: column !important; align-items: stretch !important;
+      max-width: none !important; overflow: hidden !important;
+      background: oklch(8% 0.04 290 / 0.98) !important;
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--purple-a2);
+      padding: 10px 20px !important;
+      gap: 4px !important;
+      max-height: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: max-height 0.3s ease, opacity 0.25s ease;
+    }
+    .nav-links.nav-links-open { max-height: 400px; opacity: 1; pointer-events: auto; }
+    .nav-links a { padding: 12px 14px !important; font-size: 15px !important; white-space: normal !important; text-align: left; }
 
     #home, #about, #gamedev, #resume, #art, #contact {
       padding-left: 5% !important;
@@ -305,9 +374,6 @@ body::after {
     }
 
     .section-card { padding: 28px 20px !important; }
-
-    .hb-row { flex-direction: column !important; gap: 40px !important; }
-    .hb-row > div:first-child { width: 100%; }
 
     .home-card-header { flex-direction: column !important; text-align: center; gap: 16px !important; }
     .home-card-header > div:last-child { width: 100%; }
@@ -333,7 +399,6 @@ body::after {
 
   @media (max-width: 480px) {
     .section-card { padding: 22px 16px !important; }
-    .nav-links a { padding: 6px 8px !important; font-size: 11px !important; }
   }
 
   /* Scroll-to-top button (jquery.goup) — restyled to blend with the dark UI
@@ -341,7 +406,7 @@ body::after {
   .goup-container {
     background: oklch(9% 0.04 290 / 0.5) !important;
     backdrop-filter: blur(10px);
-    border: 1px solid oklch(55% 0.25 295 / 0.2) !important;
+    border: 1px solid var(--purple-a2) !important;
     border-radius: 8px !important;
     width: 36px !important;
     height: 36px !important;
@@ -350,7 +415,7 @@ body::after {
   }
   .goup-container:hover {
     opacity: 1;
-    border-color: oklch(55% 0.25 295 / 0.5) !important;
+    border-color: var(--purple-a5) !important;
   }
   .goup-arrow {
     border-color: transparent transparent oklch(65% 0.02 280) transparent !important;
@@ -408,25 +473,46 @@ body::after {
     <link rel="shortcut icon" type="image/png" href="{{ site.url }}/favicon.png" />
     <link rel="shortcut icon" href="{{ site.url }}/favicon.ico" />
     <!-- Background Image -->
-    <script type="text/babel" src="/assets/tweaks-panel.jsx"></script>
 </head>
 <body>
   {% include grid.html %}
+  <div class="horizon-line"></div>
+  <script src="/assets/art-data.js"></script>
  {% raw %}
 <script type="text/babel">
 
  
-const { useState, useEffect, useRef } = React;
+const { useState, useEffect, useRef, useMemo } = React;
+
+// ─── ACCENT COLOR ───────────────────────────────────────────────────────────
+function useAccent(accentColor) {
+  return {
+    accent: accentColor === 'cyan' ? 'var(--cyan)' : accentColor === 'orange' ? 'var(--orange)' : 'var(--pink)',
+    accent2: accentColor === 'orange' ? 'var(--purple)' : 'var(--orange)',
+  };
+}
 
 
 // ─── NAV ──────────────────────────────────────────────────────────────────────
 function Nav({ activeSection, setActiveSection, accentColor }) {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handler);
     return () => window.removeEventListener('scroll', handler);
   }, []);
+
+  useEffect(() => {
+    const handler = e => { if (e.key === 'Escape') setMenuOpen(false); };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, []);
+
+  const handleNavClick = id => {
+    setActiveSection(id);
+    setMenuOpen(false);
+  };
 
   const navItems = [
     { id: 'home', label: 'Home' },
@@ -437,7 +523,7 @@ function Nav({ activeSection, setActiveSection, accentColor }) {
     { id: 'contact', label: 'Contact' },
   ];
 
-  const accent = accentColor === 'cyan' ? 'var(--cyan)' : accentColor === 'orange' ? 'var(--orange)' : 'var(--pink)';
+  const { accent } = useAccent(accentColor);
 
   return (
     <nav style={{
@@ -447,7 +533,7 @@ function Nav({ activeSection, setActiveSection, accentColor }) {
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       background: scrolled ? 'oklch(8% 0.04 290 / 0.92)' : 'transparent',
       backdropFilter: scrolled ? 'blur(20px)' : 'none',
-      borderBottom: scrolled ? '1px solid oklch(55% 0.25 295 / 0.2)' : '1px solid transparent',
+      borderBottom: scrolled ? '1px solid var(--purple-a2)' : '1px solid transparent',
       transition: 'all 0.4s ease',
     }}>
       {/* Logo */}
@@ -456,10 +542,10 @@ function Nav({ activeSection, setActiveSection, accentColor }) {
       </div>
 
       {/* Nav links */}
-      <div className="nav-links" style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+      <div className={`nav-links${menuOpen ? ' nav-links-open' : ''}`} style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
         {navItems.map(item => (
           <a key={item.id} href={`#${item.id}`}
-            onClick={() => setActiveSection(item.id)}
+            onClick={() => handleNavClick(item.id)}
             style={{
               padding: '6px 18px',
               borderRadius: 4,
@@ -468,7 +554,7 @@ function Nav({ activeSection, setActiveSection, accentColor }) {
               fontWeight: 500,
               letterSpacing: '0.04em',
               color: activeSection === item.id ? accent : 'oklch(85% 0.02 280)',
-              background: activeSection === item.id ? `oklch(55% 0.25 295 / 0.15)` : 'transparent',
+              background: activeSection === item.id ? `var(--purple-a15)` : 'transparent',
               border: activeSection === item.id ? `1px solid ${accent}40` : '1px solid transparent',
               transition: 'all 0.25s ease',
               cursor: 'pointer',
@@ -478,18 +564,46 @@ function Nav({ activeSection, setActiveSection, accentColor }) {
           >{item.label}</a>
         ))}
       </div>
+
+      {/* Mobile menu toggle — hidden on desktop, shown via the 768px media query */}
+      <button
+        className="nav-hamburger"
+        aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+        aria-expanded={menuOpen}
+        onClick={() => setMenuOpen(v => !v)}
+        style={{
+          display: 'none', alignItems: 'center', justifyContent: 'center',
+          width: 36, height: 36, background: 'transparent', border: 'none',
+          color: 'var(--text)', cursor: 'pointer', flexShrink: 0,
+        }}
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+          {menuOpen ? (
+            <>
+              <line x1="4" y1="4" x2="20" y2="20" />
+              <line x1="20" y1="4" x2="4" y2="20" />
+            </>
+          ) : (
+            <>
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </>
+          )}
+        </svg>
+      </button>
     </nav>
   );
 }
 
 // ─── AVATAR ───────────────────────────────────────────────────────────────────
 function AvatarCircle({ size = 160, accentColor }) {
-  const accent = accentColor === 'cyan' ? 'var(--cyan)' : accentColor === 'orange' ? 'var(--orange)' : 'var(--pink)';
+  const { accent } = useAccent(accentColor);
   return (
     <div style={{
       width: size, height: size, borderRadius: '50%',
       border: `2px solid ${accent}`,
-      boxShadow: `0 0 24px ${accent}60, 0 0 60px oklch(55% 0.25 295 / 0.3)`,
+      boxShadow: `0 0 24px ${accent}60, 0 0 60px var(--purple-a3)`,
       flexShrink: 0,
       overflow: 'hidden',
       background: 'oklch(8% 0.04 290)',
@@ -503,19 +617,80 @@ function AvatarCircle({ size = 160, accentColor }) {
   );
 }
 
+// ─── FOCUS TRAP ─────────────────────────────────────────────────────────────
+// Keeps Tab/Shift+Tab cycling inside an open modal instead of leaking focus to
+// the page behind it, and restores focus to whatever triggered it on close.
+function useFocusTrap(active) {
+  const ref = useRef(null);
+  useEffect(() => {
+    if (!active || !ref.current) return;
+    const container = ref.current;
+    const previouslyFocused = document.activeElement;
+    const focusableSelector = 'a[href], button:not([disabled]), [role="button"], [tabindex]:not([tabindex="-1"])';
+    const getFocusable = () => Array.from(container.querySelectorAll(focusableSelector));
+
+    (getFocusable()[0] || container).focus();
+
+    const onKeyDown = e => {
+      if (e.key !== 'Tab') return;
+      const items = getFocusable();
+      if (items.length === 0) return;
+      const first = items[0], last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    container.addEventListener('keydown', onKeyDown);
+    return () => {
+      container.removeEventListener('keydown', onKeyDown);
+      if (previouslyFocused && previouslyFocused.focus) previouslyFocused.focus();
+    };
+  }, [active]);
+  return ref;
+}
+
+// ─── SCROLL REVEAL ────────────────────────────────────────────────────────────
+function Reveal({ children }) {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setVisible(true);
+        observer.unobserve(el);
+      }
+    }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const child = React.Children.only(children);
+  return React.cloneElement(child, {
+    ref,
+    className: `${child.props.className || ''} reveal${visible ? ' reveal-visible' : ''}`.trim(),
+  });
+}
+
 // ─── SECTION CARD WRAPPER ───────────────────────────────────────────────────
-function SectionCard({ children, accentColor, style: extraStyle }) {
-  const accent = accentColor === 'cyan' ? 'var(--cyan)' : accentColor === 'orange' ? 'var(--orange)' : 'var(--pink)';
-  const accent2 = accentColor === 'orange' ? 'var(--purple)' : 'var(--orange)';
+const SectionCard = React.forwardRef(function SectionCard({ children, style: extraStyle, corner1, corner2, className }, ref) {
+  const accent = corner1;
+  const accent2 = corner2;
   return (
-    <div className="section-card" style={{
-      background: 'var(--card-bg)',
+    <div ref={ref} className={`section-card${className ? ' ' + className : ''}`} style={{
+      background: 'radial-gradient(ellipse at center, oklch(5% 0.04 290 / 0.88) 0%, oklch(5% 0.04 290 / 0.6) 55%, oklch(5% 0.04 290 / 0.32) 100%)',
       backdropFilter: 'blur(24px)',
       border: '1px solid var(--border)',
       borderRadius: 12,
       padding: '52px 60px',
       position: 'relative',
-      boxShadow: '0 0 60px oklch(55% 0.25 295 / 0.12), inset 0 1px 0 oklch(100% 0 0 / 0.05)',
+      boxShadow: '0 0 60px var(--purple-a12), inset 0 1px 0 oklch(100% 0 0 / 0.05)',
       ...extraStyle,
     }}>
       {/* Top-left corner */}
@@ -529,7 +704,7 @@ function SectionCard({ children, accentColor, style: extraStyle }) {
       {children}
     </div>
   );
-}
+});
 
 // ─── NEON BADGE ───────────────────────────────────────────────────────────────
 function NeonBadge({ children, color = 'var(--pink)' }) {
@@ -559,100 +734,23 @@ function GlowDivider({ color = 'var(--purple)' }) {
 }
 
 // ─── HOME SECTION ─────────────────────────────────────────────────────────────
-function HomeSection({ layout, accentColor }) {
-  const accent = accentColor === 'cyan' ? 'var(--cyan)' : accentColor === 'orange' ? 'var(--orange)' : 'var(--pink)';
-  const accent2 = accentColor === 'orange' ? 'var(--purple)' : 'var(--orange)';
+function HomeSection({ accentColor }) {
+  const { accent, accent2 } = useAccent(accentColor);
 
-  if (layout === 'fullbleed') {
-    return (
-      <section id="home" data-screen-label="01 Home" style={{
-        minHeight: '100vh', display: 'flex', alignItems: 'center',
-        padding: '120px 10% 80px',
-        position: 'relative',
-      }}>
-        <div className="hb-row" style={{ display: 'flex', gap: 80, alignItems: 'center', width: '100%', maxWidth: 1100 }}>
-          <div style={{ flex: 1 }}>
-            <div style={{ marginBottom: 16, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-              <NeonBadge color={accent}>Technical Lead Manager</NeonBadge>
-              <NeonBadge color="var(--purple)">Engineering Manager</NeonBadge>
-              <NeonBadge color={accent2}>SF Bay Area</NeonBadge>
-            </div>
-            <h1 style={{
-              fontFamily: 'Space Grotesk', fontWeight: 700,
-              fontSize: 'clamp(48px, 6vw, 80px)',
-              lineHeight: 1.05,
-              letterSpacing: '-0.02em',
-              marginBottom: 28,
-            }}>
-              Hi, I'm<br />
-              <span style={{
-                background: `linear-gradient(135deg, ${accent}, ${accent2})`,
-                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}>Carlos Hurtado.</span>
-            </h1>
-            <p style={{ fontSize: 18, lineHeight: 1.75, color: 'var(--text-dim)', maxWidth: 560, marginBottom: 16 }}>
-              I deliver high-fidelity gaming experiences and lead engineering teams through the full lifecycle of award-winning titles. Most recently Technical Lead at{' '}
-              <span style={{ color: 'var(--text)' }}>Sanzaru Games (Meta)</span> on{' '}
-              <a href="#gamedev" style={{ color: accent }}>Asgard's Wrath 2</a> — IGN perfect 10/10.
-            </p>
-            <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--text-dim)', maxWidth: 540, marginBottom: 36 }}>
-              Expertise in Unreal Engine 4 & 5, C++, performance optimization, and people leadership. Currently seeking <span style={{ color: 'var(--text)' }}>Engineering Manager</span> or <span style={{ color: 'var(--text)' }}>Technical Lead</span> roles.
-            </p>
-            <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
-              <a href="/https://www.carloshurtado.com/assets/Carlos_Hurtado_Resume.pdf" target="_blank" style={{
-                padding: '12px 28px', borderRadius: 4,
-                background: `linear-gradient(135deg, ${accent}, ${accent2})`,
-                color: '#fff', fontWeight: 600, fontSize: 15,
-                fontFamily: 'Space Grotesk', letterSpacing: '0.04em',
-                boxShadow: `0 4px 24px ${accent}50`,
-                transition: 'all 0.2s ease',
-                display: 'inline-block',
-              }}
-              onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'}
-              onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
-              >Download Resume</a>
-              <a href="#contact" style={{
-                padding: '12px 28px', borderRadius: 4,
-                border: `1px solid ${accent}60`,
-                color: accent, fontWeight: 600, fontSize: 15,
-                fontFamily: 'Space Grotesk', letterSpacing: '0.04em',
-                transition: 'all 0.2s ease',
-                display: 'inline-block',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.background = `${accent}15`; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-              onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.transform = 'translateY(0)'; }}
-              >Get in Touch</a>
-            </div>
-            <SocialLinks style={{ marginTop: 40 }} accent={accent} />
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24, flexShrink: 0 }}>
-            <AvatarCircle size={240} accentColor={accentColor} />
-            <div style={{ textAlign: 'center', fontSize: 13, color: 'var(--text-dim)', letterSpacing: '0.04em' }}>
-              <div style={{ fontWeight: 600, color: 'var(--text)', marginBottom: 4 }}>Open to Work</div>
-              <div>Engineering Manager · Tech Lead</div>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  // Card layout
   return (
     <section id="home" data-screen-label="01 Home" style={{
       minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center',
       padding: '100px 24px 80px',
       position: 'relative',
     }}>
-      <div style={{
+      <Reveal><div style={{
         width: '100%', maxWidth: 700,
         background: 'var(--card-bg)',
         backdropFilter: 'blur(24px)',
         border: `1px solid var(--border)`,
         borderRadius: 12,
         padding: '48px 52px',
-        boxShadow: `0 0 60px oklch(55% 0.25 295 / 0.15), 0 0 120px oklch(62% 0.28 340 / 0.08), inset 0 1px 0 oklch(100% 0 0 / 0.06)`,
+        boxShadow: `0 0 60px var(--purple-a15), 0 0 120px oklch(62% 0.28 340 / 0.08), inset 0 1px 0 oklch(100% 0 0 / 0.06)`,
         position: 'relative',
       }}>
         {/* Corner accent */}
@@ -680,7 +778,7 @@ function HomeSection({ layout, accentColor }) {
                 WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
               }}>Carlos Hurtado.</span>
             </h1>
-            <div style={{ marginTop: 6, fontSize: 13, color: 'var(--text-dim)' }}>SF Bay Area · Open to Work</div>
+            <div style={{ marginTop: 6, fontSize: 13, color: 'var(--text-dim)' }}>SF Bay Area</div>
           </div>
         </div>
 
@@ -720,7 +818,7 @@ function HomeSection({ layout, accentColor }) {
             Download Resume
           </a>
         </div>
-      </div>
+      </div></Reveal>
     </section>
   );
 }
@@ -740,12 +838,12 @@ function SocialLinks({ accent, style: extraStyle }) {
         <a key={link.label} href={link.href} target="_blank" title={link.label} style={{
           width: 36, height: 36, borderRadius: 6,
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          border: '1px solid oklch(55% 0.25 295 / 0.25)',
+          border: '1px solid var(--purple-a25)',
           color: 'var(--text-dim)',
           transition: 'all 0.2s ease',
         }}
         onMouseEnter={e => { e.currentTarget.style.color = accent; e.currentTarget.style.borderColor = `${accent}60`; e.currentTarget.style.background = `${accent}10`; }}
-        onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-dim)'; e.currentTarget.style.borderColor = 'oklch(55% 0.25 295 / 0.25)'; e.currentTarget.style.background = 'transparent'; }}
+        onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-dim)'; e.currentTarget.style.borderColor = 'var(--purple-a25)'; e.currentTarget.style.background = 'transparent'; }}
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d={link.icon} />
@@ -760,8 +858,7 @@ function SocialLinks({ accent, style: extraStyle }) {
 function ProjectCard({ title, studio, desc, img: imgSrc, badge, accentColor, index, onOpen }) {
   const [hovered, setHovered] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  const accent = accentColor === 'cyan' ? 'var(--cyan)' : accentColor === 'orange' ? 'var(--orange)' : 'var(--pink)';
-  const accent2 = accentColor === 'orange' ? 'var(--purple)' : 'var(--orange)';
+  const { accent, accent2 } = useAccent(accentColor);
 
   return (
     <div
@@ -834,9 +931,9 @@ function ModalList({ items }) {
 
 // ─── PROJECT MODAL ────────────────────────────────────────────────────────────
 function ProjectModal({ project, onClose, accentColor }) {
-  const accent = accentColor === 'cyan' ? 'var(--cyan)' : accentColor === 'orange' ? 'var(--orange)' : 'var(--pink)';
-  const accent2 = accentColor === 'orange' ? 'var(--purple)' : 'var(--orange)';
+  const { accent, accent2 } = useAccent(accentColor);
   const [heroLoaded, setHeroLoaded] = useState(false);
+  const trapRef = useFocusTrap(!!project);
 
   useEffect(() => {
     const handler = e => { if (e.key === 'Escape') onClose(); };
@@ -859,7 +956,7 @@ function ProjectModal({ project, onClose, accentColor }) {
       display: 'flex', alignItems: 'flex-start', justifyContent: 'center',
       padding: '48px 20px', overflowY: 'auto',
     }}>
-      <div onClick={e => e.stopPropagation()} style={{
+      <div ref={trapRef} tabIndex={-1} role="dialog" aria-modal="true" aria-label={project.title} onClick={e => e.stopPropagation()} style={{
         width: '100%', maxWidth: 780,
         background: 'oklch(8% 0.04 290 / 0.98)',
         border: `1px solid ${accent}40`,
@@ -921,12 +1018,11 @@ function ProjectModal({ project, onClose, accentColor }) {
 // ─── GAME DEV SECTION ─────────────────────────────────────────────────────────
 // ─── ABOUT SECTION ────────────────────────────────────────────────────────────
 function AboutSection({ accentColor }) {
-  const accent = accentColor === 'cyan' ? 'var(--cyan)' : accentColor === 'orange' ? 'var(--orange)' : 'var(--pink)';
-  const accent2 = accentColor === 'orange' ? 'var(--purple)' : 'var(--orange)';
+  const { accent, accent2 } = useAccent(accentColor);
 
   return (
     <section id="about" data-screen-label="02 About" style={{ padding: '100px 8% 80px', maxWidth: 1100, margin: '0 auto' }}>
-      <SectionCard accentColor={accentColor}>
+      <Reveal><SectionCard corner1="var(--purple)" corner2="var(--cyan)">
         <div style={{ marginBottom: 40 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12 }}>
             <div style={{ width: 3, height: 36, background: `linear-gradient(to bottom, ${accent}, ${accent2})`, borderRadius: 2, boxShadow: `0 0 12px ${accent}80` }} />
@@ -973,26 +1069,37 @@ function AboutSection({ accentColor }) {
               {['Electronic Arts', 'Bigpoint', 'Sanzaru Games', 'Meta'].map(co => (
                 <span key={co} style={{
                   padding: '6px 12px', borderRadius: 4,
-                  border: '1px solid oklch(55% 0.25 295 / 0.3)',
+                  border: '1px solid var(--purple-a3)',
                   background: 'oklch(12% 0.05 290 / 0.5)',
                   fontSize: 12, color: 'var(--text)', fontFamily: 'Space Grotesk',
                 }}>{co}</span>
               ))}
             </div>
+            <a href="https://www.carloshurtado.com/assets/Carlos_Hurtado_Resume.pdf" target="_blank" style={{
+              display: 'inline-flex', alignItems: 'center', gap: 6,
+              marginTop: 20, fontSize: 13, fontWeight: 600, color: accent,
+              fontFamily: 'Space Grotesk', letterSpacing: '0.02em',
+            }}>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download Resume
+            </a>
           </div>
         </div>
-      </SectionCard>
+      </SectionCard></Reveal>
     </section>
   );
 }
 
 // ─── GAME DEV SECTION ────────────────────────────────────────────────────────
 function GameDevSection({ accentColor }) {
-  const accent = accentColor === 'cyan' ? 'var(--cyan)' : accentColor === 'orange' ? 'var(--orange)' : 'var(--pink)';
-  const accent2 = accentColor === 'orange' ? 'var(--purple)' : 'var(--orange)';
+  const { accent, accent2 } = useAccent(accentColor);
   const [activeProject, setActiveProject] = useState(null);
 
-  const projects = [
+  // useMemo — this array's `details` fields hold substantial JSX (ModalP/ModalH4/
+  // ModalList trees). Without memoizing, it gets rebuilt from scratch every time
+  // GameDevSection re-renders, including every time activeProject changes (i.e.
+  // every project-modal open/close), for zero visual benefit.
+  const projects = useMemo(() => [
     {
       title: 'Unannounced Big IP VR Project', studio: 'Sanzaru Games · Meta', badge: 'In Dev',
       desc: 'Currently in development — a major VR title for a well-known IP. Technical leadership across full production lifecycle.',
@@ -1185,11 +1292,11 @@ function GameDevSection({ accentColor }) {
         </>
       ),
     },
-  ];
+  ], []);
 
   return (
     <section id="gamedev" data-screen-label="02 Game Dev" style={{ padding: '100px 8% 80px', maxWidth: 1200, margin: '0 auto' }}>
-      <SectionCard accentColor={accentColor} style={{ padding: '52px 52px' }}>
+      <Reveal><SectionCard corner1="var(--cyan)" corner2="var(--pink)" style={{ padding: '52px 52px' }}>
       <div style={{ marginBottom: 56 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12 }}>
           <div style={{ width: 3, height: 36, background: `linear-gradient(to bottom, ${accent}, ${accent2})`, borderRadius: 2, boxShadow: `0 0 12px ${accent}80` }} />
@@ -1204,7 +1311,7 @@ function GameDevSection({ accentColor }) {
           <ProjectCard key={p.title} {...p} accentColor={accentColor} index={i} onOpen={() => setActiveProject(p)} />
         ))}
       </div>
-      </SectionCard>
+      </SectionCard></Reveal>
 
       {activeProject && (
         <ProjectModal project={activeProject} onClose={() => setActiveProject(null)} accentColor={accentColor} />
@@ -1215,8 +1322,7 @@ function GameDevSection({ accentColor }) {
 
 // ─── RESUME SECTION ───────────────────────────────────────────────────────────
 function ResumeSection({ accentColor }) {
-  const accent = accentColor === 'cyan' ? 'var(--cyan)' : accentColor === 'orange' ? 'var(--orange)' : 'var(--pink)';
-  const accent2 = accentColor === 'orange' ? 'var(--purple)' : 'var(--orange)';
+  const { accent, accent2 } = useAccent(accentColor);
 
   const skills = [
     { cat: 'Engine & Systems', items: ['Unreal Engine 4 & 5', 'C++', 'Gameplay Systems', 'Performance Optimization', 'Tooling & Pipeline'] },
@@ -1225,7 +1331,7 @@ function ResumeSection({ accentColor }) {
   ];
 
   const timeline = [
-    { year: '2021–Present', role: 'Technical Lead Manager', company: 'Sanzaru Games · Meta (Oculus Studios)', desc: 'Led engineering teams through full lifecycle of flagship VR titles. Asgard\'s Wrath 2 (IGN 10/10). Currently leading unannounced big-IP VR project.' },
+    { year: '2021–2026', role: 'Technical Lead Manager', company: 'Sanzaru Games · Meta (Oculus Studios)', desc: 'Led engineering teams through full lifecycle of flagship VR titles. Asgard\'s Wrath 2 (IGN 10/10). Currently leading unannounced big-IP VR project.' },
     { year: '~2016–2021', role: 'Senior Engineer / Tech Lead', company: 'Sanzaru Games', desc: 'Shipped Asgard\'s Wrath, Marvel Powers United VR, and VR Sports Challenge. Architected core gameplay and multiplayer systems.' },
     { year: '~2012–2016', role: 'Software Engineer', company: 'Sanzaru Games · Big Fish Games', desc: 'Dark Manor: casual hidden-object mobile game. Small 2-engineer team, full stack ownership.' },
     { year: '~2010–2012', role: 'Software Engineer', company: 'Bigpoint', desc: 'Uridium Wars: Flash + PHP space MMO for Facebook platform.' },
@@ -1234,7 +1340,7 @@ function ResumeSection({ accentColor }) {
 
   return (
     <section id="resume" data-screen-label="03 Resume" style={{ padding: '100px 8% 80px', maxWidth: 1100, margin: '0 auto' }}>
-      <SectionCard accentColor={accentColor}>
+      <Reveal><SectionCard corner1="var(--pink)" corner2="var(--cyan)">
       <div style={{ marginBottom: 56 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12 }}>
           <div style={{ width: 3, height: 36, background: `linear-gradient(to bottom, ${accent}, ${accent2})`, borderRadius: 2, boxShadow: `0 0 12px ${accent}80` }} />
@@ -1278,7 +1384,7 @@ function ResumeSection({ accentColor }) {
                   {group.items.map(skill => (
                     <span key={skill} style={{
                       padding: '6px 14px', borderRadius: 4,
-                      border: '1px solid oklch(55% 0.25 295 / 0.3)',
+                      border: '1px solid var(--purple-a3)',
                       background: 'oklch(12% 0.05 290 / 0.5)',
                       fontSize: 13, color: 'var(--text)',
                       fontFamily: 'Space Grotesk',
@@ -1288,150 +1394,73 @@ function ResumeSection({ accentColor }) {
               </div>
             ))}
           </div>
-
-          <div style={{ marginTop: 40, padding: '24px 28px', background: 'oklch(9% 0.04 290 / 0.6)', border: `1px solid ${accent}30`, borderRadius: 8 }}>
-            <div style={{ fontSize: 13, color: 'var(--text-dim)', marginBottom: 12 }}>Full resume available as PDF</div>
-            <a href="https://www.carloshurtado.com/assets/Carlos_Hurtado_Resume.pdf" target="_blank" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 8,
-              padding: '10px 22px', borderRadius: 4,
-              background: `linear-gradient(135deg, ${accent}, ${accent2})`,
-              color: '#fff', fontWeight: 600, fontSize: 14,
-              fontFamily: 'Space Grotesk', letterSpacing: '0.04em',
-              boxShadow: `0 4px 20px ${accent}40`,
-            }}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Download Resume
-            </a>
-          </div>
+          <a href="https://www.carloshurtado.com/assets/Carlos_Hurtado_Resume.pdf" target="_blank" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 6,
+            marginTop: 28, fontSize: 13, fontWeight: 600, color: accent,
+            fontFamily: 'Space Grotesk', letterSpacing: '0.02em',
+          }}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Resume
+          </a>
         </div>
       </div>
-      </SectionCard>
+      </SectionCard></Reveal>
     </section>
   );
 }
 
 // ─── ART SECTION ─────────────────────────────────────────────────────────────
-const ART_CATEGORIES_RAW = [
-  {
-    key: 'oil', label: 'Oil',
-    images: [
-      '/assets/img/gallery/Oil/IMG_1302.jpg',
-      '/assets/img/gallery/Oil/IMG_1304.jpg',
-      '/assets/img/gallery/Oil/IMG_1306.jpg',
-      '/assets/img/gallery/Oil/IMG_1308.jpg',
-      '/assets/img/gallery/Oil/IMG_1312.jpg',
-      '/assets/img/gallery/Oil/IMG_1313.jpg',
-    ],
-  },
-  {
-    key: 'digital', label: 'Digital Portraits',
-    images: [
-      '/assets/img/gallery/DigitalPortraits/2019-07-10 001 458.JPG',
-      '/assets/img/gallery/DigitalPortraits/2019-07-10 001 459.JPG',
-      '/assets/img/gallery/DigitalPortraits/2019-07-10 001 466.JPG',
-      '/assets/img/gallery/DigitalPortraits/2019-07-10 001 510.JPG',
-      '/assets/img/gallery/DigitalPortraits/80spop.jpg',
-      '/assets/img/gallery/DigitalPortraits/B092C8ED-2133-4CCB-BBB7-B62650A4E166.JPG',
-      '/assets/img/gallery/DigitalPortraits/C74264F1-FD41-4F51-8C37-7EA1DBFF3055.JPG',
-      '/assets/img/gallery/DigitalPortraits/IMG_0282.JPG',
-      '/assets/img/gallery/DigitalPortraits/IMG_0304.JPG',
-      '/assets/img/gallery/DigitalPortraits/IMG_0458.JPG',
-      '/assets/img/gallery/DigitalPortraits/IMG_0608.JPG',
-      '/assets/img/gallery/DigitalPortraits/IMG_0676.jpeg',
-      '/assets/img/gallery/DigitalPortraits/IMG_0791.JPG',
-      '/assets/img/gallery/DigitalPortraits/IMG_0797.JPG',
-      '/assets/img/gallery/DigitalPortraits/IMG_0811.JPG',
-      '/assets/img/gallery/DigitalPortraits/IMG_0831.JPG',
-      '/assets/img/gallery/DigitalPortraits/IMG_0839.JPG',
-      '/assets/img/gallery/DigitalPortraits/IMG_0857.JPG',
-      '/assets/img/gallery/DigitalPortraits/IMG_0859.jpeg',
-      '/assets/img/gallery/DigitalPortraits/IMG_0942.JPG',
-      '/assets/img/gallery/DigitalPortraits/IMG_0959.JPG',
-      '/assets/img/gallery/DigitalPortraits/IMG_1015.JPG',
-      '/assets/img/gallery/DigitalPortraits/IMG_1103.JPG',
-      '/assets/img/gallery/DigitalPortraits/IMG_1140.JPG',
-      '/assets/img/gallery/DigitalPortraits/IMG_1174.JPG',
-      '/assets/img/gallery/DigitalPortraits/IMG_1916.JPG',
-      '/assets/img/gallery/DigitalPortraits/IMG_1920.JPG',
-      '/assets/img/gallery/DigitalPortraits/IMG_1921.JPG',
-      '/assets/img/gallery/DigitalPortraits/IMG_1922.JPG',
-      '/assets/img/gallery/DigitalPortraits/IMG_1923.JPG',
-      '/assets/img/gallery/DigitalPortraits/IMG_1924.JPG',
-      '/assets/img/gallery/DigitalPortraits/IMG_1925.JPG',
-      '/assets/img/gallery/DigitalPortraits/IMG_1934.JPG',
-      '/assets/img/gallery/DigitalPortraits/Photo Jun 23, 14 30 02.png',
-      '/assets/img/gallery/DigitalPortraits/Photo May 18, 15 59 47.jpg',
-      '/assets/img/gallery/DigitalPortraits/Photo Sep 07, 07 23 14 (1).jpg',
-      '/assets/img/gallery/DigitalPortraits/Photo Sep 12, 23 40 00.png',
-      '/assets/img/gallery/DigitalPortraits/bw.jpg',
-      '/assets/img/gallery/DigitalPortraits/tumblr_nx7gg7YCp81tsh4b6o1_1280.jpg',
-    ],
-  },
-  {
-    key: 'studies', label: 'Studies',
-    images: [
-      '/assets/img/gallery/Studies/2019-07-10 001 8140.PNG',
-      '/assets/img/gallery/Studies/2019-07-10 001 8141.JPG',
-      '/assets/img/gallery/Studies/2019-07-10 001 8142.PNG',
-      '/assets/img/gallery/Studies/2019-07-10 001 8143.JPG',
-      '/assets/img/gallery/Studies/IMG_0072.PNG',
-      '/assets/img/gallery/Studies/IMG_0614.JPG',
-      '/assets/img/gallery/Studies/IMG_0618.jpeg',
-      '/assets/img/gallery/Studies/IMG_0662.jpeg',
-      '/assets/img/gallery/Studies/Photo Jun 15, 10 41 19.jpg',
-      '/assets/img/gallery/Studies/Photo May 18, 15 59 47.jpg',
-      '/assets/img/gallery/Studies/Photo May 21, 20 31 39.jpg',
-    ],
-  },
-  {
-    key: 'commissions', label: 'Commissions and Friends',
-    images: [
-      '/assets/img/gallery/CommissionsAndFriends/2019-07-10 001 465.JPG',
-      '/assets/img/gallery/CommissionsAndFriends/2019-07-10 001 614.JPG',
-      '/assets/img/gallery/CommissionsAndFriends/2019-07-10 001 625.JPG',
-      '/assets/img/gallery/CommissionsAndFriends/Photo Sep 12, 23 41 03.png',
-      '/assets/img/gallery/CommissionsAndFriends/ej.png',
-      '/assets/img/gallery/CommissionsAndFriends/keigov3.jpg',
-      '/assets/img/gallery/CommissionsAndFriends/maddy.jpg',
-      '/assets/img/gallery/CommissionsAndFriends/matt.jpg',
-      '/assets/img/gallery/CommissionsAndFriends/rene.jpg',
-      '/assets/img/gallery/CommissionsAndFriends/tumblr_nx7gf6jDdw1tsh4b6o1_1280.jpg',
-      '/assets/img/gallery/CommissionsAndFriends/yusun.jpg',
-    ],
-  },
-  {
-    key: 'fanart', label: 'Fan Art and Characters',
-    images: [
-      '/assets/img/gallery/FanArtAndCharacters/12307538_10153268100233907_6064951705480197043_o.jpg',
-      '/assets/img/gallery/FanArtAndCharacters/IMG_0379.JPG',
-      '/assets/img/gallery/FanArtAndCharacters/IMG_0407.JPG',
-      '/assets/img/gallery/FanArtAndCharacters/IMG_0449.JPG',
-      '/assets/img/gallery/FanArtAndCharacters/IMG_0454.JPG',
-      '/assets/img/gallery/FanArtAndCharacters/IMG_0456.JPG',
-      '/assets/img/gallery/FanArtAndCharacters/IMG_0539.PNG',
-      '/assets/img/gallery/FanArtAndCharacters/IMG_0544.JPG',
-      '/assets/img/gallery/FanArtAndCharacters/IMG_0734.JPG',
-      '/assets/img/gallery/FanArtAndCharacters/IMG_1037.JPG',
-      '/assets/img/gallery/FanArtAndCharacters/IMG_1047.JPG',
-      '/assets/img/gallery/FanArtAndCharacters/IMG_1054.JPG',
-      '/assets/img/gallery/FanArtAndCharacters/IMG_1066.JPG',
-      '/assets/img/gallery/FanArtAndCharacters/IMG_1079.JPG',
-      '/assets/img/gallery/FanArtAndCharacters/IMG_1086.JPG',
-      '/assets/img/gallery/FanArtAndCharacters/Photo Apr 10, 9 24 56 AM.jpg',
-      '/assets/img/gallery/FanArtAndCharacters/aziz.jpg',
-      '/assets/img/gallery/FanArtAndCharacters/solar.jpg',
-      '/assets/img/gallery/FanArtAndCharacters/soyul.jpeg',
-      '/assets/img/gallery/FanArtAndCharacters/starlord.jpg',
-      '/assets/img/gallery/FanArtAndCharacters/tumblr_nx7gj6FfGB1tsh4b6o1_1280.jpg',
-    ],
-  },
-];
+const ART_CATEGORIES_RAW = window.ART_CATEGORIES_RAW;
+const ART_PREVIEW_COUNT = 6;
+
+function ArtCategoryGrid({ cat, accent, isLast, onOpen }) {
+  const [expanded, setExpanded] = useState(false);
+  const hasMore = cat.images.length > ART_PREVIEW_COUNT;
+  const visibleImages = expanded ? cat.images : cat.images.slice(0, ART_PREVIEW_COUNT);
+  const headerRef = useRef(null);
+  const wasExpanded = useRef(false);
+
+  useEffect(() => {
+    // Collapsing a large expanded grid can strand the viewport scrolled past
+    // the now-much-shorter section — bring the category header back into view.
+    if (wasExpanded.current && !expanded && headerRef.current) {
+      headerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    wasExpanded.current = expanded;
+  }, [expanded]);
+
+  return (
+    <div style={{ marginBottom: isLast ? 0 : 44 }}>
+      <div ref={headerRef} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16, scrollMarginTop: 88 }}>
+        <h3 style={{ fontFamily: 'Space Grotesk', fontSize: 17, fontWeight: 600, color: 'var(--text)' }}>{cat.label}</h3>
+        <span style={{ fontSize: 12, color: 'var(--text-dim)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+          {cat.images.length} piece{cat.images.length === 1 ? '' : 's'}
+        </span>
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))', gap: 16 }}>
+        {visibleImages.map((src, i) => (
+          <ArtThumb key={i} src={src} label={`${cat.label} piece ${i + 1} of ${cat.images.length}`} onClick={() => onOpen(i)} accent={accent} />
+        ))}
+      </div>
+      {hasMore && (
+        <button onClick={() => setExpanded(v => !v)} style={{
+          display: 'block', margin: '16px auto 0', padding: '8px 20px',
+          background: 'transparent', border: `1px solid ${accent}50`, borderRadius: 6,
+          color: accent, fontFamily: 'Space Grotesk', fontSize: 13, fontWeight: 600,
+          letterSpacing: '0.04em', cursor: 'pointer',
+        }}>
+          {expanded ? 'Show less' : `Show all ${cat.images.length}`}
+        </button>
+      )}
+    </div>
+  );
+}
 
 function ArtSection({ accentColor }) {
-  const accent = accentColor === 'cyan' ? 'var(--cyan)' : accentColor === 'orange' ? 'var(--orange)' : 'var(--pink)';
-  const accent2 = accentColor === 'orange' ? 'var(--purple)' : 'var(--orange)';
+  const { accent, accent2 } = useAccent(accentColor);
   const [lightbox, setLightbox] = useState(null); // { cat: number, i: number }
   const [lightboxLoaded, setLightboxLoaded] = useState(null); // src of the last fully-loaded lightbox image
+  const trapRef = useFocusTrap(lightbox !== null);
 
   useEffect(() => {
     const handler = e => { if (e.key === 'Escape') setLightbox(null); };
@@ -1444,7 +1473,7 @@ function ArtSection({ accentColor }) {
 
   return (
     <section id="art" data-screen-label="04 Art" style={{ padding: '100px 8% 80px', maxWidth: 1200, margin: '0 auto' }}>
-      <SectionCard accentColor={accentColor}>
+      <Reveal><SectionCard corner1="var(--orange)" corner2="var(--purple)">
         <div style={{ marginBottom: 48 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12 }}>
             <div style={{ width: 3, height: 36, background: `linear-gradient(to bottom, ${accent}, ${accent2})`, borderRadius: 2, boxShadow: `0 0 12px ${accent}80` }} />
@@ -1456,24 +1485,16 @@ function ArtSection({ accentColor }) {
         </div>
 
         {ART_CATEGORIES_RAW.map((cat, ci) => cat.images.length === 0 ? null : (
-          <div key={cat.key} style={{ marginBottom: ci < ART_CATEGORIES_RAW.length - 1 ? 44 : 0 }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16 }}>
-              <h3 style={{ fontFamily: 'Space Grotesk', fontSize: 17, fontWeight: 600, color: 'var(--text)' }}>{cat.label}</h3>
-              <span style={{ fontSize: 12, color: 'var(--text-dim)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
-                {cat.images.length} piece{cat.images.length === 1 ? '' : 's'}
-              </span>
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', gap: 12 }}>
-              {cat.images.map((src, i) => (
-                <ArtThumb key={i} src={src} onClick={() => setLightbox({ cat: ci, i })} accent={accent} />
-              ))}
-            </div>
-          </div>
+          <ArtCategoryGrid
+            key={cat.key} cat={cat} accent={accent}
+            isLast={ci === ART_CATEGORIES_RAW.length - 1}
+            onOpen={i => setLightbox({ cat: ci, i })}
+          />
         ))}
-      </SectionCard>
+      </SectionCard></Reveal>
 
       {lightbox !== null && (
-        <div onClick={() => setLightbox(null)} style={{
+        <div ref={trapRef} tabIndex={-1} role="dialog" aria-modal="true" aria-label={`${activeCategory.label} image viewer`} onClick={() => setLightbox(null)} style={{
           position: 'fixed', inset: 0, zIndex: 900,
           background: 'rgba(0,0,0,0.92)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -1516,13 +1537,17 @@ function ArtSection({ accentColor }) {
   );
 }
 
-function ArtThumb({ src, onClick, accent }) {
+function ArtThumb({ src, onClick, accent, label }) {
   const [hovered, setHovered] = useState(false);
   const [loaded, setLoaded] = useState(false);
   return (
-    <div onClick={onClick} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{
+    <div
+      role="button" tabIndex={0} aria-label={label}
+      onClick={onClick}
+      onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(); } }}
+      onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{
       aspectRatio: '1', overflow: 'hidden', borderRadius: 6, cursor: 'pointer',
-      border: `1px solid ${hovered ? accent : 'oklch(55% 0.25 295 / 0.2)'}`,
+      border: `1px solid ${hovered ? accent : 'var(--purple-a2)'}`,
       transition: 'all 0.2s ease',
       transform: hovered ? 'scale(1.03)' : 'scale(1)',
       boxShadow: hovered ? `0 4px 24px ${accent}40` : 'none',
@@ -1538,8 +1563,7 @@ function ArtThumb({ src, onClick, accent }) {
 
 // ─── CONTACT SECTION ──────────────────────────────────────────────────────────
 function ContactSection({ accentColor }) {
-  const accent = accentColor === 'cyan' ? 'var(--cyan)' : accentColor === 'orange' ? 'var(--orange)' : 'var(--pink)';
-  const accent2 = accentColor === 'orange' ? 'var(--purple)' : 'var(--orange)';
+  const { accent, accent2 } = useAccent(accentColor);
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
@@ -1552,17 +1576,16 @@ function ContactSection({ accentColor }) {
 
   return (
     <section id="contact" data-screen-label="04 Contact" style={{ padding: '100px 8% 140px', maxWidth: 1100, margin: '0 auto' }}>
-      <SectionCard accentColor={accentColor}>
+      <Reveal><SectionCard corner1="var(--purple)" corner2="var(--orange)">
       <div style={{ marginBottom: 56 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12 }}>
           <div style={{ width: 3, height: 36, background: `linear-gradient(to bottom, ${accent}, ${accent2})`, borderRadius: 2, boxShadow: `0 0 12px ${accent}80` }} />
           <h2 style={{ fontFamily: 'Space Grotesk', fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, letterSpacing: '-0.02em' }}>Get in Touch</h2>
         </div>
         <p style={{ color: 'var(--text-dim)', fontSize: 16, maxWidth: 560, marginLeft: 19, marginBottom: 12 }}>
-          Open to Engineering Manager and Technical Lead roles — SF Bay Area or Remote.
+          SF Bay Area or Remote.
         </p>
         <div style={{ display: 'flex', gap: 10, marginLeft: 19, flexWrap: 'wrap' }}>
-          <NeonBadge color="var(--pink)">🟢 Open to Work</NeonBadge>
           <NeonBadge color="var(--purple)">SF Bay Area</NeonBadge>
           <NeonBadge color="var(--purple)">Remote</NeonBadge>
         </div>
@@ -1580,12 +1603,12 @@ function ContactSection({ accentColor }) {
             <a key={c.label} href={c.href} target="_blank" style={{
               padding: '16px 20px', borderRadius: 8,
               background: 'oklch(9% 0.04 290 / 0.6)',
-              border: '1px solid oklch(55% 0.25 295 / 0.2)',
+              border: '1px solid var(--purple-a2)',
               display: 'flex', flexDirection: 'column', gap: 4,
               transition: 'all 0.2s ease',
             }}
             onMouseEnter={e => { e.currentTarget.style.borderColor = `${accent}60`; e.currentTarget.style.background = 'oklch(11% 0.05 290 / 0.8)'; }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor = 'oklch(55% 0.25 295 / 0.2)'; e.currentTarget.style.background = 'oklch(9% 0.04 290 / 0.6)'; }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--purple-a2)'; e.currentTarget.style.background = 'oklch(9% 0.04 290 / 0.6)'; }}
             >
               <span style={{ fontSize: 11, color: accent, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' }}>{c.label}</span>
               <span style={{ fontSize: 14, color: 'var(--text)' }}>{c.val}</span>
@@ -1595,7 +1618,7 @@ function ContactSection({ accentColor }) {
 
         {/* Form */}
         <div style={{
-          background: 'oklch(9% 0.04 290 / 0.7)', border: '1px solid oklch(55% 0.25 295 / 0.25)',
+          background: 'oklch(9% 0.04 290 / 0.7)', border: '1px solid var(--purple-a25)',
           borderRadius: 10, padding: '32px 36px',
         }}>
           {sent ? (
@@ -1622,12 +1645,12 @@ function ContactSection({ accentColor }) {
                     onChange={e => setForm(f => ({ ...f, [field.id]: e.target.value }))}
                     style={{
                       width: '100%', padding: '11px 16px', borderRadius: 5,
-                      background: 'oklch(7% 0.03 290)', border: '1px solid oklch(55% 0.25 295 / 0.2)',
+                      background: 'oklch(7% 0.03 290)', border: '1px solid var(--purple-a2)',
                       color: 'var(--text)', fontSize: 15, fontFamily: 'DM Sans',
                       outline: 'none', transition: 'border-color 0.2s',
                     }}
                     onFocus={e => e.target.style.borderColor = accent}
-                    onBlur={e => e.target.style.borderColor = 'oklch(55% 0.25 295 / 0.2)'}
+                    onBlur={e => e.target.style.borderColor = 'var(--purple-a2)'}
                   />
                 </div>
               ))}
@@ -1642,12 +1665,12 @@ function ContactSection({ accentColor }) {
                   onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
                   style={{
                     width: '100%', padding: '11px 16px', borderRadius: 5,
-                    background: 'oklch(7% 0.03 290)', border: '1px solid oklch(55% 0.25 295 / 0.2)',
+                    background: 'oklch(7% 0.03 290)', border: '1px solid var(--purple-a2)',
                     color: 'var(--text)', fontSize: 15, fontFamily: 'DM Sans',
                     outline: 'none', resize: 'vertical', transition: 'border-color 0.2s',
                   }}
                   onFocus={e => e.target.style.borderColor = accent}
-                  onBlur={e => e.target.style.borderColor = 'oklch(55% 0.25 295 / 0.2)'}
+                  onBlur={e => e.target.style.borderColor = 'var(--purple-a2)'}
                 />
               </div>
               <button type="submit" disabled={sending} style={{
@@ -1667,37 +1690,28 @@ function ContactSection({ accentColor }) {
           )}
         </div>
       </div>
-      </SectionCard>
+      </SectionCard></Reveal>
     </section>
   );
 }
 
 // ─── FOOTER ───────────────────────────────────────────────────────────────────
 function Footer({ accentColor }) {
-  const accent = accentColor === 'cyan' ? 'var(--cyan)' : accentColor === 'orange' ? 'var(--orange)' : 'var(--pink)';
+  const { accent } = useAccent(accentColor);
   return (
-    <footer style={{
-      borderTop: '1px solid oklch(55% 0.25 295 / 0.15)',
-      padding: '28px 8%',
-      display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-      fontSize: 13, color: 'var(--text-dim)',
-    }}>
-      <img src="/assets/img/logo3.png" alt="Carlos Hurtado" style={{ height: 28, width: 'auto' }} />
-      <span>SF Bay Area · Game Industry · 15+ Years</span>
+    <footer style={{ padding: '0 8% 32px', position: 'relative' }}>
+      <GlowDivider color={accent} />
+      <div style={{
+        display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16,
+        fontSize: 13, color: 'var(--text-dim)',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+          <img src="/assets/img/logo3.png" alt="Carlos Hurtado" style={{ height: 28, width: 'auto' }} />
+          <span>SF Bay Area · Game Industry · 15+ Years</span>
+        </div>
+        <SocialLinks accent={accent} />
+      </div>
     </footer>
-  );
-}
-
-// ─── HORIZON LINE ─────────────────────────────────────────────────────────────
-function HorizonLine() {
-  return (
-    <div style={{
-      position: 'fixed', bottom: '318px', left: 0, right: 0,
-      height: 2, zIndex: 2, pointerEvents: 'none',
-      background: 'linear-gradient(90deg, transparent 0%, #cc22ff 15%, #ff2d78 35%, #ff9933 50%, #ff2d78 65%, #cc22ff 85%, transparent 100%)',
-      filter: 'blur(0.5px)',
-      boxShadow: '0 0 10px #ff2d78, 0 0 25px #e100ff, 0 0 50px #aa00ff30',
-    }} />
   );
 }
 
@@ -1721,41 +1735,61 @@ function useActiveSection() {
 }
 
 // ─── APP ──────────────────────────────────────────────────────────────────────
-const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "layout": "card",
-  "accentColor": "pink"
-}/*EDITMODE-END*/;
+// Reaches outside React on purpose: .grid-wrapper/.horizon-line/.stars/.clouds
+// are static HTML (rendered by {% include grid.html %} + a plain <div>, not by
+// this React tree — see body markup), so there's nothing for React to manage
+// here. Mutating their style.transform directly via querySelector is the
+// correct approach, not a shortcut around React.
+function useParallaxScroll() {
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const gridWrapper = document.querySelector('.grid-wrapper');
+    const horizonLine = document.querySelector('.horizon-line');
+    const stars = document.querySelector('.stars');
+    const clouds = document.querySelector('.clouds');
+
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        const gridDrift = Math.min(y * 0.04, 50);   // grid + horizon + sun, capped at 50px
+        const starDrift = Math.min(y * 0.015, 30);  // stars/clouds drift slower — depth
+
+        if (gridWrapper) gridWrapper.style.transform = `translateY(${gridDrift}px)`;
+        if (horizonLine) horizonLine.style.transform = `translateY(${gridDrift}px)`;
+        document.body.style.setProperty('--sun-drift', `${gridDrift}px`);
+        if (stars) stars.style.transform = `translateY(${starDrift}px)`;
+        if (clouds) clouds.style.transform = `translateY(${starDrift * 1.2}px)`;
+        ticking = false;
+      });
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+}
+
+const ACCENT_COLOR = 'pink';
 
 function App() {
-  const { tweaks: rawTweaks, setTweak } = useTweaks(TWEAK_DEFAULTS);
-  const tweaks = rawTweaks || TWEAK_DEFAULTS;
   const [activeSection, setActiveSection] = useActiveSection();
+  useParallaxScroll();
 
   return (
     <>
-      {/* Fixed background layers */}
-      <HorizonLine />
       <div style={{ position: 'relative', zIndex: 2 }}>
-        <Nav activeSection={activeSection} setActiveSection={setActiveSection} accentColor={tweaks.accentColor} />
-        <HomeSection layout={tweaks.layout} accentColor={tweaks.accentColor} />
-        <AboutSection accentColor={tweaks.accentColor} />
-        <GameDevSection accentColor={tweaks.accentColor} />
-        <ArtSection accentColor={tweaks.accentColor} />
-        <ResumeSection accentColor={tweaks.accentColor} />
-        <ContactSection accentColor={tweaks.accentColor} />
-        <Footer accentColor={tweaks.accentColor} />
+        <Nav activeSection={activeSection} setActiveSection={setActiveSection} accentColor={ACCENT_COLOR} />
+        <HomeSection accentColor={ACCENT_COLOR} />
+        <AboutSection accentColor={ACCENT_COLOR} />
+        <GameDevSection accentColor={ACCENT_COLOR} />
+        <ArtSection accentColor={ACCENT_COLOR} />
+        <ResumeSection accentColor={ACCENT_COLOR} />
+        <ContactSection accentColor={ACCENT_COLOR} />
+        <Footer accentColor={ACCENT_COLOR} />
       </div>
-
-      <TweaksPanel>
-        <TweakSection title="Layout">
-          <TweakRadio id="layout" label="Hero Style" value={tweaks.layout} onChange={v => setTweak('layout', v)}
-            options={[{ value: 'card', label: 'Card' }, { value: 'fullbleed', label: 'Full Bleed' }]} />
-        </TweakSection>
-        <TweakSection title="Colors">
-          <TweakRadio id="accentColor" label="Accent" value={tweaks.accentColor} onChange={v => setTweak('accentColor', v)}
-            options={[{ value: 'pink', label: 'Pink' }, { value: 'cyan', label: 'Cyan' }, { value: 'orange', label: 'Orange' }]} />
-        </TweakSection>
-      </TweaksPanel>
     </>
   );
 }
