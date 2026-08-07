@@ -1,0 +1,14 @@
+{
+  "name": "c-hurtado-github-io",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Build tooling for precompiling the homepage's JSX (avoids the in-browser Babel transform).",
+  "scripts": {
+    "build:js": "babel assets/js/app.jsx -o assets/js/app.js --presets @babel/preset-react"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.25.9",
+    "@babel/core": "^7.26.0",
+    "@babel/preset-react": "^7.25.9"
+  }
+}
