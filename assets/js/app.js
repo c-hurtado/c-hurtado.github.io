@@ -557,7 +557,9 @@ function HomeSection({
     color: accent
   }, "Lead Engineer"), /*#__PURE__*/React.createElement(NeonBadge, {
     color: "var(--purple)"
-  }, "Engineering Manager")), /*#__PURE__*/React.createElement("h1", {
+  }, "Engineering Manager"), /*#__PURE__*/React.createElement(NeonBadge, {
+    color: "var(--orange)"
+  }, "Hobbyist Artist")), /*#__PURE__*/React.createElement("h1", {
     style: {
       fontFamily: 'Space Grotesk',
       fontSize: 'clamp(32px, 4.4vw, 46px)',
@@ -663,23 +665,15 @@ function HomeSection({
       color: 'var(--text-dim)',
       marginTop: 20
     }
-  }, "Expertise in ", /*#__PURE__*/React.createElement("span", {
+  }, /*#__PURE__*/React.createElement("span", {
     style: {
       color: 'var(--text)'
     }
-  }, "Unreal Engine 4 & 5"), ", performance optimization, and architecting high-scale gameplay systems in ", /*#__PURE__*/React.createElement("span", {
+  }, "Unreal Engine 4 & 5"), ", performance optimization, and high-scale gameplay systems in ", /*#__PURE__*/React.createElement("span", {
     style: {
       color: 'var(--text)'
     }
-  }, "C++"), ". Currently seeking ", /*#__PURE__*/React.createElement("span", {
-    style: {
-      color: 'var(--text)'
-    }
-  }, "Engineering Manager"), " or ", /*#__PURE__*/React.createElement("span", {
-    style: {
-      color: 'var(--text)'
-    }
-  }, "Technical Lead"), " roles."))));
+  }, "C++"), " are where I live day to day \u2014 but outside of work I'm a hobbyist artist, and I'm always tinkering with some new productivity system."))));
 }
 
 // ─── SOCIAL LINKS ─────────────────────────────────────────────────────────────
@@ -1257,11 +1251,11 @@ function AboutSection({
       color: 'var(--text)',
       fontWeight: 600
     }
-  }, "Carlos"), " \u2014 nice to meet you. I was born in ", /*#__PURE__*/React.createElement("span", {
+  }, "Carlos"), " \u2014 nice to meet you. I grew up in ", /*#__PURE__*/React.createElement("span", {
     style: {
       color: 'var(--text)'
     }
-  }, "Chile"), " and moved to the United States to pursue a career in entertainment technology. I'm now a citizen, and I've been in the industry since ", /*#__PURE__*/React.createElement("span", {
+  }, "Chile"), " and moved to the United States chasing a career in entertainment technology so I could make cool things. I'm a U.S. citizen now, and I've been making games professionally since ", /*#__PURE__*/React.createElement("span", {
     style: {
       color: 'var(--text)'
     }
@@ -1271,7 +1265,7 @@ function AboutSection({
       lineHeight: 1.8,
       color: 'var(--text-dim)'
     }
-  }, "I'm passionate about making video games \u2014 and more recently about leadership: mentoring and managing engineers, supporting their careers, and accelerating the craft of building games so that time goes into the fun and the quality."), /*#__PURE__*/React.createElement("p", {
+  }, "I'm passionate about making video games \u2014 and about leadership: mentoring engineers, supporting their careers, and building teams that consistently ship high-quality work."), /*#__PURE__*/React.createElement("p", {
     style: {
       fontSize: 16,
       lineHeight: 1.8,
@@ -1288,18 +1282,27 @@ function AboutSection({
       color: accent
     }
   }, "Sanzaru Games"), " (a Meta studio), where I shipped several award-winning VR titles including ", /*#__PURE__*/React.createElement("a", {
-    href: "https://www.carloshurtado.com/gameDevProjects/AsgardsWrath/",
-    target: "_blank",
+    href: "#gamedev",
     style: {
       color: accent
     }
   }, "Asgard's Wrath"), " and ", /*#__PURE__*/React.createElement("a", {
-    href: "https://www.carloshurtado.com/gameDevProjects/AsgardsWrath2/",
-    target: "_blank",
+    href: "#gamedev",
     style: {
       color: accent
     }
   }, "Asgard's Wrath 2"), " for the Oculus Rift and Quest 2/3."), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 16,
+      lineHeight: 1.8,
+      color: 'var(--text-dim)'
+    }
+  }, "Outside of engineering, I paint \u2014 mostly oil, sometimes digital (there's a whole ", /*#__PURE__*/React.createElement("a", {
+    href: "#art",
+    style: {
+      color: accent
+    }
+  }, "gallery"), " of it if you scroll down). I'm also a little obsessed with productivity systems \u2014 ask me about whatever one I'm currently rebuilding my life around."), /*#__PURE__*/React.createElement("p", {
     style: {
       fontSize: 16,
       lineHeight: 1.8,
