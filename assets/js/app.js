@@ -72,10 +72,10 @@ function Logo({
   }, /*#__PURE__*/React.createElement("span", {
     ref: carlosRef,
     style: {
-      fontWeight: 600,
+      fontWeight: 700,
       fontSize: height * 0.24,
       textTransform: 'uppercase',
-      color: 'var(--text-dim)',
+      color: 'var(--text)',
       lineHeight: 1,
       display: 'flex',
       justifyContent: 'space-between',
@@ -768,13 +768,17 @@ function HomeSection({
   }, "productivity system"), "."))));
 }
 
+// Assembled at runtime instead of a literal address in the source — cuts
+// down on basic regex-based email-harvesting bots scraping the page/bundle.
+const CONTACT_EMAIL = ['carloshurtado', 'gmail.com'].join('@');
+
 // ─── SOCIAL LINKS ─────────────────────────────────────────────────────────────
 function SocialLinks({
   accent,
   style: extraStyle
 }) {
   const links = [{
-    href: 'mailto:carloshurtado@gmail.com',
+    href: `mailto:${CONTACT_EMAIL}`,
     label: 'Email',
     icon: 'M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z M22,6 L12,13 L2,6'
   }, {
@@ -2883,8 +2887,8 @@ function ContactSection({
     }
   }, [{
     label: 'Email',
-    val: 'carloshurtado@gmail.com',
-    href: 'mailto:carloshurtado@gmail.com'
+    val: CONTACT_EMAIL,
+    href: `mailto:${CONTACT_EMAIL}`
   }, {
     label: 'LinkedIn',
     val: '/in/carloshurtado',
