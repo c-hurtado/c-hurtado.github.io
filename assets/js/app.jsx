@@ -11,13 +11,59 @@ function useAccent(accentColor) {
 }
 
 
+// ─── SCROLL PROGRESS ────────────────────────────────────────────────────────
+function ScrollProgressBar({ accentColor }) {
+  const [progress, setProgress] = useState(0);
+  const { accent, accent2 } = useAccent(accentColor);
+  useEffect(() => {
+    let ticking = false;
+    const handler = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        setProgress(scrollable > 0 ? Math.min(window.scrollY / scrollable, 1) : 0);
+        ticking = false;
+      });
+    };
+    handler();
+    window.addEventListener('scroll', handler, { passive: true });
+    window.addEventListener('resize', handler);
+    return () => {
+      window.removeEventListener('scroll', handler);
+      window.removeEventListener('resize', handler);
+    };
+  }, []);
+  return (
+    <div aria-hidden="true" style={{ position: 'fixed', top: 0, left: 0, right: 0, height: 3, zIndex: 600, pointerEvents: 'none' }}>
+      <div style={{
+        height: '100%', width: `${(progress * 100).toFixed(2)}%`,
+        background: `linear-gradient(90deg, ${accent}, ${accent2})`,
+        boxShadow: `0 0 8px ${accent}, 0 0 16px ${accent2}80`,
+      }} />
+    </div>
+  );
+}
+
 // ─── NAV ──────────────────────────────────────────────────────────────────────
 function Nav({ activeSection, setActiveSection, accentColor }) {
-  const [scrolled, setScrolled] = useState(false);
+  // Continuous 0-1 value instead of a binary "scrolled" flag, so the
+  // transparent-to-opaque backdrop fades in gradually over the first 120px
+  // of scroll rather than snapping in at a hard scrollY > 20 threshold.
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handler);
+    let ticking = false;
+    const handler = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        setScrollProgress(Math.min(window.scrollY / 120, 1));
+        ticking = false;
+      });
+    };
+    handler();
+    window.addEventListener('scroll', handler, { passive: true });
     return () => window.removeEventListener('scroll', handler);
   }, []);
 
@@ -50,10 +96,10 @@ function Nav({ activeSection, setActiveSection, accentColor }) {
       padding: '0 40px',
       height: 64,
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      background: scrolled ? 'oklch(8% 0.04 290 / 0.92)' : 'transparent',
-      backdropFilter: scrolled ? 'blur(20px)' : 'none',
-      borderBottom: scrolled ? '1px solid var(--purple-a2)' : '1px solid transparent',
-      transition: 'all 0.4s ease',
+      background: `oklch(8% 0.04 290 / ${(scrollProgress * 0.92).toFixed(3)})`,
+      backdropFilter: scrollProgress > 0 ? `blur(${(scrollProgress * 20).toFixed(1)}px)` : 'none',
+      WebkitBackdropFilter: scrollProgress > 0 ? `blur(${(scrollProgress * 20).toFixed(1)}px)` : 'none',
+      borderBottom: `1px solid oklch(55% 0.25 295 / ${(scrollProgress * 0.2).toFixed(3)})`,
     }}>
       {/* Logo */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -245,6 +291,23 @@ function NeonBadge({ children, color = 'var(--pink)' }) {
   );
 }
 
+// ─── SECTION TAG ──────────────────────────────────────────────────────────────
+// Monospace "terminal tag" eyebrow — a signature type moment nodding at the
+// engineer identity, sitting above each section's heading.
+function SectionTag({ number, label, accent }) {
+  return (
+    <div style={{
+      fontFamily: "ui-monospace, 'SF Mono', 'Cascadia Code', Consolas, 'Courier New', monospace",
+      fontSize: 12, letterSpacing: '0.1em', textTransform: 'uppercase',
+      color: accent,
+      marginBottom: 12,
+      display: 'flex', alignItems: 'center', gap: 8,
+    }}>
+      <span style={{ color: 'var(--text-dim)' }}>//</span>{number} — {label}
+    </div>
+  );
+}
+
 // ─── GLOWING DIVIDER ─────────────────────────────────────────────────────────
 function GlowDivider({ color = 'var(--purple)' }) {
   return (
@@ -287,12 +350,13 @@ function HomeSection({ accentColor }) {
           <AvatarCircle size={100} accentColor={accentColor} />
           <div>
             <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 10 }}>
-              <NeonBadge color={accent}>Technical Lead Manager</NeonBadge>
+              <NeonBadge color={accent}>Lead Engineer</NeonBadge>
               <NeonBadge color="var(--purple)">Engineering Manager</NeonBadge>
             </div>
-            <h1 style={{ fontFamily: 'Space Grotesk', fontSize: 32, fontWeight: 700, lineHeight: 1.1, letterSpacing: '-0.01em' }}>
+            <h1 style={{ fontFamily: 'Space Grotesk', fontSize: 'clamp(32px, 4.4vw, 46px)', fontWeight: 700, lineHeight: 1.05, letterSpacing: '-0.02em' }}>
               Hi, I'm{' '}
               <span style={{
+                fontWeight: 800,
                 background: `linear-gradient(135deg, ${accent}, ${accent2})`,
                 WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
               }}>Carlos Hurtado.</span>
@@ -303,23 +367,15 @@ function HomeSection({ accentColor }) {
 
         <GlowDivider />
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-          <p style={{ fontSize: 15, lineHeight: 1.78, color: 'var(--text-dim)' }}>
-            I am a <a href="#gamedev" style={{ color: accent, fontWeight: 600 }}>Technical Lead Manager</a> with over 15 years of experience delivering high-fidelity gaming experiences and leading engineering teams through the full lifecycle of award-winning titles.
-          </p>
-          <p style={{ fontSize: 15, lineHeight: 1.78, color: 'var(--text-dim)' }}>
-            Most recently at <span style={{ color: 'var(--text)' }}>Sanzaru Games (Oculus Studios · Meta)</span>, contributing to{' '}
-            <a href="#gamedev" style={{ color: accent }}>Asgard's Wrath 2</a> — which received a perfect{' '}
-            <a href="https://www.ign.com/articles/asgards-wrath-2-review" target="_blank" style={{ color: accent2, fontWeight: 700 }}>10/10 from IGN</a>.
-          </p>
-          <p style={{ fontSize: 15, lineHeight: 1.78, color: 'var(--text-dim)' }}>
-            Expertise in <span style={{ color: 'var(--text)' }}>Unreal Engine 4 & 5</span>, performance optimization, and architecting high-scale gameplay systems in <span style={{ color: 'var(--text)' }}>C++</span>. Currently seeking <span style={{ color: 'var(--text)' }}>Engineering Manager</span> or <span style={{ color: 'var(--text)' }}>Technical Lead</span> roles.
-          </p>
-        </div>
+        {/* Single sharpest credential up top, not buried after 3 paragraphs — CTA sits right below it. */}
+        <p style={{ fontSize: 16, lineHeight: 1.75, color: 'var(--text)', marginBottom: 24 }}>
+          15+ years shipping award-winning VR games. Most recently <span style={{ fontWeight: 600 }}>Technical Lead Manager</span> at{' '}
+          <span style={{ color: 'var(--text)' }}>Sanzaru Games (Oculus Studios · Meta)</span>, where{' '}
+          <a href="#gamedev" style={{ color: accent, fontWeight: 600 }}>Asgard's Wrath 2</a> shipped to a perfect{' '}
+          <a href="https://www.ign.com/articles/asgards-wrath-2-review" target="_blank" style={{ color: accent2, fontWeight: 700 }}>10/10 from IGN</a>.
+        </p>
 
-        <GlowDivider />
-
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 20 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 20, marginBottom: 28 }}>
           <SocialLinks accent={accent} />
           <a href="https://www.carloshurtado.com/assets/Carlos_Hurtado_Resume.pdf" target="_blank" style={{
             padding: '10px 24px', borderRadius: 4,
@@ -337,6 +393,13 @@ function HomeSection({ accentColor }) {
             Download Resume
           </a>
         </div>
+
+        <GlowDivider />
+
+        {/* Secondary detail — the fuller narrative already lives in About, so this stays short. */}
+        <p style={{ fontSize: 14, lineHeight: 1.75, color: 'var(--text-dim)', marginTop: 20 }}>
+          Expertise in <span style={{ color: 'var(--text)' }}>Unreal Engine 4 & 5</span>, performance optimization, and architecting high-scale gameplay systems in <span style={{ color: 'var(--text)' }}>C++</span>. Currently seeking <span style={{ color: 'var(--text)' }}>Engineering Manager</span> or <span style={{ color: 'var(--text)' }}>Technical Lead</span> roles.
+        </p>
       </div></Reveal>
     </section>
   );
@@ -373,6 +436,54 @@ function SocialLinks({ accent, style: extraStyle }) {
   );
 }
 
+// ─── FEATURED GAME DEV PROJECT ────────────────────────────────────────────────
+// Bleeds past the section card's own padding (a deliberate break from the
+// grid — everything else here sits neatly inside its container) to give the
+// flagship shipped title a moment that isn't identical to the rest.
+function FeaturedProjectCard({ project, accentColor, onOpen }) {
+  const [hovered, setHovered] = useState(false);
+  const { accent, accent2 } = useAccent(accentColor);
+
+  return (
+    <div
+      role="button" tabIndex={0}
+      onClick={onOpen}
+      onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onOpen(); } }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="featured-project-card"
+      style={{
+        margin: '0 -52px 32px',
+        position: 'relative',
+        height: 'clamp(280px, 38vw, 420px)',
+        overflow: 'hidden',
+        cursor: 'pointer',
+        borderTop: `1px solid ${accent}30`,
+        borderBottom: `1px solid ${accent}30`,
+      }}>
+      <img src={project.img} alt={`${project.title} — ${project.studio}`} loading="lazy" decoding="async" style={{
+        position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover',
+        transform: hovered ? 'scale(1.04)' : 'scale(1)',
+        transition: 'transform 0.5s ease',
+      }} />
+      <div style={{
+        position: 'absolute', inset: 0,
+        background: 'linear-gradient(0deg, oklch(5% 0.02 290 / 0.92) 0%, oklch(5% 0.02 290 / 0.25) 55%, transparent 100%)',
+      }} />
+      <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, padding: '28px 52px' }}>
+        <div style={{ display: 'flex', gap: 8, marginBottom: 10 }}>
+          <NeonBadge color={accent}>Flagship Title</NeonBadge>
+          {project.badge && <NeonBadge color={accent2}>{project.badge}</NeonBadge>}
+        </div>
+        <h3 style={{ fontFamily: 'Space Grotesk', fontSize: 'clamp(22px, 3vw, 30px)', fontWeight: 700, color: '#fff', marginBottom: 6 }}>
+          {project.title}
+        </h3>
+        <p style={{ fontSize: 14, color: 'oklch(85% 0.02 280)', maxWidth: 560 }}>{project.desc}</p>
+      </div>
+    </div>
+  );
+}
+
 // ─── GAME DEV PROJECT CARD ────────────────────────────────────────────────────
 function ProjectCard({ title, studio, desc, img: imgSrc, badge, accentColor, index, onOpen }) {
   const [hovered, setHovered] = useState(false);
@@ -387,12 +498,14 @@ function ProjectCard({ title, studio, desc, img: imgSrc, badge, accentColor, ind
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
+        // Shared frame language with the Art gallery: 8px radius, same
+        // border/hover-glow spec — only the lift motion stays Game-Dev-specific.
         background: hovered ? 'oklch(12% 0.05 290 / 0.95)' : 'oklch(9% 0.04 290 / 0.8)',
-        border: `1px solid ${hovered ? accent : 'oklch(55% 0.25 295 / 0.25)'}`,
-        borderRadius: 10,
+        border: `1px solid ${hovered ? accent : 'var(--purple-a2)'}`,
+        borderRadius: 8,
         overflow: 'hidden',
         transition: 'all 0.3s ease',
-        boxShadow: hovered ? `0 8px 40px ${accent}30` : '0 2px 12px rgba(0,0,0,0.4)',
+        boxShadow: hovered ? `0 4px 24px ${accent}40` : 'none',
         transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
         cursor: 'pointer',
       }}>
@@ -543,6 +656,7 @@ function AboutSection({ accentColor }) {
     <section id="about" data-screen-label="02 About" style={{ padding: '100px 8% 80px', maxWidth: 1100, margin: '0 auto' }}>
       <Reveal><SectionCard corner1="var(--purple)" corner2="var(--cyan)">
         <div style={{ marginBottom: 40 }}>
+          <SectionTag number="02" label="About" accent={accent} />
           <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12 }}>
             <div style={{ width: 3, height: 36, background: `linear-gradient(to bottom, ${accent}, ${accent2})`, borderRadius: 2, boxShadow: `0 0 12px ${accent}80` }} />
             <h2 style={{ fontFamily: 'Space Grotesk', fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, letterSpacing: '-0.02em' }}>About Me</h2>
@@ -813,10 +927,14 @@ function GameDevSection({ accentColor }) {
     },
   ], []);
 
+  const featuredProject = projects.find(p => p.title === "Asgard's Wrath 2");
+  const restProjects = projects.filter(p => p !== featuredProject);
+
   return (
-    <section id="gamedev" data-screen-label="02 Game Dev" style={{ padding: '100px 8% 80px', maxWidth: 1200, margin: '0 auto' }}>
+    <section id="gamedev" data-screen-label="03 Game Dev" style={{ padding: '100px 8% 80px', maxWidth: 1200, margin: '0 auto' }}>
       <Reveal><SectionCard corner1="var(--cyan)" corner2="var(--pink)" style={{ padding: '52px 52px' }}>
       <div style={{ marginBottom: 56 }}>
+        <SectionTag number="03" label="Game Dev" accent={accent} />
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12 }}>
           <div style={{ width: 3, height: 36, background: `linear-gradient(to bottom, ${accent}, ${accent2})`, borderRadius: 2, boxShadow: `0 0 12px ${accent}80` }} />
           <h2 style={{ fontFamily: 'Space Grotesk', fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, letterSpacing: '-0.02em' }}>Game Development</h2>
@@ -825,8 +943,11 @@ function GameDevSection({ accentColor }) {
           16+ years shipping games across VR, mobile, and PC. From EA to Meta-backed studios.
         </p>
       </div>
+      {featuredProject && (
+        <FeaturedProjectCard project={featuredProject} accentColor={accentColor} onOpen={() => setActiveProject(featuredProject)} />
+      )}
       <div className="gamedev-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 20 }}>
-        {projects.map((p, i) => (
+        {restProjects.map((p, i) => (
           <ProjectCard key={p.title} {...p} accentColor={accentColor} index={i} onOpen={() => setActiveProject(p)} />
         ))}
       </div>
@@ -903,9 +1024,10 @@ function AwardsSection({ accentColor }) {
   const { accent, accent2 } = useAccent(accentColor);
 
   return (
-    <section id="awards" data-screen-label="03 Awards" style={{ padding: '100px 8% 80px', maxWidth: 1100, margin: '0 auto' }}>
+    <section id="awards" data-screen-label="04 Awards" style={{ padding: '100px 8% 80px', maxWidth: 1100, margin: '0 auto' }}>
       <Reveal><SectionCard corner1="var(--cyan)" corner2="var(--orange)">
         <div style={{ marginBottom: 48 }}>
+          <SectionTag number="04" label="Awards" accent={accent} />
           <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12 }}>
             <div style={{ width: 3, height: 36, background: `linear-gradient(to bottom, ${accent}, ${accent2})`, borderRadius: 2, boxShadow: `0 0 12px ${accent}80` }} />
             <h2 style={{ fontFamily: 'Space Grotesk', fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, letterSpacing: '-0.02em' }}>Awards & Recognition</h2>
@@ -969,9 +1091,10 @@ function ResumeSection({ accentColor }) {
   ];
 
   return (
-    <section id="resume" data-screen-label="03 Resume" style={{ padding: '100px 8% 80px', maxWidth: 1100, margin: '0 auto' }}>
+    <section id="resume" data-screen-label="06 Resume" style={{ padding: '100px 8% 80px', maxWidth: 1100, margin: '0 auto' }}>
       <Reveal><SectionCard corner1="var(--pink)" corner2="var(--cyan)">
       <div style={{ marginBottom: 56 }}>
+        <SectionTag number="06" label="Resume" accent={accent} />
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12 }}>
           <div style={{ width: 3, height: 36, background: `linear-gradient(to bottom, ${accent}, ${accent2})`, borderRadius: 2, boxShadow: `0 0 12px ${accent}80` }} />
           <h2 style={{ fontFamily: 'Space Grotesk', fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, letterSpacing: '-0.02em' }}>Experience & Skills</h2>
@@ -1067,7 +1190,9 @@ function ArtCategoryGrid({ cat, accent, isLast, onOpen }) {
           {cat.images.length} piece{cat.images.length === 1 ? '' : 's'}
         </span>
       </div>
-      <div className="art-thumb-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))', gap: 16 }}>
+      {/* Masonry via CSS columns — every piece keeps its true aspect ratio
+          (no crop, no letterboxed mat space), unlike a fixed-aspect grid. */}
+      <div className="art-thumb-grid" style={{ columns: '230px 3', columnGap: 16 }}>
         {visibleImages.map((src, i) => (
           <ArtThumb key={i} src={src} label={`${cat.label} piece ${i + 1} of ${cat.images.length}`} onClick={() => onOpen(i)} accent={accent} />
         ))}
@@ -1109,9 +1234,10 @@ function ArtSection({ accentColor }) {
   const activeImages = activeCategory ? activeCategory.images : [];
 
   return (
-    <section id="art" data-screen-label="04 Art" style={{ padding: '100px 8% 80px', maxWidth: 1200, margin: '0 auto' }}>
+    <section id="art" data-screen-label="05 Art" style={{ padding: '100px 8% 80px', maxWidth: 1200, margin: '0 auto' }}>
       <Reveal><SectionCard corner1="var(--orange)" corner2="var(--purple)">
         <div style={{ marginBottom: 48 }}>
+          <SectionTag number="05" label="Art" accent={accent} />
           <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12 }}>
             <div style={{ width: 3, height: 36, background: `linear-gradient(to bottom, ${accent}, ${accent2})`, borderRadius: 2, boxShadow: `0 0 12px ${accent}80` }} />
             <h2 style={{ fontFamily: 'Space Grotesk', fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, letterSpacing: '-0.02em' }}>Art</h2>
@@ -1186,16 +1312,21 @@ function ArtThumb({ src, onClick, accent, label }) {
       onClick={onClick}
       onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(); } }}
       onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{
-      aspectRatio: '1', overflow: 'hidden', borderRadius: 6, cursor: 'pointer',
+      // Shared frame language with the Game Dev cards: 8px radius, same
+      // border/hover-glow spec. Natural aspect ratio (no fixed box) — the
+      // masonry column layout gives each piece its own true proportions.
+      breakInside: 'avoid', marginBottom: 16,
+      overflow: 'hidden', borderRadius: 8, cursor: 'pointer',
       border: `1px solid ${hovered ? accent : 'var(--purple-a2)'}`,
       transition: 'all 0.2s ease',
-      transform: hovered ? 'scale(1.03)' : 'scale(1)',
+      transform: hovered ? 'scale(1.02)' : 'scale(1)',
       boxShadow: hovered ? `0 4px 24px ${accent}40` : 'none',
       background: 'linear-gradient(160deg, var(--bg2) 0%, var(--bg) 100%)',
       position: 'relative',
+      minHeight: loaded ? 0 : 160,
     }}>
       {!loaded && <div className="art-thumb-skeleton"><div className="art-thumb-spinner" /></div>}
-      <img src={src} loading="lazy" decoding="async" onLoad={() => setLoaded(true)} style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block',
+      <img src={src} loading="lazy" decoding="async" onLoad={() => setLoaded(true)} style={{ width: '100%', height: 'auto', display: 'block',
         transition: 'opacity 0.3s', opacity: loaded ? (hovered ? 1 : 0.85) : 0 }} />
     </div>
   );
@@ -1215,9 +1346,10 @@ function ContactSection({ accentColor }) {
   }, []);
 
   return (
-    <section id="contact" data-screen-label="04 Contact" style={{ padding: '100px 8% 140px', maxWidth: 1100, margin: '0 auto' }}>
+    <section id="contact" data-screen-label="07 Contact" style={{ padding: '100px 8% 80px', maxWidth: 1100, margin: '0 auto' }}>
       <Reveal><SectionCard corner1="var(--purple)" corner2="var(--orange)">
       <div style={{ marginBottom: 56 }}>
+        <SectionTag number="07" label="Contact" accent={accent} />
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12 }}>
           <div style={{ width: 3, height: 36, background: `linear-gradient(to bottom, ${accent}, ${accent2})`, borderRadius: 2, boxShadow: `0 0 12px ${accent}80` }} />
           <h2 style={{ fontFamily: 'Space Grotesk', fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, letterSpacing: '-0.02em' }}>Get in Touch</h2>
@@ -1341,6 +1473,14 @@ function Footer({ accentColor }) {
   return (
     <footer style={{ padding: '0 8% 32px', position: 'relative' }}>
       <GlowDivider color={accent} />
+      <p style={{
+        fontFamily: 'Space Grotesk', fontWeight: 700, textAlign: 'center',
+        fontSize: 'clamp(20px, 2.6vw, 28px)', margin: '36px 0 40px',
+        background: `linear-gradient(135deg, ${accent}, var(--orange))`,
+        WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+      }}>
+        Let's build something worth shipping.
+      </p>
       <div style={{
         display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16,
         fontSize: 13, color: 'var(--text-dim)',
@@ -1360,11 +1500,25 @@ function useActiveSection() {
   const [active, setActive] = useState('home');
   useEffect(() => {
     const sections = ['home', 'about', 'gamedev', 'awards', 'art', 'resume', 'contact'];
+    // Track every section's currently-visible pixel height and pick whichever
+    // fills the most of the viewport, rather than reacting to whichever entry
+    // happens to be last in an IntersectionObserver batch (batch order isn't
+    // visual order) or comparing intersectionRatio (biased against tall
+    // sections like Art/Resume, which can never reach a high ratio of their
+    // own height even while completely filling the viewport).
+    const visiblePx = new Map(sections.map(id => [id, 0]));
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) setActive(entry.target.id);
+        visiblePx.set(entry.target.id, entry.isIntersecting ? entry.intersectionRect.height : 0);
       });
-    }, { threshold: 0.3 });
+      let bestId = null;
+      let bestPx = 0;
+      sections.forEach(id => {
+        const px = visiblePx.get(id) || 0;
+        if (px > bestPx) { bestPx = px; bestId = id; }
+      });
+      if (bestId) setActive(bestId);
+    }, { threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1] });
     sections.forEach(id => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
@@ -1425,6 +1579,7 @@ function App() {
   return (
     <>
       <div style={{ position: 'relative', zIndex: 2 }}>
+        <ScrollProgressBar accentColor={ACCENT_COLOR} />
         <Nav activeSection={activeSection} setActiveSection={setActiveSection} accentColor={ACCENT_COLOR} />
         <HomeSection accentColor={ACCENT_COLOR} />
         <AboutSection accentColor={ACCENT_COLOR} />

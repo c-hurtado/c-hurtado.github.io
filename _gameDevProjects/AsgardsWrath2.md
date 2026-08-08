@@ -1,5 +1,4 @@
 ---
-layout: projectpost
 title:  "Asgard's Wrath 2"
 date:   2022-11-11
 excerpt: "<b>Asgard's Wrath 2</b> is a VR video game developed at Sanzaru Games"

@@ -20,8 +20,8 @@ render_with_liquid: false
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Carlos Hurtado",
-  "url": "https://www.carloshurtado.com/",
-  "image": "https://www.carloshurtado.com/assets/img/logo3.png",
+  "url": "{{ site.url }}/",
+  "image": "{{ site.url }}/assets/img/logo3.png",
   "jobTitle": "Technical Lead Manager",
   "worksFor": {
     "@type": "Organization",
@@ -143,12 +143,12 @@ render_with_liquid: false
 }
 
 .stars {
-  background:transparent url(https://www.carloshurtado.com/assets/img/stars.png) repeat top center;
+  background:transparent url({{ site.url }}/assets/img/stars.png) repeat top center;
   z-index:0;
 }
 
 .starsB {
-  background:transparent url(https://www.carloshurtado.com/assets/img/stars.png) repeat top center;
+  background:transparent url({{ site.url }}/assets/img/stars.png) repeat top center;
   z-index:0;
 	opacity:0.3;
 	-moz-animation:move-clouds-back 500s linear infinite;
@@ -160,7 +160,7 @@ render_with_liquid: false
 
 
 .clouds{
-    background:transparent url(https://www.carloshurtado.com/assets/img/clouds3.png) repeat top center;
+    background:transparent url({{ site.url }}/assets/img/clouds3.png) repeat top center;
     z-index:0;
 		opacity:0.6;
 
@@ -431,6 +431,11 @@ button:focus-visible,
 
     .section-card { padding: 28px 20px !important; }
 
+    /* Bleed margin must match .section-card's own mobile padding above, or
+       it overflows past the card's rounded border instead of sitting flush. */
+    .featured-project-card { margin: 0 -20px 24px !important; }
+    .featured-project-card > div:last-child { padding-left: 20px !important; padding-right: 20px !important; }
+
     .home-card-header { flex-direction: column !important; text-align: center; gap: 16px !important; }
     .home-card-header > div:last-child { width: 100%; }
 
@@ -444,14 +449,23 @@ button:focus-visible,
     }
 
     .art-thumb-grid {
-      grid-template-columns: repeat(2, 1fr) !important;
-      gap: 10px !important;
+      columns: 2 !important;
+      column-gap: 10px !important;
     }
+    .art-thumb-grid > div { margin-bottom: 10px !important; }
 
     .awards-grid {
       grid-template-columns: repeat(2, 1fr) !important;
       gap: 10px !important;
     }
+
+    /* Barely visible at 0.1 opacity on a small screen anyway, while still
+       costing a full extra masked/filtered SVG layer to composite every
+       frame — cut it on mobile rather than pay for it. Drop the sun's own
+       faint reflection (body::after) alongside it for consistency, rather
+       than leaving the sun reflected but the mountains not. */
+    .mountain-reflection { display: none !important; }
+    body::after { display: none !important; }
 
     .project-modal-body { padding: 24px 20px 28px !important; }
 
@@ -555,7 +569,7 @@ button:focus-visible,
         <li><a href="mailto:carloshurtado@gmail.com">Email</a></li>
         <li><a href="https://www.linkedin.com/in/carloshurtado">LinkedIn</a></li>
         <li><a href="https://github.com/c-hurtado">GitHub</a></li>
-        <li><a href="https://www.carloshurtado.com/assets/Carlos_Hurtado_Resume.pdf">Resume</a></li>
+        <li><a href="{{ site.url }}/assets/Carlos_Hurtado_Resume.pdf">Resume</a></li>
       </ul>
       <p>This site's full portfolio, game dev projects, and art gallery require JavaScript to view.</p>
     </main>

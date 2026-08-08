@@ -26,7 +26,7 @@ sass:
   style:            compressed
 collections:
   gameDevProjects:
-    output:         true
+    output:         false
 
 teaser: "/assets/img/logo3.png"
 og_image: "/assets/img/logo3.png"
@@ -83,6 +83,7 @@ gems:
   - jekyll-sitemap
   - jekyll-gist
   - jekyll-seo-tag
+  - jekyll-redirect-from
 jekyll-mentions:
     base_url: https://github.com
 

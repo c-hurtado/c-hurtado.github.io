@@ -1,5 +1,4 @@
 ---
-layout: projectpost
 title:  "Unannounced Big IP VR project"
 date:   2025-11-11
 excerpt: "<b>Unannounced</b>"

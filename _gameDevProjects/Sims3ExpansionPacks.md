@@ -1,5 +1,4 @@
 ---
-layout: projectpost
 title:  "Sims 3 Expansion Packs"
 date:   2014-11-11
 

@@ -1,5 +1,4 @@
 ---
-layout: projectpost
 title:  "Marvel Powers United VR"
 date:   2018-11-11
 excerpt: "<b>Marvel Powers United</b> is a VR video game developed at Sanzaru Games"

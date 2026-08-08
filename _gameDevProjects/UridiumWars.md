@@ -1,5 +1,4 @@
 ---
-layout: projectpost
 title:  "Uridium Wars"
 date:   2015-11-11
 

@@ -14,17 +14,82 @@ function useAccent(accentColor) {
   };
 }
 
+// ─── SCROLL PROGRESS ────────────────────────────────────────────────────────
+function ScrollProgressBar({
+  accentColor
+}) {
+  const [progress, setProgress] = useState(0);
+  const {
+    accent,
+    accent2
+  } = useAccent(accentColor);
+  useEffect(() => {
+    let ticking = false;
+    const handler = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        setProgress(scrollable > 0 ? Math.min(window.scrollY / scrollable, 1) : 0);
+        ticking = false;
+      });
+    };
+    handler();
+    window.addEventListener('scroll', handler, {
+      passive: true
+    });
+    window.addEventListener('resize', handler);
+    return () => {
+      window.removeEventListener('scroll', handler);
+      window.removeEventListener('resize', handler);
+    };
+  }, []);
+  return /*#__PURE__*/React.createElement("div", {
+    "aria-hidden": "true",
+    style: {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      height: 3,
+      zIndex: 600,
+      pointerEvents: 'none'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      height: '100%',
+      width: `${(progress * 100).toFixed(2)}%`,
+      background: `linear-gradient(90deg, ${accent}, ${accent2})`,
+      boxShadow: `0 0 8px ${accent}, 0 0 16px ${accent2}80`
+    }
+  }));
+}
+
 // ─── NAV ──────────────────────────────────────────────────────────────────────
 function Nav({
   activeSection,
   setActiveSection,
   accentColor
 }) {
-  const [scrolled, setScrolled] = useState(false);
+  // Continuous 0-1 value instead of a binary "scrolled" flag, so the
+  // transparent-to-opaque backdrop fades in gradually over the first 120px
+  // of scroll rather than snapping in at a hard scrollY > 20 threshold.
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handler);
+    let ticking = false;
+    const handler = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        setScrollProgress(Math.min(window.scrollY / 120, 1));
+        ticking = false;
+      });
+    };
+    handler();
+    window.addEventListener('scroll', handler, {
+      passive: true
+    });
     return () => window.removeEventListener('scroll', handler);
   }, []);
   useEffect(() => {
@@ -75,10 +140,10 @@ function Nav({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
-      background: scrolled ? 'oklch(8% 0.04 290 / 0.92)' : 'transparent',
-      backdropFilter: scrolled ? 'blur(20px)' : 'none',
-      borderBottom: scrolled ? '1px solid var(--purple-a2)' : '1px solid transparent',
-      transition: 'all 0.4s ease'
+      background: `oklch(8% 0.04 290 / ${(scrollProgress * 0.92).toFixed(3)})`,
+      backdropFilter: scrollProgress > 0 ? `blur(${(scrollProgress * 20).toFixed(1)}px)` : 'none',
+      WebkitBackdropFilter: scrollProgress > 0 ? `blur(${(scrollProgress * 20).toFixed(1)}px)` : 'none',
+      borderBottom: `1px solid oklch(55% 0.25 295 / ${(scrollProgress * 0.2).toFixed(3)})`
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
@@ -354,6 +419,33 @@ function NeonBadge({
   }, children);
 }
 
+// ─── SECTION TAG ──────────────────────────────────────────────────────────────
+// Monospace "terminal tag" eyebrow — a signature type moment nodding at the
+// engineer identity, sitting above each section's heading.
+function SectionTag({
+  number,
+  label,
+  accent
+}) {
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "ui-monospace, 'SF Mono', 'Cascadia Code', Consolas, 'Courier New', monospace",
+      fontSize: 12,
+      letterSpacing: '0.1em',
+      textTransform: 'uppercase',
+      color: accent,
+      marginBottom: 12,
+      display: 'flex',
+      alignItems: 'center',
+      gap: 8
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: 'var(--text-dim)'
+    }
+  }, "//"), number, " \u2014 ", label);
+}
+
 // ─── GLOWING DIVIDER ─────────────────────────────────────────────────────────
 function GlowDivider({
   color = 'var(--purple)'
@@ -463,18 +555,19 @@ function HomeSection({
     }
   }, /*#__PURE__*/React.createElement(NeonBadge, {
     color: accent
-  }, "Technical Lead Manager"), /*#__PURE__*/React.createElement(NeonBadge, {
+  }, "Lead Engineer"), /*#__PURE__*/React.createElement(NeonBadge, {
     color: "var(--purple)"
   }, "Engineering Manager")), /*#__PURE__*/React.createElement("h1", {
     style: {
       fontFamily: 'Space Grotesk',
-      fontSize: 32,
+      fontSize: 'clamp(32px, 4.4vw, 46px)',
       fontWeight: 700,
-      lineHeight: 1.1,
-      letterSpacing: '-0.01em'
+      lineHeight: 1.05,
+      letterSpacing: '-0.02em'
     }
   }, "Hi, I'm", ' ', /*#__PURE__*/React.createElement("span", {
     style: {
+      fontWeight: 800,
       background: `linear-gradient(135deg, ${accent}, ${accent2})`,
       WebkitBackgroundClip: 'text',
       WebkitTextFillColor: 'transparent',
@@ -486,75 +579,42 @@ function HomeSection({
       fontSize: 13,
       color: 'var(--text-dim)'
     }
-  }, "SF Bay Area"))), /*#__PURE__*/React.createElement(GlowDivider, null), /*#__PURE__*/React.createElement("div", {
+  }, "SF Bay Area"))), /*#__PURE__*/React.createElement(GlowDivider, null), /*#__PURE__*/React.createElement("p", {
     style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 14
+      fontSize: 16,
+      lineHeight: 1.75,
+      color: 'var(--text)',
+      marginBottom: 24
     }
-  }, /*#__PURE__*/React.createElement("p", {
+  }, "15+ years shipping award-winning VR games. Most recently ", /*#__PURE__*/React.createElement("span", {
     style: {
-      fontSize: 15,
-      lineHeight: 1.78,
-      color: 'var(--text-dim)'
+      fontWeight: 600
     }
-  }, "I am a ", /*#__PURE__*/React.createElement("a", {
+  }, "Technical Lead Manager"), " at", ' ', /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: 'var(--text)'
+    }
+  }, "Sanzaru Games (Oculus Studios \xB7 Meta)"), ", where", ' ', /*#__PURE__*/React.createElement("a", {
     href: "#gamedev",
     style: {
       color: accent,
       fontWeight: 600
     }
-  }, "Technical Lead Manager"), " with over 15 years of experience delivering high-fidelity gaming experiences and leading engineering teams through the full lifecycle of award-winning titles."), /*#__PURE__*/React.createElement("p", {
-    style: {
-      fontSize: 15,
-      lineHeight: 1.78,
-      color: 'var(--text-dim)'
-    }
-  }, "Most recently at ", /*#__PURE__*/React.createElement("span", {
-    style: {
-      color: 'var(--text)'
-    }
-  }, "Sanzaru Games (Oculus Studios \xB7 Meta)"), ", contributing to", ' ', /*#__PURE__*/React.createElement("a", {
-    href: "#gamedev",
-    style: {
-      color: accent
-    }
-  }, "Asgard's Wrath 2"), " \u2014 which received a perfect", ' ', /*#__PURE__*/React.createElement("a", {
+  }, "Asgard's Wrath 2"), " shipped to a perfect", ' ', /*#__PURE__*/React.createElement("a", {
     href: "https://www.ign.com/articles/asgards-wrath-2-review",
     target: "_blank",
     style: {
       color: accent2,
       fontWeight: 700
     }
-  }, "10/10 from IGN"), "."), /*#__PURE__*/React.createElement("p", {
-    style: {
-      fontSize: 15,
-      lineHeight: 1.78,
-      color: 'var(--text-dim)'
-    }
-  }, "Expertise in ", /*#__PURE__*/React.createElement("span", {
-    style: {
-      color: 'var(--text)'
-    }
-  }, "Unreal Engine 4 & 5"), ", performance optimization, and architecting high-scale gameplay systems in ", /*#__PURE__*/React.createElement("span", {
-    style: {
-      color: 'var(--text)'
-    }
-  }, "C++"), ". Currently seeking ", /*#__PURE__*/React.createElement("span", {
-    style: {
-      color: 'var(--text)'
-    }
-  }, "Engineering Manager"), " or ", /*#__PURE__*/React.createElement("span", {
-    style: {
-      color: 'var(--text)'
-    }
-  }, "Technical Lead"), " roles.")), /*#__PURE__*/React.createElement(GlowDivider, null), /*#__PURE__*/React.createElement("div", {
+  }, "10/10 from IGN"), "."), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
       flexWrap: 'wrap',
-      gap: 20
+      gap: 20,
+      marginBottom: 28
     }
   }, /*#__PURE__*/React.createElement(SocialLinks, {
     accent: accent
@@ -596,7 +656,30 @@ function HomeSection({
     y1: "15",
     x2: "12",
     y2: "3"
-  })), "Download Resume")))));
+  })), "Download Resume")), /*#__PURE__*/React.createElement(GlowDivider, null), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 14,
+      lineHeight: 1.75,
+      color: 'var(--text-dim)',
+      marginTop: 20
+    }
+  }, "Expertise in ", /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: 'var(--text)'
+    }
+  }, "Unreal Engine 4 & 5"), ", performance optimization, and architecting high-scale gameplay systems in ", /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: 'var(--text)'
+    }
+  }, "C++"), ". Currently seeking ", /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: 'var(--text)'
+    }
+  }, "Engineering Manager"), " or ", /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: 'var(--text)'
+    }
+  }, "Technical Lead"), " roles."))));
 }
 
 // ─── SOCIAL LINKS ─────────────────────────────────────────────────────────────
@@ -672,6 +755,97 @@ function SocialLinks({
   })))));
 }
 
+// ─── FEATURED GAME DEV PROJECT ────────────────────────────────────────────────
+// Bleeds past the section card's own padding (a deliberate break from the
+// grid — everything else here sits neatly inside its container) to give the
+// flagship shipped title a moment that isn't identical to the rest.
+function FeaturedProjectCard({
+  project,
+  accentColor,
+  onOpen
+}) {
+  const [hovered, setHovered] = useState(false);
+  const {
+    accent,
+    accent2
+  } = useAccent(accentColor);
+  return /*#__PURE__*/React.createElement("div", {
+    role: "button",
+    tabIndex: 0,
+    onClick: onOpen,
+    onKeyDown: e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        onOpen();
+      }
+    },
+    onMouseEnter: () => setHovered(true),
+    onMouseLeave: () => setHovered(false),
+    className: "featured-project-card",
+    style: {
+      margin: '0 -52px 32px',
+      position: 'relative',
+      height: 'clamp(280px, 38vw, 420px)',
+      overflow: 'hidden',
+      cursor: 'pointer',
+      borderTop: `1px solid ${accent}30`,
+      borderBottom: `1px solid ${accent}30`
+    }
+  }, /*#__PURE__*/React.createElement("img", {
+    src: project.img,
+    alt: `${project.title} — ${project.studio}`,
+    loading: "lazy",
+    decoding: "async",
+    style: {
+      position: 'absolute',
+      inset: 0,
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+      transform: hovered ? 'scale(1.04)' : 'scale(1)',
+      transition: 'transform 0.5s ease'
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: 'absolute',
+      inset: 0,
+      background: 'linear-gradient(0deg, oklch(5% 0.02 290 / 0.92) 0%, oklch(5% 0.02 290 / 0.25) 55%, transparent 100%)'
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      bottom: 0,
+      padding: '28px 52px'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      gap: 8,
+      marginBottom: 10
+    }
+  }, /*#__PURE__*/React.createElement(NeonBadge, {
+    color: accent
+  }, "Flagship Title"), project.badge && /*#__PURE__*/React.createElement(NeonBadge, {
+    color: accent2
+  }, project.badge)), /*#__PURE__*/React.createElement("h3", {
+    style: {
+      fontFamily: 'Space Grotesk',
+      fontSize: 'clamp(22px, 3vw, 30px)',
+      fontWeight: 700,
+      color: '#fff',
+      marginBottom: 6
+    }
+  }, project.title), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 14,
+      color: 'oklch(85% 0.02 280)',
+      maxWidth: 560
+    }
+  }, project.desc)));
+}
+
 // ─── GAME DEV PROJECT CARD ────────────────────────────────────────────────────
 function ProjectCard({
   title,
@@ -702,12 +876,14 @@ function ProjectCard({
     onMouseEnter: () => setHovered(true),
     onMouseLeave: () => setHovered(false),
     style: {
+      // Shared frame language with the Art gallery: 8px radius, same
+      // border/hover-glow spec — only the lift motion stays Game-Dev-specific.
       background: hovered ? 'oklch(12% 0.05 290 / 0.95)' : 'oklch(9% 0.04 290 / 0.8)',
-      border: `1px solid ${hovered ? accent : 'oklch(55% 0.25 295 / 0.25)'}`,
-      borderRadius: 10,
+      border: `1px solid ${hovered ? accent : 'var(--purple-a2)'}`,
+      borderRadius: 8,
       overflow: 'hidden',
       transition: 'all 0.3s ease',
-      boxShadow: hovered ? `0 8px 40px ${accent}30` : '0 2px 12px rgba(0,0,0,0.4)',
+      boxShadow: hovered ? `0 4px 24px ${accent}40` : 'none',
       transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
       cursor: 'pointer'
     }
@@ -1030,7 +1206,11 @@ function AboutSection({
     style: {
       marginBottom: 40
     }
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement(SectionTag, {
+    number: "02",
+    label: "About",
+    accent: accent
+  }), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       alignItems: 'center',
@@ -1403,9 +1583,11 @@ function GameDevSection({
     subtitle: '3 expansion packs shipped on 6-month cycles',
     details: /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(ModalP, null, "At Electronic Arts, I was a gameplay engineer at Maxis Studios. As my first job out of grad school, I worked on and published 3 expansion packs and multiple stuff packs, each on a 6-month development cycle."), /*#__PURE__*/React.createElement(ModalP, null, "I worked on Sims 3: Late Night, Sims 3: Generations, and Sims 3: Pets."))
   }], []);
+  const featuredProject = projects.find(p => p.title === "Asgard's Wrath 2");
+  const restProjects = projects.filter(p => p !== featuredProject);
   return /*#__PURE__*/React.createElement("section", {
     id: "gamedev",
-    "data-screen-label": "02 Game Dev",
+    "data-screen-label": "03 Game Dev",
     style: {
       padding: '100px 8% 80px',
       maxWidth: 1200,
@@ -1421,7 +1603,11 @@ function GameDevSection({
     style: {
       marginBottom: 56
     }
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement(SectionTag, {
+    number: "03",
+    label: "Game Dev",
+    accent: accent
+  }), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       alignItems: 'center',
@@ -1450,14 +1636,18 @@ function GameDevSection({
       maxWidth: 600,
       marginLeft: 19
     }
-  }, "16+ years shipping games across VR, mobile, and PC. From EA to Meta-backed studios.")), /*#__PURE__*/React.createElement("div", {
+  }, "16+ years shipping games across VR, mobile, and PC. From EA to Meta-backed studios.")), featuredProject && /*#__PURE__*/React.createElement(FeaturedProjectCard, {
+    project: featuredProject,
+    accentColor: accentColor,
+    onOpen: () => setActiveProject(featuredProject)
+  }), /*#__PURE__*/React.createElement("div", {
     className: "gamedev-grid",
     style: {
       display: 'grid',
       gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
       gap: 20
     }
-  }, projects.map((p, i) => /*#__PURE__*/React.createElement(ProjectCard, _extends({
+  }, restProjects.map((p, i) => /*#__PURE__*/React.createElement(ProjectCard, _extends({
     key: p.title
   }, p, {
     accentColor: accentColor,
@@ -1608,7 +1798,7 @@ function AwardsSection({
   } = useAccent(accentColor);
   return /*#__PURE__*/React.createElement("section", {
     id: "awards",
-    "data-screen-label": "03 Awards",
+    "data-screen-label": "04 Awards",
     style: {
       padding: '100px 8% 80px',
       maxWidth: 1100,
@@ -1621,7 +1811,11 @@ function AwardsSection({
     style: {
       marginBottom: 48
     }
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement(SectionTag, {
+    number: "04",
+    label: "Awards",
+    accent: accent
+  }), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       alignItems: 'center',
@@ -1767,7 +1961,7 @@ function ResumeSection({
   }];
   return /*#__PURE__*/React.createElement("section", {
     id: "resume",
-    "data-screen-label": "03 Resume",
+    "data-screen-label": "06 Resume",
     style: {
       padding: '100px 8% 80px',
       maxWidth: 1100,
@@ -1780,7 +1974,11 @@ function ResumeSection({
     style: {
       marginBottom: 56
     }
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement(SectionTag, {
+    number: "06",
+    label: "Resume",
+    accent: accent
+  }), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       alignItems: 'center',
@@ -2025,9 +2223,8 @@ function ArtCategoryGrid({
   }, cat.images.length, " piece", cat.images.length === 1 ? '' : 's')), /*#__PURE__*/React.createElement("div", {
     className: "art-thumb-grid",
     style: {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))',
-      gap: 16
+      columns: '230px 3',
+      columnGap: 16
     }
   }, visibleImages.map((src, i) => /*#__PURE__*/React.createElement(ArtThumb, {
     key: i,
@@ -2102,7 +2299,7 @@ function ArtSection({
   const activeImages = activeCategory ? activeCategory.images : [];
   return /*#__PURE__*/React.createElement("section", {
     id: "art",
-    "data-screen-label": "04 Art",
+    "data-screen-label": "05 Art",
     style: {
       padding: '100px 8% 80px',
       maxWidth: 1200,
@@ -2115,7 +2312,11 @@ function ArtSection({
     style: {
       marginBottom: 48
     }
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement(SectionTag, {
+    number: "05",
+    label: "Art",
+    accent: accent
+  }), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       alignItems: 'center',
@@ -2300,16 +2501,21 @@ function ArtThumb({
     onMouseEnter: () => setHovered(true),
     onMouseLeave: () => setHovered(false),
     style: {
-      aspectRatio: '1',
+      // Shared frame language with the Game Dev cards: 8px radius, same
+      // border/hover-glow spec. Natural aspect ratio (no fixed box) — the
+      // masonry column layout gives each piece its own true proportions.
+      breakInside: 'avoid',
+      marginBottom: 16,
       overflow: 'hidden',
-      borderRadius: 6,
+      borderRadius: 8,
       cursor: 'pointer',
       border: `1px solid ${hovered ? accent : 'var(--purple-a2)'}`,
       transition: 'all 0.2s ease',
-      transform: hovered ? 'scale(1.03)' : 'scale(1)',
+      transform: hovered ? 'scale(1.02)' : 'scale(1)',
       boxShadow: hovered ? `0 4px 24px ${accent}40` : 'none',
       background: 'linear-gradient(160deg, var(--bg2) 0%, var(--bg) 100%)',
-      position: 'relative'
+      position: 'relative',
+      minHeight: loaded ? 0 : 160
     }
   }, !loaded && /*#__PURE__*/React.createElement("div", {
     className: "art-thumb-skeleton"
@@ -2322,8 +2528,7 @@ function ArtThumb({
     onLoad: () => setLoaded(true),
     style: {
       width: '100%',
-      height: '100%',
-      objectFit: 'contain',
+      height: 'auto',
       display: 'block',
       transition: 'opacity 0.3s',
       opacity: loaded ? hovered ? 1 : 0.85 : 0
@@ -2353,9 +2558,9 @@ function ContactSection({
   }, []);
   return /*#__PURE__*/React.createElement("section", {
     id: "contact",
-    "data-screen-label": "04 Contact",
+    "data-screen-label": "07 Contact",
     style: {
-      padding: '100px 8% 140px',
+      padding: '100px 8% 80px',
       maxWidth: 1100,
       margin: '0 auto'
     }
@@ -2366,7 +2571,11 @@ function ContactSection({
     style: {
       marginBottom: 56
     }
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement(SectionTag, {
+    number: "07",
+    label: "Contact",
+    accent: accent
+  }), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       alignItems: 'center',
@@ -2637,7 +2846,19 @@ function Footer({
     }
   }, /*#__PURE__*/React.createElement(GlowDivider, {
     color: accent
-  }), /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontFamily: 'Space Grotesk',
+      fontWeight: 700,
+      textAlign: 'center',
+      fontSize: 'clamp(20px, 2.6vw, 28px)',
+      margin: '36px 0 40px',
+      background: `linear-gradient(135deg, ${accent}, var(--orange))`,
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
+      backgroundClip: 'text'
+    }
+  }, "Let's build something worth shipping."), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       justifyContent: 'space-between',
@@ -2670,12 +2891,29 @@ function useActiveSection() {
   const [active, setActive] = useState('home');
   useEffect(() => {
     const sections = ['home', 'about', 'gamedev', 'awards', 'art', 'resume', 'contact'];
+    // Track every section's currently-visible pixel height and pick whichever
+    // fills the most of the viewport, rather than reacting to whichever entry
+    // happens to be last in an IntersectionObserver batch (batch order isn't
+    // visual order) or comparing intersectionRatio (biased against tall
+    // sections like Art/Resume, which can never reach a high ratio of their
+    // own height even while completely filling the viewport).
+    const visiblePx = new Map(sections.map(id => [id, 0]));
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) setActive(entry.target.id);
+        visiblePx.set(entry.target.id, entry.isIntersecting ? entry.intersectionRect.height : 0);
       });
+      let bestId = null;
+      let bestPx = 0;
+      sections.forEach(id => {
+        const px = visiblePx.get(id) || 0;
+        if (px > bestPx) {
+          bestPx = px;
+          bestId = id;
+        }
+      });
+      if (bestId) setActive(bestId);
     }, {
-      threshold: 0.3
+      threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
     });
     sections.forEach(id => {
       const el = document.getElementById(id);
@@ -2735,7 +2973,9 @@ function App() {
       position: 'relative',
       zIndex: 2
     }
-  }, /*#__PURE__*/React.createElement(Nav, {
+  }, /*#__PURE__*/React.createElement(ScrollProgressBar, {
+    accentColor: ACCENT_COLOR
+  }), /*#__PURE__*/React.createElement(Nav, {
     activeSection: activeSection,
     setActiveSection: setActiveSection,
     accentColor: ACCENT_COLOR
