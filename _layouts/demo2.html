@@ -368,19 +368,29 @@ button:focus-visible,
   box-shadow: 0 0 0 4px oklch(62% 0.28 340 / 0.25);
 }
 
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; background: #05000c; }
 
   body {
     font-family: 'DM Sans', sans-serif;
     color: var(--text);
     min-height: 100vh;
     overflow-x: hidden;
+    background-color: #05000c;
     background-attachment: fixed;
 
         background-image: linear-gradient(rgba(5,0,12,0.55), rgba(5,0,12,0.55)), linear-gradient(180deg, #fff 0%, #0c0c0ceb 100%), linear-gradient(231.28deg, #e100ff 0%, #000 100%), linear-gradient(180deg, #5200FF 0%, #1A0050 100%), linear-gradient(341.1deg, red 7.52%, #1700A4 77.98%), radial-gradient(49.82% 80.51% at 49.82% 50%, #5A0069 0%, #FF3D00 100%), radial-gradient(50% 72.12% at 50% 50%, #EB00FF 0%, #105 100%);
     background-blend-mode: normal, multiply, color-dodge, overlay, difference, difference, normal;
     background-position: center center;
 
+  }
+
+  /* background-attachment:fixed is a well-known iOS/WebKit bug source (white
+     flashes on fast scroll, blank overscroll areas) — Chrome on iOS uses the
+     same WebKit engine as Safari, so it's affected too. Scroll the
+     background there instead; the fixed decorative layers (grid, horizon,
+     mountains) still provide the parallax backdrop feel. */
+  @media (hover: none) and (pointer: coarse) {
+    body { background-attachment: scroll; }
   }
 
   h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
