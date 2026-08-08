@@ -2021,6 +2021,7 @@ function ArtCategoryGrid({
       textTransform: 'uppercase'
     }
   }, cat.images.length, " piece", cat.images.length === 1 ? '' : 's')), /*#__PURE__*/React.createElement("div", {
+    className: "art-thumb-grid",
     style: {
       display: 'grid',
       gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))',

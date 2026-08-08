@@ -1067,7 +1067,7 @@ function ArtCategoryGrid({ cat, accent, isLast, onOpen }) {
           {cat.images.length} piece{cat.images.length === 1 ? '' : 's'}
         </span>
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))', gap: 16 }}>
+      <div className="art-thumb-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))', gap: 16 }}>
         {visibleImages.map((src, i) => (
           <ArtThumb key={i} src={src} label={`${cat.label} piece ${i + 1} of ${cat.images.length}`} onClick={() => onOpen(i)} accent={accent} />
         ))}
