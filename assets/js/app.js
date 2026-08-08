@@ -1680,6 +1680,7 @@ function AwardsSection({
       textTransform: 'uppercase'
     }
   }, group.year)), /*#__PURE__*/React.createElement("div", {
+    className: "awards-grid",
     style: {
       display: 'grid',
       gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))',
@@ -1706,6 +1707,7 @@ function AwardsSection({
       marginBottom: 16
     }
   }, "Nominations"), /*#__PURE__*/React.createElement("div", {
+    className: "awards-grid",
     style: {
       display: 'grid',
       gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))',

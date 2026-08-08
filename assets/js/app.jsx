@@ -923,7 +923,7 @@ function AwardsSection({ accentColor }) {
                 <h3 style={{ fontFamily: 'Space Grotesk', fontSize: 17, fontWeight: 600, color: 'var(--text)' }}>{group.game}</h3>
                 <span style={{ fontSize: 12, color: 'var(--text-dim)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>{group.year}</span>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: 14 }}>
+              <div className="awards-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: 14 }}>
                 {group.wins.map((award, i) => (
                   <AwardBadge key={i} {...award} accent={accent} />
                 ))}
@@ -937,7 +937,7 @@ function AwardsSection({ accentColor }) {
             <GlowDivider color={accent} />
             <div style={{ marginTop: 44 }}>
               <h3 style={{ fontFamily: 'Space Grotesk', fontSize: 13, fontWeight: 600, color: 'var(--text-dim)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 16 }}>Nominations</h3>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: 14 }}>
+              <div className="awards-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: 14 }}>
                 {AWARD_NOMINATIONS.map((award, i) => (
                   <AwardBadge key={i} {...award} accent={accent} muted />
                 ))}
