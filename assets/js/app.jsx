@@ -11,6 +11,71 @@ function useAccent(accentColor) {
 }
 
 
+// ─── LOGO ───────────────────────────────────────────────────────────────────
+// Live gradient mark, replacing the old raster PNG (bevelled, blurry at
+// nav scale). Sun gradient stops match the hero's actual sun exactly.
+function Logo({ height = 36 }) {
+  const carlosRef = useRef(null);
+  const hurtadoRef = useRef(null);
+  const [carlosWidth, setCarlosWidth] = useState(null);
+
+  useEffect(() => {
+    if (!carlosRef.current || !hurtadoRef.current) return;
+    const measure = () => {
+      // HURTADO ends in "...D-O" — the O is HURTADO's own last letter, so
+      // matching Carlos's width to Hurtado's puts the trailing S right above it.
+      const startX = carlosRef.current.getBoundingClientRect().left;
+      const hurtadoRight = hurtadoRef.current.getBoundingClientRect().right;
+      // 90%, not 100% — visual kerning makes an exact width match read as
+      // slightly overshooting past the O.
+      setCarlosWidth((hurtadoRight - startX) * 0.9);
+    };
+    measure();
+    // Space Grotesk may still be loading on first paint — re-measure once it's ready.
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+  }, [height]);
+
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: height * 0.28 }}>
+      <div style={{
+        width: height * 0.88, height: height * 0.88, borderRadius: '50%', flexShrink: 0,
+        background: 'radial-gradient(circle at 50% 35%, #fff5b0 0%, #ffcc66 35%, #ff9933 65%, #ff2d78 100%)',
+        boxShadow: '0 0 12px rgba(255,45,120,0.5)',
+        // Horizon cuts are real transparency (mask), not a drawn-on color —
+        // shows whatever's behind the logo, not a fake dark overlay.
+        // Only the lower two bands; nothing cut near the top of the disc.
+        WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 61%, transparent 61%, transparent 72%, black 72%, black 79%, transparent 79%, transparent 90%, black 90%, black 100%)',
+        maskImage: 'linear-gradient(to bottom, black 0%, black 61%, transparent 61%, transparent 72%, black 72%, black 79%, transparent 79%, transparent 90%, black 90%, black 100%)',
+      }} />
+      <span style={{
+        fontFamily: 'Space Grotesk', whiteSpace: 'nowrap', display: 'inline-flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: height * 0.03,
+        filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.55)) drop-shadow(0 0 14px rgba(255,45,120,0.3))',
+      }}>
+        {/* Stacked nameplate, blocked-out letterform feel. CARLOS's letters
+            spread to exactly Hurtado's measured width, so the trailing S
+            lands right above the O that ends HURTADO. */}
+        <span ref={carlosRef} style={{
+          fontWeight: 600, fontSize: height * 0.24, textTransform: 'uppercase',
+          color: 'var(--text-dim)', lineHeight: 1,
+          display: 'flex', justifyContent: 'space-between',
+          width: carlosWidth != null ? carlosWidth : 'auto',
+          letterSpacing: carlosWidth != null ? 0 : '0.3em',
+        }}>
+          {carlosWidth != null
+            ? 'CARLOS'.split('').map((ch, i) => <span key={i}>{ch}</span>)
+            : 'Carlos'}
+        </span>
+        <span ref={hurtadoRef} style={{
+          fontWeight: 800, fontSize: height * 0.52, letterSpacing: '0.06em', textTransform: 'uppercase',
+          background: 'linear-gradient(135deg, var(--pink), var(--orange))',
+          WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+          lineHeight: 1,
+        }}>Hurtado</span>
+      </span>
+    </div>
+  );
+}
+
 // ─── SCROLL PROGRESS ────────────────────────────────────────────────────────
 function ScrollProgressBar({ accentColor }) {
   const [progress, setProgress] = useState(0);
@@ -39,7 +104,7 @@ function ScrollProgressBar({ accentColor }) {
       <div style={{
         height: '100%', width: `${(progress * 100).toFixed(2)}%`,
         background: `linear-gradient(90deg, ${accent}, ${accent2})`,
-        boxShadow: `0 0 8px ${accent}, 0 0 16px ${accent2}80`,
+        boxShadow: `0 0 8px ${accent}, 0 0 16px color-mix(in oklch, ${accent2} 80%, transparent)`,
       }} />
     </div>
   );
@@ -103,7 +168,7 @@ function Nav({ activeSection, setActiveSection, accentColor }) {
     }}>
       {/* Logo */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        <img src="/assets/img/logo3.png" alt="Carlos Hurtado" style={{ height: 36, width: 'auto' }} />
+        <Logo height={36} />
       </div>
 
       {/* Nav links */}
@@ -120,7 +185,7 @@ function Nav({ activeSection, setActiveSection, accentColor }) {
               letterSpacing: '0.04em',
               color: activeSection === item.id ? accent : 'oklch(85% 0.02 280)',
               background: activeSection === item.id ? `var(--purple-a15)` : 'transparent',
-              border: activeSection === item.id ? `1px solid ${accent}40` : '1px solid transparent',
+              border: activeSection === item.id ? `1px solid color-mix(in oklch, ${accent} 40%, transparent)` : '1px solid transparent',
               transition: 'all 0.25s ease',
               cursor: 'pointer',
             }}
@@ -168,7 +233,7 @@ function AvatarCircle({ size = 160, accentColor }) {
     <div style={{
       width: size, height: size, borderRadius: '50%',
       border: `2px solid ${accent}`,
-      boxShadow: `0 0 24px ${accent}60, 0 0 60px var(--purple-a3)`,
+      boxShadow: `0 0 24px color-mix(in oklch, ${accent} 60%, transparent), 0 0 60px var(--purple-a3)`,
       flexShrink: 0,
       overflow: 'hidden',
       background: 'oklch(8% 0.04 290)',
@@ -292,18 +357,17 @@ function NeonBadge({ children, color = 'var(--pink)' }) {
 }
 
 // ─── SECTION TAG ──────────────────────────────────────────────────────────────
-// Monospace "terminal tag" eyebrow — a signature type moment nodding at the
+// Monospace "terminal path" eyebrow — a signature type moment nodding at the
 // engineer identity, sitting above each section's heading.
-function SectionTag({ number, label, accent }) {
+function SectionTag({ path, accent }) {
   return (
     <div style={{
       fontFamily: "ui-monospace, 'SF Mono', 'Cascadia Code', Consolas, 'Courier New', monospace",
-      fontSize: 12, letterSpacing: '0.1em', textTransform: 'uppercase',
+      fontSize: 13,
       color: accent,
       marginBottom: 12,
-      display: 'flex', alignItems: 'center', gap: 8,
     }}>
-      <span style={{ color: 'var(--text-dim)' }}>//</span>{number} — {label}
+      <span style={{ color: 'var(--text-dim)' }}>~/</span>{path}<span className="section-tag-cursor" style={{ color: accent }}>_</span>
     </div>
   );
 }
@@ -378,12 +442,12 @@ function HomeSection({ accentColor }) {
 
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 20, marginBottom: 28 }}>
           <SocialLinks accent={accent} />
-          <a href="https://www.carloshurtado.com/assets/Carlos_Hurtado_Resume.pdf" target="_blank" style={{
+          <a href="/assets/Carlos_Hurtado_Resume.pdf" target="_blank" style={{
             padding: '10px 24px', borderRadius: 4,
             background: `linear-gradient(135deg, ${accent}, ${accent2})`,
             color: '#fff', fontWeight: 600, fontSize: 14,
             fontFamily: 'Space Grotesk', letterSpacing: '0.04em',
-            boxShadow: `0 4px 20px ${accent}40`,
+            boxShadow: `0 4px 20px color-mix(in oklch, ${accent} 40%, transparent)`,
             display: 'inline-flex', alignItems: 'center', gap: 8,
             transition: 'all 0.2s ease',
           }}
@@ -399,7 +463,7 @@ function HomeSection({ accentColor }) {
 
         {/* Secondary detail — the fuller narrative already lives in About, so this stays short. */}
         <p style={{ fontSize: 14, lineHeight: 1.75, color: 'var(--text-dim)', marginTop: 20 }}>
-          <span style={{ color: 'var(--text)' }}>Unreal Engine 4 & 5</span>, performance optimization, and high-scale gameplay systems in <span style={{ color: 'var(--text)' }}>C++</span> are where I live day to day — but outside of work I'm a hobbyist artist, and I'm always tinkering with some new productivity system.
+          <span style={{ color: 'var(--text)' }}>Unreal Engine 4 & 5</span>, performance optimization, and high-scale gameplay systems in <span style={{ color: 'var(--text)' }}>C++</span> are where I live day to day — but outside of work I'm a <a href="#art" style={{ color: accent, fontWeight: 600 }}>hobbyist artist</a>, and I'm always tinkering with some new <a href="#about" style={{ color: accent, fontWeight: 600 }}>productivity system</a>.
         </p>
       </div></Reveal>
     </section>
@@ -425,7 +489,7 @@ function SocialLinks({ accent, style: extraStyle }) {
           color: 'var(--text-dim)',
           transition: 'all 0.2s ease',
         }}
-        onMouseEnter={e => { e.currentTarget.style.color = accent; e.currentTarget.style.borderColor = `${accent}60`; e.currentTarget.style.background = `${accent}10`; }}
+        onMouseEnter={e => { e.currentTarget.style.color = accent; e.currentTarget.style.borderColor = `color-mix(in oklch, ${accent} 60%, transparent)`; e.currentTarget.style.background = `color-mix(in oklch, ${accent} 10%, transparent)`; }}
         onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-dim)'; e.currentTarget.style.borderColor = 'var(--purple-a25)'; e.currentTarget.style.background = 'transparent'; }}
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -459,8 +523,8 @@ function FeaturedProjectCard({ project, accentColor, onOpen }) {
         height: 'clamp(280px, 38vw, 420px)',
         overflow: 'hidden',
         cursor: 'pointer',
-        borderTop: `1px solid ${accent}30`,
-        borderBottom: `1px solid ${accent}30`,
+        borderTop: `1px solid color-mix(in oklch, ${accent} 30%, transparent)`,
+        borderBottom: `1px solid color-mix(in oklch, ${accent} 30%, transparent)`,
       }}>
       <img src={project.img} alt={`${project.title} — ${project.studio}`} loading="lazy" decoding="async" style={{
         position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover',
@@ -506,7 +570,7 @@ function ProjectCard({ title, studio, desc, img: imgSrc, badge, accentColor, ind
         borderRadius: 8,
         overflow: 'hidden',
         transition: 'all 0.3s ease',
-        boxShadow: hovered ? `0 4px 24px ${accent}40` : 'none',
+        boxShadow: hovered ? `0 4px 24px color-mix(in oklch, ${accent} 40%, transparent)` : 'none',
         transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
         cursor: 'pointer',
       }}>
@@ -592,14 +656,14 @@ function ProjectModal({ project, onClose, accentColor }) {
       <div ref={trapRef} tabIndex={-1} role="dialog" aria-modal="true" aria-label={project.title} onClick={e => e.stopPropagation()} style={{
         width: '100%', maxWidth: 780,
         background: 'oklch(8% 0.04 290 / 0.98)',
-        border: `1px solid ${accent}40`,
+        border: `1px solid color-mix(in oklch, ${accent} 40%, transparent)`,
         borderRadius: 12,
         boxShadow: `0 0 80px oklch(55% 0.25 295 / 0.25)`,
         position: 'relative',
       }}>
         <button onClick={onClose} style={{
           position: 'absolute', top: 16, right: 16, zIndex: 1,
-          background: 'oklch(10% 0.04 290 / 0.85)', border: `1px solid ${accent}50`,
+          background: 'oklch(10% 0.04 290 / 0.85)', border: `1px solid color-mix(in oklch, ${accent} 50%, transparent)`,
           color: accent, width: 36, height: 36, borderRadius: 6, cursor: 'pointer',
           fontSize: 16, display: 'flex', alignItems: 'center', justifyContent: 'center',
         }}>✕</button>
@@ -628,7 +692,7 @@ function ProjectModal({ project, onClose, accentColor }) {
           )}
 
           {project.videoId && (
-            <div style={{ position: 'relative', paddingTop: '56.25%', marginBottom: 28, borderRadius: 8, overflow: 'hidden', border: `1px solid ${accent}30` }}>
+            <div style={{ position: 'relative', paddingTop: '56.25%', marginBottom: 28, borderRadius: 8, overflow: 'hidden', border: `1px solid color-mix(in oklch, ${accent} 30%, transparent)` }}>
               <iframe
                 src={`https://www.youtube.com/embed/${project.videoId}`}
                 title={project.title}
@@ -650,6 +714,47 @@ function ProjectModal({ project, onClose, accentColor }) {
 
 // ─── GAME DEV SECTION ─────────────────────────────────────────────────────────
 // ─── ABOUT SECTION ────────────────────────────────────────────────────────────
+const TOOLS_I_USE = [
+  { category: 'Terminal', items: [
+    { name: 'PowerShell', url: 'https://learn.microsoft.com/powershell/scripting/overview' },
+    { name: 'oh-my-posh', url: 'https://ohmyposh.dev/' },
+    { name: 'eza', url: 'https://eza.rocks/' },
+    { name: 'yt-dlp', url: 'https://github.com/yt-dlp/yt-dlp' },
+    { name: 'Winget', url: 'https://learn.microsoft.com/windows/package-manager/winget/' },
+  ] },
+  { category: 'Windows Customization', items: [
+    { name: 'PowerToys', url: 'https://learn.microsoft.com/windows/powertoys/' },
+    { name: 'Command Palette', url: 'https://learn.microsoft.com/windows/powertoys/command-palette/overview' },
+    { name: 'Windhawk', url: 'https://windhawk.eu/' },
+    { name: 'Wintoys', url: 'https://apps.microsoft.com/detail/9p8ltpgcbzxd' },
+  ] },
+  { category: 'Coding', items: [
+    { name: 'VS Code', url: 'https://code.visualstudio.com/' },
+    { name: 'Visual Studio 2022', url: 'https://visualstudio.microsoft.com/vs/' },
+    { name: 'Claude Code', url: 'https://claude.com/claude-code' },
+    { name: 'GitHub', url: 'https://github.com/' },
+    { name: 'Perforce', url: 'https://www.perforce.com/' },
+    { name: 'Unreal Engine', url: 'https://www.unrealengine.com/' },
+  ] },
+  { category: 'Productivity', items: [
+    { name: 'Google Tasks', url: 'https://tasks.google.com/' },
+    { name: 'Google Keep', url: 'https://keep.google.com/' },
+    { name: 'gtsync', url: 'https://apps.apple.com/us/app/gtsync-sync-tasks-reminders/id6761292407' },
+    { name: 'Gemini', url: 'https://gemini.google.com/' },
+    { name: 'Blip', url: 'https://blip.net/' },
+    { name: 'Fantastical', url: 'https://flexibits.com/fantastical' },
+  ] },
+  { category: 'Entertainment & Feeds', items: [
+    { name: 'Libby', url: 'https://libbyapp.com/' },
+    { name: 'Overcast', url: 'https://overcast.fm/' },
+    { name: 'Feedly', url: 'https://feedly.com/' },
+  ] },
+  { category: 'Art', items: [
+    { name: 'Procreate', url: 'https://procreate.com/' },
+    { name: 'Photoshop', url: 'https://www.adobe.com/products/photoshop.html' },
+  ] },
+];
+
 function AboutSection({ accentColor }) {
   const { accent, accent2 } = useAccent(accentColor);
 
@@ -657,9 +762,9 @@ function AboutSection({ accentColor }) {
     <section id="about" data-screen-label="02 About" style={{ padding: '100px 8% 80px', maxWidth: 1100, margin: '0 auto' }}>
       <Reveal><SectionCard corner1="var(--purple)" corner2="var(--cyan)">
         <div style={{ marginBottom: 40 }}>
-          <SectionTag number="02" label="About" accent={accent} />
+          <SectionTag path="about" accent={accent} />
           <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12 }}>
-            <div style={{ width: 3, height: 36, background: `linear-gradient(to bottom, ${accent}, ${accent2})`, borderRadius: 2, boxShadow: `0 0 12px ${accent}80` }} />
+            <div style={{ width: 3, height: 36, background: `linear-gradient(to bottom, ${accent}, ${accent2})`, borderRadius: 2, boxShadow: `0 0 12px color-mix(in oklch, ${accent} 80%, transparent)` }} />
             <h2 style={{ fontFamily: 'Space Grotesk', fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, letterSpacing: '-0.02em' }}>About Me</h2>
           </div>
         </div>
@@ -685,7 +790,7 @@ function AboutSection({ accentColor }) {
 
           <div style={{
             background: 'oklch(9% 0.04 290 / 0.5)',
-            border: `1px solid ${accent}30`,
+            border: `1px solid color-mix(in oklch, ${accent} 30%, transparent)`,
             borderRadius: 10,
             padding: '28px 30px',
           }}>
@@ -696,11 +801,11 @@ function AboutSection({ accentColor }) {
                 <a href="http://www.cmu.edu" target="_blank" style={{ fontSize: 13, color: accent2 }}>Carnegie Mellon University</a>
               </div>
               <div>
-                <div style={{ fontFamily: 'Space Grotesk', fontWeight: 600, fontSize: 15, marginBottom: 4 }}>B.S. Computer Science & Engineering</div>
+                <div style={{ fontFamily: 'Space Grotesk', fontWeight: 600, fontSize: 15, marginBottom: 4 }}>M.S. & B.S. Computer Science & Engineering</div>
                 <a href="http://www.uchile.cl" target="_blank" style={{ fontSize: 13, color: accent2 }}>Universidad de Chile</a>
               </div>
             </div>
-            <div style={{ height: 1, background: `linear-gradient(90deg, ${accent}40, transparent)`, margin: '24px 0' }} />
+            <div style={{ height: 1, background: `linear-gradient(90deg, color-mix(in oklch, ${accent} 40%, transparent), transparent)`, margin: '24px 0' }} />
             <div style={{ fontSize: 13, color: 'var(--text-dim)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 12, fontWeight: 500 }}>Previously at</div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
               {['Electronic Arts', 'Bigpoint', 'Sanzaru Games', 'Meta'].map(co => (
@@ -712,7 +817,7 @@ function AboutSection({ accentColor }) {
                 }}>{co}</span>
               ))}
             </div>
-            <a href="https://www.carloshurtado.com/assets/Carlos_Hurtado_Resume.pdf" target="_blank" style={{
+            <a href="/assets/Carlos_Hurtado_Resume.pdf" target="_blank" style={{
               display: 'inline-flex', alignItems: 'center', gap: 6,
               marginTop: 20, fontSize: 13, fontWeight: 600, color: accent,
               fontFamily: 'Space Grotesk', letterSpacing: '0.02em',
@@ -720,6 +825,36 @@ function AboutSection({ accentColor }) {
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
               Download Resume
             </a>
+          </div>
+        </div>
+
+        <GlowDivider color={accent} />
+
+        {/* Full-width, not squeezed into the narrow sidebar column — six
+            categories stacked in a 1fr column left as much empty space
+            below the bio text as the whole rest of the card. */}
+        <div style={{ marginTop: 16 }}>
+          <h3 style={{ fontFamily: 'Space Grotesk', fontSize: 12, fontWeight: 600, color: accent, marginBottom: 20, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Tools I Use</h3>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px 40px' }}>
+            {TOOLS_I_USE.map(group => (
+              <div key={group.category} style={{ minWidth: 200 }}>
+                <div style={{ fontSize: 12, color: 'var(--text-dim)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 8, fontWeight: 500 }}>{group.category}</div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                  {group.items.map(item => (
+                    <a key={item.name} href={item.url} target="_blank" rel="noopener" style={{
+                      padding: '5px 10px', borderRadius: 4,
+                      border: '1px solid var(--purple-a3)',
+                      background: 'oklch(12% 0.05 290 / 0.5)',
+                      fontSize: 12, color: 'var(--text)', fontFamily: 'Space Grotesk',
+                      transition: 'all 0.2s ease',
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.borderColor = accent; e.currentTarget.style.color = accent; }}
+                    onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--purple-a3)'; e.currentTarget.style.color = 'var(--text)'; }}
+                    >{item.name}</a>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </SectionCard></Reveal>
@@ -794,7 +929,7 @@ function GameDevSection({ accentColor }) {
             <a href="https://www.metacritic.com/game/asgards-wrath-2/" target="_blank" style={{ color: accent, fontWeight: 600 }}>Metacritic</a>{' '}
             score of 86.
           </ModalP>
-          <img src="/assets/img/projects/masterpiece.PNG" alt="IGN 10/10 score" loading="lazy" decoding="async" style={{ width: '100%', borderRadius: 8, marginBottom: 20, border: `1px solid ${accent}30` }} />
+          <img src="/assets/img/projects/masterpiece.PNG" alt="IGN 10/10 score" loading="lazy" decoding="async" style={{ width: '100%', borderRadius: 8, marginBottom: 20, border: `1px solid color-mix(in oklch, ${accent} 30%, transparent)` }} />
           <ModalH4 accent={accent}>Leadership</ModalH4>
           <ModalList items={[
             'Managed 5 engineers and collaborated with cross functional partners to align on schedule, direction and quality.',
@@ -938,9 +1073,9 @@ function GameDevSection({ accentColor }) {
     <section id="gamedev" data-screen-label="03 Game Dev" style={{ padding: '100px 8% 80px', maxWidth: 1200, margin: '0 auto' }}>
       <Reveal><SectionCard corner1="var(--cyan)" corner2="var(--pink)" style={{ padding: '52px 52px' }}>
       <div style={{ marginBottom: 56 }}>
-        <SectionTag number="03" label="Game Dev" accent={accent} />
+        <SectionTag path="game-dev" accent={accent} />
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12 }}>
-          <div style={{ width: 3, height: 36, background: `linear-gradient(to bottom, ${accent}, ${accent2})`, borderRadius: 2, boxShadow: `0 0 12px ${accent}80` }} />
+          <div style={{ width: 3, height: 36, background: `linear-gradient(to bottom, ${accent}, ${accent2})`, borderRadius: 2, boxShadow: `0 0 12px color-mix(in oklch, ${accent} 80%, transparent)` }} />
           <h2 style={{ fontFamily: 'Space Grotesk', fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, letterSpacing: '-0.02em' }}>Game Development</h2>
         </div>
         <p style={{ color: 'var(--text-dim)', fontSize: 16, maxWidth: 600, marginLeft: 19 }}>
@@ -1012,7 +1147,7 @@ function AwardBadge({ org, category, logo, accent, muted, invert }) {
         ) : (
           <span style={{
             fontFamily: 'Space Grotesk', fontSize: 12, fontWeight: 700, letterSpacing: '0.04em',
-            color: accent, border: `1px solid ${accent}60`, borderRadius: 4, padding: '4px 10px',
+            color: accent, border: `1px solid color-mix(in oklch, ${accent} 60%, transparent)`, borderRadius: 4, padding: '4px 10px',
           }}>{org}</span>
         )}
       </div>
@@ -1031,9 +1166,9 @@ function AwardsSection({ accentColor }) {
     <section id="awards" data-screen-label="04 Awards" style={{ padding: '100px 8% 80px', maxWidth: 1100, margin: '0 auto' }}>
       <Reveal><SectionCard corner1="var(--cyan)" corner2="var(--orange)">
         <div style={{ marginBottom: 48 }}>
-          <SectionTag number="04" label="Awards" accent={accent} />
+          <SectionTag path="awards" accent={accent} />
           <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12 }}>
-            <div style={{ width: 3, height: 36, background: `linear-gradient(to bottom, ${accent}, ${accent2})`, borderRadius: 2, boxShadow: `0 0 12px ${accent}80` }} />
+            <div style={{ width: 3, height: 36, background: `linear-gradient(to bottom, ${accent}, ${accent2})`, borderRadius: 2, boxShadow: `0 0 12px color-mix(in oklch, ${accent} 80%, transparent)` }} />
             <h2 style={{ fontFamily: 'Space Grotesk', fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, letterSpacing: '-0.02em' }}>Awards & Recognition</h2>
           </div>
           <p style={{ color: 'var(--text-dim)', fontSize: 16, maxWidth: 600, marginLeft: 19 }}>
@@ -1098,9 +1233,9 @@ function ResumeSection({ accentColor }) {
     <section id="resume" data-screen-label="06 Resume" style={{ padding: '100px 8% 80px', maxWidth: 1100, margin: '0 auto' }}>
       <Reveal><SectionCard corner1="var(--pink)" corner2="var(--cyan)">
       <div style={{ marginBottom: 56 }}>
-        <SectionTag number="06" label="Resume" accent={accent} />
+        <SectionTag path="resume" accent={accent} />
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12 }}>
-          <div style={{ width: 3, height: 36, background: `linear-gradient(to bottom, ${accent}, ${accent2})`, borderRadius: 2, boxShadow: `0 0 12px ${accent}80` }} />
+          <div style={{ width: 3, height: 36, background: `linear-gradient(to bottom, ${accent}, ${accent2})`, borderRadius: 2, boxShadow: `0 0 12px color-mix(in oklch, ${accent} 80%, transparent)` }} />
           <h2 style={{ fontFamily: 'Space Grotesk', fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, letterSpacing: '-0.02em' }}>Experience & Skills</h2>
         </div>
       </div>
@@ -1116,7 +1251,7 @@ function ResumeSection({ accentColor }) {
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0, width: 16 }}>
                   <div style={{ width: 10, height: 10, borderRadius: '50%', border: `2px solid ${accent}`, background: i === 0 ? accent : 'transparent', marginTop: 4, boxShadow: i === 0 ? `0 0 10px ${accent}` : 'none', flexShrink: 0 }} />
                   {i < timeline.length - 1 && (
-                    <div style={{ width: 1, flex: 1, background: `linear-gradient(to bottom, ${accent}60, oklch(55% 0.25 295 / 0.15))`, marginTop: 4 }} />
+                    <div style={{ width: 1, flex: 1, background: `linear-gradient(to bottom, color-mix(in oklch, ${accent} 60%, transparent), oklch(55% 0.25 295 / 0.15))`, marginTop: 4 }} />
                   )}
                 </div>
                 <div style={{ paddingBottom: 28 }}>
@@ -1151,7 +1286,7 @@ function ResumeSection({ accentColor }) {
               </div>
             ))}
           </div>
-          <a href="https://www.carloshurtado.com/assets/Carlos_Hurtado_Resume.pdf" target="_blank" style={{
+          <a href="/assets/Carlos_Hurtado_Resume.pdf" target="_blank" style={{
             display: 'inline-flex', alignItems: 'center', gap: 6,
             marginTop: 28, fontSize: 13, fontWeight: 600, color: accent,
             fontFamily: 'Space Grotesk', letterSpacing: '0.02em',
@@ -1241,9 +1376,9 @@ function ArtSection({ accentColor }) {
     <section id="art" data-screen-label="05 Art" style={{ padding: '100px 8% 80px', maxWidth: 1200, margin: '0 auto' }}>
       <Reveal><SectionCard corner1="var(--orange)" corner2="var(--purple)">
         <div style={{ marginBottom: 48 }}>
-          <SectionTag number="05" label="Art" accent={accent} />
+          <SectionTag path="art" accent={accent} />
           <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12 }}>
-            <div style={{ width: 3, height: 36, background: `linear-gradient(to bottom, ${accent}, ${accent2})`, borderRadius: 2, boxShadow: `0 0 12px ${accent}80` }} />
+            <div style={{ width: 3, height: 36, background: `linear-gradient(to bottom, ${accent}, ${accent2})`, borderRadius: 2, boxShadow: `0 0 12px color-mix(in oklch, ${accent} 80%, transparent)` }} />
             <h2 style={{ fontFamily: 'Space Grotesk', fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, letterSpacing: '-0.02em' }}>Art</h2>
           </div>
           <p style={{ color: 'var(--text-dim)', fontSize: 16, maxWidth: 600, marginLeft: 19 }}>
@@ -1272,7 +1407,7 @@ function ArtSection({ accentColor }) {
         }}>
           <button onClick={e => { e.stopPropagation(); setLightbox(l => ({ cat: l.cat, i: (l.i - 1 + activeImages.length) % activeImages.length })); }} style={{
             position: 'absolute', left: 24, top: '50%', transform: 'translateY(-50%)',
-            background: 'oklch(10% 0.04 290 / 0.8)', border: `1px solid ${accent}50`,
+            background: 'oklch(10% 0.04 290 / 0.8)', border: `1px solid color-mix(in oklch, ${accent} 50%, transparent)`,
             color: accent, width: 48, height: 48, borderRadius: 6, cursor: 'pointer',
             fontSize: 22, display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}>‹</button>
@@ -1281,18 +1416,18 @@ function ArtSection({ accentColor }) {
           )}
           <img src={activeImages[lightbox.i]} onClick={e => e.stopPropagation()} onLoad={() => setLightboxLoaded(activeImages[lightbox.i])} style={{
             maxWidth: '88vw', maxHeight: '88vh', objectFit: 'contain', borderRadius: 6,
-            boxShadow: `0 0 40px ${accent}40`,
+            boxShadow: `0 0 40px color-mix(in oklch, ${accent} 40%, transparent)`,
             display: lightboxLoaded === activeImages[lightbox.i] ? 'block' : 'none',
           }} />
           <button onClick={e => { e.stopPropagation(); setLightbox(l => ({ cat: l.cat, i: (l.i + 1) % activeImages.length })); }} style={{
             position: 'absolute', right: 24, top: '50%', transform: 'translateY(-50%)',
-            background: 'oklch(10% 0.04 290 / 0.8)', border: `1px solid ${accent}50`,
+            background: 'oklch(10% 0.04 290 / 0.8)', border: `1px solid color-mix(in oklch, ${accent} 50%, transparent)`,
             color: accent, width: 48, height: 48, borderRadius: 6, cursor: 'pointer',
             fontSize: 22, display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}>›</button>
           <button onClick={() => setLightbox(null)} style={{
             position: 'absolute', top: 20, right: 20,
-            background: 'oklch(10% 0.04 290 / 0.8)', border: `1px solid ${accent}50`,
+            background: 'oklch(10% 0.04 290 / 0.8)', border: `1px solid color-mix(in oklch, ${accent} 50%, transparent)`,
             color: accent, width: 40, height: 40, borderRadius: 6, cursor: 'pointer',
             fontSize: 18, display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}>✕</button>
@@ -1324,7 +1459,7 @@ function ArtThumb({ src, onClick, accent, label }) {
       border: `1px solid ${hovered ? accent : 'var(--purple-a2)'}`,
       transition: 'all 0.2s ease',
       transform: hovered ? 'scale(1.02)' : 'scale(1)',
-      boxShadow: hovered ? `0 4px 24px ${accent}40` : 'none',
+      boxShadow: hovered ? `0 4px 24px color-mix(in oklch, ${accent} 40%, transparent)` : 'none',
       background: 'linear-gradient(160deg, var(--bg2) 0%, var(--bg) 100%)',
       position: 'relative',
       minHeight: loaded ? 0 : 160,
@@ -1353,9 +1488,9 @@ function ContactSection({ accentColor }) {
     <section id="contact" data-screen-label="07 Contact" style={{ padding: '100px 8% 80px', maxWidth: 1100, margin: '0 auto' }}>
       <Reveal><SectionCard corner1="var(--purple)" corner2="var(--orange)">
       <div style={{ marginBottom: 56 }}>
-        <SectionTag number="07" label="Contact" accent={accent} />
+        <SectionTag path="contact" accent={accent} />
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12 }}>
-          <div style={{ width: 3, height: 36, background: `linear-gradient(to bottom, ${accent}, ${accent2})`, borderRadius: 2, boxShadow: `0 0 12px ${accent}80` }} />
+          <div style={{ width: 3, height: 36, background: `linear-gradient(to bottom, ${accent}, ${accent2})`, borderRadius: 2, boxShadow: `0 0 12px color-mix(in oklch, ${accent} 80%, transparent)` }} />
           <h2 style={{ fontFamily: 'Space Grotesk', fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, letterSpacing: '-0.02em' }}>Get in Touch</h2>
         </div>
         <p style={{ color: 'var(--text-dim)', fontSize: 16, maxWidth: 560, marginLeft: 19, marginBottom: 12 }}>
@@ -1383,7 +1518,7 @@ function ContactSection({ accentColor }) {
               display: 'flex', flexDirection: 'column', gap: 4,
               transition: 'all 0.2s ease',
             }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = `${accent}60`; e.currentTarget.style.background = 'oklch(11% 0.05 290 / 0.8)'; }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = `color-mix(in oklch, ${accent} 60%, transparent)`; e.currentTarget.style.background = 'oklch(11% 0.05 290 / 0.8)'; }}
             onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--purple-a2)'; e.currentTarget.style.background = 'oklch(9% 0.04 290 / 0.6)'; }}
             >
               <span style={{ fontSize: 11, color: accent, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' }}>{c.label}</span>
@@ -1456,7 +1591,7 @@ function ContactSection({ accentColor }) {
                 fontFamily: 'Space Grotesk', letterSpacing: '0.04em',
                 border: 'none', cursor: sending ? 'default' : 'pointer',
                 opacity: sending ? 0.7 : 1,
-                boxShadow: `0 4px 20px ${accent}40`,
+                boxShadow: `0 4px 20px color-mix(in oklch, ${accent} 40%, transparent)`,
                 transition: 'all 0.2s ease',
               }}
               onMouseEnter={e => { if (!sending) e.target.style.transform = 'translateY(-2px)'; }}
@@ -1477,20 +1612,28 @@ function Footer({ accentColor }) {
   return (
     <footer style={{ padding: '0 8% 32px', position: 'relative' }}>
       <GlowDivider color={accent} />
-      <p style={{
-        fontFamily: 'Space Grotesk', fontWeight: 700, textAlign: 'center',
-        fontSize: 'clamp(20px, 2.6vw, 28px)', margin: '36px 0 40px',
-        background: `linear-gradient(135deg, ${accent}, var(--orange))`,
-        WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+      <div style={{
+        textAlign: 'center', margin: '36px 0 40px', padding: '28px 24px',
+        background: 'oklch(9% 0.04 290 / 0.5)',
+        border: `1px solid color-mix(in oklch, ${accent} 30%, transparent)`,
+        borderRadius: 10,
+        boxShadow: `0 0 40px color-mix(in oklch, ${accent} 12%, transparent), inset 0 1px 0 oklch(100% 0 0 / 0.05)`,
       }}>
-        Let's build something worth shipping.
-      </p>
+        <p style={{
+          fontFamily: 'Space Grotesk', fontWeight: 600,
+          fontSize: 'clamp(13px, 1.4vw, 15px)', letterSpacing: '0.06em', textTransform: 'uppercase', margin: 0,
+          background: `linear-gradient(135deg, ${accent}, var(--orange))`,
+          WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+        }}>
+          Let's build something worth shipping.
+        </p>
+      </div>
       <div style={{
         display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16,
         fontSize: 13, color: 'var(--text-dim)',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-          <img src="/assets/img/logo3.png" alt="Carlos Hurtado" style={{ height: 28, width: 'auto' }} />
+          <Logo height={28} />
           <span>SF Bay Area · Game Industry · 15+ Years</span>
         </div>
         <SocialLinks accent={accent} />

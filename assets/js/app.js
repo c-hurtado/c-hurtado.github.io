@@ -14,6 +14,92 @@ function useAccent(accentColor) {
   };
 }
 
+// ─── LOGO ───────────────────────────────────────────────────────────────────
+// Live gradient mark, replacing the old raster PNG (bevelled, blurry at
+// nav scale). Sun gradient stops match the hero's actual sun exactly.
+function Logo({
+  height = 36
+}) {
+  const carlosRef = useRef(null);
+  const hurtadoRef = useRef(null);
+  const [carlosWidth, setCarlosWidth] = useState(null);
+  useEffect(() => {
+    if (!carlosRef.current || !hurtadoRef.current) return;
+    const measure = () => {
+      // HURTADO ends in "...D-O" — the O is HURTADO's own last letter, so
+      // matching Carlos's width to Hurtado's puts the trailing S right above it.
+      const startX = carlosRef.current.getBoundingClientRect().left;
+      const hurtadoRight = hurtadoRef.current.getBoundingClientRect().right;
+      // 90%, not 100% — visual kerning makes an exact width match read as
+      // slightly overshooting past the O.
+      setCarlosWidth((hurtadoRight - startX) * 0.9);
+    };
+    measure();
+    // Space Grotesk may still be loading on first paint — re-measure once it's ready.
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+  }, [height]);
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: height * 0.28
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: height * 0.88,
+      height: height * 0.88,
+      borderRadius: '50%',
+      flexShrink: 0,
+      background: 'radial-gradient(circle at 50% 35%, #fff5b0 0%, #ffcc66 35%, #ff9933 65%, #ff2d78 100%)',
+      boxShadow: '0 0 12px rgba(255,45,120,0.5)',
+      // Horizon cuts are real transparency (mask), not a drawn-on color —
+      // shows whatever's behind the logo, not a fake dark overlay.
+      // Only the lower two bands; nothing cut near the top of the disc.
+      WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 61%, transparent 61%, transparent 72%, black 72%, black 79%, transparent 79%, transparent 90%, black 90%, black 100%)',
+      maskImage: 'linear-gradient(to bottom, black 0%, black 61%, transparent 61%, transparent 72%, black 72%, black 79%, transparent 79%, transparent 90%, black 90%, black 100%)'
+    }
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: 'Space Grotesk',
+      whiteSpace: 'nowrap',
+      display: 'inline-flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      gap: height * 0.03,
+      filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.55)) drop-shadow(0 0 14px rgba(255,45,120,0.3))'
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    ref: carlosRef,
+    style: {
+      fontWeight: 600,
+      fontSize: height * 0.24,
+      textTransform: 'uppercase',
+      color: 'var(--text-dim)',
+      lineHeight: 1,
+      display: 'flex',
+      justifyContent: 'space-between',
+      width: carlosWidth != null ? carlosWidth : 'auto',
+      letterSpacing: carlosWidth != null ? 0 : '0.3em'
+    }
+  }, carlosWidth != null ? 'CARLOS'.split('').map((ch, i) => /*#__PURE__*/React.createElement("span", {
+    key: i
+  }, ch)) : 'Carlos'), /*#__PURE__*/React.createElement("span", {
+    ref: hurtadoRef,
+    style: {
+      fontWeight: 800,
+      fontSize: height * 0.52,
+      letterSpacing: '0.06em',
+      textTransform: 'uppercase',
+      background: 'linear-gradient(135deg, var(--pink), var(--orange))',
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
+      backgroundClip: 'text',
+      lineHeight: 1
+    }
+  }, "Hurtado")));
+}
+
 // ─── SCROLL PROGRESS ────────────────────────────────────────────────────────
 function ScrollProgressBar({
   accentColor
@@ -60,7 +146,7 @@ function ScrollProgressBar({
       height: '100%',
       width: `${(progress * 100).toFixed(2)}%`,
       background: `linear-gradient(90deg, ${accent}, ${accent2})`,
-      boxShadow: `0 0 8px ${accent}, 0 0 16px ${accent2}80`
+      boxShadow: `0 0 8px ${accent}, 0 0 16px color-mix(in oklch, ${accent2} 80%, transparent)`
     }
   }));
 }
@@ -151,13 +237,8 @@ function Nav({
       alignItems: 'center',
       gap: 10
     }
-  }, /*#__PURE__*/React.createElement("img", {
-    src: "/assets/img/logo3.png",
-    alt: "Carlos Hurtado",
-    style: {
-      height: 36,
-      width: 'auto'
-    }
+  }, /*#__PURE__*/React.createElement(Logo, {
+    height: 36
   })), /*#__PURE__*/React.createElement("div", {
     className: `nav-links${menuOpen ? ' nav-links-open' : ''}`,
     style: {
@@ -178,7 +259,7 @@ function Nav({
       letterSpacing: '0.04em',
       color: activeSection === item.id ? accent : 'oklch(85% 0.02 280)',
       background: activeSection === item.id ? `var(--purple-a15)` : 'transparent',
-      border: activeSection === item.id ? `1px solid ${accent}40` : '1px solid transparent',
+      border: activeSection === item.id ? `1px solid color-mix(in oklch, ${accent} 40%, transparent)` : '1px solid transparent',
       transition: 'all 0.25s ease',
       cursor: 'pointer'
     },
@@ -259,7 +340,7 @@ function AvatarCircle({
       height: size,
       borderRadius: '50%',
       border: `2px solid ${accent}`,
-      boxShadow: `0 0 24px ${accent}60, 0 0 60px var(--purple-a3)`,
+      boxShadow: `0 0 24px color-mix(in oklch, ${accent} 60%, transparent), 0 0 60px var(--purple-a3)`,
       flexShrink: 0,
       overflow: 'hidden',
       background: 'oklch(8% 0.04 290)'
@@ -420,30 +501,29 @@ function NeonBadge({
 }
 
 // ─── SECTION TAG ──────────────────────────────────────────────────────────────
-// Monospace "terminal tag" eyebrow — a signature type moment nodding at the
+// Monospace "terminal path" eyebrow — a signature type moment nodding at the
 // engineer identity, sitting above each section's heading.
 function SectionTag({
-  number,
-  label,
+  path,
   accent
 }) {
   return /*#__PURE__*/React.createElement("div", {
     style: {
       fontFamily: "ui-monospace, 'SF Mono', 'Cascadia Code', Consolas, 'Courier New', monospace",
-      fontSize: 12,
-      letterSpacing: '0.1em',
-      textTransform: 'uppercase',
+      fontSize: 13,
       color: accent,
-      marginBottom: 12,
-      display: 'flex',
-      alignItems: 'center',
-      gap: 8
+      marginBottom: 12
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       color: 'var(--text-dim)'
     }
-  }, "//"), number, " \u2014 ", label);
+  }, "~/"), path, /*#__PURE__*/React.createElement("span", {
+    className: "section-tag-cursor",
+    style: {
+      color: accent
+    }
+  }, "_"));
 }
 
 // ─── GLOWING DIVIDER ─────────────────────────────────────────────────────────
@@ -621,7 +701,7 @@ function HomeSection({
   }, /*#__PURE__*/React.createElement(SocialLinks, {
     accent: accent
   }), /*#__PURE__*/React.createElement("a", {
-    href: "https://www.carloshurtado.com/assets/Carlos_Hurtado_Resume.pdf",
+    href: "/assets/Carlos_Hurtado_Resume.pdf",
     target: "_blank",
     style: {
       padding: '10px 24px',
@@ -632,7 +712,7 @@ function HomeSection({
       fontSize: 14,
       fontFamily: 'Space Grotesk',
       letterSpacing: '0.04em',
-      boxShadow: `0 4px 20px ${accent}40`,
+      boxShadow: `0 4px 20px color-mix(in oklch, ${accent} 40%, transparent)`,
       display: 'inline-flex',
       alignItems: 'center',
       gap: 8,
@@ -673,7 +753,19 @@ function HomeSection({
     style: {
       color: 'var(--text)'
     }
-  }, "C++"), " are where I live day to day \u2014 but outside of work I'm a hobbyist artist, and I'm always tinkering with some new productivity system."))));
+  }, "C++"), " are where I live day to day \u2014 but outside of work I'm a ", /*#__PURE__*/React.createElement("a", {
+    href: "#art",
+    style: {
+      color: accent,
+      fontWeight: 600
+    }
+  }, "hobbyist artist"), ", and I'm always tinkering with some new ", /*#__PURE__*/React.createElement("a", {
+    href: "#about",
+    style: {
+      color: accent,
+      fontWeight: 600
+    }
+  }, "productivity system"), "."))));
 }
 
 // ─── SOCIAL LINKS ─────────────────────────────────────────────────────────────
@@ -727,8 +819,8 @@ function SocialLinks({
     },
     onMouseEnter: e => {
       e.currentTarget.style.color = accent;
-      e.currentTarget.style.borderColor = `${accent}60`;
-      e.currentTarget.style.background = `${accent}10`;
+      e.currentTarget.style.borderColor = `color-mix(in oklch, ${accent} 60%, transparent)`;
+      e.currentTarget.style.background = `color-mix(in oklch, ${accent} 10%, transparent)`;
     },
     onMouseLeave: e => {
       e.currentTarget.style.color = 'var(--text-dim)';
@@ -782,8 +874,8 @@ function FeaturedProjectCard({
       height: 'clamp(280px, 38vw, 420px)',
       overflow: 'hidden',
       cursor: 'pointer',
-      borderTop: `1px solid ${accent}30`,
-      borderBottom: `1px solid ${accent}30`
+      borderTop: `1px solid color-mix(in oklch, ${accent} 30%, transparent)`,
+      borderBottom: `1px solid color-mix(in oklch, ${accent} 30%, transparent)`
     }
   }, /*#__PURE__*/React.createElement("img", {
     src: project.img,
@@ -877,7 +969,7 @@ function ProjectCard({
       borderRadius: 8,
       overflow: 'hidden',
       transition: 'all 0.3s ease',
-      boxShadow: hovered ? `0 4px 24px ${accent}40` : 'none',
+      boxShadow: hovered ? `0 4px 24px color-mix(in oklch, ${accent} 40%, transparent)` : 'none',
       transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
       cursor: 'pointer'
     }
@@ -1063,7 +1155,7 @@ function ProjectModal({
       width: '100%',
       maxWidth: 780,
       background: 'oklch(8% 0.04 290 / 0.98)',
-      border: `1px solid ${accent}40`,
+      border: `1px solid color-mix(in oklch, ${accent} 40%, transparent)`,
       borderRadius: 12,
       boxShadow: `0 0 80px oklch(55% 0.25 295 / 0.25)`,
       position: 'relative'
@@ -1076,7 +1168,7 @@ function ProjectModal({
       right: 16,
       zIndex: 1,
       background: 'oklch(10% 0.04 290 / 0.85)',
-      border: `1px solid ${accent}50`,
+      border: `1px solid color-mix(in oklch, ${accent} 50%, transparent)`,
       color: accent,
       width: 36,
       height: 36,
@@ -1153,7 +1245,7 @@ function ProjectModal({
       marginBottom: 28,
       borderRadius: 8,
       overflow: 'hidden',
-      border: `1px solid ${accent}30`
+      border: `1px solid color-mix(in oklch, ${accent} 30%, transparent)`
     }
   }, /*#__PURE__*/React.createElement("iframe", {
     src: `https://www.youtube.com/embed/${project.videoId}`,
@@ -1178,6 +1270,103 @@ function ProjectModal({
 
 // ─── GAME DEV SECTION ─────────────────────────────────────────────────────────
 // ─── ABOUT SECTION ────────────────────────────────────────────────────────────
+const TOOLS_I_USE = [{
+  category: 'Terminal',
+  items: [{
+    name: 'PowerShell',
+    url: 'https://learn.microsoft.com/powershell/scripting/overview'
+  }, {
+    name: 'oh-my-posh',
+    url: 'https://ohmyposh.dev/'
+  }, {
+    name: 'eza',
+    url: 'https://eza.rocks/'
+  }, {
+    name: 'yt-dlp',
+    url: 'https://github.com/yt-dlp/yt-dlp'
+  }, {
+    name: 'Winget',
+    url: 'https://learn.microsoft.com/windows/package-manager/winget/'
+  }]
+}, {
+  category: 'Windows Customization',
+  items: [{
+    name: 'PowerToys',
+    url: 'https://learn.microsoft.com/windows/powertoys/'
+  }, {
+    name: 'Command Palette',
+    url: 'https://learn.microsoft.com/windows/powertoys/command-palette/overview'
+  }, {
+    name: 'Windhawk',
+    url: 'https://windhawk.eu/'
+  }, {
+    name: 'Wintoys',
+    url: 'https://apps.microsoft.com/detail/9p8ltpgcbzxd'
+  }]
+}, {
+  category: 'Coding',
+  items: [{
+    name: 'VS Code',
+    url: 'https://code.visualstudio.com/'
+  }, {
+    name: 'Visual Studio 2022',
+    url: 'https://visualstudio.microsoft.com/vs/'
+  }, {
+    name: 'Claude Code',
+    url: 'https://claude.com/claude-code'
+  }, {
+    name: 'GitHub',
+    url: 'https://github.com/'
+  }, {
+    name: 'Perforce',
+    url: 'https://www.perforce.com/'
+  }, {
+    name: 'Unreal Engine',
+    url: 'https://www.unrealengine.com/'
+  }]
+}, {
+  category: 'Productivity',
+  items: [{
+    name: 'Google Tasks',
+    url: 'https://tasks.google.com/'
+  }, {
+    name: 'Google Keep',
+    url: 'https://keep.google.com/'
+  }, {
+    name: 'gtsync',
+    url: 'https://apps.apple.com/us/app/gtsync-sync-tasks-reminders/id6761292407'
+  }, {
+    name: 'Gemini',
+    url: 'https://gemini.google.com/'
+  }, {
+    name: 'Blip',
+    url: 'https://blip.net/'
+  }, {
+    name: 'Fantastical',
+    url: 'https://flexibits.com/fantastical'
+  }]
+}, {
+  category: 'Entertainment & Feeds',
+  items: [{
+    name: 'Libby',
+    url: 'https://libbyapp.com/'
+  }, {
+    name: 'Overcast',
+    url: 'https://overcast.fm/'
+  }, {
+    name: 'Feedly',
+    url: 'https://feedly.com/'
+  }]
+}, {
+  category: 'Art',
+  items: [{
+    name: 'Procreate',
+    url: 'https://procreate.com/'
+  }, {
+    name: 'Photoshop',
+    url: 'https://www.adobe.com/products/photoshop.html'
+  }]
+}];
 function AboutSection({
   accentColor
 }) {
@@ -1201,8 +1390,7 @@ function AboutSection({
       marginBottom: 40
     }
   }, /*#__PURE__*/React.createElement(SectionTag, {
-    number: "02",
-    label: "About",
+    path: "about",
     accent: accent
   }), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -1217,7 +1405,7 @@ function AboutSection({
       height: 36,
       background: `linear-gradient(to bottom, ${accent}, ${accent2})`,
       borderRadius: 2,
-      boxShadow: `0 0 12px ${accent}80`
+      boxShadow: `0 0 12px color-mix(in oklch, ${accent} 80%, transparent)`
     }
   }), /*#__PURE__*/React.createElement("h2", {
     style: {
@@ -1315,7 +1503,7 @@ function AboutSection({
   }, "San Mateo"), ", in the San Francisco Bay Area, with my wife and kid.")), /*#__PURE__*/React.createElement("div", {
     style: {
       background: 'oklch(9% 0.04 290 / 0.5)',
-      border: `1px solid ${accent}30`,
+      border: `1px solid color-mix(in oklch, ${accent} 30%, transparent)`,
       borderRadius: 10,
       padding: '28px 30px'
     }
@@ -1356,7 +1544,7 @@ function AboutSection({
       fontSize: 15,
       marginBottom: 4
     }
-  }, "B.S. Computer Science & Engineering"), /*#__PURE__*/React.createElement("a", {
+  }, "M.S. & B.S. Computer Science & Engineering"), /*#__PURE__*/React.createElement("a", {
     href: "http://www.uchile.cl",
     target: "_blank",
     style: {
@@ -1366,7 +1554,7 @@ function AboutSection({
   }, "Universidad de Chile"))), /*#__PURE__*/React.createElement("div", {
     style: {
       height: 1,
-      background: `linear-gradient(90deg, ${accent}40, transparent)`,
+      background: `linear-gradient(90deg, color-mix(in oklch, ${accent} 40%, transparent), transparent)`,
       margin: '24px 0'
     }
   }), /*#__PURE__*/React.createElement("div", {
@@ -1396,7 +1584,7 @@ function AboutSection({
       fontFamily: 'Space Grotesk'
     }
   }, co))), /*#__PURE__*/React.createElement("a", {
-    href: "https://www.carloshurtado.com/assets/Carlos_Hurtado_Resume.pdf",
+    href: "/assets/Carlos_Hurtado_Resume.pdf",
     target: "_blank",
     style: {
       display: 'inline-flex',
@@ -1427,7 +1615,72 @@ function AboutSection({
     y1: "15",
     x2: "12",
     y2: "3"
-  })), "Download Resume"))))));
+  })), "Download Resume"))), /*#__PURE__*/React.createElement(GlowDivider, {
+    color: accent
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 16
+    }
+  }, /*#__PURE__*/React.createElement("h3", {
+    style: {
+      fontFamily: 'Space Grotesk',
+      fontSize: 12,
+      fontWeight: 600,
+      color: accent,
+      marginBottom: 20,
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase'
+    }
+  }, "Tools I Use"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: '20px 40px'
+    }
+  }, TOOLS_I_USE.map(group => /*#__PURE__*/React.createElement("div", {
+    key: group.category,
+    style: {
+      minWidth: 200
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 12,
+      color: 'var(--text-dim)',
+      letterSpacing: '0.06em',
+      textTransform: 'uppercase',
+      marginBottom: 8,
+      fontWeight: 500
+    }
+  }, group.category), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: 6
+    }
+  }, group.items.map(item => /*#__PURE__*/React.createElement("a", {
+    key: item.name,
+    href: item.url,
+    target: "_blank",
+    rel: "noopener",
+    style: {
+      padding: '5px 10px',
+      borderRadius: 4,
+      border: '1px solid var(--purple-a3)',
+      background: 'oklch(12% 0.05 290 / 0.5)',
+      fontSize: 12,
+      color: 'var(--text)',
+      fontFamily: 'Space Grotesk',
+      transition: 'all 0.2s ease'
+    },
+    onMouseEnter: e => {
+      e.currentTarget.style.borderColor = accent;
+      e.currentTarget.style.color = accent;
+    },
+    onMouseLeave: e => {
+      e.currentTarget.style.borderColor = 'var(--purple-a3)';
+      e.currentTarget.style.color = 'var(--text)';
+    }
+  }, item.name))))))))));
 }
 
 // ─── GAME DEV SECTION ────────────────────────────────────────────────────────
@@ -1499,7 +1752,7 @@ function GameDevSection({
         width: '100%',
         borderRadius: 8,
         marginBottom: 20,
-        border: `1px solid ${accent}30`
+        border: `1px solid color-mix(in oklch, ${accent} 30%, transparent)`
       }
     }), /*#__PURE__*/React.createElement(ModalH4, {
       accent: accent
@@ -1607,8 +1860,7 @@ function GameDevSection({
       marginBottom: 56
     }
   }, /*#__PURE__*/React.createElement(SectionTag, {
-    number: "03",
-    label: "Game Dev",
+    path: "game-dev",
     accent: accent
   }), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -1623,7 +1875,7 @@ function GameDevSection({
       height: 36,
       background: `linear-gradient(to bottom, ${accent}, ${accent2})`,
       borderRadius: 2,
-      boxShadow: `0 0 12px ${accent}80`
+      boxShadow: `0 0 12px color-mix(in oklch, ${accent} 80%, transparent)`
     }
   }), /*#__PURE__*/React.createElement("h2", {
     style: {
@@ -1771,7 +2023,7 @@ function AwardBadge({
       fontWeight: 700,
       letterSpacing: '0.04em',
       color: accent,
-      border: `1px solid ${accent}60`,
+      border: `1px solid color-mix(in oklch, ${accent} 60%, transparent)`,
       borderRadius: 4,
       padding: '4px 10px'
     }
@@ -1815,8 +2067,7 @@ function AwardsSection({
       marginBottom: 48
     }
   }, /*#__PURE__*/React.createElement(SectionTag, {
-    number: "04",
-    label: "Awards",
+    path: "awards",
     accent: accent
   }), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -1831,7 +2082,7 @@ function AwardsSection({
       height: 36,
       background: `linear-gradient(to bottom, ${accent}, ${accent2})`,
       borderRadius: 2,
-      boxShadow: `0 0 12px ${accent}80`
+      boxShadow: `0 0 12px color-mix(in oklch, ${accent} 80%, transparent)`
     }
   }), /*#__PURE__*/React.createElement("h2", {
     style: {
@@ -1978,8 +2229,7 @@ function ResumeSection({
       marginBottom: 56
     }
   }, /*#__PURE__*/React.createElement(SectionTag, {
-    number: "06",
-    label: "Resume",
+    path: "resume",
     accent: accent
   }), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -1994,7 +2244,7 @@ function ResumeSection({
       height: 36,
       background: `linear-gradient(to bottom, ${accent}, ${accent2})`,
       borderRadius: 2,
-      boxShadow: `0 0 12px ${accent}80`
+      boxShadow: `0 0 12px color-mix(in oklch, ${accent} 80%, transparent)`
     }
   }), /*#__PURE__*/React.createElement("h2", {
     style: {
@@ -2057,7 +2307,7 @@ function ResumeSection({
     style: {
       width: 1,
       flex: 1,
-      background: `linear-gradient(to bottom, ${accent}60, oklch(55% 0.25 295 / 0.15))`,
+      background: `linear-gradient(to bottom, color-mix(in oklch, ${accent} 60%, transparent), oklch(55% 0.25 295 / 0.15))`,
       marginTop: 4
     }
   })), /*#__PURE__*/React.createElement("div", {
@@ -2137,7 +2387,7 @@ function ResumeSection({
       fontFamily: 'Space Grotesk'
     }
   }, skill)))))), /*#__PURE__*/React.createElement("a", {
-    href: "https://www.carloshurtado.com/assets/Carlos_Hurtado_Resume.pdf",
+    href: "/assets/Carlos_Hurtado_Resume.pdf",
     target: "_blank",
     style: {
       display: 'inline-flex',
@@ -2316,8 +2566,7 @@ function ArtSection({
       marginBottom: 48
     }
   }, /*#__PURE__*/React.createElement(SectionTag, {
-    number: "05",
-    label: "Art",
+    path: "art",
     accent: accent
   }), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -2332,7 +2581,7 @@ function ArtSection({
       height: 36,
       background: `linear-gradient(to bottom, ${accent}, ${accent2})`,
       borderRadius: 2,
-      boxShadow: `0 0 12px ${accent}80`
+      boxShadow: `0 0 12px color-mix(in oklch, ${accent} 80%, transparent)`
     }
   }), /*#__PURE__*/React.createElement("h2", {
     style: {
@@ -2391,7 +2640,7 @@ function ArtSection({
       top: '50%',
       transform: 'translateY(-50%)',
       background: 'oklch(10% 0.04 290 / 0.8)',
-      border: `1px solid ${accent}50`,
+      border: `1px solid color-mix(in oklch, ${accent} 50%, transparent)`,
       color: accent,
       width: 48,
       height: 48,
@@ -2417,7 +2666,7 @@ function ArtSection({
       maxHeight: '88vh',
       objectFit: 'contain',
       borderRadius: 6,
-      boxShadow: `0 0 40px ${accent}40`,
+      boxShadow: `0 0 40px color-mix(in oklch, ${accent} 40%, transparent)`,
       display: lightboxLoaded === activeImages[lightbox.i] ? 'block' : 'none'
     }
   }), /*#__PURE__*/React.createElement("button", {
@@ -2434,7 +2683,7 @@ function ArtSection({
       top: '50%',
       transform: 'translateY(-50%)',
       background: 'oklch(10% 0.04 290 / 0.8)',
-      border: `1px solid ${accent}50`,
+      border: `1px solid color-mix(in oklch, ${accent} 50%, transparent)`,
       color: accent,
       width: 48,
       height: 48,
@@ -2452,7 +2701,7 @@ function ArtSection({
       top: 20,
       right: 20,
       background: 'oklch(10% 0.04 290 / 0.8)',
-      border: `1px solid ${accent}50`,
+      border: `1px solid color-mix(in oklch, ${accent} 50%, transparent)`,
       color: accent,
       width: 40,
       height: 40,
@@ -2515,7 +2764,7 @@ function ArtThumb({
       border: `1px solid ${hovered ? accent : 'var(--purple-a2)'}`,
       transition: 'all 0.2s ease',
       transform: hovered ? 'scale(1.02)' : 'scale(1)',
-      boxShadow: hovered ? `0 4px 24px ${accent}40` : 'none',
+      boxShadow: hovered ? `0 4px 24px color-mix(in oklch, ${accent} 40%, transparent)` : 'none',
       background: 'linear-gradient(160deg, var(--bg2) 0%, var(--bg) 100%)',
       position: 'relative',
       minHeight: loaded ? 0 : 160
@@ -2575,8 +2824,7 @@ function ContactSection({
       marginBottom: 56
     }
   }, /*#__PURE__*/React.createElement(SectionTag, {
-    number: "07",
-    label: "Contact",
+    path: "contact",
     accent: accent
   }), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -2591,7 +2839,7 @@ function ContactSection({
       height: 36,
       background: `linear-gradient(to bottom, ${accent}, ${accent2})`,
       borderRadius: 2,
-      boxShadow: `0 0 12px ${accent}80`
+      boxShadow: `0 0 12px color-mix(in oklch, ${accent} 80%, transparent)`
     }
   }), /*#__PURE__*/React.createElement("h2", {
     style: {
@@ -2664,7 +2912,7 @@ function ContactSection({
       transition: 'all 0.2s ease'
     },
     onMouseEnter: e => {
-      e.currentTarget.style.borderColor = `${accent}60`;
+      e.currentTarget.style.borderColor = `color-mix(in oklch, ${accent} 60%, transparent)`;
       e.currentTarget.style.background = 'oklch(11% 0.05 290 / 0.8)';
     },
     onMouseLeave: e => {
@@ -2825,7 +3073,7 @@ function ContactSection({
       border: 'none',
       cursor: sending ? 'default' : 'pointer',
       opacity: sending ? 0.7 : 1,
-      boxShadow: `0 4px 20px ${accent}40`,
+      boxShadow: `0 4px 20px color-mix(in oklch, ${accent} 40%, transparent)`,
       transition: 'all 0.2s ease'
     },
     onMouseEnter: e => {
@@ -2849,19 +3097,30 @@ function Footer({
     }
   }, /*#__PURE__*/React.createElement(GlowDivider, {
     color: accent
-  }), /*#__PURE__*/React.createElement("p", {
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      textAlign: 'center',
+      margin: '36px 0 40px',
+      padding: '28px 24px',
+      background: 'oklch(9% 0.04 290 / 0.5)',
+      border: `1px solid color-mix(in oklch, ${accent} 30%, transparent)`,
+      borderRadius: 10,
+      boxShadow: `0 0 40px color-mix(in oklch, ${accent} 12%, transparent), inset 0 1px 0 oklch(100% 0 0 / 0.05)`
+    }
+  }, /*#__PURE__*/React.createElement("p", {
     style: {
       fontFamily: 'Space Grotesk',
-      fontWeight: 700,
-      textAlign: 'center',
-      fontSize: 'clamp(20px, 2.6vw, 28px)',
-      margin: '36px 0 40px',
+      fontWeight: 600,
+      fontSize: 'clamp(13px, 1.4vw, 15px)',
+      letterSpacing: '0.06em',
+      textTransform: 'uppercase',
+      margin: 0,
       background: `linear-gradient(135deg, ${accent}, var(--orange))`,
       WebkitBackgroundClip: 'text',
       WebkitTextFillColor: 'transparent',
       backgroundClip: 'text'
     }
-  }, "Let's build something worth shipping."), /*#__PURE__*/React.createElement("div", {
+  }, "Let's build something worth shipping.")), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       justifyContent: 'space-between',
@@ -2877,13 +3136,8 @@ function Footer({
       alignItems: 'center',
       gap: 14
     }
-  }, /*#__PURE__*/React.createElement("img", {
-    src: "/assets/img/logo3.png",
-    alt: "Carlos Hurtado",
-    style: {
-      height: 28,
-      width: 'auto'
-    }
+  }, /*#__PURE__*/React.createElement(Logo, {
+    height: 28
   }), /*#__PURE__*/React.createElement("span", null, "SF Bay Area \xB7 Game Industry \xB7 15+ Years")), /*#__PURE__*/React.createElement(SocialLinks, {
     accent: accent
   })));

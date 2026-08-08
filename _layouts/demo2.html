@@ -528,6 +528,17 @@ button:focus-visible,
   @keyframes art-spin {
     to { transform: rotate(360deg); }
   }
+  @keyframes tag-cursor-blink {
+    0%, 45% { opacity: 1; }
+    50%, 95% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  .section-tag-cursor {
+    animation: tag-cursor-blink 1.1s step-end infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .section-tag-cursor { animation: none; }
+  }
   .art-lightbox-spinner {
     width: 44px; height: 44px;
     border-radius: 50%;
