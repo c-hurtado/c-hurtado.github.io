@@ -20,12 +20,12 @@ window.ART_CATEGORIES_RAW = [
       '/assets/img/gallery/DigitalPortraits/IMG_1174.JPG',
     '/assets/img/gallery/DigitalPortraits/IMG_1916.JPG',
       '/assets/img/gallery/DigitalPortraits/IMG_1920.JPG',
-      '/assets/img/gallery/DigitalPortraits/2019-07-10 001 458.JPG',
       '/assets/img/gallery/DigitalPortraits/2019-07-10 001 459.JPG',
       '/assets/img/gallery/DigitalPortraits/2019-07-10 001 510.JPG',
       '/assets/img/gallery/DigitalPortraits/IMG_1921.JPG',
       '/assets/img/gallery/DigitalPortraits/IMG_1922.JPG',
       '/assets/img/gallery/DigitalPortraits/IMG_1925.JPG',
+      '/assets/img/gallery/DigitalPortraits/2019-07-10 001 458.JPG',
 
       '/assets/img/gallery/DigitalPortraits/B092C8ED-2133-4CCB-BBB7-B62650A4E166.JPG',
       '/assets/img/gallery/DigitalPortraits/C74264F1-FD41-4F51-8C37-7EA1DBFF3055.JPG',
