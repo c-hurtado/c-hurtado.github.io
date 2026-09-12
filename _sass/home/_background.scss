@@ -1,0 +1,247 @@
+
+@keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+@-webkit-keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+@-moz-keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+@-ms-keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+
+@keyframes move-clouds-back {
+    from {background-position:0 0;}
+    to {background-position:10000px 0;}
+}
+@-webkit-keyframes move-clouds-back {
+    from {background-position:0 0;}
+    to {background-position:10000px 0;}
+}
+@-moz-keyframes move-clouds-back {
+    from {background-position:0 0;}
+    to {background-position:10000px 0;}
+}
+@-ms-keyframes move-clouds-back {
+    from {background-position: 0;}
+    to {background-position:10000px 0;}
+}
+
+.stars,.starsB, .twinkling, .clouds {
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+.stars {
+  background:transparent url(#{$site-url}/assets/img/stars.png) repeat top center;
+  z-index:0;
+}
+
+.starsB {
+  background:transparent url(#{$site-url}/assets/img/stars.png) repeat top center;
+  z-index:0;
+	opacity:0.3;
+	-moz-animation:move-clouds-back 500s linear infinite;
+	-ms-animation:move-clouds-back 500s linear infinite;
+	-o-animation:move-clouds-back 500s linear infinite;
+	-webkit-animation:move-clouds-back 500s linear infinite;
+	animation:move-clouds-back 500s linear infinite;
+}
+
+
+.clouds{
+    background:transparent url(#{$site-url}/assets/img/clouds3.png) repeat top center;
+    z-index:0;
+		opacity:0.6;
+
+  -moz-animation:move-clouds-back 500s linear infinite;
+  -ms-animation:move-clouds-back 500s linear infinite;
+  -o-animation:move-clouds-back 500s linear infinite;
+  -webkit-animation:move-clouds-back 500s linear infinite;
+  animation:move-clouds-back 500s linear infinite;
+}
+
+/* Retro synthwave grid horizon (mirrors _sass/elements.scss, inlined here
+   because this layout ships its own standalone <style> block). */
+.grid-wrapper {
+  position: fixed;
+  width: 100%;
+  height: 500px;
+  left: 0;
+  bottom: 0px;
+  perspective: 200px;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.grid {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, #00000000 50%, #1a0018 70%);
+  transform: rotateX(60deg);
+  -webkit-transform: rotateX(60deg);
+  -o-transform: rotateX(60deg);
+}
+
+.line {
+  position: absolute;
+  background: rgba(87, 193, 232, 0.35);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.vertical .line {
+  top: 0; left: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(0deg, rgba(87,193,232,0.4) 0%, rgba(204,34,255,0.35) 55%, rgba(255,45,120,0) 100%);
+}
+.vertical .line:nth-child(1) { left: 10%; }
+.vertical .line:nth-child(2) { left: 20%; }
+.vertical .line:nth-child(3) { left: 30%; }
+.vertical .line:nth-child(4) { left: 40%; }
+.vertical .line:nth-child(5) { left: 50%; }
+.vertical .line:nth-child(6) { left: 60%; }
+.vertical .line:nth-child(7) { left: 70%; }
+.vertical .line:nth-child(8) { left: 80%; }
+.vertical .line:nth-child(9) { left: 90%; }
+.vertical .line:nth-child(10) { left: 100%; margin-left: -1px; }
+
+.horizontal .line { top: 0; left: 0; right: 0; height: 2px; z-index: 2; }
+.horizontal .line:nth-child(1)  { top: 10%;  opacity: 0.2;  background: rgba(255,45,120,0.6);  animation: moveLine10 20s linear infinite; animation-delay: -2s; }
+.horizontal .line:nth-child(2)  { top: 20%;  opacity: 0.3;  background: rgba(236,62,133,0.6);  animation: moveLine10 20s linear infinite; animation-delay: -4s; }
+.horizontal .line:nth-child(3)  { top: 30%;  opacity: 0.4;  background: rgba(218,78,145,0.6);  animation: moveLine10 20s linear infinite; animation-delay: -6s; }
+.horizontal .line:nth-child(4)  { top: 40%;  opacity: 0.5;  background: rgba(199,94,157,0.6);  animation: moveLine10 20s linear infinite; animation-delay: -8s; }
+.horizontal .line:nth-child(5)  { top: 50%;  opacity: 0.6;  background: rgba(180,111,170,0.6); animation: moveLine10 20s linear infinite; animation-delay: -10s; }
+.horizontal .line:nth-child(6)  { top: 60%;  opacity: 0.7;  background: rgba(162,127,182,0.6); animation: moveLine10 20s linear infinite; animation-delay: -12s; }
+.horizontal .line:nth-child(7)  { top: 70%;  opacity: 0.8;  background: rgba(143,144,195,0.6); animation: moveLine10 20s linear infinite; animation-delay: -14s; }
+.horizontal .line:nth-child(8)  { top: 80%;  opacity: 0.9;  background: rgba(124,160,207,0.6); animation: moveLine10 20s linear infinite; animation-delay: -16s; }
+.horizontal .line:nth-child(9)  { top: 90%;  opacity: 0.95; background: rgba(106,177,220,0.6); animation: moveLine10 20s linear infinite; animation-delay: -18s; }
+.horizontal .line:nth-child(10) { top: 100%; margin-top: -1px; opacity: 1; background: rgba(87,193,232,0.6); animation: moveLine10 20s linear infinite; }
+.horizontal .line:nth-child(11) { opacity: 0.05; }
+
+.dot {
+  position: absolute;
+  cursor: pointer;
+  background: #57C1E8;
+  width: 3px;
+  height: 3px;
+  top: 100%;
+  border-radius: 2px;
+  box-shadow: 0 0 3px #fff;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  pointer-events: auto;
+}
+.dot:nth-child(1) { left: 10%; animation: moveDot 5s infinite; }
+.dot:nth-child(2) { left: 20%; animation: moveDot 20s infinite; }
+.dot:nth-child(3) { left: 30%; animation: moveDot 15s infinite; }
+.dot:nth-child(4) { left: 50%; animation: moveDot 30s infinite; }
+.dot:nth-child(5) { left: 60%; animation: moveDot 12s infinite; }
+.dot:nth-child(6) { left: 80%; animation: moveDot 6s infinite; }
+.dot:nth-child(7) { left: 90%; animation: moveDot 8s infinite; }
+
+@keyframes moveDot {
+  0%   { top: 100%; opacity: 1; }
+  100% { top: 0%; opacity: 0; }
+}
+
+@keyframes moveLine10 {
+  0%   { top: 0%; opacity: 0; }
+  100% { top: 100%; opacity: 1; }
+}
+
+@media (max-width: 480px) {
+  .horizontal .line, .dot { animation: none !important; }
+}
+
+/* ── SUN EXPERIMENT — delete this whole block to remove it ────────────── */
+body::before, body::after {
+  content: '';
+  position: fixed;
+  left: 50%;
+  bottom: 318px;
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle 140px at center,
+    #fff5b0 0px,
+    #ffcc66 35px,
+    #ff9933 63px,
+    #ff2d78 93px,
+    rgba(255,45,120,0.12) 96px,
+    rgba(255,153,51,0.06) 152px,
+    transparent 280px);
+  z-index: 0;
+  pointer-events: none;
+  animation: sun-pulse 5s ease-in-out infinite;
+}
+body::before {
+  clip-path: inset(0 0 50% 0); /* top half — sun */
+}
+body::after {
+  clip-path: inset(50% 0 0 0); /* bottom half — faint reflection */
+  opacity: 0.05;
+  filter: blur(4px);
+}
+@keyframes sun-pulse {
+  0%, 100% { transform: translate(-50%, calc(50% + var(--sun-drift, 0px))) scale(1); }
+  50% { transform: translate(-50%, calc(50% + var(--sun-drift, 0px))) scale(1.025); }
+}
+@media (prefers-reduced-motion: reduce) {
+  body::before, body::after { animation: none; transform: translate(-50%, 50%); }
+}
+/* ── END SUN EXPERIMENT ─────────────────────────────────────────────────── */
+
+/* Static (non-React) so it paints immediately with the rest of the
+   background, instead of waiting on Babel/React to mount. */
+.horizon-line {
+  position: fixed;
+  bottom: 318px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent 0%, #cc22ff 15%, #ff2d78 35%, #ff9933 50%, #ff2d78 65%, #cc22ff 85%, transparent 100%);
+  filter: blur(0.5px);
+  box-shadow: 0 0 10px #ff2d78, 0 0 25px #e100ff, 0 0 50px #aa00ff30;
+}
+
+/* Mountain ridge silhouette, sitting right above the horizon line. */
+.mountain-layer {
+  position: fixed;
+  left: -8%;
+  right: auto;
+  bottom: 320px;
+  width: 116%;
+  height: 600px;
+  z-index: 1;
+  pointer-events: none;
+}
+/* Mirrored, faded duplicate sitting just below the horizon — same layer as
+   the sun's reflection (body::after), flipped so the baseline touches the
+   horizon line and the peaks fade away toward the grid. */
+.mountain-reflection {
+  bottom: -280px;
+  transform: scaleY(-1);
+  opacity: 0.1;
+  /* Content sits in the bottom ~35% of this box (viewBox baseline maps to
+     the box's local bottom, which is the screen-top/horizon side once
+     flipped) — so the mask must stay opaque there and fade going up. */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 55%, #000 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, transparent 55%, #000 100%);
+}

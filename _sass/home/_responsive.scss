@@ -1,0 +1,79 @@
+  @media (max-width: 768px) {
+    nav { padding: 0 16px !important; }
+    nav img { height: 28px !important; }
+    .nav-hamburger { display: flex !important; }
+    .nav-links {
+      position: fixed !important; top: 64px !important; left: 0 !important; right: 0 !important;
+      flex-direction: column !important; align-items: stretch !important;
+      max-width: none !important; overflow: hidden !important;
+      background: oklch(8% 0.04 290 / 0.98) !important;
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--purple-a2);
+      padding: 10px 20px !important;
+      gap: 4px !important;
+      max-height: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: max-height 0.3s ease, opacity 0.25s ease;
+    }
+    .nav-links.nav-links-open { max-height: 400px; opacity: 1; pointer-events: auto; }
+    .nav-links a { padding: 12px 14px !important; font-size: 15px !important; white-space: normal !important; text-align: left; }
+
+    #home, #about, #gamedev, #resume, #art, #contact {
+      padding-left: 5% !important;
+      padding-right: 5% !important;
+      padding-top: 88px !important;
+    }
+
+    .section-card { padding: 28px 20px !important; }
+
+    /* Bleed margin must match .section-card's own mobile padding above, or
+       it overflows past the card's rounded border instead of sitting flush. */
+    .featured-project-card { margin: 0 -20px 24px !important; }
+    .featured-project-card > div:last-child { padding-left: 20px !important; padding-right: 20px !important; }
+
+    .home-card-header { flex-direction: column !important; text-align: center; gap: 16px !important; }
+    .home-card-header > div:last-child { width: 100%; }
+
+    .about-grid, .resume-grid, .contact-grid {
+      grid-template-columns: 1fr !important;
+      gap: 28px !important;
+    }
+
+    .gamedev-grid {
+      grid-template-columns: 1fr !important;
+    }
+
+    .art-thumb-grid {
+      columns: 2 !important;
+      column-gap: 10px !important;
+    }
+    .art-thumb-grid > div { margin-bottom: 10px !important; }
+
+    .awards-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 10px !important;
+    }
+
+    /* Barely visible at 0.1 opacity on a small screen anyway, while still
+       costing a full extra masked/filtered SVG layer to composite every
+       frame — cut it on mobile rather than pay for it. Drop the sun's own
+       faint reflection (body::after) alongside it for consistency, rather
+       than leaving the sun reflected but the mountains not. */
+    .mountain-reflection { display: none !important; }
+    body::after { display: none !important; }
+
+    .project-modal-body { padding: 24px 20px 28px !important; }
+
+    footer {
+      flex-direction: column !important;
+      gap: 10px !important;
+      text-align: center !important;
+      padding: 24px 6% !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .section-card { padding: 22px 16px !important; }
+  }
+

@@ -1,0 +1,52 @@
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #08010f;
+    --bg2: #0f0520;
+    --pink: oklch(62% 0.28 340);
+    --orange: oklch(68% 0.22 25);
+    --purple: oklch(55% 0.25 295);
+    --cyan: oklch(72% 0.18 200);
+    --text: oklch(92% 0.015 280);
+    --text-dim: oklch(65% 0.02 280);
+    --card-bg: oklch(5% 0.04 290 / 0.62);
+    --border: oklch(55% 0.25 295 / 0.35);
+    --glow-pink: oklch(62% 0.28 340 / 0.5);
+    --glow-orange: oklch(68% 0.22 38 / 0.4);
+    /* --purple at common alpha values — was previously re-typed as raw
+       oklch(55% 0.25 295 / X) dozens of times throughout the page. */
+    --purple-a12: oklch(55% 0.25 295 / 0.12);
+    --purple-a15: oklch(55% 0.25 295 / 0.15);
+    --purple-a2: oklch(55% 0.25 295 / 0.2);
+    --purple-a25: oklch(55% 0.25 295 / 0.25);
+    --purple-a3: oklch(55% 0.25 295 / 0.3);
+    --purple-a5: oklch(55% 0.25 295 / 0.5);
+  }
+
+
+  
+.specialColor
+{
+	color: white;
+}
+
+.keyColor
+{
+	color: #ff00cc;
+	text-shadow: 0 0 1px #3c3c9a, 0 0 6px #0081e6;
+}
+
+.starColor
+{
+	color: #f58080;
+	text-shadow: 0 0 1px #ffbf82, 0 0 6px #e60073;
+}
+
+.lockColor
+{
+	color: #ff9b9b;
+	text-shadow: 0 0 1px #ffbf82, 0 0 6px #e69000;
+
+}
+
+
