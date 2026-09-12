@@ -1,10 +1,13 @@
+const GOLD = '#d4af37';
+const GOLD_DIM = '#8b6f2e';
+
 function AwardBadge({ org, category, logo, accent, muted, invert }) {
   return (
     <div style={{
       display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 10,
       padding: '18px 16px', borderRadius: 8,
-      background: 'oklch(9% 0.04 290 / 0.5)',
-      border: `1px solid ${muted ? 'var(--purple-a15)' : 'var(--purple-a2)'}`,
+      background: 'rgba(0,0,0,0.35)',
+      border: `1px solid ${muted ? 'rgba(212,175,55,0.15)' : 'rgba(212,175,55,0.25)'}`,
       opacity: muted ? 0.7 : 1,
     }}>
       <div style={{ height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -16,13 +19,16 @@ function AwardBadge({ org, category, logo, accent, muted, invert }) {
         ) : (
           <span style={{
             fontFamily: 'Space Grotesk', fontSize: 12, fontWeight: 700, letterSpacing: '0.04em',
-            color: accent, border: `1px solid color-mix(in oklch, ${accent} 60%, transparent)`, borderRadius: 4, padding: '4px 10px',
+            color: GOLD, border: `1px solid rgba(212,175,55,0.5)`, borderRadius: 4, padding: '4px 10px',
           }}>{org}</span>
         )}
       </div>
       <div>
         {logo && <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text-dim)', letterSpacing: '0.04em', textTransform: 'uppercase', marginBottom: 3 }}>{org}</div>}
-        <div style={{ fontSize: 12, lineHeight: 1.5, color: muted ? 'var(--text-dim)' : 'var(--text)' }}>{category}</div>
+        <div style={{ fontSize: 12, lineHeight: 1.5, color: muted ? 'var(--text-dim)' : 'var(--text)' }}>
+          {!muted && <span style={{ color: GOLD, marginRight: 4 }} aria-hidden="true">★</span>}
+          {category}
+        </div>
       </div>
     </div>
   );
@@ -32,12 +38,16 @@ function AwardsSection({ accentColor }) {
   const { accent, accent2 } = useAccent(accentColor);
 
   return (
-    <section id="awards" data-screen-label="04 Awards" style={{ padding: '100px 8% 80px', maxWidth: 1100, margin: '0 auto' }}>
-      <Reveal><SectionCard corner1="var(--cyan)" corner2="var(--orange)">
+    <section id="awards" data-screen-label="04 Awards" style={{ padding: '70px 8% 56px', maxWidth: 1100, margin: '0 auto' }}>
+      <Reveal><SectionCard corner1={GOLD} corner2={GOLD_DIM} style={{
+        background: 'radial-gradient(ellipse at center, rgba(10,8,2,0.92) 0%, rgba(6,5,2,0.75) 55%, rgba(4,3,1,0.4) 100%)',
+        border: '1px solid rgba(212,175,55,0.22)',
+        boxShadow: '0 0 60px rgba(212,175,55,0.08), inset 0 1px 0 rgba(255,255,255,0.05)',
+      }}>
         <div style={{ marginBottom: 48 }}>
-          <SectionTag path="awards" accent={accent} />
+          <SectionTag path="awards" accent={GOLD} />
           <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12 }}>
-            <div style={{ width: 3, height: 36, background: `linear-gradient(to bottom, ${accent}, ${accent2})`, borderRadius: 2, boxShadow: `0 0 12px color-mix(in oklch, ${accent} 80%, transparent)` }} />
+            <div style={{ width: 3, height: 36, background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_DIM})`, borderRadius: 2, boxShadow: `0 0 12px rgba(212,175,55,0.5)` }} />
             <h2 style={{ fontFamily: 'Space Grotesk', fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, letterSpacing: '-0.02em' }}>Awards & Recognition</h2>
           </div>
           <p style={{ color: 'var(--text-dim)', fontSize: 16, maxWidth: 600, marginLeft: 19 }}>
@@ -47,7 +57,7 @@ function AwardsSection({ accentColor }) {
 
         {AWARDS_BY_GAME.map((group, gi) => (
           <React.Fragment key={group.game}>
-            {gi > 0 && <GlowDivider color={accent} />}
+            {gi > 0 && <GlowDivider color={GOLD} />}
             <div style={{ marginBottom: gi < AWARDS_BY_GAME.length - 1 ? 44 : 0 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16 }}>
                 <h3 style={{ fontFamily: 'Space Grotesk', fontSize: 17, fontWeight: 600, color: 'var(--text)' }}>{group.game}</h3>
@@ -55,7 +65,7 @@ function AwardsSection({ accentColor }) {
               </div>
               <div className="awards-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: 14 }}>
                 {group.wins.map((award, i) => (
-                  <AwardBadge key={i} {...award} accent={accent} />
+                  <AwardBadge key={i} {...award} accent={GOLD} />
                 ))}
               </div>
             </div>
@@ -64,12 +74,12 @@ function AwardsSection({ accentColor }) {
 
         {AWARD_NOMINATIONS.length > 0 && (
           <>
-            <GlowDivider color={accent} />
+            <GlowDivider color={GOLD} />
             <div style={{ marginTop: 44 }}>
               <h3 style={{ fontFamily: 'Space Grotesk', fontSize: 13, fontWeight: 600, color: 'var(--text-dim)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 16 }}>Nominations</h3>
               <div className="awards-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: 14 }}>
                 {AWARD_NOMINATIONS.map((award, i) => (
-                  <AwardBadge key={i} {...award} accent={accent} muted />
+                  <AwardBadge key={i} {...award} accent={GOLD} muted />
                 ))}
               </div>
             </div>

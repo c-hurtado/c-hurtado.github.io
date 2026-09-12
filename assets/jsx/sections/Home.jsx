@@ -34,8 +34,6 @@ function HomeSection({ accentColor }) {
           <div>
             <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 10 }}>
               <NeonBadge color={accent}>Lead Engineer</NeonBadge>
-              <NeonBadge color="var(--purple)">Engineering Manager</NeonBadge>
-              <NeonBadge color="var(--orange)">Hobbyist Artist</NeonBadge>
             </div>
             <h1 style={{ fontFamily: 'Space Grotesk', fontSize: 'clamp(32px, 4.4vw, 46px)', fontWeight: 700, lineHeight: 1.05, letterSpacing: '-0.02em' }}>
               Hi, I'm{' '}

@@ -18,7 +18,7 @@ function ResumeSection({ accentColor }) {
   ];
 
   return (
-    <section id="resume" data-screen-label="06 Resume" style={{ padding: '100px 8% 80px', maxWidth: 1100, margin: '0 auto' }}>
+    <section id="resume" data-screen-label="06 Resume" style={{ padding: '70px 8% 56px', maxWidth: 1100, margin: '0 auto' }}>
       <Reveal><SectionCard corner1="var(--pink)" corner2="var(--cyan)">
       <div style={{ marginBottom: 56 }}>
         <SectionTag path="resume" accent={accent} />

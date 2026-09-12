@@ -12,8 +12,15 @@ function ContactSection({ accentColor }) {
   }, []);
 
   return (
-    <section id="contact" data-screen-label="07 Contact" style={{ padding: '100px 8% 80px', maxWidth: 1100, margin: '0 auto' }}>
-      <Reveal><SectionCard corner1="var(--purple)" corner2="var(--orange)">
+    <section id="contact" data-screen-label="07 Contact" style={{ padding: '120px 8% 90px', maxWidth: 1100, margin: '0 auto' }}>
+      {/* Flat, quiet panel (no corner brackets / glow) — the one section
+          meant to feel like an ending, not another card in the rotation. */}
+      <Reveal><div className="section-card-flat" style={{
+        background: 'oklch(7% 0.03 290 / 0.5)',
+        border: '1px solid var(--purple-a15)',
+        borderRadius: 12,
+        padding: '52px 60px',
+      }}>
       <div style={{ marginBottom: 56 }}>
         <SectionTag path="contact" accent={accent} />
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12 }}>
@@ -128,7 +135,7 @@ function ContactSection({ accentColor }) {
           )}
         </div>
       </div>
-      </SectionCard></Reveal>
+      </div></Reveal>
     </section>
   );
 }

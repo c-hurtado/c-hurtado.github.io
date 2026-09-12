@@ -635,11 +635,7 @@ function HomeSection({
     }
   }, /*#__PURE__*/React.createElement(NeonBadge, {
     color: accent
-  }, "Lead Engineer"), /*#__PURE__*/React.createElement(NeonBadge, {
-    color: "var(--purple)"
-  }, "Engineering Manager"), /*#__PURE__*/React.createElement(NeonBadge, {
-    color: "var(--orange)"
-  }, "Hobbyist Artist")), /*#__PURE__*/React.createElement("h1", {
+  }, "Lead Engineer")), /*#__PURE__*/React.createElement("h1", {
     style: {
       fontFamily: 'Space Grotesk',
       fontSize: 'clamp(32px, 4.4vw, 46px)',
@@ -1994,6 +1990,8 @@ const AWARD_NOMINATIONS = [{
   year: '2020',
   logo: '/assets/img/awards/navgtr-logo.png'
 }];
+const GOLD = '#d4af37';
+const GOLD_DIM = '#8b6f2e';
 function AwardBadge({
   org,
   category,
@@ -2011,8 +2009,8 @@ function AwardBadge({
       gap: 10,
       padding: '18px 16px',
       borderRadius: 8,
-      background: 'oklch(9% 0.04 290 / 0.5)',
-      border: `1px solid ${muted ? 'var(--purple-a15)' : 'var(--purple-a2)'}`,
+      background: 'rgba(0,0,0,0.35)',
+      border: `1px solid ${muted ? 'rgba(212,175,55,0.15)' : 'rgba(212,175,55,0.25)'}`,
       opacity: muted ? 0.7 : 1
     }
   }, /*#__PURE__*/React.createElement("div", {
@@ -2039,8 +2037,8 @@ function AwardBadge({
       fontSize: 12,
       fontWeight: 700,
       letterSpacing: '0.04em',
-      color: accent,
-      border: `1px solid color-mix(in oklch, ${accent} 60%, transparent)`,
+      color: GOLD,
+      border: `1px solid rgba(212,175,55,0.5)`,
       borderRadius: 4,
       padding: '4px 10px'
     }
@@ -2059,7 +2057,13 @@ function AwardBadge({
       lineHeight: 1.5,
       color: muted ? 'var(--text-dim)' : 'var(--text)'
     }
-  }, category)));
+  }, !muted && /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: GOLD,
+      marginRight: 4
+    },
+    "aria-hidden": "true"
+  }, "\u2605"), category)));
 }
 function AwardsSection({
   accentColor
@@ -2072,20 +2076,25 @@ function AwardsSection({
     id: "awards",
     "data-screen-label": "04 Awards",
     style: {
-      padding: '100px 8% 80px',
+      padding: '70px 8% 56px',
       maxWidth: 1100,
       margin: '0 auto'
     }
   }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement(SectionCard, {
-    corner1: "var(--cyan)",
-    corner2: "var(--orange)"
+    corner1: GOLD,
+    corner2: GOLD_DIM,
+    style: {
+      background: 'radial-gradient(ellipse at center, rgba(10,8,2,0.92) 0%, rgba(6,5,2,0.75) 55%, rgba(4,3,1,0.4) 100%)',
+      border: '1px solid rgba(212,175,55,0.22)',
+      boxShadow: '0 0 60px rgba(212,175,55,0.08), inset 0 1px 0 rgba(255,255,255,0.05)'
+    }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       marginBottom: 48
     }
   }, /*#__PURE__*/React.createElement(SectionTag, {
     path: "awards",
-    accent: accent
+    accent: GOLD
   }), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
@@ -2097,9 +2106,9 @@ function AwardsSection({
     style: {
       width: 3,
       height: 36,
-      background: `linear-gradient(to bottom, ${accent}, ${accent2})`,
+      background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_DIM})`,
       borderRadius: 2,
-      boxShadow: `0 0 12px color-mix(in oklch, ${accent} 80%, transparent)`
+      boxShadow: `0 0 12px rgba(212,175,55,0.5)`
     }
   }), /*#__PURE__*/React.createElement("h2", {
     style: {
@@ -2118,7 +2127,7 @@ function AwardsSection({
   }, "Selected honors from Asgard's Wrath and Asgard's Wrath 2.")), AWARDS_BY_GAME.map((group, gi) => /*#__PURE__*/React.createElement(React.Fragment, {
     key: group.game
   }, gi > 0 && /*#__PURE__*/React.createElement(GlowDivider, {
-    color: accent
+    color: GOLD
   }), /*#__PURE__*/React.createElement("div", {
     style: {
       marginBottom: gi < AWARDS_BY_GAME.length - 1 ? 44 : 0
@@ -2154,9 +2163,9 @@ function AwardsSection({
   }, group.wins.map((award, i) => /*#__PURE__*/React.createElement(AwardBadge, _extends({
     key: i
   }, award, {
-    accent: accent
+    accent: GOLD
   }))))))), AWARD_NOMINATIONS.length > 0 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(GlowDivider, {
-    color: accent
+    color: GOLD
   }), /*#__PURE__*/React.createElement("div", {
     style: {
       marginTop: 44
@@ -2181,7 +2190,7 @@ function AwardsSection({
   }, AWARD_NOMINATIONS.map((award, i) => /*#__PURE__*/React.createElement(AwardBadge, _extends({
     key: i
   }, award, {
-    accent: accent,
+    accent: GOLD,
     muted: true
   })))))))));
 }
@@ -2239,7 +2248,7 @@ function ResumeSection({
     id: "resume",
     "data-screen-label": "06 Resume",
     style: {
-      padding: '100px 8% 80px',
+      padding: '70px 8% 56px',
       maxWidth: 1100,
       margin: '0 auto'
     }
@@ -2834,13 +2843,18 @@ function ContactSection({
     id: "contact",
     "data-screen-label": "07 Contact",
     style: {
-      padding: '100px 8% 80px',
+      padding: '120px 8% 90px',
       maxWidth: 1100,
       margin: '0 auto'
     }
-  }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement(SectionCard, {
-    corner1: "var(--purple)",
-    corner2: "var(--orange)"
+  }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement("div", {
+    className: "section-card-flat",
+    style: {
+      background: 'oklch(7% 0.03 290 / 0.5)',
+      border: '1px solid var(--purple-a15)',
+      borderRadius: 12,
+      padding: '52px 60px'
+    }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       marginBottom: 56
