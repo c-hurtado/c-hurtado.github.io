@@ -672,9 +672,12 @@ function HomeSection({
     style: {
       fontWeight: 600
     }
-  }, "Senior Engineer"), " at", ' ', /*#__PURE__*/React.createElement("span", {
+  }, "Senior Engineer"), " at", ' ', /*#__PURE__*/React.createElement("a", {
+    href: "https://www.sneakydevilstudios.com/",
+    target: "_blank",
     style: {
-      color: 'var(--text)'
+      color: 'var(--text)',
+      fontWeight: 600
     }
   }, "Sneaky Devil Studios"), ", previously", ' ', /*#__PURE__*/React.createElement("span", {
     style: {
@@ -1471,9 +1474,11 @@ function AboutSection({
     style: {
       color: 'var(--text)'
     }
-  }, "Senior Engineer"), " at ", /*#__PURE__*/React.createElement("span", {
+  }, "Senior Engineer"), " at ", /*#__PURE__*/React.createElement("a", {
+    href: "https://www.sneakydevilstudios.com/",
+    target: "_blank",
     style: {
-      color: 'var(--text)'
+      color: accent
     }
   }, "Sneaky Devil Studios"), ". Before that, I was ", /*#__PURE__*/React.createElement("span", {
     style: {

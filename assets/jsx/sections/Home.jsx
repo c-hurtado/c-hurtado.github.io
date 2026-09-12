@@ -54,7 +54,7 @@ function HomeSection({ accentColor }) {
         {/* Single sharpest credential up top, not buried after 3 paragraphs — CTA sits right below it. */}
         <p style={{ fontSize: 16, lineHeight: 1.75, color: 'var(--text)', marginBottom: 24 }}>
           Shipping award-winning VR games since 2008. Currently <span style={{ fontWeight: 600 }}>Senior Engineer</span> at{' '}
-          <span style={{ color: 'var(--text)' }}>Sneaky Devil Studios</span>, previously{' '}
+          <a href="https://www.sneakydevilstudios.com/" target="_blank" style={{ color: 'var(--text)', fontWeight: 600 }}>Sneaky Devil Studios</a>, previously{' '}
           <span style={{ fontWeight: 600 }}>Technical Lead Manager</span> at Sanzaru Games (Oculus Studios · Meta), where{' '}
           <a href="#gamedev" style={{ color: accent, fontWeight: 600 }}>Asgard's Wrath 2</a> shipped to a perfect{' '}
           <a href="https://www.ign.com/articles/asgards-wrath-2-review" target="_blank" style={{ color: accent2, fontWeight: 700 }}>10/10 from IGN</a>.
