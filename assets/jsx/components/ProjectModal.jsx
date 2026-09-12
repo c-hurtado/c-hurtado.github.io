@@ -94,7 +94,7 @@ function ProjectModal({ project, onClose, accentColor }) {
           )}
 
           <div style={{ fontSize: 15, lineHeight: 1.8, color: 'var(--text-dim)' }}>
-            {project.details}
+            {project.details(accent)}
           </div>
         </div>
       </div>
