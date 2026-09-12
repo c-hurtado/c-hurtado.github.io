@@ -15,16 +15,16 @@ function AboutSection({ accentColor }) {
         <div className="about-grid" style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: 48, alignItems: 'start' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             <p style={{ fontSize: 16, lineHeight: 1.8, color: 'var(--text-dim)' }}>
-              Oh, hello! I'm <span style={{ color: 'var(--text)', fontWeight: 600 }}>Carlos</span> — nice to meet you. I grew up in <span style={{ color: 'var(--text)' }}>Chile</span> and moved to the United States chasing a career in entertainment technology so I could make cool things. I'm a U.S. citizen now, and I've been making games professionally since <span style={{ color: 'var(--text)' }}>2008</span>.
+              I'm <span style={{ color: 'var(--text)', fontWeight: 600 }}>Carlos</span>. I grew up in <span style={{ color: 'var(--text)' }}>Chile</span> and moved to the United States to build a career in entertainment technology. I'm a U.S. citizen now, and I've been making games professionally since <span style={{ color: 'var(--text)' }}>2008</span>.
             </p>
             <p style={{ fontSize: 16, lineHeight: 1.8, color: 'var(--text-dim)' }}>
               I'm passionate about making video games — and about leadership: mentoring engineers, supporting their careers, and building teams that consistently ship high-quality work.
             </p>
             <p style={{ fontSize: 16, lineHeight: 1.8, color: 'var(--text-dim)' }}>
-              Most recently I was a <span style={{ color: 'var(--text)' }}>Technical Lead Manager</span> at <a href="https://www.sanzarugames.com" target="_blank" style={{ color: accent }}>Sanzaru Games</a> (a Meta studio), where I shipped several award-winning VR titles including <a href="#gamedev" style={{ color: accent }}>Asgard's Wrath</a> and <a href="#gamedev" style={{ color: accent }}>Asgard's Wrath 2</a> for the Oculus Rift and Quest 2/3.
+              I'm currently a <span style={{ color: 'var(--text)' }}>Senior Engineer</span> at <span style={{ color: 'var(--text)' }}>Sneaky Devil Studios</span>. Before that, I was <span style={{ color: 'var(--text)' }}>Technical Lead Manager</span> at <a href="https://www.sanzarugames.com" target="_blank" style={{ color: accent }}>Sanzaru Games</a> (a Meta studio), where I shipped several award-winning VR titles including <a href="#gamedev" style={{ color: accent }}>Asgard's Wrath</a> and <a href="#gamedev" style={{ color: accent }}>Asgard's Wrath 2</a> for the Oculus Rift and Quest 2/3.
             </p>
             <p style={{ fontSize: 16, lineHeight: 1.8, color: 'var(--text-dim)' }}>
-              Outside of engineering, I paint — mostly oil, sometimes digital (there's a whole <a href="#art" style={{ color: accent }}>gallery</a> of it if you scroll down). I'm also a little obsessed with productivity systems — ask me about whatever one I'm currently rebuilding my life around.
+              Outside of engineering, I paint — mostly oil, sometimes digital (there's a whole <a href="#art" style={{ color: accent }}>gallery</a> of it if you scroll down). I'm also deep into productivity systems — ask me about whatever one I'm currently using.
             </p>
             <p style={{ fontSize: 16, lineHeight: 1.8, color: 'var(--text-dim)' }}>
               I live in <span style={{ color: 'var(--text)' }}>San Mateo</span>, in the San Francisco Bay Area, with my wife and kid.

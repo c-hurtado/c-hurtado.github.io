@@ -41,7 +41,7 @@ function AwardsSection({ accentColor }) {
             <h2 style={{ fontFamily: 'Space Grotesk', fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, letterSpacing: '-0.02em' }}>Awards & Recognition</h2>
           </div>
           <p style={{ color: 'var(--text-dim)', fontSize: 16, maxWidth: 600, marginLeft: 19 }}>
-            Selected honors from shipped titles.
+            Selected honors from Asgard's Wrath and Asgard's Wrath 2.
           </p>
         </div>
 

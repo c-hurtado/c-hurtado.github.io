@@ -4,12 +4,13 @@ function ResumeSection({ accentColor }) {
 
   const skills = [
     { cat: 'Engine & Systems', items: ['Unreal Engine 4 & 5', 'C++', 'Gameplay Systems', 'Performance Optimization', 'Tooling & Pipeline'] },
-    { cat: 'Leadership', items: ['Technical Lead', 'Engineering Management', 'Studio Vision Alignment', 'People Development', 'Cross-team Collaboration'] },
+    { cat: 'Leadership', items: ['Technical Lead', 'Hiring & Interviewing', '1:1s & Reviews', 'Promotion Packets', 'Cross-team Collaboration'] },
     { cat: 'Platforms', items: ['Meta Quest / VR', 'PC', 'Mobile', 'Facebook Platform', 'Console (PS3/360)'] },
   ];
 
   const timeline = [
-    { year: '2021–2026', role: 'Technical Lead Manager', company: 'Sanzaru Games · Meta (Oculus Studios)', desc: 'Led engineering teams through full lifecycle of flagship VR titles. Asgard\'s Wrath 2 (IGN 10/10). Currently leading unannounced big-IP VR project.' },
+    { year: '2026–present', role: 'Senior Engineer', company: 'Sneaky Devil Studios', desc: 'Currently building new gameplay systems and technical foundations for the studio\'s next title.' },
+    { year: '2021–2026', role: 'Technical Lead Manager', company: 'Sanzaru Games · Meta (Oculus Studios)', desc: 'Led engineering teams through full lifecycle of flagship VR titles, including Asgard\'s Wrath 2 (IGN 10/10) and an unannounced big-IP VR project.' },
     { year: '~2016–2021', role: 'Senior Engineer / Tech Lead', company: 'Sanzaru Games', desc: 'Shipped Asgard\'s Wrath, Marvel Powers United VR, and VR Sports Challenge. Architected core gameplay and multiplayer systems.' },
     { year: '~2012–2016', role: 'Software Engineer', company: 'Sanzaru Games · Big Fish Games', desc: 'Dark Manor: casual hidden-object mobile game. Small 2-engineer team, full stack ownership.' },
     { year: '~2010–2012', role: 'Software Engineer', company: 'Bigpoint', desc: 'Uridium Wars: Flash + PHP space MMO for Facebook platform.' },

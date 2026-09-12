@@ -21,7 +21,7 @@ function ContactSection({ accentColor }) {
           <h2 style={{ fontFamily: 'Space Grotesk', fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, letterSpacing: '-0.02em' }}>Get in Touch</h2>
         </div>
         <p style={{ color: 'var(--text-dim)', fontSize: 16, maxWidth: 560, marginLeft: 19, marginBottom: 12 }}>
-          SF Bay Area or Remote.
+          Open to opportunities in the SF Bay Area or fully remote.
         </p>
         <div style={{ display: 'flex', gap: 10, marginLeft: 19, flexWrap: 'wrap' }}>
           <NeonBadge color="var(--purple)">SF Bay Area</NeonBadge>

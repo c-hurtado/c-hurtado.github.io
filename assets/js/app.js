@@ -668,15 +668,19 @@ function HomeSection({
       color: 'var(--text)',
       marginBottom: 24
     }
-  }, "15+ years shipping award-winning VR games. Most recently ", /*#__PURE__*/React.createElement("span", {
+  }, "Shipping award-winning VR games since 2008. Currently ", /*#__PURE__*/React.createElement("span", {
     style: {
       fontWeight: 600
     }
-  }, "Technical Lead Manager"), " at", ' ', /*#__PURE__*/React.createElement("span", {
+  }, "Senior Engineer"), " at", ' ', /*#__PURE__*/React.createElement("span", {
     style: {
       color: 'var(--text)'
     }
-  }, "Sanzaru Games (Oculus Studios \xB7 Meta)"), ", where", ' ', /*#__PURE__*/React.createElement("a", {
+  }, "Sneaky Devil Studios"), ", previously", ' ', /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontWeight: 600
+    }
+  }, "Technical Lead Manager"), " at Sanzaru Games (Oculus Studios \xB7 Meta), where", ' ', /*#__PURE__*/React.createElement("a", {
     href: "#gamedev",
     style: {
       color: accent,
@@ -1438,16 +1442,16 @@ function AboutSection({
       lineHeight: 1.8,
       color: 'var(--text-dim)'
     }
-  }, "Oh, hello! I'm ", /*#__PURE__*/React.createElement("span", {
+  }, "I'm ", /*#__PURE__*/React.createElement("span", {
     style: {
       color: 'var(--text)',
       fontWeight: 600
     }
-  }, "Carlos"), " \u2014 nice to meet you. I grew up in ", /*#__PURE__*/React.createElement("span", {
+  }, "Carlos"), ". I grew up in ", /*#__PURE__*/React.createElement("span", {
     style: {
       color: 'var(--text)'
     }
-  }, "Chile"), " and moved to the United States chasing a career in entertainment technology so I could make cool things. I'm a U.S. citizen now, and I've been making games professionally since ", /*#__PURE__*/React.createElement("span", {
+  }, "Chile"), " and moved to the United States to build a career in entertainment technology. I'm a U.S. citizen now, and I've been making games professionally since ", /*#__PURE__*/React.createElement("span", {
     style: {
       color: 'var(--text)'
     }
@@ -1463,7 +1467,15 @@ function AboutSection({
       lineHeight: 1.8,
       color: 'var(--text-dim)'
     }
-  }, "Most recently I was a ", /*#__PURE__*/React.createElement("span", {
+  }, "I'm currently a ", /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: 'var(--text)'
+    }
+  }, "Senior Engineer"), " at ", /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: 'var(--text)'
+    }
+  }, "Sneaky Devil Studios"), ". Before that, I was ", /*#__PURE__*/React.createElement("span", {
     style: {
       color: 'var(--text)'
     }
@@ -1494,7 +1506,7 @@ function AboutSection({
     style: {
       color: accent
     }
-  }, "gallery"), " of it if you scroll down). I'm also a little obsessed with productivity systems \u2014 ask me about whatever one I'm currently rebuilding my life around."), /*#__PURE__*/React.createElement("p", {
+  }, "gallery"), " of it if you scroll down). I'm also deep into productivity systems \u2014 ask me about whatever one I'm currently using."), /*#__PURE__*/React.createElement("p", {
     style: {
       fontSize: 16,
       lineHeight: 1.8,
@@ -1891,7 +1903,7 @@ function GameDevSection({
       maxWidth: 600,
       marginLeft: 19
     }
-  }, "16+ years shipping games across VR, mobile, and PC. From EA to Meta-backed studios.")), featuredProject && /*#__PURE__*/React.createElement(FeaturedProjectCard, {
+  }, "Shipping games across VR, mobile, and PC since 2008. From EA to Meta-backed studios.")), featuredProject && /*#__PURE__*/React.createElement(FeaturedProjectCard, {
     project: featuredProject,
     accentColor: accentColor,
     onOpen: () => setActiveProject(featuredProject)
@@ -2098,7 +2110,7 @@ function AwardsSection({
       maxWidth: 600,
       marginLeft: 19
     }
-  }, "Selected honors from shipped titles.")), AWARDS_BY_GAME.map((group, gi) => /*#__PURE__*/React.createElement(React.Fragment, {
+  }, "Selected honors from Asgard's Wrath and Asgard's Wrath 2.")), AWARDS_BY_GAME.map((group, gi) => /*#__PURE__*/React.createElement(React.Fragment, {
     key: group.game
   }, gi > 0 && /*#__PURE__*/React.createElement(GlowDivider, {
     color: accent
@@ -2182,16 +2194,21 @@ function ResumeSection({
     items: ['Unreal Engine 4 & 5', 'C++', 'Gameplay Systems', 'Performance Optimization', 'Tooling & Pipeline']
   }, {
     cat: 'Leadership',
-    items: ['Technical Lead', 'Engineering Management', 'Studio Vision Alignment', 'People Development', 'Cross-team Collaboration']
+    items: ['Technical Lead', 'Hiring & Interviewing', '1:1s & Reviews', 'Promotion Packets', 'Cross-team Collaboration']
   }, {
     cat: 'Platforms',
     items: ['Meta Quest / VR', 'PC', 'Mobile', 'Facebook Platform', 'Console (PS3/360)']
   }];
   const timeline = [{
+    year: '2026–present',
+    role: 'Senior Engineer',
+    company: 'Sneaky Devil Studios',
+    desc: 'Currently building new gameplay systems and technical foundations for the studio\'s next title.'
+  }, {
     year: '2021–2026',
     role: 'Technical Lead Manager',
     company: 'Sanzaru Games · Meta (Oculus Studios)',
-    desc: 'Led engineering teams through full lifecycle of flagship VR titles. Asgard\'s Wrath 2 (IGN 10/10). Currently leading unannounced big-IP VR project.'
+    desc: 'Led engineering teams through full lifecycle of flagship VR titles, including Asgard\'s Wrath 2 (IGN 10/10) and an unannounced big-IP VR project.'
   }, {
     year: '~2016–2021',
     role: 'Senior Engineer / Tech Lead',
@@ -2856,7 +2873,7 @@ function ContactSection({
       marginLeft: 19,
       marginBottom: 12
     }
-  }, "SF Bay Area or Remote."), /*#__PURE__*/React.createElement("div", {
+  }, "Open to opportunities in the SF Bay Area or fully remote."), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       gap: 10,

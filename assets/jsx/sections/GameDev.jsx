@@ -22,7 +22,7 @@ function GameDevSection({ accentColor }) {
           <h2 style={{ fontFamily: 'Space Grotesk', fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, letterSpacing: '-0.02em' }}>Game Development</h2>
         </div>
         <p style={{ color: 'var(--text-dim)', fontSize: 16, maxWidth: 600, marginLeft: 19 }}>
-          16+ years shipping games across VR, mobile, and PC. From EA to Meta-backed studios.
+          Shipping games across VR, mobile, and PC since 2008. From EA to Meta-backed studios.
         </p>
       </div>
       {featuredProject && (
