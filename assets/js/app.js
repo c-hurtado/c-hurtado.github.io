@@ -493,8 +493,8 @@ function NeonBadge({
       fontWeight: 600,
       letterSpacing: '0.08em',
       textTransform: 'uppercase',
-      background: `${color}15`,
-      boxShadow: `0 0 8px ${color}40`,
+      background: `color-mix(in srgb, ${color} 8%, transparent)`,
+      boxShadow: `0 0 8px color-mix(in srgb, ${color} 25%, transparent)`,
       fontFamily: 'Space Grotesk'
     }
   }, children);
@@ -782,19 +782,19 @@ function SocialLinks({
     label: 'Email',
     icon: 'M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z M22,6 L12,13 L2,6'
   }, {
-    href: 'http://linkedin.com/in/carloshurtado',
+    href: 'https://linkedin.com/in/carloshurtado',
     label: 'LinkedIn',
     icon: 'M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z M2 9h4v12H2z M4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z'
   }, {
-    href: 'http://github.com/c-hurtado',
+    href: 'https://github.com/c-hurtado',
     label: 'GitHub',
     icon: 'M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22'
   }, {
-    href: 'http://twitter.com/carlos_hurtado',
+    href: 'https://twitter.com/carlos_hurtado',
     label: 'Twitter/X',
     icon: 'M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z'
   }, {
-    href: 'http://instagram.com/chaoticbrain',
+    href: 'https://instagram.com/chaoticbrain',
     label: 'Instagram',
     icon: 'M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z M17.5 6.5h.01 M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5z'
   }];
@@ -1468,7 +1468,7 @@ function AboutSection({
       color: 'var(--text)'
     }
   }, "Technical Lead Manager"), " at ", /*#__PURE__*/React.createElement("a", {
-    href: "http://www.sanzarugames.com",
+    href: "https://www.sanzarugames.com",
     target: "_blank",
     style: {
       color: accent
@@ -1535,7 +1535,7 @@ function AboutSection({
       marginBottom: 4
     }
   }, "Master of Entertainment Technology"), /*#__PURE__*/React.createElement("a", {
-    href: "http://www.cmu.edu",
+    href: "https://www.cmu.edu",
     target: "_blank",
     style: {
       fontSize: 13,
@@ -1549,7 +1549,7 @@ function AboutSection({
       marginBottom: 4
     }
   }, "M.S. & B.S. Computer Science & Engineering"), /*#__PURE__*/React.createElement("a", {
-    href: "http://www.uchile.cl",
+    href: "https://www.uchile.cl",
     target: "_blank",
     style: {
       fontSize: 13,
@@ -1695,7 +1695,6 @@ const PROJECTS = [{
   studio: 'Sanzaru Games · Meta',
   badge: 'In Dev',
   desc: 'Currently in development — a major VR title for a well-known IP. Technical leadership across full production lifecycle.',
-  href: 'https://www.carloshurtado.com/gameDevProjects/Unannounced/',
   img: '/assets/img/projects/Meta-Quest-3-Dark.jpg',
   subtitle: 'AAA VR title under NDA — Technical Lead Manager at Sanzaru Games / Meta Reality Labs',
   details: accent => /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(ModalP, null, "For this project I was the technical lead manager for the gameplay systems group. I managed 5 people, working on systems, missions, architecture and infrastructure. The game was being developed in Unreal 5 and C++."), /*#__PURE__*/React.createElement(ModalH4, {
@@ -1718,7 +1717,6 @@ const PROJECTS = [{
   studio: 'Sanzaru Games · Meta',
   badge: '10/10 IGN',
   desc: 'Award-winning VR RPG. Contributed as Technical Lead to flagship systems, performance, and architecture.',
-  href: 'https://www.carloshurtado.com/gameDevProjects/AsgardsWrath2/',
   img: '/assets/img/projects/asgards-wrath-2.png',
   subtitle: 'AAA VR action RPG shipped on Meta Quest 2/3 — Lead Engineer at Sanzaru Games / Meta Reality Labs',
   videoId: '3SYJeM_LaZ0',
@@ -1766,7 +1764,6 @@ const PROJECTS = [{
   title: "Asgard's Wrath",
   studio: 'Sanzaru Games',
   desc: 'VR action-RPG — predecessor to the award-winning sequel. Systems engineering and technical leadership.',
-  href: 'https://www.carloshurtado.com/gameDevProjects/AsgardsWrath/',
   img: '/assets/img/projects/asgards-wrath.jpg',
   subtitle: '30+ hour VR Action RPG designed from the ground up for VR',
   videoId: 'd5a4nWtbVyY',
@@ -1785,7 +1782,6 @@ const PROJECTS = [{
   title: 'Marvel Powers United VR',
   studio: 'Sanzaru Games',
   desc: 'Co-op VR brawler featuring Marvel superheroes. Multi-player systems, gameplay engineering.',
-  href: 'https://www.carloshurtado.com/gameDevProjects/MarvelPowersUnited/',
   img: '/assets/img/projects/marvelpowersunited.jpg',
   subtitle: '4-player networked co-op Arena VR game',
   videoId: 'YO_gz5l7ZB4',
@@ -1802,7 +1798,6 @@ const PROJECTS = [{
   title: 'VR Sports Challenge',
   studio: 'Sanzaru Games',
   desc: 'Multi-sport VR experience. Core gameplay and physics systems engineering.',
-  href: 'https://www.carloshurtado.com/gameDevProjects/VrSportsChallenge/',
   img: '/assets/img/projects/vr-sports-challenge.jpg',
   subtitle: 'Multi-sport VR title for the Oculus Touch launch',
   videoId: 'xAvzIff_PCg',
@@ -1811,7 +1806,6 @@ const PROJECTS = [{
   title: 'Dark Manor',
   studio: 'Sanzaru Games · Big Fish Games',
   desc: 'Casual hidden-object mobile game. Built with a 2-person engineering team from the ground up.',
-  href: 'https://www.carloshurtado.com/gameDevProjects/DarkManor/',
   img: '/assets/img/projects/darkmanor.jpg',
   subtitle: 'Casual hidden-object game for PC and iOS',
   details: accent => /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(ModalP, null, "I started at Sanzaru (developers of Sly Cooper 4) as part of the very small mobile group. In a team of just 2 engineers, we built a casual hidden-object game for publisher Big Fish Games."), /*#__PURE__*/React.createElement(ModalP, null, "The project was a cross-platform PC and iOS game, built on a custom engine from Sanzaru. I also built customer service websites to track and adjust live tuning while the game was running."))
@@ -1819,7 +1813,6 @@ const PROJECTS = [{
   title: 'Uridium Wars',
   studio: 'Bigpoint',
   desc: 'Space-faring MMO built in Flash + PHP for Facebook. Took on a large-scale real-time MMO codebase.',
-  href: 'https://www.carloshurtado.com/gameDevProjects/UridiumWars/',
   img: '/assets/img/projects/uridiumwars.png',
   subtitle: 'Space-faring MMO for the Facebook platform',
   details: accent => /*#__PURE__*/React.createElement(ModalP, null, "Uridium Wars was a space-faring MMO built in Flash + PHP for the Facebook platform \u2014 a take on a different game called Dark Orbit.")
@@ -1827,7 +1820,6 @@ const PROJECTS = [{
   title: 'Sims 3 Expansion Packs',
   studio: 'Electronic Arts · Maxis',
   desc: 'Shipped 3 expansion packs (Late Night, Generations, Pets) and multiple stuff packs on 6-month cycles.',
-  href: 'https://www.carloshurtado.com/gameDevProjects/Sims3ExpansionPacks/',
   img: '/assets/img/projects/sims.png',
   subtitle: '3 expansion packs shipped on 6-month cycles',
   details: accent => /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(ModalP, null, "At Electronic Arts, I was a gameplay engineer at Maxis Studios. As my first job out of grad school, I worked on and published 3 expansion packs and multiple stuff packs, each on a 6-month development cycle."), /*#__PURE__*/React.createElement(ModalP, null, "I worked on Sims 3: Late Night, Sims 3: Generations, and Sims 3: Pets."))
@@ -2896,15 +2888,15 @@ function ContactSection({
   }, {
     label: 'LinkedIn',
     val: '/in/carloshurtado',
-    href: 'http://linkedin.com/in/carloshurtado'
+    href: 'https://linkedin.com/in/carloshurtado'
   }, {
     label: 'GitHub',
     val: 'github.com/c-hurtado',
-    href: 'http://github.com/c-hurtado'
+    href: 'https://github.com/c-hurtado'
   }, {
     label: 'Twitter/X',
     val: '@carlos_hurtado',
-    href: 'http://twitter.com/carlos_hurtado'
+    href: 'https://twitter.com/carlos_hurtado'
   }].map(c => /*#__PURE__*/React.createElement("a", {
     key: c.label,
     href: c.href,
@@ -2982,7 +2974,7 @@ function ContactSection({
   }, /*#__PURE__*/React.createElement("input", {
     type: "hidden",
     name: "_next",
-    value: "https://www.carloshurtado.com/demo2/?sent=1#contact"
+    value: "https://www.carloshurtado.com/?sent=1#contact"
   }), [{
     id: 'name',
     name: 'name',

@@ -3,6 +3,26 @@
   :root {
     --bg: #08010f;
     --bg2: #0f0520;
+    /* Hex/rgba fallbacks first — browsers without oklch support ignore the
+       invalid declarations below and keep these; modern browsers overwrite
+       them with the oklch values. Keep both in sync when tuning colors. */
+    --pink: #ff3d8f;
+    --orange: #ff7a45;
+    --purple: #7c3aed;
+    --cyan: #4dd0e1;
+    --text: #ececf5;
+    --text-dim: #9c98a8;
+    --card-bg: rgba(15, 5, 25, 0.62);
+    --border: rgba(124, 58, 237, 0.35);
+    --glow-pink: rgba(255, 61, 143, 0.5);
+    --glow-orange: rgba(255, 140, 60, 0.4);
+    --purple-a12: rgba(124, 58, 237, 0.12);
+    --purple-a15: rgba(124, 58, 237, 0.15);
+    --purple-a2: rgba(124, 58, 237, 0.2);
+    --purple-a25: rgba(124, 58, 237, 0.25);
+    --purple-a3: rgba(124, 58, 237, 0.3);
+    --purple-a5: rgba(124, 58, 237, 0.5);
+
     --pink: oklch(62% 0.28 340);
     --orange: oklch(68% 0.22 25);
     --purple: oklch(55% 0.25 295);

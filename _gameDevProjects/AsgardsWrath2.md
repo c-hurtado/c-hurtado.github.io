@@ -33,7 +33,7 @@ Asgard's Wrath 2 received a score of [10/10 from IGN](https://www.ign.com/articl
 ---
 
 ### Leadership
-* Managed 5 engineers and colaborated with cross functional partners to align on schedule, direction and quality.
+* Managed 5 engineers and collaborated with cross functional partners to align on schedule, direction and quality.
 * Provided interviews, 1:1s and mentorship.
 * Collaborated with directors and Cross functional partners to deliver high quality content.
 
@@ -60,5 +60,5 @@ Asgard's Wrath 2 received a score of [10/10 from IGN](https://www.ign.com/articl
 * Worked on the Onramp gameplay and new user experience.
 
 #### Localization and Entitlements
-* Implmented localization scripts and automation
+* Implemented localization scripts and automation
 * Implemented achievements and entitlements

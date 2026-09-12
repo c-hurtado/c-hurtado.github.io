@@ -21,7 +21,7 @@ function AboutSection({ accentColor }) {
               I'm passionate about making video games — and about leadership: mentoring engineers, supporting their careers, and building teams that consistently ship high-quality work.
             </p>
             <p style={{ fontSize: 16, lineHeight: 1.8, color: 'var(--text-dim)' }}>
-              Most recently I was a <span style={{ color: 'var(--text)' }}>Technical Lead Manager</span> at <a href="http://www.sanzarugames.com" target="_blank" style={{ color: accent }}>Sanzaru Games</a> (a Meta studio), where I shipped several award-winning VR titles including <a href="#gamedev" style={{ color: accent }}>Asgard's Wrath</a> and <a href="#gamedev" style={{ color: accent }}>Asgard's Wrath 2</a> for the Oculus Rift and Quest 2/3.
+              Most recently I was a <span style={{ color: 'var(--text)' }}>Technical Lead Manager</span> at <a href="https://www.sanzarugames.com" target="_blank" style={{ color: accent }}>Sanzaru Games</a> (a Meta studio), where I shipped several award-winning VR titles including <a href="#gamedev" style={{ color: accent }}>Asgard's Wrath</a> and <a href="#gamedev" style={{ color: accent }}>Asgard's Wrath 2</a> for the Oculus Rift and Quest 2/3.
             </p>
             <p style={{ fontSize: 16, lineHeight: 1.8, color: 'var(--text-dim)' }}>
               Outside of engineering, I paint — mostly oil, sometimes digital (there's a whole <a href="#art" style={{ color: accent }}>gallery</a> of it if you scroll down). I'm also a little obsessed with productivity systems — ask me about whatever one I'm currently rebuilding my life around.
@@ -41,11 +41,11 @@ function AboutSection({ accentColor }) {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
               <div>
                 <div style={{ fontFamily: 'Space Grotesk', fontWeight: 600, fontSize: 15, marginBottom: 4 }}>Master of Entertainment Technology</div>
-                <a href="http://www.cmu.edu" target="_blank" style={{ fontSize: 13, color: accent2 }}>Carnegie Mellon University</a>
+                <a href="https://www.cmu.edu" target="_blank" style={{ fontSize: 13, color: accent2 }}>Carnegie Mellon University</a>
               </div>
               <div>
                 <div style={{ fontFamily: 'Space Grotesk', fontWeight: 600, fontSize: 15, marginBottom: 4 }}>M.S. & B.S. Computer Science & Engineering</div>
-                <a href="http://www.uchile.cl" target="_blank" style={{ fontSize: 13, color: accent2 }}>Universidad de Chile</a>
+                <a href="https://www.uchile.cl" target="_blank" style={{ fontSize: 13, color: accent2 }}>Universidad de Chile</a>
               </div>
             </div>
             <div style={{ height: 1, background: `linear-gradient(90deg, color-mix(in oklch, ${accent} 40%, transparent), transparent)`, margin: '24px 0' }} />

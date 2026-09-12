@@ -11,8 +11,8 @@ function NeonBadge({ children, color = 'var(--pink)' }) {
       fontWeight: 600,
       letterSpacing: '0.08em',
       textTransform: 'uppercase',
-      background: `${color}15`,
-      boxShadow: `0 0 8px ${color}40`,
+      background: `color-mix(in srgb, ${color} 8%, transparent)`,
+      boxShadow: `0 0 8px color-mix(in srgb, ${color} 25%, transparent)`,
       fontFamily: 'Space Grotesk',
     }}>{children}</span>
   );

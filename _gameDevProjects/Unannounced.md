@@ -21,7 +21,7 @@ The game was being developed in Unreal 5 and C++.
 ---
 
 ### Leadership
-* Managed 5 engineers and colaborated with cross functional partners to align on schedule, direction and quality.
+* Managed 5 engineers and collaborated with cross functional partners to align on schedule, direction and quality.
 * Interviewed engineers and provided mentorship.
 * Provided performance reviews, and biweekly 1:1s directed to grow skills and improve career.
 
@@ -41,9 +41,9 @@ The game was being developed in Unreal 5 and C++.
 
 #### Tools and acceleration
 * Created Scriptable tools in UE5 to accelerate the narrative team and level designers, allowing them to create interdependent assets in 1 click via an unreal tool. 
-* Created interactible unreal tools to draw special splines for traversal purposes in the editor.
+* Created interactive unreal tools to draw special splines for traversal purposes in the editor.
 * Created a visual "state" of the game HUD system to visualize state, narrative, progression, location and others in order to debug problems fast.
 
 #### Optimization
-* Worked on support World Partition and Level streaming, supporting fixes of level instancing compatibility for cinematic assets.
-* Optimized CPU cost by looking at Unreal Insights and fixing or provided suggestions to remove unnecesary costs.
+* Worked on supporting World Partition and Level streaming, supporting fixes of level instancing compatibility for cinematic assets.
+* Optimized CPU cost by looking at Unreal Insights and fixing or provided suggestions to remove unnecessary costs.

@@ -34,9 +34,9 @@ function ContactSection({ accentColor }) {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           {[
             { label: 'Email', val: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
-            { label: 'LinkedIn', val: '/in/carloshurtado', href: 'http://linkedin.com/in/carloshurtado' },
-            { label: 'GitHub', val: 'github.com/c-hurtado', href: 'http://github.com/c-hurtado' },
-            { label: 'Twitter/X', val: '@carlos_hurtado', href: 'http://twitter.com/carlos_hurtado' },
+            { label: 'LinkedIn', val: '/in/carloshurtado', href: 'https://linkedin.com/in/carloshurtado' },
+            { label: 'GitHub', val: 'github.com/c-hurtado', href: 'https://github.com/c-hurtado' },
+            { label: 'Twitter/X', val: '@carlos_hurtado', href: 'https://twitter.com/carlos_hurtado' },
           ].map(c => (
             <a key={c.label} href={c.href} target="_blank" style={{
               padding: '16px 20px', borderRadius: 8,
@@ -67,7 +67,7 @@ function ContactSection({ accentColor }) {
             </div>
           ) : (
             <form action="https://formspree.io/xdoendyz" method="POST" onSubmit={() => setSending(true)} style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-              <input type="hidden" name="_next" value="https://www.carloshurtado.com/demo2/?sent=1#contact" />
+              <input type="hidden" name="_next" value="https://www.carloshurtado.com/?sent=1#contact" />
               {[
                 { id: 'name', name: 'name', label: 'Name', type: 'text', placeholder: 'Your name' },
                 { id: 'email', name: '_replyto', label: 'Email', type: 'email', placeholder: 'your@email.com' },

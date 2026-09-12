@@ -5,7 +5,7 @@ const PROJECTS = [
     {
       title: 'Unannounced Big IP VR Project', studio: 'Sanzaru Games · Meta', badge: 'In Dev',
       desc: 'Currently in development — a major VR title for a well-known IP. Technical leadership across full production lifecycle.',
-      href: 'https://www.carloshurtado.com/gameDevProjects/Unannounced/', img: '/assets/img/projects/Meta-Quest-3-Dark.jpg',
+      img: '/assets/img/projects/Meta-Quest-3-Dark.jpg',
       subtitle: 'AAA VR title under NDA — Technical Lead Manager at Sanzaru Games / Meta Reality Labs',
       details: (accent) => (
         <>
@@ -45,7 +45,7 @@ const PROJECTS = [
     {
       title: "Asgard's Wrath 2", studio: 'Sanzaru Games · Meta', badge: '10/10 IGN',
       desc: 'Award-winning VR RPG. Contributed as Technical Lead to flagship systems, performance, and architecture.',
-      href: 'https://www.carloshurtado.com/gameDevProjects/AsgardsWrath2/', img: '/assets/img/projects/asgards-wrath-2.png',
+      img: '/assets/img/projects/asgards-wrath-2.png',
       subtitle: 'AAA VR action RPG shipped on Meta Quest 2/3 — Lead Engineer at Sanzaru Games / Meta Reality Labs',
       videoId: '3SYJeM_LaZ0',
       details: (accent) => (
@@ -99,7 +99,7 @@ const PROJECTS = [
     {
       title: "Asgard's Wrath", studio: 'Sanzaru Games',
       desc: 'VR action-RPG — predecessor to the award-winning sequel. Systems engineering and technical leadership.',
-      href: 'https://www.carloshurtado.com/gameDevProjects/AsgardsWrath/', img: '/assets/img/projects/asgards-wrath.jpg',
+      img: '/assets/img/projects/asgards-wrath.jpg',
       subtitle: '30+ hour VR Action RPG designed from the ground up for VR',
       videoId: 'd5a4nWtbVyY',
       details: (accent) => (
@@ -129,7 +129,7 @@ const PROJECTS = [
     {
       title: 'Marvel Powers United VR', studio: 'Sanzaru Games',
       desc: 'Co-op VR brawler featuring Marvel superheroes. Multi-player systems, gameplay engineering.',
-      href: 'https://www.carloshurtado.com/gameDevProjects/MarvelPowersUnited/', img: '/assets/img/projects/marvelpowersunited.jpg',
+      img: '/assets/img/projects/marvelpowersunited.jpg',
       subtitle: '4-player networked co-op Arena VR game',
       videoId: 'YO_gz5l7ZB4',
       details: (accent) => (
@@ -154,7 +154,7 @@ const PROJECTS = [
     {
       title: 'VR Sports Challenge', studio: 'Sanzaru Games',
       desc: 'Multi-sport VR experience. Core gameplay and physics systems engineering.',
-      href: 'https://www.carloshurtado.com/gameDevProjects/VrSportsChallenge/', img: '/assets/img/projects/vr-sports-challenge.jpg',
+      img: '/assets/img/projects/vr-sports-challenge.jpg',
       subtitle: 'Multi-sport VR title for the Oculus Touch launch',
       videoId: 'xAvzIff_PCg',
       details: (accent) => (
@@ -164,7 +164,7 @@ const PROJECTS = [
     {
       title: 'Dark Manor', studio: 'Sanzaru Games · Big Fish Games',
       desc: 'Casual hidden-object mobile game. Built with a 2-person engineering team from the ground up.',
-      href: 'https://www.carloshurtado.com/gameDevProjects/DarkManor/', img: '/assets/img/projects/darkmanor.jpg',
+      img: '/assets/img/projects/darkmanor.jpg',
       subtitle: 'Casual hidden-object game for PC and iOS',
       details: (accent) => (
         <>
@@ -176,7 +176,7 @@ const PROJECTS = [
     {
       title: 'Uridium Wars', studio: 'Bigpoint',
       desc: 'Space-faring MMO built in Flash + PHP for Facebook. Took on a large-scale real-time MMO codebase.',
-      href: 'https://www.carloshurtado.com/gameDevProjects/UridiumWars/', img: '/assets/img/projects/uridiumwars.png',
+      img: '/assets/img/projects/uridiumwars.png',
       subtitle: 'Space-faring MMO for the Facebook platform',
       details: (accent) => (
         <ModalP>Uridium Wars was a space-faring MMO built in Flash + PHP for the Facebook platform — a take on a different game called Dark Orbit.</ModalP>
@@ -185,7 +185,7 @@ const PROJECTS = [
     {
       title: 'Sims 3 Expansion Packs', studio: 'Electronic Arts · Maxis',
       desc: 'Shipped 3 expansion packs (Late Night, Generations, Pets) and multiple stuff packs on 6-month cycles.',
-      href: 'https://www.carloshurtado.com/gameDevProjects/Sims3ExpansionPacks/', img: '/assets/img/projects/sims.png',
+      img: '/assets/img/projects/sims.png',
       subtitle: '3 expansion packs shipped on 6-month cycles',
       details: (accent) => (
         <>

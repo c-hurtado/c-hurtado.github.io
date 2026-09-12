@@ -22,7 +22,7 @@ I co-led this project with the Director of Technology. Marvel Powers United is a
 ---
 
 ### Leadership
-* Managed 5 engineers and colaborated with cross functional partners to align on schedule, direction and quality.
+* Managed 5 engineers and collaborated with cross functional partners to align on schedule, direction and quality.
 * Provided interviews, 1:1s and mentorship.
 * Collaborated with directors and Cross functional partners to deliver high quality content.
 

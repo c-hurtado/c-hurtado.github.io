@@ -57,7 +57,7 @@ render_with_liquid: false
   <div class="site-bg"></div>
   {% include grid.html %}
   <div class="horizon-line"></div>
-  <script src="/assets/art-data.js"></script>
+  <script defer src="/assets/art-data.js"></script>
   <noscript>
     <main>
       <h1>Carlos Hurtado — Senior Engineer &amp; Game Developer</h1>
@@ -75,5 +75,18 @@ render_with_liquid: false
 {% include mountain.html %}
   <div id="root"></div>
   <script defer src="/assets/js/app.js"></script>
+  <script>
+    setTimeout(function () {
+      var root = document.getElementById('root');
+      if (root && !root.hasChildNodes()) {
+        root.innerHTML = '<main style="max-width:640px;margin:80px auto;padding:0 24px;font-family:sans-serif;color:#eee;text-align:center;">'
+          + '<h1>Carlos Hurtado</h1>'
+          + '<p>This page needs a script hosted on unpkg.com, which failed to load — likely a network or ad-blocker issue.</p>'
+          + '<p><a href="mailto:carloshurtado@gmail.com" style="color:#8cf;">Email me</a> or '
+          + '<a href="https://www.linkedin.com/in/carloshurtado" style="color:#8cf;">find me on LinkedIn</a>.</p>'
+          + '</main>';
+      }
+    }, 5000);
+  </script>
 </body>
 </html>
