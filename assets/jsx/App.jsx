@@ -22,5 +22,13 @@ function App() {
   );
 }
 
+const HomeSection = lazy(() => import('./sections/Home'));
+const AboutSection = lazy(() => import('./components/About'));
+const GameDevSection = lazy(() => import('./components/GameDev'));
+const AwardsSection = lazy(() => import('./components/Awards'));
+const ArtSection = lazy(() => import('./components/Art'));
+const ResumeSection = lazy(() => import('./components/Resume'));
+const ContactSection = lazy(() => import('./components/Contact'));
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);

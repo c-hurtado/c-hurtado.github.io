@@ -1,0 +1,36 @@
+{
+  "shortcuts": {
+    "home": "http://carloshurtado.com/",
+    "about": "http://carloshurtado.com/#about",
+    "art": "http://carloshurtado.com/#art",
+    "awards": "http://carloshurtado.com/#awards",
+    "resume": "http://carloshurtado.com/#resume",
+    "contact": "http://carloshurtado.com/#contact"
+  },
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/img/logo3.png",
+      "sizes": "32x32 64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "https://avatars.githubusercontent.com/c-hurtado?u=8",
+      "sizes": "32x32 64x64",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "var(--app-bg)",
+  "background_color": "var(--app-bg)",
+  "display": "standalone",
+  "orientation": "portrait-primary"
+}
