@@ -45,6 +45,10 @@ function ProjectModal({ project, onClose, accentColor }) {
     }}>
       <div ref={trapRef} tabIndex={-1} role="dialog" aria-modal="true" aria-label={project.title} onClick={e => e.stopPropagation()} style={{
         width: '100%', maxWidth: 780,
+        // Vertically centred when it fits; when it's taller than the
+        // viewport the auto margins collapse to 0 and it scrolls from the
+        // top (alignItems: center would clip the top instead).
+        margin: 'auto 0',
         background: 'oklch(8% 0.04 290 / 0.98)',
         border: `1px solid color-mix(in oklch, ${accent} 40%, transparent)`,
         borderRadius: 12,
