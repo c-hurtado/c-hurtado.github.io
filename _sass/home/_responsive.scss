@@ -67,7 +67,7 @@
       flex-direction: column !important;
       gap: 10px !important;
       text-align: center !important;
-      padding: 24px 6% !important;
+      padding: 24px clamp(20px, 4vw, 56px) !important;
     }
   }
 

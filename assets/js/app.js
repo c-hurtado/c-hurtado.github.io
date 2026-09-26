@@ -583,7 +583,7 @@ function HomeSection({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '100px 24px 80px',
+      padding: '100px clamp(20px, 4vw, 56px) 80px',
       position: 'relative'
     }
   }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement("div", {
