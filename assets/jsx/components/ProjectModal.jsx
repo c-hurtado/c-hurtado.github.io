@@ -61,7 +61,7 @@ function ProjectModal({ project, onClose, accentColor }) {
         {project.img && (
           <div style={{ height: 220, borderRadius: '12px 12px 0 0', overflow: 'hidden', position: 'relative' }}>
             {!heroLoaded && <div className="art-thumb-skeleton"><div className="art-thumb-spinner" /></div>}
-            <img src={project.img} alt={`${project.title} — ${project.studio}${project.subtitle ? `. ${project.subtitle}` : ''}`} decoding="async" onLoad={() => setHeroLoaded(true)} style={{
+            <img src={thumbOf(project.img).src} onError={fallbackToOriginal(project.img)} alt={`${project.title} — ${project.studio}${project.subtitle ? `. ${project.subtitle}` : ''}`} decoding="async" onLoad={() => setHeroLoaded(true)} style={{
               width: '100%', height: '100%', objectFit: 'cover',
               opacity: heroLoaded ? 1 : 0, transition: 'opacity 0.3s ease',
             }} />

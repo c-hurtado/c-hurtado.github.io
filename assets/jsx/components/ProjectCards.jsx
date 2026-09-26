@@ -23,7 +23,7 @@ function FeaturedProjectCard({ project, accentColor, onOpen }) {
         borderTop: `1px solid color-mix(in oklch, ${accent} 30%, transparent)`,
         borderBottom: `1px solid color-mix(in oklch, ${accent} 30%, transparent)`,
       }}>
-      <img src={project.img} alt={`${project.title} — ${project.studio}`} loading="lazy" decoding="async" style={{
+      <img src={thumbOf(project.img).src} onError={fallbackToOriginal(project.img)} alt={`${project.title} — ${project.studio}`} loading="lazy" decoding="async" style={{
         position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover',
         transform: hovered ? 'scale(1.04)' : 'scale(1)',
         transition: 'transform 0.5s ease',
@@ -80,7 +80,7 @@ function ProjectCard({ title, studio, desc, img: imgSrc, badge, accentColor, ind
       }}>
         {imgSrc && !loaded && <div className="art-thumb-skeleton"><div className="art-thumb-spinner" /></div>}
         {imgSrc && (
-          <img src={imgSrc} alt={`${title} — ${studio}${badge ? `, ${badge}` : ''}`} loading="lazy" decoding="async" onLoad={() => setLoaded(true)} style={{
+          <img src={thumbOf(imgSrc).src} onError={fallbackToOriginal(imgSrc)} alt={`${title} — ${studio}${badge ? `, ${badge}` : ''}`} loading="lazy" decoding="async" onLoad={() => setLoaded(true)} style={{
             width: '100%', height: '100%', objectFit: 'cover',
             display: 'block', opacity: loaded ? (hovered ? 1 : 0.85) : 0,
             transition: 'opacity 0.3s ease',

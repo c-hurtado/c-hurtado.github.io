@@ -23,6 +23,23 @@ button:focus-visible,
   box-shadow: 0 0 0 4px oklch(62% 0.28 340 / 0.25);
 }
 
+/* Skip link — off-screen until a keyboard user tabs to it. */
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 1000;
+  padding: 10px 16px;
+  border-radius: 6px;
+  background: var(--bg2);
+  border: 1px solid var(--pink);
+  color: var(--text);
+  font-weight: 600;
+  transform: translateY(-200%);
+}
+.skip-link:focus-visible { transform: none; color: var(--text); }
+#main:focus, #main:focus-visible { outline: none; box-shadow: none; }
+
   html { scroll-behavior: smooth; background: #05000c; }
 
   body {

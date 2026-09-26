@@ -11,6 +11,7 @@ Order (matches original top-to-bottom layout of `app.jsx`):
 
 ```
 00-react.js                  React destructuring (useState/useEffect/…)
+data/thumbs.js               thumbOf(): downsized image lookup (scripts/make-thumbs.mjs)
 hooks/useAccent.js           accent-color helper
 components/Logo.jsx
 components/ScrollProgressBar.jsx

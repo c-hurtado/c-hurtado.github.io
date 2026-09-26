@@ -11,7 +11,8 @@ function AvatarCircle({ size = 160, accentColor }) {
       background: 'oklch(8% 0.04 290)',
     }}>
       <img
-        src="/assets/img/mepunk.png"
+        src={thumbOf('/assets/img/mepunk.png').src}
+        onError={fallbackToOriginal('/assets/img/mepunk.png')}
         alt="Carlos Hurtado"
         style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
       />

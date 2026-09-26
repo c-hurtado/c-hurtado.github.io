@@ -111,7 +111,7 @@ function ArtSection({ accentColor }) {
           {lightboxLoaded !== activeImages[lightbox.i] && (
             <div className="art-lightbox-spinner" style={{ '--accent-spin': accent }} onClick={e => e.stopPropagation()} />
           )}
-          <img src={activeImages[lightbox.i]} onClick={e => e.stopPropagation()} onLoad={() => setLightboxLoaded(activeImages[lightbox.i])} style={{
+          <img src={activeImages[lightbox.i]} alt={`${activeCategory.label}, piece ${lightbox.i + 1} of ${activeImages.length}`} onClick={e => e.stopPropagation()} onLoad={() => setLightboxLoaded(activeImages[lightbox.i])} style={{
             maxWidth: '88vw', maxHeight: '88vh', objectFit: 'contain', borderRadius: 6,
             boxShadow: `0 0 40px color-mix(in oklch, ${accent} 40%, transparent)`,
             display: lightboxLoaded === activeImages[lightbox.i] ? 'block' : 'none',
@@ -142,6 +142,7 @@ function ArtSection({ accentColor }) {
 function ArtThumb({ src, onClick, accent, label }) {
   const [hovered, setHovered] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const thumb = thumbOf(src);
   return (
     <div
       role="button" tabIndex={0} aria-label={label}
@@ -159,10 +160,14 @@ function ArtThumb({ src, onClick, accent, label }) {
       boxShadow: hovered ? `0 4px 24px color-mix(in oklch, ${accent} 40%, transparent)` : 'none',
       background: 'linear-gradient(160deg, var(--bg2) 0%, var(--bg) 100%)',
       position: 'relative',
-      minHeight: loaded ? 0 : 160,
+      // Reserve the piece's real shape before it loads so the masonry
+      // columns don't reflow as each image arrives. Without known
+      // dimensions, fall back to a fixed placeholder height.
+      ...(thumb.width ? { aspectRatio: `${thumb.width} / ${thumb.height}` } : { minHeight: loaded ? 0 : 160 }),
     }}>
       {!loaded && <div className="art-thumb-skeleton"><div className="art-thumb-spinner" /></div>}
-      <img src={src} loading="lazy" decoding="async" onLoad={() => setLoaded(true)} style={{ width: '100%', height: 'auto', display: 'block',
+      {/* alt="" — the wrapping role="button" already carries the label. */}
+      <img src={thumb.src} onError={fallbackToOriginal(src)} alt="" width={thumb.width} height={thumb.height} loading="lazy" decoding="async" onLoad={() => setLoaded(true)} style={{ width: '100%', height: 'auto', display: 'block',
         transition: 'opacity 0.3s', opacity: loaded ? (hovered ? 1 : 0.85) : 0 }} />
     </div>
   );
