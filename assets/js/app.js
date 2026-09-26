@@ -2521,11 +2521,16 @@ function layoutArtRows(images, containerWidth, gap, targetHeight) {
   const total = prefix[n];
   // Pick the row count whose resulting height is closest to the target,
   // compared as a ratio so "too small" and "too big" weigh the same.
+  // Too few rows for a narrow grid leaves no room once the gaps are
+  // subtracted (height <= 0); those counts are never eligible. k = n
+  // (one piece per row) is always positive.
   const heightFor = k => (k * containerWidth - gap * (n - k)) / total;
-  let rowCount = 1;
-  for (let k = 2; k <= n; k++) {
-    if (Math.abs(Math.log(heightFor(k) / targetHeight)) < Math.abs(Math.log(heightFor(rowCount) / targetHeight))) rowCount = k;
-  }
+  const score = k => {
+    const h = heightFor(k);
+    return h > 0 ? Math.abs(Math.log(h / targetHeight)) : Infinity;
+  };
+  let rowCount = n;
+  for (let k = 1; k < n; k++) if (score(k) < score(rowCount)) rowCount = k;
   const ideal = total / rowCount;
 
   // best[m][j]: min cost of putting the first j pieces into m rows.
@@ -2568,7 +2573,7 @@ function useElementWidth(ref) {
   React.useLayoutEffect(() => {
     const el = ref.current;
     if (!el) return;
-    setWidth(el.clientWidth);
+    setWidth(el.getBoundingClientRect().width);
     const ro = new ResizeObserver(([entry]) => setWidth(entry.contentRect.width));
     ro.observe(el);
     return () => ro.disconnect();
@@ -2590,7 +2595,7 @@ function ArtCategoryGrid({
   const gridWidth = useElementWidth(gridRef);
   const mobile = gridWidth > 0 && gridWidth < 500;
   const gap = mobile ? ART_GAP_MOBILE : ART_GAP;
-  const rows = useMemo(() => layoutArtRows(visibleImages, gridWidth, gap, mobile ? ART_ROW_HEIGHT_MOBILE : ART_ROW_HEIGHT), [visibleImages.length, cat, gridWidth, gap, mobile]);
+  const rows = useMemo(() => layoutArtRows(visibleImages, gridWidth, gap, mobile ? ART_ROW_HEIGHT_MOBILE : ART_ROW_HEIGHT), [cat, expanded, gridWidth, gap, mobile]);
   useEffect(() => {
     // Collapsing a large expanded grid can strand the viewport scrolled past
     // the now-much-shorter section — bring the category header back into view.
@@ -2935,7 +2940,8 @@ function ArtThumb({
       borderRadius: 8,
       cursor: 'pointer',
       border: `1px solid ${hovered ? accent : 'var(--purple-a2)'}`,
-      transition: 'all 0.2s ease',
+      // Not `all`: width must snap with the layout, or rows go ragged mid-resize.
+      transition: 'border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease',
       transform: hovered ? 'scale(1.02)' : 'scale(1)',
       boxShadow: hovered ? `0 4px 24px color-mix(in oklch, ${accent} 40%, transparent)` : 'none',
       background: 'linear-gradient(160deg, var(--bg2) 0%, var(--bg) 100%)',
