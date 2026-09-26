@@ -2325,7 +2325,7 @@ function ResumeSection({
     className: "resume-grid",
     style: {
       display: 'grid',
-      gridTemplateColumns: '1fr 1fr',
+      gridTemplateColumns: 'minmax(0, 1.6fr) minmax(240px, 1fr)',
       gap: 48
     }
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", {

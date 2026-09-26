@@ -28,7 +28,7 @@ function ResumeSection({ accentColor }) {
         </div>
       </div>
 
-      <div className="resume-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48 }}>
+      <div className="resume-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.6fr) minmax(240px, 1fr)', gap: 48 }}>
         {/* Timeline */}
         <div>
           <h3 style={{ fontFamily: 'Space Grotesk', fontSize: 18, fontWeight: 600, color: accent, marginBottom: 28, letterSpacing: '0.04em', textTransform: 'uppercase', fontSize: 12 }}>Career Timeline</h3>
