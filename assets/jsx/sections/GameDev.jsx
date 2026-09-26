@@ -13,7 +13,7 @@ function GameDevSection({ accentColor }) {
   const restProjects = projects.filter(p => p !== featuredProject);
 
   return (
-    <section id="gamedev" data-screen-label="03 Game Dev" style={{ padding: '100px 8% 80px', maxWidth: 1200, margin: '0 auto' }}>
+    <section id="gamedev" data-screen-label="03 Game Dev" style={{ padding: '100px clamp(20px, 4vw, 56px) 80px', maxWidth: 1320, margin: '0 auto' }}>
       <Reveal><SectionCard corner1="var(--cyan)" corner2="var(--pink)" style={{ padding: '52px 52px' }}>
       <div style={{ marginBottom: 56 }}>
         <SectionTag path="game-dev" accent={accent} />

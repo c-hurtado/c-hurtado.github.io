@@ -28,7 +28,7 @@ function ArtCategoryGrid({ cat, accent, isLast, onOpen }) {
       </div>
       {/* Masonry via CSS columns — every piece keeps its true aspect ratio
           (no crop, no letterboxed mat space), unlike a fixed-aspect grid. */}
-      <div className="art-thumb-grid" style={{ columns: '230px 3', columnGap: 16 }}>
+      <div className="art-thumb-grid" style={{ columns: '230px 4', columnGap: 16 }}>
         {visibleImages.map((src, i) => (
           <ArtThumb key={i} src={src} label={`${cat.label} piece ${i + 1} of ${cat.images.length}`} onClick={() => onOpen(i)} accent={accent} />
         ))}
@@ -70,7 +70,7 @@ function ArtSection({ accentColor }) {
   const activeImages = activeCategory ? activeCategory.images : [];
 
   return (
-    <section id="art" data-screen-label="05 Art" style={{ padding: '100px 8% 80px', maxWidth: 1200, margin: '0 auto' }}>
+    <section id="art" data-screen-label="05 Art" style={{ padding: '100px clamp(20px, 4vw, 56px) 80px', maxWidth: 1320, margin: '0 auto' }}>
       <Reveal><SectionCard corner1="var(--orange)" corner2="var(--purple)">
         <div style={{ marginBottom: 48 }}>
           <SectionTag path="art" accent={accent} />

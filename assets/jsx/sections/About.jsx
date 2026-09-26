@@ -2,7 +2,7 @@ function AboutSection({ accentColor }) {
   const { accent, accent2 } = useAccent(accentColor);
 
   return (
-    <section id="about" data-screen-label="02 About" style={{ padding: '100px 8% 80px', maxWidth: 1100, margin: '0 auto' }}>
+    <section id="about" data-screen-label="02 About" style={{ padding: '100px clamp(20px, 4vw, 56px) 80px', maxWidth: 1320, margin: '0 auto' }}>
       <Reveal><SectionCard corner1="var(--purple)" corner2="var(--cyan)">
         <div style={{ marginBottom: 40 }}>
           <SectionTag path="about" accent={accent} />
@@ -12,7 +12,7 @@ function AboutSection({ accentColor }) {
           </div>
         </div>
 
-        <div className="about-grid" style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: 48, alignItems: 'start' }}>
+        <div className="about-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 560px) 1fr', gap: 48, alignItems: 'start' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             <p style={{ fontSize: 16, lineHeight: 1.8, color: 'var(--text-dim)' }}>
               I'm <span style={{ color: 'var(--text)', fontWeight: 600 }}>Carlos</span>. I grew up in <span style={{ color: 'var(--text)' }}>Chile</span> and moved to the United States to build a career in entertainment technology. I'm a U.S. citizen now, and I've been making games professionally since <span style={{ color: 'var(--text)' }}>2008</span>.

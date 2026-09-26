@@ -1422,8 +1422,8 @@ function AboutSection({
     id: "about",
     "data-screen-label": "02 About",
     style: {
-      padding: '100px 8% 80px',
-      maxWidth: 1100,
+      padding: '100px clamp(20px, 4vw, 56px) 80px',
+      maxWidth: 1320,
       margin: '0 auto'
     }
   }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement(SectionCard, {
@@ -1462,7 +1462,7 @@ function AboutSection({
     className: "about-grid",
     style: {
       display: 'grid',
-      gridTemplateColumns: '1.5fr 1fr',
+      gridTemplateColumns: 'minmax(0, 560px) 1fr',
       gap: 48,
       alignItems: 'start'
     }
@@ -1895,8 +1895,8 @@ function GameDevSection({
     id: "gamedev",
     "data-screen-label": "03 Game Dev",
     style: {
-      padding: '100px 8% 80px',
-      maxWidth: 1200,
+      padding: '100px clamp(20px, 4vw, 56px) 80px',
+      maxWidth: 1320,
       margin: '0 auto'
     }
   }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement(SectionCard, {
@@ -2113,8 +2113,8 @@ function AwardsSection({
     id: "awards",
     "data-screen-label": "04 Awards",
     style: {
-      padding: '70px 8% 56px',
-      maxWidth: 1100,
+      padding: '70px clamp(20px, 4vw, 56px) 56px',
+      maxWidth: 1320,
       margin: '0 auto'
     }
   }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement(SectionCard, {
@@ -2285,8 +2285,8 @@ function ResumeSection({
     id: "resume",
     "data-screen-label": "06 Resume",
     style: {
-      padding: '70px 8% 56px',
-      maxWidth: 1100,
+      padding: '70px clamp(20px, 4vw, 56px) 56px',
+      maxWidth: 1320,
       margin: '0 auto'
     }
   }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement(SectionCard, {
@@ -2544,7 +2544,7 @@ function ArtCategoryGrid({
   }, cat.images.length, " piece", cat.images.length === 1 ? '' : 's')), /*#__PURE__*/React.createElement("div", {
     className: "art-thumb-grid",
     style: {
-      columns: '230px 3',
+      columns: '230px 4',
       columnGap: 16
     }
   }, visibleImages.map((src, i) => /*#__PURE__*/React.createElement(ArtThumb, {
@@ -2622,8 +2622,8 @@ function ArtSection({
     id: "art",
     "data-screen-label": "05 Art",
     style: {
-      padding: '100px 8% 80px',
-      maxWidth: 1200,
+      padding: '100px clamp(20px, 4vw, 56px) 80px',
+      maxWidth: 1320,
       margin: '0 auto'
     }
   }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement(SectionCard, {
@@ -2893,8 +2893,8 @@ function ContactSection({
     id: "contact",
     "data-screen-label": "07 Contact",
     style: {
-      padding: '120px 8% 90px',
-      maxWidth: 1100,
+      padding: '120px clamp(20px, 4vw, 56px) 90px',
+      maxWidth: 1320,
       margin: '0 auto'
     }
   }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement("div", {

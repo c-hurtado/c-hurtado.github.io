@@ -38,7 +38,7 @@ function AwardsSection({ accentColor }) {
   const { accent, accent2 } = useAccent(accentColor);
 
   return (
-    <section id="awards" data-screen-label="04 Awards" style={{ padding: '70px 8% 56px', maxWidth: 1100, margin: '0 auto' }}>
+    <section id="awards" data-screen-label="04 Awards" style={{ padding: '70px clamp(20px, 4vw, 56px) 56px', maxWidth: 1320, margin: '0 auto' }}>
       <Reveal><SectionCard corner1={GOLD} corner2={GOLD_DIM} style={{
         background: 'radial-gradient(ellipse at center, rgba(10,8,2,0.92) 0%, rgba(6,5,2,0.75) 55%, rgba(4,3,1,0.4) 100%)',
         border: '1px solid rgba(212,175,55,0.22)',

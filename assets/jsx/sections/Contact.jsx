@@ -12,7 +12,7 @@ function ContactSection({ accentColor }) {
   }, []);
 
   return (
-    <section id="contact" data-screen-label="07 Contact" style={{ padding: '120px 8% 90px', maxWidth: 1100, margin: '0 auto' }}>
+    <section id="contact" data-screen-label="07 Contact" style={{ padding: '120px clamp(20px, 4vw, 56px) 90px', maxWidth: 1320, margin: '0 auto' }}>
       {/* Flat, quiet panel (no corner brackets / glow) — the one section
           meant to feel like an ending, not another card in the rotation. */}
       <Reveal><div className="section-card-flat" style={{
