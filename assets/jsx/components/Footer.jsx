@@ -2,7 +2,7 @@
 function Footer({ accentColor }) {
   const { accent } = useAccent(accentColor);
   return (
-    <footer style={{ padding: '0 8% 32px', position: 'relative' }}>
+    <footer style={{ padding: '0 clamp(20px, 4vw, 56px) 32px', maxWidth: 1320, margin: '0 auto', position: 'relative' }}>
       <GlowDivider color={accent} />
       <div style={{
         textAlign: 'center', margin: '36px 0 40px', padding: '28px 24px',

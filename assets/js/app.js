@@ -589,7 +589,7 @@ function HomeSection({
   }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement("div", {
     style: {
       width: '100%',
-      maxWidth: 700,
+      maxWidth: 820,
       background: 'var(--card-bg)',
       backdropFilter: 'blur(24px)',
       border: `1px solid var(--border)`,
@@ -1462,7 +1462,7 @@ function AboutSection({
     className: "about-grid",
     style: {
       display: 'grid',
-      gridTemplateColumns: 'minmax(0, 560px) 1fr',
+      gridTemplateColumns: 'minmax(0, 560px) minmax(240px, 1fr)',
       gap: 48,
       alignItems: 'start'
     }
@@ -2194,7 +2194,7 @@ function AwardsSection({
     className: "awards-grid",
     style: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(max(160px, calc((100% - 42px) / 4)), 1fr))',
       gap: 14
     }
   }, group.wins.map((award, i) => /*#__PURE__*/React.createElement(AwardBadge, _extends({
@@ -2221,7 +2221,7 @@ function AwardsSection({
     className: "awards-grid",
     style: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(max(160px, calc((100% - 42px) / 4)), 1fr))',
       gap: 14
     }
   }, AWARD_NOMINATIONS.map((award, i) => /*#__PURE__*/React.createElement(AwardBadge, _extends({
@@ -2491,7 +2491,7 @@ function ResumeSection({
 
 // ─── ART SECTION ─────────────────────────────────────────────────────────────
 const ART_CATEGORIES_RAW = window.ART_CATEGORIES_RAW;
-const ART_PREVIEW_COUNT = 6;
+const ART_PREVIEW_COUNT = 8;
 function ArtCategoryGrid({
   cat,
   accent,
@@ -3178,7 +3178,9 @@ function Footer({
   } = useAccent(accentColor);
   return /*#__PURE__*/React.createElement("footer", {
     style: {
-      padding: '0 8% 32px',
+      padding: '0 clamp(20px, 4vw, 56px) 32px',
+      maxWidth: 1320,
+      margin: '0 auto',
       position: 'relative'
     }
   }, /*#__PURE__*/React.createElement(GlowDivider, {

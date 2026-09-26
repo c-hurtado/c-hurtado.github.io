@@ -9,7 +9,7 @@ function HomeSection({ accentColor }) {
       position: 'relative',
     }}>
       <Reveal><div style={{
-        width: '100%', maxWidth: 700,
+        width: '100%', maxWidth: 820,
         background: 'var(--card-bg)',
         backdropFilter: 'blur(24px)',
         border: `1px solid var(--border)`,

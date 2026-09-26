@@ -20,8 +20,6 @@
     .nav-links a { padding: 12px 14px !important; font-size: 15px !important; white-space: normal !important; text-align: left; }
 
     #home, #about, #gamedev, #resume, #art, #contact {
-      padding-left: 5% !important;
-      padding-right: 5% !important;
       padding-top: 88px !important;
     }
 
@@ -75,5 +73,7 @@
 
   @media (max-width: 480px) {
     .section-card, .section-card-flat { padding: 22px 16px !important; }
+    .featured-project-card { margin: 0 -16px 24px !important; }
+    .featured-project-card > div:last-child { padding-left: 16px !important; padding-right: 16px !important; }
   }
 

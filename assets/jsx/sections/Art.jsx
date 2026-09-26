@@ -1,6 +1,6 @@
 // ─── ART SECTION ─────────────────────────────────────────────────────────────
 const ART_CATEGORIES_RAW = window.ART_CATEGORIES_RAW;
-const ART_PREVIEW_COUNT = 6;
+const ART_PREVIEW_COUNT = 8;
 
 function ArtCategoryGrid({ cat, accent, isLast, onOpen }) {
   const [expanded, setExpanded] = useState(false);

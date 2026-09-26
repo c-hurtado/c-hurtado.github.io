@@ -12,7 +12,7 @@ function AboutSection({ accentColor }) {
           </div>
         </div>
 
-        <div className="about-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 560px) 1fr', gap: 48, alignItems: 'start' }}>
+        <div className="about-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 560px) minmax(240px, 1fr)', gap: 48, alignItems: 'start' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             <p style={{ fontSize: 16, lineHeight: 1.8, color: 'var(--text-dim)' }}>
               I'm <span style={{ color: 'var(--text)', fontWeight: 600 }}>Carlos</span>. I grew up in <span style={{ color: 'var(--text)' }}>Chile</span> and moved to the United States to build a career in entertainment technology. I'm a U.S. citizen now, and I've been making games professionally since <span style={{ color: 'var(--text)' }}>2008</span>.
