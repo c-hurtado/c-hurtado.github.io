@@ -1,6 +1,80 @@
 // ─── ART SECTION ─────────────────────────────────────────────────────────────
 const ART_CATEGORIES_RAW = window.ART_CATEGORIES_RAW;
 const ART_PREVIEW_COUNT = 8;
+const ART_GAP = 16;
+const ART_GAP_MOBILE = 10;
+// Target row height; actual rows land near it once widths are justified.
+const ART_ROW_HEIGHT = 260;
+const ART_ROW_HEIGHT_MOBILE = 130;
+// A row that can't fill the width (e.g. one lone piece) stops growing here.
+const ART_MAX_ROW_SCALE = 1.6;
+
+// Aspect ratio from the thumb manifest; unknown pieces (thumb script not
+// re-run) are treated as square and cropped to fit.
+function artRatio(src) {
+  const t = thumbOf(src);
+  return t.width ? t.width / t.height : 1;
+}
+
+// Justified-row layout. Splits the pieces, in order, into `rowCount`
+// contiguous rows whose summed aspect ratios are as even as possible
+// (linear partition DP), so every row fills the full width at a similar
+// height, with no ragged column bottoms or half-empty last row.
+// Returns [{ items: [{ src, index, width }], height }].
+function layoutArtRows(images, containerWidth, gap, targetHeight) {
+  const ratios = images.map(artRatio);
+  const n = ratios.length;
+  if (!n || !containerWidth) return [];
+  const prefix = [0];
+  ratios.forEach(r => prefix.push(prefix[prefix.length - 1] + r));
+  const total = prefix[n];
+  // Pick the row count whose resulting height is closest to the target,
+  // compared as a ratio so "too small" and "too big" weigh the same.
+  const heightFor = k => (k * containerWidth - gap * (n - k)) / total;
+  let rowCount = 1;
+  for (let k = 2; k <= n; k++) {
+    if (Math.abs(Math.log(heightFor(k) / targetHeight)) < Math.abs(Math.log(heightFor(rowCount) / targetHeight))) rowCount = k;
+  }
+  const ideal = total / rowCount;
+
+  // best[m][j]: min cost of putting the first j pieces into m rows.
+  const best = Array.from({ length: rowCount + 1 }, () => new Array(n + 1).fill(Infinity));
+  const cut = Array.from({ length: rowCount + 1 }, () => new Array(n + 1).fill(0));
+  best[0][0] = 0;
+  for (let m = 1; m <= rowCount; m++) {
+    for (let j = m; j <= n; j++) {
+      for (let i = m - 1; i < j; i++) {
+        const c = best[m - 1][i] + (prefix[j] - prefix[i] - ideal) ** 2;
+        if (c < best[m][j]) { best[m][j] = c; cut[m][j] = i; }
+      }
+    }
+  }
+
+  const bounds = [];
+  for (let m = rowCount, j = n; m > 0; j = cut[m][j], m--) bounds.unshift([cut[m][j], j]);
+  return bounds.map(([start, end]) => {
+    const rowRatio = prefix[end] - prefix[start];
+    const available = containerWidth - gap * (end - start - 1);
+    const height = Math.min(available / rowRatio, targetHeight * ART_MAX_ROW_SCALE);
+    return {
+      height,
+      items: images.slice(start, end).map((src, k) => ({ src, index: start + k, width: ratios[start + k] * height })),
+    };
+  });
+}
+
+function useElementWidth(ref) {
+  const [width, setWidth] = useState(0);
+  React.useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    setWidth(el.clientWidth);
+    const ro = new ResizeObserver(([entry]) => setWidth(entry.contentRect.width));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+  return width;
+}
 
 function ArtCategoryGrid({ cat, accent, isLast, onOpen }) {
   const [expanded, setExpanded] = useState(false);
@@ -8,6 +82,14 @@ function ArtCategoryGrid({ cat, accent, isLast, onOpen }) {
   const visibleImages = expanded ? cat.images : cat.images.slice(0, ART_PREVIEW_COUNT);
   const headerRef = useRef(null);
   const wasExpanded = useRef(false);
+  const gridRef = useRef(null);
+  const gridWidth = useElementWidth(gridRef);
+  const mobile = gridWidth > 0 && gridWidth < 500;
+  const gap = mobile ? ART_GAP_MOBILE : ART_GAP;
+  const rows = useMemo(
+    () => layoutArtRows(visibleImages, gridWidth, gap, mobile ? ART_ROW_HEIGHT_MOBILE : ART_ROW_HEIGHT),
+    [visibleImages.length, cat, gridWidth, gap, mobile]
+  );
 
   useEffect(() => {
     // Collapsing a large expanded grid can strand the viewport scrolled past
@@ -26,11 +108,13 @@ function ArtCategoryGrid({ cat, accent, isLast, onOpen }) {
           {cat.images.length} piece{cat.images.length === 1 ? '' : 's'}
         </span>
       </div>
-      {/* Masonry via CSS columns — every piece keeps its true aspect ratio
-          (no crop, no letterboxed mat space), unlike a fixed-aspect grid. */}
-      <div className="art-thumb-grid" style={{ columns: '230px 4', columnGap: 16 }}>
-        {visibleImages.map((src, i) => (
-          <ArtThumb key={i} src={src} label={`${cat.label} piece ${i + 1} of ${cat.images.length}`} onClick={() => onOpen(i)} accent={accent} />
+      <div ref={gridRef} className="art-thumb-grid" style={{ display: 'flex', flexDirection: 'column', gap }}>
+        {rows.map((row, r) => (
+          <div key={r} style={{ display: 'flex', gap, height: row.height }}>
+            {row.items.map(({ src, index, width }) => (
+              <ArtThumb key={index} src={src} width={width} label={`${cat.label} piece ${index + 1} of ${cat.images.length}`} onClick={() => onOpen(index)} accent={accent} />
+            ))}
+          </div>
         ))}
       </div>
       {hasMore && (
@@ -139,7 +223,7 @@ function ArtSection({ accentColor }) {
   );
 }
 
-function ArtThumb({ src, onClick, accent, label }) {
+function ArtThumb({ src, width, onClick, accent, label }) {
   const [hovered, setHovered] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const thumb = thumbOf(src);
@@ -150,9 +234,9 @@ function ArtThumb({ src, onClick, accent, label }) {
       onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(); } }}
       onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{
       // Shared frame language with the Game Dev cards: 8px radius, same
-      // border/hover-glow spec. Natural aspect ratio (no fixed box) — the
-      // masonry column layout gives each piece its own true proportions.
-      breakInside: 'avoid', marginBottom: 16,
+      // border/hover-glow spec. Size comes from layoutArtRows; the row sets
+      // the height.
+      width, minWidth: 0,
       overflow: 'hidden', borderRadius: 8, cursor: 'pointer',
       border: `1px solid ${hovered ? accent : 'var(--purple-a2)'}`,
       transition: 'all 0.2s ease',
@@ -160,14 +244,10 @@ function ArtThumb({ src, onClick, accent, label }) {
       boxShadow: hovered ? `0 4px 24px color-mix(in oklch, ${accent} 40%, transparent)` : 'none',
       background: 'linear-gradient(160deg, var(--bg2) 0%, var(--bg) 100%)',
       position: 'relative',
-      // Reserve the piece's real shape before it loads so the masonry
-      // columns don't reflow as each image arrives. Without known
-      // dimensions, fall back to a fixed placeholder height.
-      ...(thumb.width ? { aspectRatio: `${thumb.width} / ${thumb.height}` } : { minHeight: loaded ? 0 : 160 }),
     }}>
       {!loaded && <div className="art-thumb-skeleton"><div className="art-thumb-spinner" /></div>}
       {/* alt="" — the wrapping role="button" already carries the label. */}
-      <img src={thumb.src} onError={fallbackToOriginal(src)} alt="" width={thumb.width} height={thumb.height} loading="lazy" decoding="async" onLoad={() => setLoaded(true)} style={{ width: '100%', height: 'auto', display: 'block',
+      <img src={thumb.src} onError={fallbackToOriginal(src)} alt="" width={thumb.width} height={thumb.height} loading="lazy" decoding="async" onLoad={() => setLoaded(true)} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block',
         transition: 'opacity 0.3s', opacity: loaded ? (hovered ? 1 : 0.85) : 0 }} />
     </div>
   );

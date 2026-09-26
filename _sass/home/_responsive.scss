@@ -42,11 +42,6 @@
       grid-template-columns: 1fr !important;
     }
 
-    .art-thumb-grid {
-      columns: 2 !important;
-      column-gap: 10px !important;
-    }
-    .art-thumb-grid > div { margin-bottom: 10px !important; }
 
     .awards-grid {
       grid-template-columns: repeat(2, 1fr) !important;
