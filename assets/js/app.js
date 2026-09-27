@@ -2263,7 +2263,7 @@ function ResumeSection({
     year: '2021–2026',
     role: 'Technical Lead Manager',
     company: 'Sanzaru Games · Meta (Oculus Studios)',
-    desc: 'Led engineering teams through full lifecycle of flagship VR titles, including Asgard\'s Wrath 2 (IGN 10/10) and an unannounced big-IP VR project.'
+    desc: 'Led engineering teams through the full lifecycle of flagship VR titles, including Asgard\'s Wrath 2 (IGN 10/10) and an unannounced big-IP VR project.'
   }, {
     year: '~2016–2021',
     role: 'Senior Engineer / Tech Lead',
@@ -2273,7 +2273,7 @@ function ResumeSection({
     year: '~2012–2016',
     role: 'Software Engineer',
     company: 'Sanzaru Games · Big Fish Games',
-    desc: 'Dark Manor: casual hidden-object mobile game. Small 2-engineer team, full stack ownership.'
+    desc: 'Dark Manor: casual hidden-object mobile game. Small 2-engineer team, full-stack ownership.'
   }, {
     year: '~2010–2012',
     role: 'Software Engineer',
