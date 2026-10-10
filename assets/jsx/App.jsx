@@ -21,6 +21,7 @@ function App() {
           <ContactSection accentColor={ACCENT_COLOR} />
         </main>
         <Footer accentColor={ACCENT_COLOR} />
+        <MusicToggle />
       </div>
     </>
   );
