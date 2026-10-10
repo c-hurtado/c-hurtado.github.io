@@ -1,0 +1,71 @@
+// Motion accents: cursor spotlight and text sheen on cards,
+// occasional shooting stars. Gated for reduced-motion; spotlight also for
+// hover-capable pointers only.
+
+// ── Card spotlight — --mx/--my set by usePointerGlow (hooks/useScroll.js) ──
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .glow-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: -1; // card's backdrop-filter is its stacking context: above bg, below content
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%),
+      rgba(255, 61, 143, 0.22), rgba(124, 58, 237, 0.14) 40%, transparent 70%);
+  }
+  .glow-card:hover::before { opacity: 1; }
+
+  // Reflective sheen: color-dodge above the content lights up text (not the
+  // near-black card background) wherever the cursor is, like light on glass.
+  .glow-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    mix-blend-mode: color-dodge;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%),
+      rgba(255, 190, 225, 0.55), rgba(255, 90, 170, 0.25) 45%, transparent 75%);
+  }
+  .glow-card:hover::after { opacity: 1; }
+}
+
+// ── Shooting stars — html pseudo-elements, one streak per long cycle ───────
+@keyframes shoot {
+  0%   { opacity: 0; transform: rotate(-35deg) translateX(0); }
+  1%   { opacity: 1; }
+  5%   { opacity: 0; transform: rotate(-35deg) translateX(-420px); }
+  100% { opacity: 0; transform: rotate(-35deg) translateX(-420px); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  html::before,
+  html::after {
+    content: '';
+    position: fixed;
+    width: 110px;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #fff, rgba(255, 61, 143, 0.6) 40%, transparent);
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+  }
+  html::before { top: 12%; left: 78%; animation: shoot 13s 4s infinite cubic-bezier(0.2, 0.6, 0.3, 1); }
+  html::after  { top: 26%; left: 55%; animation: shoot 19s 11s infinite cubic-bezier(0.2, 0.6, 0.3, 1); }
+}
+
+// ── Glass card tilt — --rx/--ry set by usePointerGlow ──────────────────────
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .glow-card.reveal-visible {
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .glow-card.tilting.reveal-visible {
+    transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  }
+}

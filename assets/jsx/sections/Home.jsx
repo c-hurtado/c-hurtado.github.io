@@ -8,7 +8,7 @@ function HomeSection({ accentColor }) {
       padding: '100px clamp(20px, 4vw, 56px) 80px',
       position: 'relative',
     }}>
-      <Reveal><div style={{
+      <Reveal><div className="glow-card" style={{
         width: '100%', maxWidth: 820,
         background: 'var(--card-bg)',
         backdropFilter: 'blur(24px)',

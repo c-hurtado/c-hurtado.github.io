@@ -3,6 +3,7 @@ const ACCENT_COLOR = 'pink';
 function App() {
   const [activeSection, setActiveSection] = useActiveSection();
   useParallaxScroll();
+  usePointerGlow();
 
   return (
     <>

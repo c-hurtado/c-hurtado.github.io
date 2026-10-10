@@ -55,7 +55,7 @@ function useParallaxScroll() {
       requestAnimationFrame(() => {
         const y = window.scrollY;
         const gridDrift = Math.min(y * 0.04, 50);   // grid + horizon + sun, capped at 50px
-        const starDrift = Math.min(y * 0.015, 30);  // stars/clouds drift slower — depth
+        const starDrift = Math.min(y * 0.05, 140);  // stars/clouds drift independently of the grid — depth
 
         if (gridWrapper) gridWrapper.style.transform = `translateY(${gridDrift}px)`;
         if (horizonLine) horizonLine.style.transform = `translateY(${gridDrift}px)`;
@@ -63,7 +63,7 @@ function useParallaxScroll() {
         if (mountainReflection) mountainReflection.style.transform = `translateY(${gridDrift}px) scaleY(-1)`;
         document.body.style.setProperty('--sun-drift', `${gridDrift}px`);
         if (stars) stars.style.transform = `translateY(${starDrift}px)`;
-        if (clouds) clouds.style.transform = `translateY(${starDrift * 1.2}px)`;
+        if (clouds) clouds.style.transform = `translateY(${starDrift * 1.8}px)`;
         ticking = false;
       });
     };
@@ -73,3 +73,45 @@ function useParallaxScroll() {
   }, []);
 }
 
+
+// ─── CARD SPOTLIGHT + TILT ────────────────────────────────────────────────────
+// Feeds --mx/--my (spotlight) and --rx/--ry (tilt) to the hovered .glow-card;
+// the visuals themselves are CSS (_motion.scss).
+function usePointerGlow() {
+  useEffect(() => {
+    if (!window.matchMedia('(hover: hover) and (prefers-reduced-motion: no-preference)').matches) return;
+    const MAX_TILT = 3;
+    // Cap how far a card edge swings (px) so big cards (art gallery) tilt less, not more.
+    const EDGE_PX = 20;
+    const MAX_TILT_HEIGHT = 900;
+    const tilt = (dim) => Math.min(MAX_TILT, Math.asin(Math.min(1, EDGE_PX / (dim / 2))) * 57.2958);
+    let raf = 0;
+    const onMove = (e) => {
+      const card = e.target.closest && e.target.closest('.glow-card');
+      if (!card || raf) return;
+      const { clientX, clientY } = e;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const r = card.getBoundingClientRect();
+        const x = clientX - r.left, y = clientY - r.top;
+        card.style.setProperty('--mx', `${x}px`);
+        card.style.setProperty('--my', `${y}px`);
+        card.style.setProperty('--ry', `${((x / r.width) * 2 - 1) * tilt(r.width)}deg`);
+        card.style.setProperty('--rx', `${-((y / r.height) * 2 - 1) * tilt(r.height)}deg`);
+        // Tall cards (art gallery) keep the glow but skip the tilt.
+        if (r.height <= MAX_TILT_HEIGHT) card.classList.add('tilting');
+      });
+    };
+    const onOut = (e) => {
+      const card = e.target.closest && e.target.closest('.glow-card');
+      if (card && !card.contains(e.relatedTarget)) card.classList.remove('tilting');
+    };
+    document.addEventListener('pointermove', onMove, { passive: true });
+    document.addEventListener('pointerout', onOut);
+    return () => {
+      cancelAnimationFrame(raf);
+      document.removeEventListener('pointermove', onMove);
+      document.removeEventListener('pointerout', onOut);
+    };
+  }, []);
+}
