@@ -118,10 +118,10 @@ function ContactSection({ accentColor }) {
                   onBlur={e => e.target.style.borderColor = 'var(--purple-a2)'}
                 />
               </div>
-              <button type="submit" disabled={sending} style={{
+              <button type="submit" disabled={sending} className="glow-btn" style={{
                 padding: '12px 28px', borderRadius: 5,
-                background: `linear-gradient(135deg, ${accent}, ${accent2})`,
-                color: '#fff', fontWeight: 600, fontSize: 15,
+                background: `radial-gradient(110px circle at var(--tx, -999px) var(--ty, -999px), oklch(100% 0 0 / 0.32), transparent 70%), linear-gradient(135deg, ${accent}, ${accent2})`,
+                color: '#fff', fontWeight: 600, fontSize: 15, textShadow: '0 1px 2px oklch(0% 0 0 / 0.35)', // keeps the label legible under the white highlight
                 fontFamily: 'Space Grotesk', letterSpacing: '0.04em',
                 border: 'none', cursor: sending ? 'default' : 'pointer',
                 opacity: sending ? 0.7 : 1,

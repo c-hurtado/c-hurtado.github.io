@@ -672,9 +672,11 @@ function HomeSection({
       letterSpacing: '-0.02em'
     }
   }, "Hi, I'm", ' ', /*#__PURE__*/React.createElement("span", {
+    className: "glow-title",
     style: {
       fontWeight: 800,
-      background: `linear-gradient(135deg, ${accent}, ${accent2})`,
+      // radial layer = cursor highlight, positioned by usePointerGlow via --tx/--ty
+      background: `radial-gradient(150px circle at var(--tx, -999px) var(--ty, -999px), oklch(100% 0 0 / 0.95), transparent 70%), linear-gradient(135deg, ${accent}, ${accent2})`,
       WebkitBackgroundClip: 'text',
       WebkitTextFillColor: 'transparent',
       backgroundClip: 'text'
@@ -741,13 +743,16 @@ function HomeSection({
   }), /*#__PURE__*/React.createElement("a", {
     href: "/assets/Carlos_Hurtado_Resume.pdf",
     target: "_blank",
+    className: "glow-btn",
     style: {
       padding: '10px 24px',
       borderRadius: 4,
-      background: `linear-gradient(135deg, ${accent}, ${accent2})`,
+      background: `radial-gradient(110px circle at var(--tx, -999px) var(--ty, -999px), oklch(100% 0 0 / 0.32), transparent 70%), linear-gradient(135deg, ${accent}, ${accent2})`,
       color: '#fff',
       fontWeight: 600,
       fontSize: 14,
+      textShadow: '0 1px 2px oklch(0% 0 0 / 0.35)',
+      // keeps the label legible under the white highlight
       fontFamily: 'Space Grotesk',
       letterSpacing: '0.04em',
       boxShadow: `0 4px 20px color-mix(in oklch, ${accent} 40%, transparent)`,
@@ -3254,13 +3259,16 @@ function ContactSection({
   })), /*#__PURE__*/React.createElement("button", {
     type: "submit",
     disabled: sending,
+    className: "glow-btn",
     style: {
       padding: '12px 28px',
       borderRadius: 5,
-      background: `linear-gradient(135deg, ${accent}, ${accent2})`,
+      background: `radial-gradient(110px circle at var(--tx, -999px) var(--ty, -999px), oklch(100% 0 0 / 0.32), transparent 70%), linear-gradient(135deg, ${accent}, ${accent2})`,
       color: '#fff',
       fontWeight: 600,
       fontSize: 15,
+      textShadow: '0 1px 2px oklch(0% 0 0 / 0.35)',
+      // keeps the label legible under the white highlight
       fontFamily: 'Space Grotesk',
       letterSpacing: '0.04em',
       border: 'none',
@@ -3426,32 +3434,58 @@ function usePointerGlow() {
     const MAX_TILT = 3;
     // Cap how far a card edge swings (px) so big cards (art gallery) tilt less, not more.
     const EDGE_PX = 20;
-    const MAX_TILT_HEIGHT = 900;
+    const MAX_TILT_HEIGHT = 1200;
     const tilt = dim => Math.min(MAX_TILT, Math.asin(Math.min(1, EDGE_PX / (dim / 2))) * 57.2958);
     let raf = 0;
+    // White cursor highlight for the title and pink buttons: --tx/--ty in the element's own coordinates.
+    const setLocalPointer = (el, cx, cy) => {
+      const t = el.getBoundingClientRect();
+      el.style.setProperty('--tx', `${cx - t.left}px`);
+      el.style.setProperty('--ty', `${cy - t.top}px`);
+    };
+    const clearLocalPointer = el => {
+      el.style.removeProperty('--tx');
+      el.style.removeProperty('--ty');
+    };
     const onMove = e => {
       const card = e.target.closest && e.target.closest('.glow-card');
-      if (!card || raf) return;
+      if (raf) return;
       const {
         clientX,
         clientY
       } = e;
       raf = requestAnimationFrame(() => {
         raf = 0;
+        document.querySelectorAll('.glow-btn').forEach(b => setLocalPointer(b, clientX, clientY));
+        if (!card) return;
         const r = card.getBoundingClientRect();
         const x = clientX - r.left,
           y = clientY - r.top;
+        // Re-entering mid-bounce: cancel the settle so tracking is snappy again.
+        clearTimeout(card._settle);
+        card.classList.remove('settling');
         card.style.setProperty('--mx', `${x}px`);
         card.style.setProperty('--my', `${y}px`);
         card.style.setProperty('--ry', `${(x / r.width * 2 - 1) * tilt(r.width)}deg`);
         card.style.setProperty('--rx', `${-(y / r.height * 2 - 1) * tilt(r.height)}deg`);
+        const title = card.querySelector('.glow-title');
+        if (title) setLocalPointer(title, clientX, clientY);
         // Tall cards (art gallery) keep the glow but skip the tilt.
-        if (r.height <= MAX_TILT_HEIGHT) card.classList.add('tilting');
+        if (r.height <= MAX_TILT_HEIGHT && card.matches(':hover')) card.classList.add('tilting');
       });
     };
     const onOut = e => {
+      if (!e.relatedTarget) document.querySelectorAll('.glow-btn').forEach(clearLocalPointer);
       const card = e.target.closest && e.target.closest('.glow-card');
-      if (card && !card.contains(e.relatedTarget)) card.classList.remove('tilting');
+      if (!card || card.contains(e.relatedTarget)) return;
+      // Spring back to flat (CSS .settling gives the bounce), then drop the tilt class.
+      card.style.setProperty('--rx', '0deg');
+      card.style.setProperty('--ry', '0deg');
+      card.classList.add('settling');
+      clearTimeout(card._settle);
+      card._settle = setTimeout(() => card.classList.remove('tilting', 'settling'), 1000);
+      const title = card.querySelector('.glow-title');
+      if (title) clearLocalPointer(title);
     };
     document.addEventListener('pointermove', onMove, {
       passive: true

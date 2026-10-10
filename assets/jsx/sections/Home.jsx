@@ -37,9 +37,10 @@ function HomeSection({ accentColor }) {
             </div>
             <h1 style={{ fontFamily: 'Space Grotesk', fontSize: 'clamp(32px, 4.4vw, 46px)', fontWeight: 700, lineHeight: 1.05, letterSpacing: '-0.02em' }}>
               Hi, I'm{' '}
-              <span style={{
+              <span className="glow-title" style={{
                 fontWeight: 800,
-                background: `linear-gradient(135deg, ${accent}, ${accent2})`,
+                // radial layer = cursor highlight, positioned by usePointerGlow via --tx/--ty
+                background: `radial-gradient(150px circle at var(--tx, -999px) var(--ty, -999px), oklch(100% 0 0 / 0.95), transparent 70%), linear-gradient(135deg, ${accent}, ${accent2})`,
                 WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
               }}>Carlos Hurtado.</span>
             </h1>
@@ -60,10 +61,10 @@ function HomeSection({ accentColor }) {
 
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 20, marginBottom: 28 }}>
           <SocialLinks accent={accent} />
-          <a href="/assets/Carlos_Hurtado_Resume.pdf" target="_blank" style={{
+          <a href="/assets/Carlos_Hurtado_Resume.pdf" target="_blank" className="glow-btn" style={{
             padding: '10px 24px', borderRadius: 4,
-            background: `linear-gradient(135deg, ${accent}, ${accent2})`,
-            color: '#fff', fontWeight: 600, fontSize: 14,
+            background: `radial-gradient(110px circle at var(--tx, -999px) var(--ty, -999px), oklch(100% 0 0 / 0.32), transparent 70%), linear-gradient(135deg, ${accent}, ${accent2})`,
+            color: '#fff', fontWeight: 600, fontSize: 14, textShadow: '0 1px 2px oklch(0% 0 0 / 0.35)', // keeps the label legible under the white highlight
             fontFamily: 'Space Grotesk', letterSpacing: '0.04em',
             boxShadow: `0 4px 20px color-mix(in oklch, ${accent} 40%, transparent)`,
             display: 'inline-flex', alignItems: 'center', gap: 8,

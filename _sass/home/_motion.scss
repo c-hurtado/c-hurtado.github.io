@@ -3,6 +3,11 @@
 // hover-capable pointers only.
 
 // ── Card spotlight — --mx/--my set by usePointerGlow (hooks/useScroll.js) ──
+// --rx/--ry are read by the card itself, so they're registered non-inheriting to
+// keep per-move updates from restyling the subtree. --mx/--my must stay
+// inherited: the ::before/::after glows read them from the card.
+@property --rx { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+@property --ry { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .glow-card::before {
     content: '';
@@ -13,13 +18,13 @@
     z-index: -1; // card's backdrop-filter is its stacking context: above bg, below content
     opacity: 0;
     transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%),
-      rgba(255, 61, 143, 0.22), rgba(124, 58, 237, 0.14) 40%, transparent 70%);
+    background: radial-gradient(680px circle at var(--mx, 50%) var(--my, 50%),
+      rgba(255, 105, 160, 0.075), rgba(124, 58, 237, 0.06) 50%, transparent 100%);
   }
   .glow-card:hover::before { opacity: 1; }
 
-  // Reflective sheen: color-dodge above the content lights up text (not the
-  // near-black card background) wherever the cursor is, like light on glass.
+  // Reflective sheen: soft-light above the content lifts text under the
+  // cursor like light on glass, without blowing out images the way dodge did.
   .glow-card::after {
     content: '';
     position: absolute;
@@ -27,12 +32,14 @@
     border-radius: inherit;
     pointer-events: none;
     opacity: 0;
-    mix-blend-mode: color-dodge;
+    mix-blend-mode: soft-light;
     transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%),
-      rgba(255, 190, 225, 0.55), rgba(255, 90, 170, 0.25) 45%, transparent 75%);
+    background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 50%),
+      rgba(240, 185, 235, 0.24), rgba(170, 100, 240, 0.11) 50%, transparent 100%);
   }
   .glow-card:hover::after { opacity: 1; }
+  // Art thumbnails sit above the sheen so artwork keeps its true colours.
+  .glow-card .art-thumb-grid { position: relative; z-index: 2; }
 }
 
 // ── Shooting stars — html pseudo-elements, one streak per long cycle ───────
@@ -62,10 +69,15 @@
 
 // ── Glass card tilt — --rx/--ry set by usePointerGlow ──────────────────────
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .glow-card.reveal-visible {
-    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  // Faster transform only while tilting, so the scroll-in reveal keeps its 0.7s.
+  // On leave, --rx/--ry go to 0 under .settling: a spring easing overshoots past flat and rocks back.
+  .glow-card.tilting.settling.reveal-visible {
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.3, 2.2, 0.5, 1);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 1s linear(0, 0.55 10%, 1.45 24%, 0.75 40%, 1.2 56%, 0.92 72%, 1.03 86%, 1);
   }
   .glow-card.tilting.reveal-visible {
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
   }
 }
