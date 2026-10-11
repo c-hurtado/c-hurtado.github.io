@@ -246,16 +246,6 @@ window.IMAGE_THUMBS = {
     640,
     905
   ],
-  "/assets/img/gallery/Studies/IMG_0662.jpeg": [
-    "/assets/img/thumbs/gallery/Studies/IMG_0662.webp",
-    640,
-    549
-  ],
-  "/assets/img/gallery/DigitalPortraits/Photo May 18, 15 59 47.jpg": [
-    "/assets/img/thumbs/gallery/DigitalPortraits/Photo May 18, 15 59 47.webp",
-    640,
-    905
-  ],
   "/assets/img/gallery/Studies/Photo Jun 15, 10 41 19.jpg": [
     "/assets/img/thumbs/gallery/Studies/Photo Jun 15, 10 41 19.webp",
     640,
@@ -365,6 +355,11 @@ window.IMAGE_THUMBS = {
     "/assets/img/thumbs/gallery/FanArtAndCharacters/IMG_0544.webp",
     640,
     905
+  ],
+  "/assets/img/gallery/FanArtAndCharacters/IMG_0662.jpeg": [
+    "/assets/img/thumbs/gallery/FanArtAndCharacters/IMG_0662.webp",
+    640,
+    549
   ],
   "/assets/img/gallery/FanArtAndCharacters/IMG_0734.JPG": [
     "/assets/img/thumbs/gallery/FanArtAndCharacters/IMG_0734.webp",
