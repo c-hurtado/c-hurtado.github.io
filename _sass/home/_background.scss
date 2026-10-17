@@ -45,12 +45,12 @@
 }
 
 .stars {
-  background:transparent url(#{$site-url}/assets/img/stars.png) repeat top center;
+  background:transparent url(#{$site-url}/assets/img/stars.webp) repeat top center;
   z-index:0;
 }
 
 .starsB {
-  background:transparent url(#{$site-url}/assets/img/stars.png) repeat top center;
+  background:transparent url(#{$site-url}/assets/img/stars.webp) repeat top center;
   z-index:0;
 	opacity:0.3;
 	-moz-animation:move-clouds-back 500s linear infinite;
@@ -62,7 +62,7 @@
 
 
 .clouds{
-    background:transparent url(#{$site-url}/assets/img/clouds3.png) repeat top center;
+    background:transparent url(#{$site-url}/assets/img/clouds3.webp) repeat top center;
     z-index:0;
 		opacity:0.6;
 

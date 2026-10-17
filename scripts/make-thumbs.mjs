@@ -22,7 +22,7 @@ const THUMB_DIR = '/assets/img/thumbs';
 // Art grid columns render at most ~300px wide; 640px covers 2x displays.
 const ART_WIDTH = 640;
 // Featured project card / modal hero is ~700px wide.
-const PROJECT_WIDTH = 1280;
+const PROJECT_WIDTH = 960;
 const AVATAR_WIDTH = 256;
 
 function loadArtPaths() {

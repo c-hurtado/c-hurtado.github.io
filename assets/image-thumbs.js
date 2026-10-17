@@ -428,23 +428,23 @@ window.IMAGE_THUMBS = {
   ],
   "/assets/img/projects/Meta-Quest-3-Dark.jpg": [
     "/assets/img/thumbs/projects/Meta-Quest-3-Dark.webp",
-    1280,
-    720
+    960,
+    540
   ],
   "/assets/img/projects/asgards-wrath-2.png": [
     "/assets/img/thumbs/projects/asgards-wrath-2.webp",
-    1280,
-    720
+    960,
+    540
   ],
   "/assets/img/projects/asgards-wrath.jpg": [
     "/assets/img/thumbs/projects/asgards-wrath.webp",
-    1280,
-    720
+    960,
+    540
   ],
   "/assets/img/projects/marvelpowersunited.jpg": [
     "/assets/img/thumbs/projects/marvelpowersunited.webp",
-    1280,
-    720
+    960,
+    540
   ],
   "/assets/img/projects/vr-sports-challenge.jpg": [
     "/assets/img/thumbs/projects/vr-sports-challenge.webp",
@@ -453,8 +453,8 @@ window.IMAGE_THUMBS = {
   ],
   "/assets/img/projects/darkmanor.jpg": [
     "/assets/img/thumbs/projects/darkmanor.webp",
-    1280,
-    720
+    960,
+    540
   ],
   "/assets/img/projects/uridiumwars.png": [
     "/assets/img/thumbs/projects/uridiumwars.webp",
