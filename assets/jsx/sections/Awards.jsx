@@ -1,6 +1,12 @@
 const GOLD = '#d4af37';
 const GOLD_DIM = '#8b6f2e';
 
+// Intrinsic logo sizes (w, h) so the browser reserves space before the images load.
+const LOGO_SIZES = {
+  'dice-aias-logo.png': [240, 66], 'ign-logo.svg': [720, 217], 'navgtr-logo.png': [240, 50], 'nyx-awards-logo.png': [53, 80],
+  'road-to-vr-logo.png': [272, 94], 'telly-awards-bronze.png': [317, 173], 'webby-awards-logo.png': [141, 80],
+};
+
 function AwardBadge({ org, category, logo, accent, muted, invert }) {
   return (
     <div style={{
@@ -12,7 +18,7 @@ function AwardBadge({ org, category, logo, accent, muted, invert }) {
     }}>
       <div style={{ height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         {logo ? (
-          <img src={logo} alt={`${org} logo`} style={{
+          <img src={logo} alt={`${org} logo`} width={LOGO_SIZES[logo.split('/').pop()]?.[0]} height={LOGO_SIZES[logo.split('/').pop()]?.[1]} style={{
             height: '100%', maxWidth: 120, width: 'auto', objectFit: 'contain', display: 'block',
             filter: invert ? 'grayscale(1) invert(1) brightness(1.6)' : 'none',
           }} />
