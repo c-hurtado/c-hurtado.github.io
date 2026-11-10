@@ -48,7 +48,7 @@ defaults:
   #ad-client:
   #ad-slot:
 #bing-verify:
-email:              carloshurtado@gmail.com
+email:
 twitter:
   username:         carlos_hurtado
   card:             summary_large_image
