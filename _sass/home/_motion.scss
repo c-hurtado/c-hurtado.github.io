@@ -81,3 +81,20 @@
     transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
   }
 }
+
+// ── Hover icon motion (CSS-only) — .hi on an svg inside a hovered link ─────
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .hi { transform-origin: 50% 50%; }
+  a:hover > .hi-mail     { animation: hi-lift 0.5s ease; }
+  a:hover > .hi-linkedin { animation: hi-pop 0.45s cubic-bezier(0.3, 2, 0.5, 1); }
+  a:hover > .hi-github   { animation: hi-wiggle 0.6s ease; }
+  a:hover > .hi-twitter  { animation: hi-fly 0.5s ease; }
+  a:hover > .hi-insta    { animation: hi-spin 0.6s ease; }
+  a:hover > .hi-download { animation: hi-bounce 0.6s ease; }
+  @keyframes hi-lift   { 40% { transform: translateY(-3px) scale(1.12); } }
+  @keyframes hi-pop    { 50% { transform: scale(1.3); } }
+  @keyframes hi-wiggle { 20% { transform: rotate(-14deg); } 50% { transform: rotate(12deg); } 80% { transform: rotate(-5deg); } }
+  @keyframes hi-fly    { 50% { transform: translate(3px, -3px) rotate(8deg); } }
+  @keyframes hi-spin   { to { transform: rotate(90deg) scale(1); } 50% { transform: rotate(45deg) scale(1.15); } }
+  @keyframes hi-bounce { 30% { transform: translateY(3px); } 60% { transform: translateY(-2px); } }
+}
