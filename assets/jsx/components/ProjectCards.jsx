@@ -80,7 +80,7 @@ function ProjectCard({ title, studio, desc, img: imgSrc, badge, accentColor, ind
       }}>
         {imgSrc && !loaded && <div className="art-thumb-skeleton"><div className="art-thumb-spinner" /></div>}
         {imgSrc && (
-          <img src={thumbOf(imgSrc).src} onError={fallbackToOriginal(imgSrc)} alt={`${title} — ${studio}${badge ? `, ${badge}` : ''}`} loading="lazy" decoding="async" onLoad={() => setLoaded(true)} style={{
+          <img src={thumbOf(imgSrc).src} onError={fallbackToOriginal(imgSrc)} alt={`${title} — ${studio}${badge ? `, ${badge}` : ''}`} loading="lazy" decoding="async" ref={markIfLoaded(setLoaded)} onLoad={() => setLoaded(true)} style={{
             width: '100%', height: '100%', objectFit: 'cover',
             display: 'block', opacity: loaded ? (hovered ? 1 : 0.85) : 0,
             transition: 'opacity 0.3s ease',

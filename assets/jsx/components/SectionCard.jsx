@@ -4,7 +4,7 @@ const SectionCard = React.forwardRef(function SectionCard({ children, style: ext
   const accent2 = corner2;
   return (
     <div ref={ref} className={`section-card glow-card${className ? ' ' + className : ''}`} style={{
-      background: 'radial-gradient(ellipse at center, oklch(5% 0.04 290 / 0.88) 0%, oklch(5% 0.04 290 / 0.6) 55%, oklch(5% 0.04 290 / 0.32) 100%)',
+      background: 'radial-gradient(ellipse at center, oklch(5% 0.04 290 / 0.93) 0%, oklch(5% 0.04 290 / 0.82) 55%, oklch(5% 0.04 290 / 0.7) 100%)',
       backdropFilter: 'blur(24px)',
       border: '1px solid var(--border)',
       borderRadius: 12,

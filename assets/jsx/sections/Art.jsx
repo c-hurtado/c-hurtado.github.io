@@ -140,6 +140,12 @@ function ArtCategoryGrid({ cat, accent, isLast, onOpen }) {
   );
 }
 
+// "Figure study, Charcoal, 2025" from window.ART_CAPTIONS (assets/art-captions.js); '' if none.
+function artCaptionText(src) {
+  const c = (window.ART_CAPTIONS || {})[src];
+  return c ? [c.title, c.medium, c.year].filter(Boolean).join(', ') : '';
+}
+
 function ArtSection({ accentColor }) {
   const { accent, accent2 } = useAccent(accentColor);
   const [lightbox, setLightbox] = useState(null); // { cat: number, i: number }
@@ -197,7 +203,7 @@ function ArtSection({ accentColor }) {
           {lightboxLoaded !== activeImages[lightbox.i] && (
             <div className="art-lightbox-spinner" style={{ '--accent-spin': accent }} onClick={e => e.stopPropagation()} />
           )}
-          <img src={activeImages[lightbox.i]} alt={`${activeCategory.label}, piece ${lightbox.i + 1} of ${activeImages.length}`} onClick={e => e.stopPropagation()} onLoad={() => setLightboxLoaded(activeImages[lightbox.i])} style={{
+          <img src={activeImages[lightbox.i]} alt={artCaptionText(activeImages[lightbox.i]) || `${activeCategory.label} by Carlos Hurtado, piece ${lightbox.i + 1} of ${activeImages.length}`} onClick={e => e.stopPropagation()} onLoad={() => setLightboxLoaded(activeImages[lightbox.i])} style={{
             maxWidth: '88vw', maxHeight: '88vh', objectFit: 'contain', borderRadius: 6,
             boxShadow: `0 0 40px color-mix(in oklch, ${accent} 40%, transparent)`,
             display: lightboxLoaded === activeImages[lightbox.i] ? 'block' : 'none',
@@ -217,6 +223,7 @@ function ArtSection({ accentColor }) {
           <div style={{ position: 'absolute', bottom: 20, left: '50%', transform: 'translateX(-50%)',
             fontSize: 13, color: 'var(--text-dim)', fontFamily: 'Space Grotesk', textAlign: 'center' }}>
             <div style={{ fontWeight: 600, color: 'var(--text)', marginBottom: 2 }}>{activeCategory.label}</div>
+            {artCaptionText(activeImages[lightbox.i]) && <div style={{ marginBottom: 2 }}>{artCaptionText(activeImages[lightbox.i])}</div>}
             {lightbox.i + 1} / {activeImages.length}
           </div>
         </div>
@@ -250,7 +257,7 @@ function ArtThumb({ src, width, onClick, accent, label }) {
     }}>
       {!loaded && <div className="art-thumb-skeleton"><div className="art-thumb-spinner" /></div>}
       {/* alt="" — the wrapping role="button" already carries the label. */}
-      <img src={thumb.src} onError={fallbackToOriginal(src)} alt="" width={thumb.width} height={thumb.height} loading="lazy" decoding="async" onLoad={() => setLoaded(true)} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block',
+      <img src={thumb.src} onError={fallbackToOriginal(src)} alt="" width={thumb.width} height={thumb.height} loading="lazy" decoding="async" ref={markIfLoaded(setLoaded)} onLoad={() => setLoaded(true)} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block',
         transition: 'opacity 0.3s', opacity: loaded ? (hovered ? 1 : 0.85) : 0 }} />
     </div>
   );

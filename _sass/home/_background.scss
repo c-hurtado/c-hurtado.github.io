@@ -155,14 +155,22 @@
 .dot:nth-child(6) { left: 80%; animation: moveDot 6s infinite; }
 .dot:nth-child(7) { left: 90%; animation: moveDot 8s infinite; }
 
+/* Transform-only (animating `top` counted as layout shift: CLS 4.79 on
+   desktop). .grid-wrapper is a fixed 500px tall, so 500px == 100%. */
 @keyframes moveDot {
-  0%   { top: 100%; opacity: 1; }
-  100% { top: 0%; opacity: 0; }
+  0%   { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-500px); opacity: 0; }
 }
 
 @keyframes moveLine10 {
-  0%   { top: 0%; opacity: 0; }
-  100% { top: 100%; opacity: 1; }
+  0%   { transform: translateY(0); opacity: 0; }
+  100% { transform: translateY(500px); opacity: 1; }
+}
+
+@media (min-width: 481px) {
+  /* Animated lines start at the top and travel down via transform. */
+  .horizontal .line:nth-child(-n+10) { top: 0; margin-top: 0; will-change: transform; }
+  .dot { will-change: transform; }
 }
 
 @media (max-width: 480px) {

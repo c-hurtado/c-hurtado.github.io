@@ -16,7 +16,7 @@ function ContactSection({ accentColor }) {
       {/* Flat, quiet panel (no corner brackets / glow) — the one section
           meant to feel like an ending, not another card in the rotation. */}
       <Reveal><div className="section-card-flat" style={{
-        background: 'oklch(7% 0.03 290 / 0.5)',
+        background: 'oklch(6% 0.03 290 / 0.9)',
         border: '1px solid var(--purple-a15)',
         borderRadius: 12,
         padding: '52px 60px',

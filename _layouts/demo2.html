@@ -16,6 +16,8 @@ render_with_liquid: false
   "url": "{{ site.url }}/",
   "image": "{{ site.url }}/assets/img/logo3.png",
   "jobTitle": "Senior Engineer",
+  "description": "VR game developer, Asgard's Wrath. Senior Engineer at Sneaky Devil Studios; previously Technical Lead Manager at Sanzaru Games (Meta).",
+  "knowsAbout": ["VR game development", "Unreal Engine", "C++", "Gameplay engineering"],
   "worksFor": {
     "@type": "Organization",
     "name": "Sneaky Devil Studios"
@@ -32,10 +34,8 @@ render_with_liquid: false
   ]
 }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Space+Grotesk:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Space+Grotesk:wght@400;500;600;700&display=swap"></noscript>
+<link rel="preload" as="font" type="font/woff2" href="{{ site.url }}/assets/fonts/google/space-grotesk.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="{{ site.url }}/assets/fonts/google/dm-sans.woff2" crossorigin>
 
 <script defer src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
 <script defer src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
@@ -60,6 +60,7 @@ render_with_liquid: false
   <div class="horizon-line"></div>
   <script defer src="/assets/image-thumbs.js"></script>
   <script defer src="/assets/art-data.js"></script>
+  <script defer src="/assets/art-captions.js"></script>
   <noscript>
     <main>
       <h1>Carlos Hurtado — Senior Engineer &amp; Game Developer</h1>
@@ -75,12 +76,12 @@ render_with_liquid: false
   </noscript>
 
 {% include mountain.html %}
-  <div id="root"></div>
+  <div id="root">{% include prerender.html %}</div>
   <script defer src="/assets/js/app.js"></script>
   <script>
     setTimeout(function () {
       var root = document.getElementById('root');
-      if (root && !root.hasChildNodes()) {
+      if (root && !window.React) {
         root.innerHTML = '<main style="max-width:640px;margin:80px auto;padding:0 24px;font-family:sans-serif;color:#eee;text-align:center;">'
           + '<h1>Carlos Hurtado</h1>'
           + '<p>This page needs a script hosted on unpkg.com, which failed to load — likely a network or ad-blocker issue.</p>'

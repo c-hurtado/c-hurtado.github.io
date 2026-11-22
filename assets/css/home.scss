@@ -4,6 +4,7 @@
 // $site-url carries {{ site.url }} into partials (Jekyll renders
 // Liquid in this entry file only, before Sass resolves @imports).
 $site-url: "{{ site.url }}";
+@import "home/fonts";
 @import "home/variables";
 @import "home/background";
 @import "home/base";

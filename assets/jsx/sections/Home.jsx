@@ -10,7 +10,7 @@ function HomeSection({ accentColor }) {
     }}>
       <Reveal><div className="glow-card" style={{
         width: '100%', maxWidth: 820,
-        background: 'var(--card-bg)',
+        background: 'oklch(5% 0.04 290 / 0.82)',
         backdropFilter: 'blur(24px)',
         border: `1px solid var(--border)`,
         borderRadius: 12,

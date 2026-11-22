@@ -38,6 +38,10 @@ defaults:
       path: ""
     values:
       image: /assets/img/logo3.png
+  - scope:
+      path: "assets"
+    values:
+      sitemap: false   # keep PDFs, READMEs and build sources out of sitemap.xml
 
 # Social
 # if you don't have any of social below, comment the line.

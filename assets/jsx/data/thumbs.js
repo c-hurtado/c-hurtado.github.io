@@ -19,3 +19,10 @@ function fallbackToOriginal(original) {
     img.src = original;
   };
 }
+
+// ref callback for fade-in images: an <img> that finished loading before
+// React attached onLoad (cached, or decoded during hydration) never fires it,
+// which left the image at opacity 0 — a black box. Check `complete` on mount.
+function markIfLoaded(setLoaded) {
+  return (img) => { if (img && img.complete && img.naturalWidth > 0) setLoaded(true); };
+}

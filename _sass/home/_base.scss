@@ -40,7 +40,8 @@ button:focus-visible,
 .skip-link:focus-visible { transform: none; color: var(--text); }
 #main:focus, #main:focus-visible { outline: none; box-shadow: none; }
 
-  html { scroll-behavior: smooth; background: #05000c; }
+  html { background: #05000c; } /* instant anchor jumps: smooth scroll took seconds on this long page */
+  section[id] { scroll-margin-top: 24px; } /* keep titles clear of the sticky header */
 
   body {
     font-family: 'DM Sans', sans-serif;
@@ -74,3 +75,7 @@ button:focus-visible,
 
   ::selection { background: var(--pink); color: #fff; }
 
+
+  /* Pre-rendered content for non-JS crawlers; React replaces it on mount.
+     Visually hidden (still in the HTML) so it never flashes before the app. */
+  .prerender { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; }
