@@ -3,9 +3,10 @@
 // window.IMAGE_THUMBS (assets/image-thumbs.js). An image with no entry yet
 // (added to the data but the script not re-run) falls back to the original.
 const IMAGE_THUMBS = window.IMAGE_THUMBS || {};
+const IMAGE_THUMBS_CARD = window.IMAGE_THUMBS_CARD || {};
 
-function thumbOf(src) {
-  const t = IMAGE_THUMBS[src];
+function thumbOf(src, card) {
+  const t = (card && IMAGE_THUMBS_CARD[src]) || IMAGE_THUMBS[src];
   return t ? { src: t[0], width: t[1], height: t[2] } : { src };
 }
 

@@ -472,3 +472,46 @@ window.IMAGE_THUMBS = {
     231
   ]
 };
+// Smaller variants for the Game Dev grid cards.
+window.IMAGE_THUMBS_CARD = {
+  "/assets/img/projects/Meta-Quest-3-Dark.jpg": [
+    "/assets/img/thumbs/projects/Meta-Quest-3-Dark-card.webp",
+    480,
+    270
+  ],
+  "/assets/img/projects/asgards-wrath-2.png": [
+    "/assets/img/thumbs/projects/asgards-wrath-2-card.webp",
+    480,
+    270
+  ],
+  "/assets/img/projects/asgards-wrath.jpg": [
+    "/assets/img/thumbs/projects/asgards-wrath-card.webp",
+    480,
+    270
+  ],
+  "/assets/img/projects/marvelpowersunited.jpg": [
+    "/assets/img/thumbs/projects/marvelpowersunited-card.webp",
+    480,
+    270
+  ],
+  "/assets/img/projects/vr-sports-challenge.jpg": [
+    "/assets/img/thumbs/projects/vr-sports-challenge-card.webp",
+    480,
+    300
+  ],
+  "/assets/img/projects/darkmanor.jpg": [
+    "/assets/img/thumbs/projects/darkmanor-card.webp",
+    480,
+    270
+  ],
+  "/assets/img/projects/uridiumwars.png": [
+    "/assets/img/thumbs/projects/uridiumwars-card.webp",
+    480,
+    287
+  ],
+  "/assets/img/projects/sims.png": [
+    "/assets/img/thumbs/projects/sims-card.webp",
+    480,
+    287
+  ]
+};
