@@ -44,6 +44,7 @@ function ContactSection({ accentColor }) {
             { label: 'LinkedIn', val: '/in/carloshurtado', href: 'https://linkedin.com/in/carloshurtado' },
             { label: 'GitHub', val: 'github.com/c-hurtado', href: 'https://github.com/c-hurtado' },
             { label: 'Twitter/X', val: '@carlos_hurtado', href: 'https://twitter.com/carlos_hurtado' },
+            { label: 'MobyGames', val: 'Credits', href: 'https://www.mobygames.com/person/37573/carlos-hurtado/' },
           ].map(c => (
             <a key={c.label} href={c.href} target="_blank" style={{
               padding: '16px 20px', borderRadius: 8,
